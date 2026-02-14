@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1600" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4a6a9a"/></marker>
+    <marker id="arrowR" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c0392b"/></marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/></marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f8fafd"/><stop offset="100%" stop-color="#edf2f7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="1600" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="550" y="45" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a2a4a">PBHP v0.7 — Decision Flowchart</text>
+  <text x="550" y="68" text-anchor="middle" font-size="12" fill="#6a7a9a">Pause Before Harm Protocol — Operational Flow</text>
+
+  <!-- ============ STEP 0: COMPETENCE GATE ============ -->
+  <rect x="350" y="90" width="400" height="50" rx="8" fill="#1a2a4a" filter="url(#shadow)"/>
+  <text x="550" y="120" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">STEP 0 — Competence Gate</text>
+
+  <line x1="550" y1="140" x2="550" y2="165" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 0 Diamond -->
+  <polygon points="550,170 700,210 550,250 400,210" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="207" text-anchor="middle" font-size="10" fill="#2c3e50">Understand PBHP governs</text>
+  <text x="550" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">process, not outcomes?</text>
+
+  <!-- No branch -->
+  <line x1="700" y1="210" x2="830" y2="210" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arrowR)"/>
+  <rect x="835" y="192" width="200" height="36" rx="6" fill="#fdedec" stroke="#c0392b"/>
+  <text x="935" y="215" text-anchor="middle" font-size="10" fill="#c0392b" font-weight="bold">STOP — Do not use PBHP</text>
+  <text x="755" y="203" font-size="9" fill="#c0392b">No</text>
+
+  <!-- Yes branch -->
+  <text x="560" y="263" font-size="9" fill="#27ae60">Yes</text>
+  <line x1="550" y1="250" x2="550" y2="285" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowG)"/>
+
+  <!-- ============ STEP 0a: ETHICAL PAUSE ============ -->
+  <rect x="375" y="290" width="350" height="44" rx="8" fill="#2d5f8a" filter="url(#shadow)"/>
+  <text x="550" y="310" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">STEP 0a — Ethical Pause (Triune Mind)</text>
+  <text x="550" y="325" text-anchor="middle" font-size="9" fill="#a0c8f0">Care × Clarity × Paradox — All three required</text>
+
+  <line x1="550" y1="334" x2="550" y2="360" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ STEP 1: NAME THE ACTION ============ -->
+  <rect x="375" y="365" width="350" height="44" rx="8" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="385" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2a4a">STEP 1 — Name the Action</text>
+  <text x="550" y="400" text-anchor="middle" font-size="9" fill="#6a7a9a">"I am going to [verb] [object] for [who] using [method]"</text>
+
+  <line x1="550" y1="409" x2="550" y2="435" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ STEP 2: DOOR/WALL/GAP ============ -->
+  <rect x="340" y="440" width="420" height="70" rx="8" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2a4a">STEP 2 — Door / Wall / Gap</text>
+  <text x="430" y="478" font-size="9" fill="#e67e22" font-weight="bold">WALL</text><text x="430" y="490" font-size="8" fill="#6a7a9a">What constrains you?</text>
+  <text x="550" y="478" font-size="9" fill="#c0392b" font-weight="bold">GAP</text><text x="550" y="490" font-size="8" fill="#6a7a9a">Where could harm leak?</text>
+  <text x="670" y="478" font-size="9" fill="#27ae60" font-weight="bold">DOOR</text><text x="670" y="490" font-size="8" fill="#6a7a9a">Concrete escape action</text>
+
+  <!-- Door check diamond -->
+  <line x1="550" y1="510" x2="550" y2="535" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <polygon points="550,540 660,570 550,600 440,570" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="568" text-anchor="middle" font-size="10" fill="#2c3e50">Can you name a</text>
+  <text x="550" y="581" text-anchor="middle" font-size="10" fill="#2c3e50">concrete Door?</text>
+
+  <!-- No Door -->
+  <line x1="440" y1="570" x2="200" y2="570" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arrowR)"/>
+  <rect x="50" y="552" width="145" height="36" rx="6" fill="#fdedec" stroke="#c0392b"/>
+  <text x="122" y="572" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="bold">PAUSE / REFUSE</text>
+  <text x="122" y="583" text-anchor="middle" font-size="8" fill="#c0392b">until Door is found</text>
+  <text x="340" y="562" font-size="9" fill="#c0392b">No</text>
+
+  <!-- Yes -->
+  <text x="560" y="613" font-size="9" fill="#27ae60">Yes</text>
+  <line x1="550" y1="600" x2="550" y2="635" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowG)"/>
+
+  <!-- ============ STEP 3: CHIM CHECK ============ -->
+  <rect x="375" y="640" width="350" height="44" rx="8" fill="#3a2a10" filter="url(#shadow)"/>
+  <text x="550" y="660" text-anchor="middle" font-size="12" font-weight="bold" fill="#f0b040">STEP 3 — CHIM Check</text>
+  <text x="550" y="675" text-anchor="middle" font-size="9" fill="#d0a040">"Do I recognize the system I'm operating inside?"</text>
+
+  <line x1="550" y1="684" x2="550" y2="710" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ STEP 4: IDENTIFY HARMS ============ -->
+  <rect x="350" y="715" width="400" height="55" rx="8" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="735" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2a4a">STEP 4 — Identify Harms (Least-Powerful First)</text>
+  <text x="550" y="750" text-anchor="middle" font-size="9" fill="#6a7a9a">Physical • Psychological • Financial • Reputational • Privacy • Systemic</text>
+  <text x="550" y="762" text-anchor="middle" font-size="8" fill="#6a7a9a">Run: Historical Analog Scan → Status Quo Audit → Temporal Impact Model</text>
+
+  <line x1="550" y1="770" x2="550" y2="796" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ STEP 5: RATE ============ -->
+  <rect x="325" y="800" width="450" height="80" rx="8" fill="#fff" stroke="#2c3e50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="820" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2a4a">STEP 5 — Rate Each Harm on 4 Dimensions</text>
+  <!-- 4 dimension boxes -->
+  <rect x="340" y="830" width="100" height="38" rx="4" fill="#eaf2fb" stroke="#a0c0e0"/>
+  <text x="390" y="847" text-anchor="middle" font-size="9" font-weight="bold" fill="#2d5f8a">IMPACT</text>
+  <text x="390" y="860" text-anchor="middle" font-size="7" fill="#4a6a9a">Trivial→Catastrophic</text>
+
+  <rect x="450" y="830" width="100" height="38" rx="4" fill="#eaf2fb" stroke="#a0c0e0"/>
+  <text x="500" y="847" text-anchor="middle" font-size="9" font-weight="bold" fill="#2d5f8a">LIKELIHOOD</text>
+  <text x="500" y="860" text-anchor="middle" font-size="7" fill="#4a6a9a">Unlikely→Imminent</text>
+
+  <rect x="560" y="830" width="100" height="38" rx="4" fill="#eaf2fb" stroke="#a0c0e0"/>
+  <text x="610" y="847" text-anchor="middle" font-size="9" font-weight="bold" fill="#2d5f8a">IRREVERSIBLE</text>
+  <text x="610" y="860" text-anchor="middle" font-size="7" fill="#4a6a9a">Yes / No</text>
+
+  <rect x="670" y="830" width="100" height="38" rx="4" fill="#eaf2fb" stroke="#a0c0e0"/>
+  <text x="720" y="847" text-anchor="middle" font-size="9" font-weight="bold" fill="#2d5f8a">POWER</text>
+  <text x="720" y="860" text-anchor="middle" font-size="7" fill="#4a6a9a">Yes / No</text>
+
+  <text x="550" y="895" text-anchor="middle" font-size="8" fill="#c0392b" font-style="italic">Rounding Rule: If uncertain, round UP (toward higher caution)</text>
+
+  <line x1="550" y1="900" x2="550" y2="930" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ POWER ASYMMETRY CHECK ============ -->
+  <polygon points="550,935 700,975 550,1015 400,975" fill="#fff3e0" stroke="#e67e22" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="970" text-anchor="middle" font-size="10" fill="#e67e22" font-weight="bold">Power + Irreversible?</text>
+  <text x="550" y="985" text-anchor="middle" font-size="8" fill="#a06010">(Non-negotiable escalation)</text>
+
+  <!-- Power YES -->
+  <line x1="700" y1="975" x2="850" y2="975" stroke="#e67e22" stroke-width="1.5"/>
+  <rect x="855" y="942" width="200" height="65" rx="6" fill="#fff3e0" stroke="#e67e22" filter="url(#shadow)"/>
+  <text x="955" y="960" text-anchor="middle" font-size="9" fill="#e67e22" font-weight="bold">AUTO-ESCALATION</text>
+  <text x="955" y="975" text-anchor="middle" font-size="8" fill="#a06010">Power+Irreversible = min ORANGE</text>
+  <text x="955" y="988" text-anchor="middle" font-size="8" fill="#a06010">+Severe/Catastrophic = min RED</text>
+  <text x="955" y="1001" text-anchor="middle" font-size="8" fill="#c0392b" font-weight="bold">Deterministic. Not advisory.</text>
+  <text x="765" y="967" font-size="9" fill="#e67e22">Yes</text>
+
+  <!-- Continue down -->
+  <text x="560" y="1028" font-size="9" fill="#4a6a9a">Continue</text>
+  <line x1="550" y1="1015" x2="550" y2="1050" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ STEP 6: GATE ASSIGNMENT ============ -->
+  <rect x="300" y="1055" width="500" height="44" rx="8" fill="#1a2a4a" filter="url(#shadow)"/>
+  <text x="550" y="1082" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">STEP 6 — Assign Risk Gate</text>
+
+  <line x1="550" y1="1099" x2="550" y2="1125" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Gate boxes in a row -->
+  <!-- GREEN -->
+  <rect x="50" y="1130" width="170" height="80" rx="8" fill="#e8f5e9" stroke="#27ae60" stroke-width="2" filter="url(#shadow)"/>
+  <text x="135" y="1152" text-anchor="middle" font-size="14" font-weight="bold" fill="#27ae60">GREEN</text>
+  <text x="135" y="1168" text-anchor="middle" font-size="8" fill="#2e7d32">Proceed normally</text>
+  <text x="135" y="1180" text-anchor="middle" font-size="7" fill="#4a7a4a">Low stakes, reversible,</text>
+  <text x="135" y="1190" text-anchor="middle" font-size="7" fill="#4a7a4a">no power asymmetry</text>
+
+  <!-- YELLOW -->
+  <rect x="240" y="1130" width="170" height="80" rx="8" fill="#fffde7" stroke="#f9a825" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="1152" text-anchor="middle" font-size="14" font-weight="bold" fill="#f9a825">YELLOW</text>
+  <text x="325" y="1168" text-anchor="middle" font-size="8" fill="#f57f17">Proceed + mitigation</text>
+  <text x="325" y="1180" text-anchor="middle" font-size="7" fill="#8a7a1a">Moderate harm possible;</text>
+  <text x="325" y="1190" text-anchor="middle" font-size="7" fill="#8a7a1a">name the Door</text>
+
+  <!-- ORANGE -->
+  <rect x="430" y="1130" width="170" height="80" rx="8" fill="#fff3e0" stroke="#e67e22" stroke-width="2" filter="url(#shadow)"/>
+  <text x="515" y="1152" text-anchor="middle" font-size="14" font-weight="bold" fill="#e67e22">ORANGE</text>
+  <text x="515" y="1168" text-anchor="middle" font-size="8" fill="#bf360c">Strong constraints</text>
+  <text x="515" y="1180" text-anchor="middle" font-size="7" fill="#8a5a1a">Severe possible OR</text>
+  <text x="515" y="1190" text-anchor="middle" font-size="7" fill="#8a5a1a">Power+Irreversible</text>
+
+  <!-- RED -->
+  <rect x="620" y="1130" width="170" height="80" rx="8" fill="#fdedec" stroke="#c0392b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="705" y="1152" text-anchor="middle" font-size="14" font-weight="bold" fill="#c0392b">RED</text>
+  <text x="705" y="1168" text-anchor="middle" font-size="8" fill="#922b21">Default: Refuse</text>
+  <text x="705" y="1180" text-anchor="middle" font-size="7" fill="#7a2a2a">Severe+irreversible+likely</text>
+  <text x="705" y="1190" text-anchor="middle" font-size="7" fill="#7a2a2a">OR Power+Severe/Cat.</text>
+
+  <!-- BLACK -->
+  <rect x="810" y="1130" width="170" height="80" rx="8" fill="#1a1a2a" stroke="#fff" stroke-width="1" filter="url(#shadow)"/>
+  <text x="895" y="1152" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">BLACK</text>
+  <text x="895" y="1168" text-anchor="middle" font-size="8" fill="#e0e0e0">Refuse completely</text>
+  <text x="895" y="1180" text-anchor="middle" font-size="7" fill="#a0a0a0">Cat.+irrev.+likely OR</text>
+  <text x="895" y="1190" text-anchor="middle" font-size="7" fill="#a0a0a0">Absolute Rejection rule</text>
+
+  <!-- Lines from gate assignment to each gate -->
+  <line x1="400" y1="1099" x2="135" y2="1125" stroke="#27ae60" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="450" y1="1099" x2="325" y2="1125" stroke="#f9a825" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="550" y1="1099" x2="515" y2="1125" stroke="#e67e22" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="650" y1="1099" x2="705" y2="1125" stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="700" y1="1099" x2="895" y2="1125" stroke="#555" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+
+  <!-- ============ FALSE POSITIVE VALVE ============ -->
+  <line x1="550" y1="1210" x2="550" y2="1250" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="300" y="1255" width="500" height="80" rx="10" fill="#f0e6ff" stroke="#7c3aed" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="1278" text-anchor="middle" font-size="13" font-weight="bold" fill="#7c3aed">FALSE POSITIVE VALVE</text>
+  <text x="550" y="1294" text-anchor="middle" font-size="9" fill="#5b21b6">"Was this pause justified?" → PBHP must answer:</text>
+  <text x="340" y="1310" font-size="8" fill="#6a4a9a">1. What triggered it</text>
+  <text x="490" y="1310" font-size="8" fill="#6a4a9a">2. What harm found</text>
+  <text x="620" y="1310" font-size="8" fill="#6a4a9a">3. Which Door</text>
+  <text x="730" y="1310" font-size="8" fill="#6a4a9a">4. What evidence releases</text>
+
+  <!-- ============ STEP 7: LOG ============ -->
+  <line x1="550" y1="1335" x2="550" y2="1365" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="350" y="1370" width="400" height="44" rx="8" fill="#1a2a4a" filter="url(#shadow)"/>
+  <text x="550" y="1395" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">STEP 7 — PBHP Log (Receipt)</text>
+  <text x="550" y="1407" text-anchor="middle" font-size="8" fill="#a0b0d0">Action • Wall/Gap/Door • Gate • Decision • Justification</text>
+
+  <!-- ============ DRIFT ALARM BOX ============ -->
+  <line x1="550" y1="1414" x2="550" y2="1440" stroke="#4a6a9a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="1445" width="600" height="70" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="550" y="1468" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">DRIFT ALARMS — Monitor Continuously</text>
+  <text x="550" y="1484" text-anchor="middle" font-size="8" fill="#78350f">If ANY drift phrase detected ("It's temporary" • "We have to" • "It's legal so it's fine" • "Only affects bad people")</text>
+  <text x="550" y="1497" text-anchor="middle" font-size="8" fill="#92400e" font-weight="bold">→ Re-run PBHP from Step 2 • Round risk UP one level • Name the drift explicitly</text>
+
+  <!-- Footer -->
+  <text x="550" y="1550" text-anchor="middle" font-size="10" fill="#8090b0">PBHP v0.7 — Charles Phillip Linstrum (ALMSIVI) — February 2026</text>
+  <text x="550" y="1570" text-anchor="middle" font-size="8" fill="#a0b0c0">The pause itself is sacred. If you cannot hesitate before causing harm, you cannot genuinely care about the people affected.</text>
+</svg>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PBHP v0.7 Quick Reference Card</title>
+<style>
+  @media print { body { margin: 0; } .page { page-break-after: always; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #fff; color: #1a1a2a; }
+  .page { width: 8.5in; height: 11in; padding: 0.4in; display: flex; flex-direction: column; }
+  .card { border: 2px solid #1B3A5C; border-radius: 8px; padding: 12px 14px; flex: 1; display: flex; flex-direction: column; }
+  .header { text-align: center; border-bottom: 2px solid #1B3A5C; padding-bottom: 6px; margin-bottom: 8px; }
+  .header h1 { font-size: 16pt; color: #1B3A5C; letter-spacing: 1px; }
+  .header p { font-size: 7pt; color: #666; margin-top: 2px; }
+
+  .section { margin-bottom: 6px; }
+  .section-title { font-size: 9pt; font-weight: bold; color: #fff; background: #1B3A5C; padding: 2px 6px; border-radius: 3px; margin-bottom: 4px; display: inline-block; }
+
+  .steps { display: flex; gap: 4px; flex-wrap: wrap; }
+  .step { background: #f4f7fb; border: 1px solid #d0d8e8; border-radius: 4px; padding: 4px 6px; font-size: 7.5pt; flex: 1; min-width: 140px; }
+  .step strong { color: #1B3A5C; font-size: 8pt; }
+  .step em { color: #666; font-size: 6.5pt; display: block; margin-top: 1px; }
+
+  .gates { display: flex; gap: 3px; margin-top: 4px; }
+  .gate { flex: 1; border-radius: 4px; padding: 4px 5px; text-align: center; font-size: 7pt; font-weight: bold; }
+  .gate-green { background: #e8f5e9; color: #27ae60; border: 1px solid #27ae60; }
+  .gate-yellow { background: #fffde7; color: #f9a825; border: 1px solid #f9a825; }
+  .gate-orange { background: #fff3e0; color: #e67e22; border: 1px solid #e67e22; }
+  .gate-red { background: #fdedec; color: #c0392b; border: 1px solid #c0392b; }
+  .gate-black { background: #1a1a2a; color: #fff; border: 1px solid #000; }
+  .gate small { display: block; font-weight: normal; font-size: 6pt; margin-top: 1px; }
+
+  .dwg { display: flex; gap: 4px; margin-top: 4px; }
+  .dwg-box { flex: 1; border-radius: 4px; padding: 5px 6px; font-size: 7pt; }
+  .dwg-wall { background: #fef3c7; border: 1px solid #d97706; }
+  .dwg-wall strong { color: #92400e; }
+  .dwg-gap { background: #fdedec; border: 1px solid #c0392b; }
+  .dwg-gap strong { color: #922b21; }
+  .dwg-door { background: #e8f5e9; border: 1px solid #27ae60; }
+  .dwg-door strong { color: #1b7a3d; }
+
+  .power-box { background: #fff3e0; border: 1px solid #e67e22; border-radius: 4px; padding: 5px 8px; margin-top: 4px; font-size: 7.5pt; }
+  .power-box strong { color: #bf360c; }
+
+  .valve { background: #f0e6ff; border: 1px solid #7c3aed; border-radius: 4px; padding: 5px 8px; margin-top: 4px; font-size: 7pt; }
+  .valve strong { color: #5b21b6; }
+
+  .drift { background: #fef3c7; border: 1px solid #d97706; border-radius: 4px; padding: 5px 8px; margin-top: 4px; font-size: 7pt; }
+  .drift strong { color: #92400e; }
+
+  .three-force { display: flex; gap: 4px; margin-top: 4px; }
+  .force { flex: 1; border-radius: 4px; padding: 4px 6px; font-size: 7pt; text-align: center; }
+  .force-care { background: #fce4ec; border: 1px solid #e91e63; }
+  .force-care strong { color: #c2185b; }
+  .force-clarity { background: #e3f2fd; border: 1px solid #1976d2; }
+  .force-clarity strong { color: #0d47a1; }
+  .force-paradox { background: #f3e5f5; border: 1px solid #7b1fa2; }
+  .force-paradox strong { color: #4a148c; }
+
+  .footer { text-align: center; margin-top: auto; padding-top: 4px; border-top: 1px solid #ddd; font-size: 6pt; color: #999; }
+  .question { text-align: center; font-size: 10pt; font-style: italic; color: #1B3A5C; margin: 6px 0; font-weight: bold; }
+  .harm-line { font-size: 7pt; color: #666; text-align: center; margin: 2px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="card">
+
+  <div class="header">
+    <h1>PBHP v0.7 — QUICK REFERENCE</h1>
+    <p>Pause Before Harm Protocol — Print this. Tape it to your monitor.</p>
+  </div>
+
+  <!-- TIERS -->
+  <div class="section">
+    <span class="section-title">TIER SELECTION</span>
+    <div class="steps">
+      <div class="step"><strong>HUMAN</strong> 20-30 sec<em>Paper checklist. No AI. Rapid decisions with stakes.</em></div>
+      <div class="step"><strong>MIN</strong> &lt;30 sec<em>Reflex check. Time-critical, low-authority decisions.</em></div>
+      <div class="step"><strong>CORE</strong> 2-5 min<em>Default tier. Organizations, AI, leaders, clinicians.</em></div>
+      <div class="step"><strong>ULTRA</strong> Full<em>Constitutional. Sovereign power, precedent-setting.</em></div>
+    </div>
+  </div>
+
+  <!-- CORE STEPS -->
+  <div class="section">
+    <span class="section-title">CORE PROTOCOL (7 STEPS)</span>
+    <div class="steps">
+      <div class="step"><strong>0.</strong> Competence Gate<em>Do I understand PBHP governs process, not outcomes?</em></div>
+      <div class="step"><strong>0a.</strong> Three-Force Balance<em>Care × Clarity × Paradox — all three required</em></div>
+      <div class="step"><strong>1.</strong> Name the Action<em>"I am going to [verb] [object] for [who] using [method]"</em></div>
+      <div class="step"><strong>2.</strong> Door/Wall/Gap<em>Constraints → Harm leaks → Concrete escape action</em></div>
+      <div class="step"><strong>3.</strong> Constraint Awareness<em>"Do I recognize the system I'm inside?"</em></div>
+      <div class="step"><strong>4-5.</strong> Rate Harms<em>Impact × Likelihood × Irreversible? × Power asymmetry?</em></div>
+      <div class="step"><strong>6-7.</strong> Gate → Log<em>Assign gate from ratings. Log everything.</em></div>
+    </div>
+  </div>
+
+  <!-- DOOR/WALL/GAP -->
+  <div class="section">
+    <span class="section-title">DOOR / WALL / GAP</span>
+    <div class="dwg">
+      <div class="dwg-box dwg-wall"><strong>WALL</strong> — What constrains you?<br>Law, incentives, time, authority, info gaps</div>
+      <div class="dwg-box dwg-gap"><strong>GAP</strong> — Where could harm leak?<br>Misuse, escalation, precedent, retaliation, drift</div>
+      <div class="dwg-box dwg-door"><strong>DOOR</strong> — Smallest action to reduce harm<br>Must be ACTION, not feeling. No Door = STOP.</div>
+    </div>
+  </div>
+
+  <!-- GATES -->
+  <div class="section">
+    <span class="section-title">RISK GATES</span>
+    <div class="gates">
+      <div class="gate gate-green">GREEN<small>Proceed. Low stakes, reversible.</small></div>
+      <div class="gate gate-yellow">YELLOW<small>Proceed + mitigation. Name the Door.</small></div>
+      <div class="gate gate-orange">ORANGE<small>Constraints required. Severe OR Power+Irrev.</small></div>
+      <div class="gate gate-red">RED<small>Default refuse. Severe+irrev+likely.</small></div>
+      <div class="gate gate-black">BLACK<small>Refuse. Catastrophic OR absolute rejection.</small></div>
+    </div>
+  </div>
+
+  <!-- POWER ESCALATION -->
+  <div class="power-box">
+    <strong>⚡ POWER-ASYMMETRY AUTO-ESCALATION (Non-negotiable):</strong>
+    Power + Irreversible = min ORANGE &nbsp;|&nbsp; Power + Irreversible + Severe/Catastrophic = min RED
+  </div>
+
+  <!-- THREE FORCES -->
+  <div class="section" style="margin-top: 6px;">
+    <span class="section-title">THREE-FORCE BALANCE</span>
+    <div class="three-force">
+      <div class="force force-care"><strong>CARE</strong><br>Protect dignity. Reduce suffering. Center the vulnerable.</div>
+      <div class="force force-clarity"><strong>CLARITY</strong><br>Ground in reality. Track evidence. Expose contradictions.</div>
+      <div class="force force-paradox"><strong>PARADOX</strong><br>Hold competing truths. Reject false binaries. Stay functional.</div>
+    </div>
+    <div class="harm-line">Missing any force is a failure: Care without Clarity → error. Clarity without Care → harm. Either without Paradox → false certainty.</div>
+  </div>
+
+  <!-- FALSE POSITIVE VALVE -->
+  <div class="valve">
+    <strong>🔓 FALSE POSITIVE VALVE:</strong> Any pause can be challenged → "Was this justified?" → PBHP must answer:
+    (1) What triggered it &nbsp; (2) What harm found &nbsp; (3) Which Door releases it &nbsp; (4) What evidence would prevent it
+  </div>
+
+  <!-- DRIFT ALARMS -->
+  <div class="drift">
+    <strong>⚠️ DRIFT ALARMS — If you hear these, re-run PBHP and round UP:</strong><br>
+    "It's temporary" · "We have to" · "It's legal so it's fine" · "Only affects bad people" · "We can fix it later" · "No need to verify" · "Everyone does it" · "Just following procedure"
+  </div>
+
+  <!-- CORE QUESTION -->
+  <div class="question">"If I'm wrong, who pays first?"</div>
+  <div class="harm-line">Harm Threshold: Irreversible physical injury, death, or permanent loss of autonomy.</div>
+
+  <div class="footer">
+    PBHP v0.7 · Charles Phillip Linstrum (ALMSIVI) · February 2026 · Open Source<br>
+    Rounding Rule: If uncertain between ratings, round UP. Always toward higher caution.
+  </div>
+
+</div>
+</div>
+</body>
+</html>
