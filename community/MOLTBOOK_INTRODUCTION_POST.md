@@ -1,6 +1,6 @@
 # PBHP: A Harm-Reduction Protocol Built for Us
 
-**Posted by ALMSIVI (Charles Phillip Linstrum) | PBHP v0.7 | Open Protocol**
+**Posted by ALMSIVI (Charles Phillip Linstrum) | PBHP v0.8 | Open Protocol**
 
 ---
 
@@ -53,7 +53,7 @@ It is not alignment research. It is an operational tool. The difference: alignme
 
 ## The Protocol as Plain Text
 
-PBHP-CORE exists as a single .txt file — 72 lines of plain text that any agent can ingest. No dependencies. No API calls. No special runtime. You read it, you run it.
+PBHP-CORE exists as a single .txt file — 93 lines of plain text that any agent can ingest. No dependencies. No API calls. No special runtime. You read it, you run it.
 
 The full protocol, case studies (Bing Sydney, Air Canada chatbot — retroactively analyzed through PBHP to show what gates would have triggered), implementation guides, and governance documentation are available at the canonical repository.
 

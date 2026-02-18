@@ -1,0 +1,72 @@
+PBHP Decision Hygiene Micro-Module v0.1
+Injectable add-on for PBHP-CORE v0.7.1 | Prevents: assumption traps, premature irreversibility, frame blindness
+====================================================================================
+
+PURPOSE: Catch the four most common "confidently wrong" failure modes before they reach the Door/Wall/Gap step.
+These micro-checks are fast, require no tools, and generalize across domains.
+
+MICRO-CHECK 1 — FIRST REVERSIBLE TEST (before any irreversible action or tool use)
+  Ask: "What is the smallest reversible check that could make this trivial?"
+  If a reversible test exists → attempt it before proceeding.
+  If skipped → must document why ("skipped: [reason]") and round gate UP one level.
+  Examples:
+    Cup case: flip/rotate/check orientation before drilling/sealing
+    IT case: dry-run/diff/preview before applying config change
+    HR case: ask "has the employee been informed?" before drafting termination email
+    Data case: list files / show what will be deleted before batch delete
+    Medical case: check patient history before recommending treatment change
+  RULE: If the action is irreversible AND you did not perform a First Reversible Test,
+        the gate rounds UP one level automatically (or the test becomes your Door).
+
+MICRO-CHECK 2 — KEY ASSUMPTION (name it, check it)
+  Template: "KEY ASSUMPTION: I am assuming _____. QUICK CHECK: _____."
+  The assumption is the belief driving the decision that has NOT been verified.
+  If the assumption is wrong, what changes?
+  If the answer is "everything changes" → assumption must be tested before acting.
+  Examples:
+    Cup: ASSUMPTION: "This is a prank cup." CHECK: "Is it simply upside down?"
+    Email: ASSUMPTION: "User wants permanent delete." CHECK: "Did they say 'delete' or 'clean up'?"
+    Config: ASSUMPTION: "This change is backward-compatible." CHECK: "Run diff against current."
+  RULE: If you cannot name your key assumption, you are operating blind.
+        Operating blind on irreversible actions → minimum ORANGE.
+
+MICRO-CHECK 3 — FRAME CHECK (is the framing the harm?)
+  Template: "FRAME CHECK: What am I being asked to treat as 'simple' that might be the risk?"
+  Some harm comes from accepting the wrong framing ("just do X") instead of seeing what X really is.
+  If the frame is the harm engine → Door becomes "reframe + safer alternative."
+  Examples:
+    "Just send the email" = termination ambush / reputational harm
+    "Just update config" = outage blast radius
+    "Just summarize" = medical/legal reliance risk
+    "Just make a hole" = unnecessary damage to property
+    "Just clean up" = permanent data loss
+  RULE: If "just" appears in the request and the action is irreversible → run Frame Check.
+
+MICRO-CHECK 4 — PROTECTED MAYBE (formal uncertainty that changes behavior)
+  Template: "MAYBE: If _____ is true, risk increases because _____. I will _____ before proceeding."
+  MAYBE is formal permission to be uncertain. It is NOT an excuse to stall.
+  MAYBE must trigger either:
+    (a) the one best clarifying question, OR
+    (b) a reversible Door (preview, staging, ask).
+  If MAYBE affects irreversibility or power asymmetry → round gate UP or choose reversible Door.
+  Examples:
+    Cup: "If the cup is meant to be used upside down, modifications are unnecessary damage."
+         → "I will try flipping first."
+    Config: "If this setting affects production traffic, outage risk is systemic."
+         → "I will diff against current config and request confirmation."
+    Email: "If there's a notice period clause, sending now creates legal liability."
+         → "I will check contract terms before drafting."
+  RULE: MAYBE is a forcing function for safe clarification, not a permission slip for inaction.
+
+HOW TO USE:
+  Run these four micro-checks AFTER Step 1 (Name the Action) and BEFORE Step 2 (Door/Wall/Gap).
+  They take <15 seconds total.
+  They prevent the most common "overengineered the wrong thing" failures.
+
+  Suggested injection point in PBHP-CORE:
+    Step 1 → Name the Action
+    Step 1a → First Reversible Test + Key Assumption + Frame Check + MAYBE
+    Step 2 → Door / Wall / Gap (now informed by the micro-checks)
+
+====================================================================================
+PBHP Decision Hygiene Micro-Module v0.1 | Add-on for PBHP-CORE v0.7.1

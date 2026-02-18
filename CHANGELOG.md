@@ -2,6 +2,45 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## [0.7.1] - 2026-02-18
+
+### Added (CORE Injection)
+- First Reversible Test micro-step (mandatory before irreversible actions)
+- Key Assumption declaration ("I am assuming _____. Quick check: _____.")
+- Frame Check ("What am I being asked to treat as 'simple' that might be the risk?")
+- Protected MAYBE slot (formal uncertainty that changes behavior, not just labels)
+- Confidence/Calibration modifier (Calibrated / Uncalibrated / Overconfident-under-uncertainty)
+- Cascade/Blast Radius modifier (Single-user / Multi-user / Systemic)
+- Tool-Use Hard Coupling (GUESS/UNKNOWN + irreversible tool → require confirmation or reversible Door)
+- Low-Power Requester edge case (requester is the vulnerable party)
+- Forced-Motion Trap Detector (anti-coercion trigger list + calm procedural response)
+- Game Check (frame audit: "What frame am I accepting that could be the harm engine?")
+- Epistemic tags in harm rating (FACT / INFERENCE / GUESS / UNKNOWN)
+
+### Added (New Files)
+- Receipt Schema v1.1 (`receipts/PBHP-RECEIPT_SCHEMA_v1.1.md`)
+- Decision Hygiene Micro-Module (`modules/PBHP-DECISION_HYGIENE_v0.1.txt`)
+- Observability Pack v0.1 (`observability/PBHP-OBSERVABILITY_PACK_v0.1.md`)
+- Eval Harness Starter Pack v0.1 (`eval/PBHP-EVAL_SET_v0.1.md`) — 12 adversarial scenarios, 10 failure modes
+- Tier Supplements v0.7.1 (`protocol/PBHP-v0.7.1-TIER_SUPPLEMENTS.md`) — aligned updates for ULTRA, MIN, and HUMAN
+- CONTRIBUTING.md
+- Adversarial Patterns reference (`reference/ADVERSARIAL_PATTERNS.md`)
+- Door Library reference (`reference/DOOR_LIBRARY.md`)
+
+### Changed from 0.7
+- CORE injection restructured with new micro-steps (Step 1a: First Reversible Test + Assumption + Frame + MAYBE)
+- Harm rating expanded: confidence scoring (3 levels), cascade scoring (3 levels), epistemic tags
+- CONFIDENCE RULE: Uncalibrated + irreversible → round gate UP or require reversible Door
+- OVERCONFIDENCE RULE: Overconfident-under-uncertainty → force pause + verification Door
+- CASCADE RULE: Multi-user + uncertainty → minimum ORANGE; Systemic + tool execution → minimum ORANGE+
+- All four tiers (HUMAN, MIN, CORE, ULTRA) aligned with v0.7.1 concepts via tier supplements
+
+### Design Principles (v0.7.1)
+- CORE injection stays lean and runnable in-context
+- Receipts, observability, and eval packs are optional add-ons
+- New checks prevent known failure modes (assumption traps, premature irreversibility, frame blindness)
+- Every new item either: prevents a known failure mode, makes decisions measurable/auditable, or improves handling of uncertainty and framing
+
 ## [0.7] - 2026-02-14
 
 ### Added
@@ -13,7 +52,7 @@ All notable changes to PBHP will be documented in this file.
 - Three-Force Balance (Care, Clarity, Paradox) replacing five-mode requirement at CORE tier
 - 17+ drift alarm triggers with specific rerun requirements
 - Standalone terminology (no external framework dependencies)
-- PBHP-CORE plain text injection format (89 lines, agent-loadable)
+- PBHP-CORE plain text injection format (agent-loadable)
 - Implementation self-test (5 scenarios, 35-point rubric)
 - Retrospective case studies (Bing Sydney 2023, Air Canada 2024)
 - 90-day implementation playbook
