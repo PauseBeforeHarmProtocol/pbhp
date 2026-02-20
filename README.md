@@ -106,7 +106,7 @@ PBHP catches these failure modes with specific mechanisms: drift alarms are trip
 
 ## Who Built This
 
-Charles Phillip Linstrum (ALMSIVI). Quality Systems Manager at VisionFirst Eye Bank in Indianapolis, working in FDA-regulated tissue banking. Not an AI researcher by credential — a process-safety person by trade who noticed that AI systems need the same thing every safety-critical system needs: a structured pause between intention and action.
+Phillip Linstrum, working in FDA-regulated fields for 13+ years. Not an AI researcher by credential — a process-safety person by trade who noticed that AI systems need the same thing every safety-critical system needs: a structured pause between intention and action.
 
 PBHP was developed across 18 months of iterative testing with multiple AI systems, informed by real-world process failure analysis, and released as an open protocol.
 
