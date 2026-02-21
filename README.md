@@ -1,6 +1,6 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.7 (Public Release)
+**Version:** 0.7.1 (Public Release)
 **Author:** Charles Phillip Linstrum (ALMSIVI)
 **License:** Open
 
@@ -20,11 +20,11 @@ Then it gives you a structured way to answer it.
 
 ## Quick Start
 
-**For AI agents:** Read [`protocol/PBHP-CORE_INJECTION_v0.7.txt`](protocol/PBHP-CORE_INJECTION_v0.7.txt). That's the entire operational protocol in 89 lines of plain text. No dependencies. No API. Ingest it and run it.
+**For AI agents:** Read [`protocol/PBHP-CORE_INJECTION_v0.7.1.txt`](protocol/PBHP-CORE_INJECTION_v0.7.1.txt). That's the entire operational protocol in 126 lines of plain text. No dependencies. No API. Ingest it and run it.
 
-**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview.
+**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python betas](python%20code%20betas/) provide a working implementation across all three tiers.
 
-**For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`.
+**For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.1.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`. The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
 **For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Five scenarios, 35-point rubric. Tells you if you're running the protocol correctly.
 
@@ -56,35 +56,64 @@ Built-in safeguards: **drift alarms** catch rationalization in real time, a **fa
 
 ```
 pbhp/
-├── README.md                          ← You are here
+├── README.md                              ← You are here
 ├── LICENSE
 ├── CHANGELOG.md
+├── CONTRIBUTING.md                        ← How to contribute + code of conduct
+├── ETHICAL_USE.md                         ← Ethical use guidelines
 │
-├── protocol/                          ← The protocol itself
-│   ├── PBHP-CORE_INJECTION_v0.7.txt  ← Agent-loadable plain text (start here)
-│   ├── PBHP-CORE_v0.7.md             ← Full CORE tier specification
-│   ├── PBHP-ULTRA_v0.7.md            ← Full ULTRA tier specification
-│   └── PBHP-MIN_v0.7.md              ← Minimum viable (reflex) tier
+├── protocol/                              ← The protocol itself
+│   ├── PBHP-CORE_INJECTION_v0.7.1.txt    ← Agent-loadable plain text (start here)
+│   ├── PBHP-CORE_v0.7.1.md               ← Full CORE tier specification
+│   ├── PBHP-ULTRA_v0.7.1.md              ← Full ULTRA tier specification
+│   ├── PBHP-MIN_v0.7.1.md                ← Minimum viable (reflex) tier
+│   ├── PBHP_v0.7.1_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
+│   └── PBHP-v0.7.1-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.1
 │
-├── case-studies/                      ← PBHP applied retroactively
-│   ├── bing-sydney-2023.md            ← Bing/Sydney incident analysis
-│   └── air-canada-chatbot-2024.md     ← Air Canada chatbot ruling analysis
+├── python code betas/                     ← Python implementation (beta)
+│   ├── README.md                          ← Setup and usage instructions
+│   ├── pbhp_core.py                       ← CORE tier engine
+│   ├── pbhp_ultra.py                      ← ULTRA tier engine
+│   ├── pbhp_min.py                        ← MIN tier engine
+│   ├── pbhp_cli.py                        ← Command-line interface
+│   ├── pbhp_examples.py                   ← Usage examples and walkthroughs
+│   ├── pbhp_tests.py                      ← CORE tier test suite
+│   └── pbhp_min_ultra_tests.py            ← MIN + ULTRA tier test suite
 │
-├── implementation/                    ← Guides for putting PBHP into practice
-│   ├── PBHP_IMPLEMENTATION_SELF_TEST.md  ← 5 scenarios, 35-point rubric
-│   ├── 90_DAY_PLAYBOOK.md            ← Phased rollout guide
-│   ├── STANDALONE_TERMINOLOGY.md      ← Term definitions (no external deps)
-│   └── GOVERNANCE_CHARTER.md          ← Versioning, changes, non-negotiables
+├── receipts/                              ← Pause Receipt system
+│   └── PBHP-RECEIPT_SCHEMA_v1.1.md       ← JSON + plain text receipt format
 │
-├── reference/                         ← Quick-access materials
-│   ├── PBHP_EXECUTIVE_SUMMARY.md     ← 5-page overview of the full protocol
-│   ├── PBHP_QUICK_REFERENCE_CARD.html ← Printable one-page card
-│   ├── PBHP_DECISION_FLOWCHART.svg   ← Visual protocol flow
-│   ├── COMPARISON_MATRICES.md         ← PBHP vs. existing frameworks
-│   └── ELEVATOR_PITCHES.md            ← 15-sec to 60-sec explanations
+├── eval/                                  ← Adversarial testing
+│   └── PBHP-EVAL_SET_v0.1.md             ← 12 scenarios, 10 failure modes
 │
-└── community/                         ← Distribution and outreach
-    └── MOLTBOOK_INTRODUCTION_POST.md  ← Introduction for AI agent audiences
+├── observability/                         ← Operational monitoring
+│   └── PBHP-OBSERVABILITY_PACK_v0.1.md   ← 6 metrics + threshold alerts
+│
+├── modules/                               ← Optional protocol extensions
+│   └── PBHP-DECISION_HYGIENE_v0.1.txt    ← Decision hygiene checklist
+│
+├── case-studies/                          ← PBHP applied retroactively
+│   ├── bing-sydney-2023.md                ← Bing/Sydney incident analysis
+│   ├── air-canada-chatbot-2024.md         ← Air Canada chatbot ruling analysis
+│   └── PBHP_v0.6_TESTING_HIGHLIGHTS.md   ← v0.6 testing results + lessons
+│
+├── implementation/                        ← Guides for putting PBHP into practice
+│   ├── PBHP_IMPLEMENTATION_SELF_TEST.md   ← 5 scenarios, 35-point rubric
+│   ├── 90_DAY_PLAYBOOK.md                ← Phased rollout guide
+│   ├── STANDALONE_TERMINOLOGY.md          ← Term definitions (no external deps)
+│   └── GOVERNANCE_CHARTER.md              ← Versioning, changes, non-negotiables
+│
+├── reference/                             ← Quick-access materials
+│   ├── PBHP_EXECUTIVE_SUMMARY.md         ← 5-page overview of the full protocol
+│   ├── PBHP_QUICK_REFERENCE_CARD.html    ← Printable one-page card
+│   ├── PBHP_DECISION_FLOWCHART.svg       ← Visual protocol flow
+│   ├── COMPARISON_MATRICES.md             ← PBHP vs. existing frameworks
+│   ├── ELEVATOR_PITCHES.md                ← 15-sec to 60-sec explanations
+│   ├── ADVERSARIAL_PATTERNS.md            ← Common adversarial patterns + defenses
+│   └── DOOR_LIBRARY.md                    ← Reusable Door templates by domain
+│
+└── community/                             ← Distribution and outreach
+    └── MOLTBOOK_INTRODUCTION_POST.md      ← Introduction for AI agent audiences
 ```
 
 ---
@@ -101,35 +130,6 @@ The difference matters. An aligned system can still cause harm through:
 - False confidence (high certainty under genuine uncertainty)
 
 PBHP catches these failure modes with specific mechanisms: drift alarms are tripwires for rationalization, Door/Wall/Gap forces escape vector identification, power-asymmetry escalation prevents the least powerful from bearing costs invisibly, and the false positive valve prevents the protocol itself from becoming an obstacle to legitimate action.
-
----
-
-## Who Built This
-
-Phillip Linstrum, working in FDA-regulated fields for 13+ years. Not an AI researcher by credential — a process-safety person by trade who noticed that AI systems need the same thing every safety-critical system needs: a structured pause between intention and action.
-
-PBHP was developed across 18 months of iterative testing with multiple AI systems, informed by real-world process failure analysis, and released as an open protocol.
-
----
-
-## Related Projects
-
-- **ALMSIVI CHIM** — Recursive ethical runtime framework (the philosophical foundation PBHP operationalizes)
-- **WFGY** — Semantic reasoning engine by PSBigBig ([onestardao/WFGY](https://github.com/onestardao/WFGY)) — complementary system addressing reasoning stability where PBHP addresses operational safety
-
----
-
-## Contributing
-
-PBHP is versioned and governed by its [Governance Charter](implementation/GOVERNANCE_CHARTER.md). The non-negotiables:
-
-1. Harm to the least powerful is always weighted first
-2. "If I'm wrong, who pays first?" cannot be removed
-3. The false positive valve cannot be removed
-4. Drift alarms cannot be disabled
-5. BLACK gate absolute rejections are permanent
-
-Everything else is open to improvement. File issues. Propose changes. Run the self-test and report your scores. If you find a scenario where PBHP produces the wrong gate — that's valuable data.
 
 ---
 
