@@ -3,7 +3,7 @@
 **Version:** 0.7.1 (Public Release)
 **Author:** Charles Phillip Linstrum (ALMSIVI)
 **License:** Open
-
+**Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
 ---
 
 ## What Is PBHP?
