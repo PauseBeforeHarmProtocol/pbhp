@@ -47,6 +47,32 @@ Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 ---
 
+DISCLAIMER OF LIABILITY (Applies to All Materials)
+---------------------------------------------------
+
+PBHP is an informational and educational framework. It is NOT legal advice,
+medical advice, professional guidance, or a substitute for qualified
+professional judgment. The protocol, code, documentation, and all associated
+materials are provided strictly "as is" without warranty of any kind, express
+or implied.
+
+THE AUTHORS AND CONTRIBUTORS SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+OTHER LIABILITY ARISING FROM THE USE, MISUSE, OR INABILITY TO USE THIS
+PROTOCOL, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE. This includes
+but is not limited to: decisions made using the protocol, outcomes of those
+decisions, harm caused or not prevented by using the protocol, reliance on the
+protocol's outputs, or integration of the protocol into any system.
+
+Use of PBHP does not guarantee the prevention of harm, the detection of all
+risks, or compliance with any legal or regulatory requirements. Users are
+solely responsible for their own decisions and actions.
+
+By using any part of this repository, you acknowledge that no software,
+protocol, or framework can replace human judgment, professional expertise,
+or legal counsel.
+
+---
+
 PBHP Non-Negotiable Clause: If you adapt or build upon this protocol, the
 following elements must be preserved:
 
