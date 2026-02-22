@@ -22,7 +22,7 @@ Then it gives you a structured way to answer it.
 
 **For AI agents:** Read [`protocol/PBHP-CORE_INJECTION_v0.7.1.txt`](protocol/PBHP-CORE_INJECTION_v0.7.1.txt). That's the entire operational protocol in 126 lines of plain text. No dependencies. No API. Ingest it and run it.
 
-**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python betas](python%20code%20betas/) provide a working implementation across all three tiers.
+**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) provides a working implementation across all three tiers.
 
 **For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.1.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`. The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
@@ -70,9 +70,9 @@ pbhp/
 │   ├── PBHP_v0.7.1_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
 │   └── PBHP-v0.7.1-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.1
 │
-├── python code betas/                     ← Python implementation (beta)
+├── src/                                   ← Python implementation
 │   ├── README.md                          ← Setup and usage instructions
-│   ├── pbhp_core.py                       ← CORE tier engine
+│   ├── pbhp_core.py                       ← CORE tier engine (v0.7.1)
 │   ├── pbhp_ultra.py                      ← ULTRA tier engine
 │   ├── pbhp_min.py                        ← MIN tier engine
 │   ├── pbhp_cli.py                        ← Command-line interface
@@ -135,7 +135,7 @@ PBHP catches these failure modes with specific mechanisms: drift alarms are trip
 
 ## License
 
-Open protocol. Use it, adapt it, implement it. Attribution appreciated. If you build on PBHP, keep the core question intact.
+Dual licensed: **MIT** for code (`src/`), **CC BY-SA 4.0** for protocol and documentation. Use it, adapt it, implement it. Attribution appreciated. If you build on PBHP, keep the core question intact. See [LICENSE](LICENSE) for details and non-negotiable clauses.
 
 ---
 

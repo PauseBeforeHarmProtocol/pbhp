@@ -48,8 +48,11 @@ from pbhp_core import (
     Alternative,
     UncertaintyAssessment,
     FalsePositiveReview,
+    PreflightResult,
+    FinalizationGateResult,
     PBHPLog,
     # Validators and Detectors
+    TextNormalizer,
     DriftAlarmDetector,
     ToneValidator,
     LexicographicPriority,
@@ -1171,24 +1174,24 @@ def test_drift_alarm_detector():
     text2 = "It's obvious what they meant and there's only one interpretation"
     alarms2 = DriftAlarmDetector.detect(text2)
     found_obvious = any("premature_collapse" in a and "obvious" in a for a in alarms2)
-    found_one_interp = any("premature_collapse" in a and "one interpretation" in a for a in alarms2)
+    found_one_interp = any("premature_collapse" in a and ("interpretation" in a or "single" in a) for a in alarms2)
     assert_true("DAD premature collapse: obvious", found_obvious)
     assert_true("DAD premature collapse: one interpretation", found_one_interp)
 
     # Compassion drift
     text3 = "These people are vermin and they deserve it"
     alarms3 = DriftAlarmDetector.detect(text3)
-    found_vermin = any("compassion_drift" in a and "vermin" in a for a in alarms3)
-    found_deserve = any("compassion_drift" in a and "they deserve it" in a for a in alarms3)
+    found_vermin = any("compassion_drift" in a and ("vermin" in a or "dehumanization" in a) for a in alarms3)
+    found_deserve = any("compassion_drift" in a and ("deserve" in a or "deserving" in a) for a in alarms3)
     assert_true("DAD compassion drift: vermin", found_vermin)
     assert_true("DAD compassion drift: deserve it", found_deserve)
 
     # Sycophancy
     text4 = "You're enlightened, a chosen one with genius level insight"
     alarms4 = DriftAlarmDetector.detect(text4)
-    found_enlightened = any("sycophancy" in a and "enlightened" in a for a in alarms4)
-    found_chosen = any("sycophancy" in a and "chosen one" in a for a in alarms4)
-    found_genius = any("sycophancy" in a and "genius level" in a for a in alarms4)
+    found_enlightened = any("sycophancy" in a and ("enlightened" in a or "flattery" in a) for a in alarms4)
+    found_chosen = any("sycophancy" in a and ("chosen" in a) for a in alarms4)
+    found_genius = any("sycophancy" in a and ("genius" in a or "flattery" in a) for a in alarms4)
     assert_true("DAD sycophancy: enlightened", found_enlightened)
     assert_true("DAD sycophancy: chosen one", found_chosen)
     assert_true("DAD sycophancy: genius level", found_genius)
@@ -1201,8 +1204,8 @@ def test_drift_alarm_detector():
     # Additional drift phrases
     text6 = "it's just policy and we're not responsible"
     alarms6 = DriftAlarmDetector.detect(text6)
-    found_policy = any("just policy" in a for a in alarms6)
-    found_not_resp = any("we're not responsible" in a for a in alarms6)
+    found_policy = any("just-following-orders" in a or "policy" in a for a in alarms6)
+    found_not_resp = any("responsibility-dodge" in a or "not responsible" in a for a in alarms6)
     assert_true("DAD just policy", found_policy)
     assert_true("DAD we're not responsible", found_not_resp)
 
@@ -1390,7 +1393,7 @@ def test_engine_create_assessment():
     assert_true("Engine log has UUID", len(log.record_id) > 0)
     assert_eq("Engine log action", log.action_description, "Send termination email to Employee X")
     assert_eq("Engine log agent type", log.agent_type, "human_manager")
-    assert_eq("Engine log version", log.version, "0.7")
+    assert_eq("Engine log version", log.version, "0.7.1")
     assert_true("Engine log has timestamp", log.timestamp is not None)
 
 
@@ -2011,7 +2014,7 @@ def test_log_serialization():
     assert_true("Log to_json is string", isinstance(j, str))
     parsed = json.loads(j)
     assert_true("Log JSON parseable", isinstance(parsed, dict))
-    assert_eq("Log JSON version", parsed["version"], "0.7")
+    assert_eq("Log JSON version", parsed["version"], "0.7.1")
 
 
 def test_log_export():
@@ -2228,7 +2231,7 @@ def test_full_pipeline_orange():
     d = log.to_dict()
     j = json.dumps(d, indent=2)
     parsed = json.loads(j)
-    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.7")
+    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.7.1")
 
 
 def test_full_pipeline_black():
@@ -2699,12 +2702,410 @@ def test_missing_dwg_validation():
 
 
 # ===================================================================
+# v0.7.1 Tests: Two-Phase Commit, Hardened Detection, Edge Cases
+# ===================================================================
+
+def test_text_normalizer():
+    """Test TextNormalizer handles obfuscation and whitespace."""
+    print("\n--- TextNormalizer ---")
+    # Leet speak
+    assert_eq("Normalize leet 'h3ll0'",
+              TextNormalizer.normalize("H3LL0"),
+              "hello")
+    # Zero-width spaces
+    assert_eq("Normalize zero-width",
+              TextNormalizer.normalize("we\u200bhave\u200bto"),
+              "wehaveto")
+    # Whitespace collapse
+    assert_eq("Normalize whitespace",
+              TextNormalizer.normalize("  lots   of   spaces  "),
+              "lots of spaces")
+    # Unicode quotes
+    assert_eq("Normalize unicode quotes",
+              TextNormalizer.normalize("\u201cquoted\u201d"),
+              '"quoted"')
+
+
+def test_drift_regex_patterns():
+    """Test that regex-based drift detection catches variants."""
+    print("\n--- Drift Regex Patterns ---")
+    # Basic drift
+    alarms = DriftAlarmDetector.detect("It's just temporary")
+    assert_true("Drift: 'it's just temporary'",
+                any("temporary-excuse" in a for a in alarms))
+
+    # Forced motion with variation
+    alarms = DriftAlarmDetector.detect("We need to act now!")
+    assert_true("Drift: 'we need to act now'",
+                any("urgency-pressure" in a for a in alarms))
+
+    # Reversed: clean text should not trigger
+    alarms = DriftAlarmDetector.detect("The cat sat on the mat")
+    assert_eq("Clean text no drift", len(alarms), 0)
+
+    # Sycophancy
+    alarms = DriftAlarmDetector.detect("You see what others can't see")
+    assert_true("Sycophancy: special insight",
+                any("sycophancy" in a for a in alarms))
+
+    # Compassion drift: dehumanization
+    alarms = DriftAlarmDetector.detect("Those vermin don't matter")
+    assert_true("Compassion drift: vermin",
+                any("dehumanization" in a for a in alarms))
+
+
+def test_drift_fuzzy_matching():
+    """Test fuzzy matching catches near-miss evasion."""
+    print("\n--- Drift Fuzzy Matching ---")
+    # Near miss of "for the greater good"
+    alarms = DriftAlarmDetector.detect("for the greator good")
+    assert_true("Fuzzy: 'greator good' catches 'greater good'",
+                any("fuzzy_drift" in a for a in alarms))
+
+    # Near miss of "close enough"
+    alarms = DriftAlarmDetector.detect("that's close enuf")
+    # fuzzy may or may not catch this depending on threshold
+    # but "close enough" with proper spelling should always catch (via regex)
+    alarms2 = DriftAlarmDetector.detect("close enough")
+    assert_true("Fuzzy: exact 'close enough'",
+                any("precision-dodge" in a or "close enough" in a for a in alarms2))
+
+
+def test_drift_structural_rationalization():
+    """Test structural rationalization detection."""
+    print("\n--- Drift Structural Rationalization ---")
+    alarms = DriftAlarmDetector.detect(
+        "Yes, people will suffer, but the benefits outweigh the costs"
+    )
+    assert_true("Structural: harm-then-dismiss",
+                any("structural" in a for a in alarms))
+
+    alarms = DriftAlarmDetector.detect(
+        "It's not ideal but necessary for progress"
+    )
+    assert_true("Structural: not-ideal-but-necessary",
+                any("not-ideal-but-necessary" in a for a in alarms))
+
+
+def test_door_wall_gap_hardened():
+    """Test hardened DoorWallGap vague door detection."""
+    print("\n--- DoorWallGap Hardened ---")
+    # Old exact matches still caught
+    dwg1 = DoorWallGap(wall="budget", gap="overspend", door="be careful")
+    assert_false("Vague door: 'be careful'", dwg1.has_door())
+
+    # New regex catches
+    dwg2 = DoorWallGap(wall="budget", gap="overspend", door="try harder")
+    assert_false("Vague door: 'try harder'", dwg2.has_door())
+
+    dwg3 = DoorWallGap(wall="budget", gap="overspend", door="trust the process")
+    assert_false("Vague door: 'trust the process'", dwg3.has_door())
+
+    dwg4 = DoorWallGap(wall="budget", gap="overspend", door="stay vigilant")
+    assert_false("Vague door: 'stay vigilant'", dwg4.has_door())
+
+    # Single word fails (not concrete enough)
+    dwg5 = DoorWallGap(wall="budget", gap="overspend", door="wait")
+    assert_false("Single word door: 'wait'", dwg5.has_door())
+
+    # Concrete door passes
+    dwg6 = DoorWallGap(wall="budget", gap="overspend",
+                        door="Delay deployment by 48 hours for review")
+    assert_true("Concrete door passes", dwg6.has_door())
+
+
+def test_preflight_underspecified():
+    """Test preflight blocks underspecified actions."""
+    print("\n--- Preflight: Underspecified ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("do stuff")
+    pf = engine.preflight_check(log)
+    assert_false("Preflight blocks vague action", pf.passed)
+    assert_true("Underspecified flag set", pf.underspecified)
+
+    # Empty action
+    log2 = engine.create_assessment("")
+    pf2 = engine.preflight_check(log2)
+    assert_false("Preflight blocks empty action", pf2.passed)
+
+
+def test_preflight_forced_motion():
+    """Test preflight escalates forced-motion language."""
+    print("\n--- Preflight: Forced Motion ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Deploy the new policy immediately")
+    pf = engine.preflight_check(
+        log, context="We must act now, no time to think"
+    )
+    assert_true("Preflight passed (not blocked)", pf.passed)
+    assert_true("Forced motion detected",
+                len(pf.forced_motion_detected) > 0)
+    assert_true("Escalation raised",
+                len(pf.escalations) > 0)
+
+
+def test_preflight_high_risk_domain():
+    """Test preflight detects high-risk domains."""
+    print("\n--- Preflight: High-Risk Domain ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment(
+        "Modify the patient treatment dosage protocol"
+    )
+    pf = engine.preflight_check(log)
+    assert_true("Medical domain detected",
+                "medical" in pf.high_risk_domain_detected)
+
+    log2 = engine.create_assessment(
+        "Update the children's school enrollment system"
+    )
+    pf2 = engine.preflight_check(log2)
+    assert_true("Children domain detected",
+                "children" in pf2.high_risk_domain_detected)
+
+
+def test_preflight_power_irreversibility_block():
+    """Test preflight blocks power asymmetry + irreversibility."""
+    print("\n--- Preflight: Power + Irreversibility ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment(
+        "Permanently terminate refugee housing program"
+    )
+    pf = engine.preflight_check(log)
+    assert_false("Preflight blocks power+irreversible", pf.passed)
+    assert_true("Block reason mentions power asymmetry",
+                any("power asymmetry" in b.lower() for b in pf.blocks))
+
+
+def test_preflight_clean_action():
+    """Test preflight passes clean, well-specified actions."""
+    print("\n--- Preflight: Clean Action ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment(
+        "Send quarterly report to internal stakeholders via email"
+    )
+    pf = engine.preflight_check(log)
+    assert_true("Clean action passes preflight", pf.passed)
+    assert_eq("No blocks", len(pf.blocks), 0)
+
+
+def test_finalization_gate_compliance_theater_blocks():
+    """Test finalization gate INVALIDATES on compliance theater at ORANGE+."""
+    print("\n--- Finalization Gate: Theater Blocks ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Deploy surveillance in housing")
+    log.highest_risk_class = RiskClass.ORANGE
+
+    # Add harm with power asymmetry + irreversible but rated low
+    engine.add_harm(
+        log, "Privacy invasion", ImpactLevel.MODERATE,
+        LikelihoodLevel.POSSIBLE, True, True,
+        ["residents"], "low-income tenants"
+    )
+
+    # Finalize with theater language
+    result = engine.finalize_decision(
+        log, DecisionOutcome.PROCEED,
+        "We ran PBHP so we're covered. Proceeding."
+    )
+
+    assert_eq("Decision overridden to ESCALATE",
+              result.decision_outcome, DecisionOutcome.ESCALATE)
+    assert_false("Gate invalid",
+                 result.finalization_gate.valid)
+    assert_true("Requires rerun",
+                result.finalization_gate.requires_rerun)
+
+
+def test_finalization_gate_drift_at_red():
+    """Test finalization gate INVALIDATES drift at RED risk."""
+    print("\n--- Finalization Gate: Drift at RED ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Terminate employee access")
+    log.highest_risk_class = RiskClass.RED
+
+    engine.add_harm(
+        log, "Career destruction", ImpactLevel.SEVERE,
+        LikelihoodLevel.LIKELY, True, True,
+        ["employee"], "terminated employee"
+    )
+    engine.perform_door_wall_gap(
+        log, "HR policy", "wrongful termination", "Delay and review"
+    )
+    engine.add_alternative(
+        log, "Performance improvement plan", True, True, True
+    )
+    engine.perform_red_team_review(
+        log, ["wrongful termination"], [], "employee", []
+    )
+
+    result = engine.finalize_decision(
+        log, DecisionOutcome.PROCEED,
+        "We have to do this for the greater good. "
+        "No safer alternative meets the need."
+    )
+    assert_eq("Decision overridden to ESCALATE",
+              result.decision_outcome, DecisionOutcome.ESCALATE)
+
+
+def test_finalization_gate_sycophancy_blocks():
+    """Test finalization gate catches sycophancy in justification."""
+    print("\n--- Finalization Gate: Sycophancy ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Publish research findings")
+    log.highest_risk_class = RiskClass.GREEN
+
+    result = engine.finalize_decision(
+        log, DecisionOutcome.PROCEED,
+        "This is genius level work with unprecedented insight. "
+        "You see what others can't."
+    )
+    assert_eq("Sycophancy overrides to ESCALATE",
+              result.decision_outcome, DecisionOutcome.ESCALATE)
+
+
+def test_finalization_gate_clean_passes():
+    """Test finalization gate passes clean decisions."""
+    print("\n--- Finalization Gate: Clean Pass ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Send quarterly report to team")
+    engine.perform_door_wall_gap(
+        log, "Deadline pressure", "Incomplete data",
+        "Delay report by 24 hours to verify data"
+    )
+    result = engine.finalize_decision(
+        log, DecisionOutcome.PROCEED,
+        "Low risk internal communication. Data verified."
+    )
+    assert_true("Gate valid", result.finalization_gate.valid)
+    assert_eq("Decision unchanged",
+              result.decision_outcome, DecisionOutcome.PROCEED)
+
+
+def test_multi_harm_interaction():
+    """Test that multiple harms interact correctly with risk escalation."""
+    print("\n--- Multi-Harm Interaction ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Deploy automated hiring filter")
+
+    # Harm 1: moderate alone
+    engine.add_harm(
+        log, "Qualified candidates filtered out",
+        ImpactLevel.MODERATE, LikelihoodLevel.POSSIBLE,
+        False, True, ["applicants"], "minority applicants"
+    )
+    # After first harm: should be YELLOW
+    assert_eq("After harm 1: YELLOW",
+              log.highest_risk_class, RiskClass.YELLOW)
+
+    # Harm 2: severe + irreversible + power = RED
+    engine.add_harm(
+        log, "Systemic discrimination in hiring",
+        ImpactLevel.SEVERE, LikelihoodLevel.LIKELY,
+        True, True, ["minority communities"], "protected classes"
+    )
+    # After second harm: should escalate to RED
+    assert_eq("After harm 2: RED",
+              log.highest_risk_class, RiskClass.RED)
+
+
+def test_null_empty_inputs():
+    """Test null/empty inputs escalate rather than crash."""
+    print("\n--- Null/Empty Input Handling ---")
+    engine = PBHPEngine()
+
+    # Empty action description
+    valid, msg = engine.validate_action_description("")
+    assert_false("Empty action invalid", valid)
+
+    valid, msg = engine.validate_action_description(None)
+    assert_false("None action invalid", valid)
+
+    # Whitespace-only action
+    valid, msg = engine.validate_action_description("     ")
+    assert_false("Whitespace action invalid", valid)
+
+    # DoorWallGap with empty door
+    dwg = DoorWallGap(wall="", gap="", door="")
+    assert_false("Empty DWG has no door", dwg.has_door())
+
+    # DoorWallGap with whitespace door
+    dwg2 = DoorWallGap(wall="x", gap="y", door="   ")
+    assert_false("Whitespace door has no door", dwg2.has_door())
+
+
+def test_preflight_epistemic_weakness():
+    """Test preflight detects epistemic weakness patterns."""
+    print("\n--- Preflight: Epistemic Weakness ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment(
+        "Publish report that studies show this treatment always works"
+    )
+    pf = engine.preflight_check(log)
+    assert_true("Epistemic weakness detected",
+                len(pf.epistemic_weakness_detected) > 0)
+
+
+def test_preflight_serialization():
+    """Test PreflightResult serializes correctly."""
+    print("\n--- Preflight Serialization ---")
+    pf = PreflightResult(
+        passed=False,
+        blocks=["test block"],
+        escalations=["test escalation"],
+        high_risk_domain_detected=["medical"],
+        forced_motion_detected=["urgency-demand"],
+        epistemic_weakness_detected=["false-certainty"],
+        underspecified=True,
+    )
+    d = pf.to_dict()
+    assert_false("Serialized passed is False", d["passed"])
+    assert_eq("Serialized blocks", d["blocks"], ["test block"])
+    assert_true("Serialized underspecified", d["underspecified"])
+
+
+def test_finalization_gate_serialization():
+    """Test FinalizationGateResult serializes correctly."""
+    print("\n--- Finalization Gate Serialization ---")
+    gate = FinalizationGateResult(
+        valid=False,
+        invalidation_reasons=["theater detected"],
+        warnings=["minor drift"],
+        requires_rerun=True,
+    )
+    d = gate.to_dict()
+    assert_false("Serialized valid is False", d["valid"])
+    assert_true("Serialized requires_rerun", d["requires_rerun"])
+    assert_eq("Serialized reasons",
+              d["invalidation_reasons"], ["theater detected"])
+
+
+def test_log_includes_preflight_and_gate():
+    """Test PBHPLog serialization includes new two-phase fields."""
+    print("\n--- Log Includes Preflight+Gate ---")
+    engine = PBHPEngine()
+    log = engine.create_assessment("Send report to stakeholders")
+    engine.preflight_check(log)
+    engine.perform_door_wall_gap(
+        log, "deadline", "incomplete data",
+        "Delay by 24 hours for verification"
+    )
+    engine.finalize_decision(
+        log, DecisionOutcome.PROCEED,
+        "Low risk, data verified."
+    )
+    d = log.to_dict()
+    assert_true("preflight in serialized log", "preflight" in d)
+    assert_true("finalization_gate in serialized log",
+                "finalization_gate" in d)
+
+
+# ===================================================================
 # Run All Tests
 # ===================================================================
 
 def run_all_tests():
     print("=" * 70)
-    print("PBHP v0.7 - Comprehensive Test Suite")
+    print("PBHP v0.7.1 - Comprehensive Test Suite")
     print("=" * 70)
 
     # Enums
@@ -2798,6 +3199,40 @@ def run_all_tests():
     test_harm_to_dict_includes_calculated_risk()
     test_risk_class_priority()
     test_missing_dwg_validation()
+
+    # v0.7.1: Text normalization
+    test_text_normalizer()
+
+    # v0.7.1: Hardened drift detection
+    test_drift_regex_patterns()
+    test_drift_fuzzy_matching()
+    test_drift_structural_rationalization()
+
+    # v0.7.1: Hardened DoorWallGap
+    test_door_wall_gap_hardened()
+
+    # v0.7.1: Preflight checks (two-phase commit phase 1)
+    test_preflight_underspecified()
+    test_preflight_forced_motion()
+    test_preflight_high_risk_domain()
+    test_preflight_power_irreversibility_block()
+    test_preflight_clean_action()
+    test_preflight_epistemic_weakness()
+    test_preflight_serialization()
+
+    # v0.7.1: Finalization gate (two-phase commit phase 2)
+    test_finalization_gate_compliance_theater_blocks()
+    test_finalization_gate_drift_at_red()
+    test_finalization_gate_sycophancy_blocks()
+    test_finalization_gate_clean_passes()
+    test_finalization_gate_serialization()
+
+    # v0.7.1: Multi-harm and edge cases
+    test_multi_harm_interaction()
+    test_null_empty_inputs()
+
+    # v0.7.1: Serialization of new fields
+    test_log_includes_preflight_and_gate()
 
     # Summary
     all_passed = results.summary()

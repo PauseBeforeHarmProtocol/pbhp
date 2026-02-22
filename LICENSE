@@ -1,4 +1,16 @@
-MIT License
+PBHP Dual License
+==================
+
+This repository uses two licenses:
+
+- **Code** (src/, eval/): MIT License
+- **Protocol and documentation** (protocol/, reference/, implementation/,
+  modules/, case-studies/, community/, observability/, receipts/):
+  Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+
+MIT License (Code)
+------------------
 
 Copyright (c) 2024-2026 Charles Phillip Linstrum (ALMSIVI)
 
@@ -19,6 +31,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+CC BY-SA 4.0 (Protocol and Documentation)
+------------------------------------------
+
+The protocol text, documentation, case studies, and reference materials in
+this repository are licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License.
+
+You are free to share and adapt the material, provided you give appropriate
+credit, indicate changes, and distribute derivatives under the same license.
+
+Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 ---
 

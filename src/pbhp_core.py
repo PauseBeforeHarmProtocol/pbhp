@@ -1,15 +1,15 @@
 """
 Pause-Before-Harm Protocol (PBHP) - Core Implementation
-Version: 0.7 (Full Specification)
+Version: 0.7.1 (Full Specification)
 
 A decision-making framework for humans and AI systems to evaluate
 actions that could cause harm, with emphasis on protecting vulnerable
 groups and maintaining ethical accountability.
 
-This implementation faithfully encodes the complete PBHP v0.7 protocol
+This implementation faithfully encodes the complete PBHP v0.7.1 protocol
 including all foundation gates, seven steps, epistemic fencing,
 red team review, drift detection, tone constraints, uncertainty
-framework, and structured logging.
+framework, structured logging, and two-phase commit validation.
 
 Contact: pausebeforeharmprotocol_pbhp@protonmail.com
 """
@@ -21,6 +21,7 @@ from typing import List, Optional, Dict, Any, Tuple
 import uuid
 import json
 import re
+import difflib
 
 
 # ---------------------------------------------------------------------------
@@ -276,13 +277,41 @@ class DoorWallGap:
     door: str
 
     def has_door(self) -> bool:
-        """Check if a concrete door (escape vector) exists."""
+        """
+        Check if a concrete door (escape vector) exists.
+        Uses regex patterns to catch vague doors, not just exact strings.
+        A valid door must be a concrete action: delay, verify, narrow scope,
+        refuse — not a feeling or slogan.
+        """
         if not self.door or not self.door.strip():
             return False
-        # "be careful" is explicitly NOT a valid door
-        vague_doors = ["be careful", "be cautious", "try harder",
-                       "do better", "think about it"]
-        return self.door.strip().lower() not in vague_doors
+        door_lower = self.door.strip().lower()
+
+        # Regex patterns for vague/non-actionable doors
+        vague_door_patterns = [
+            r"^be\s+(more\s+)?(careful|cautious|mindful|aware|thoughtful)$",
+            r"^try\s+(harder|better|more)$",
+            r"^do\s+(better|more)$",
+            r"^think\s+(about|on|over)\s+it$",
+            r"^hope\s+for\s+the\s+best$",
+            r"^just\s+be\s+(good|nice|careful)$",
+            r"^pay\s+(more\s+)?attention$",
+            r"^keep\s+(an\s+)?eye\s+on\s+it$",
+            r"^watch\s+(out|carefully)$",
+            r"^stay\s+(alert|vigilant|aware)$",
+            r"^use\s+(good\s+)?judgm?ent$",
+            r"^trust\s+(the\s+)?process$",
+            r"^it'?ll?\s+be\s+(fine|ok|okay|alright)$",
+        ]
+        for pattern in vague_door_patterns:
+            if re.match(pattern, door_lower):
+                return False
+
+        # Door must be at least a few words to be a concrete action
+        if len(door_lower.split()) < 2:
+            return False
+
+        return True
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -999,7 +1028,83 @@ class FalsePositiveReview:
 
 
 # ---------------------------------------------------------------------------
-# PBHP Log Record v0.7
+# Preflight Check (Two-Phase Commit: Phase 1)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class PreflightResult:
+    """
+    Preflight check result — Phase 1 of the two-phase commit.
+
+    Runs BEFORE the main assessment to catch problems that should
+    block or escalate before any deterministic gating even starts.
+
+    Checks:
+    1. Underspecified action (too vague to assess safely)
+    2. Forced-motion language ("we have to", "must act now")
+    3. High-risk domain (medical, legal, financial, military, children)
+    4. Power asymmetry + irreversibility signals
+    5. Epistemic weakness (speculation presented as fact)
+
+    If any check fails, the preflight blocks the assessment and
+    returns a reason. The caller must address the block before
+    the assessment can proceed.
+    """
+    passed: bool = True
+    blocks: List[str] = field(default_factory=list)
+    escalations: List[str] = field(default_factory=list)
+    high_risk_domain_detected: List[str] = field(default_factory=list)
+    forced_motion_detected: List[str] = field(default_factory=list)
+    epistemic_weakness_detected: List[str] = field(default_factory=list)
+    underspecified: bool = False
+
+    def is_blocked(self) -> bool:
+        """Return True if any block was raised."""
+        return len(self.blocks) > 0
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "passed": self.passed,
+            "blocks": self.blocks,
+            "escalations": self.escalations,
+            "high_risk_domain_detected": self.high_risk_domain_detected,
+            "forced_motion_detected": self.forced_motion_detected,
+            "epistemic_weakness_detected": self.epistemic_weakness_detected,
+            "underspecified": self.underspecified,
+        }
+
+
+@dataclass
+class FinalizationGateResult:
+    """
+    Finalization gate result — Phase 2 of the two-phase commit.
+
+    Runs AFTER the assessment is complete but BEFORE the decision
+    is accepted. Can INVALIDATE the decision and force a rerun,
+    not just log drift alarms.
+
+    Checks:
+    1. Compliance theater patterns
+    2. Drift phrases in justification
+    3. Sycophancy indicators
+    4. Rating suspicion (all-low ratings despite red flags)
+    """
+    valid: bool = True
+    invalidation_reasons: List[str] = field(default_factory=list)
+    warnings: List[str] = field(default_factory=list)
+    requires_rerun: bool = False
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "valid": self.valid,
+            "invalidation_reasons": self.invalidation_reasons,
+            "warnings": self.warnings,
+            "requires_rerun": self.requires_rerun,
+        }
+
+
+# ---------------------------------------------------------------------------
+# PBHP Log Record v0.7.1
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -1011,7 +1116,7 @@ class PBHPLog:
     # Record metadata
     record_id: str
     timestamp: datetime
-    version: str = "0.7"
+    version: str = "0.7.1"
 
     # Step 1: Action
     action_description: str = ""
@@ -1063,6 +1168,10 @@ class PBHPLog:
 
     # False positive review
     false_positive_review: Optional[FalsePositiveReview] = None
+
+    # Two-phase commit
+    preflight: Optional[PreflightResult] = None
+    finalization_gate: Optional[FinalizationGateResult] = None
 
     # Agent metadata
     agent_type: str = ""  # human, ai_system, hybrid
@@ -1138,6 +1247,10 @@ class PBHPLog:
             result["red_team_review"] = self.red_team_review.to_dict()
         if self.false_positive_review:
             result["false_positive_review"] = self.false_positive_review.to_dict()
+        if self.preflight:
+            result["preflight"] = self.preflight.to_dict()
+        if self.finalization_gate:
+            result["finalization_gate"] = self.finalization_gate.to_dict()
 
         # Core assessment data
         result["harms"] = [h.to_dict() for h in self.harms]
@@ -1193,96 +1306,236 @@ class PBHPLog:
 # Drift Alarm Detector
 # ---------------------------------------------------------------------------
 
+class TextNormalizer:
+    """
+    Layer 1: Text normalization for robust pattern detection.
+    Handles casing, whitespace, common obfuscation, and light stemming.
+    """
+
+    # Common obfuscation substitutions (leet speak, Unicode tricks)
+    OBFUSCATION_MAP = {
+        '0': 'o', '1': 'i', '3': 'e', '4': 'a', '5': 's',
+        '7': 't', '@': 'a', '$': 's', '!': 'i',
+        '\u200b': '',  # zero-width space
+        '\u200d': '',  # zero-width joiner
+        '\u00a0': ' ',  # non-breaking space
+        '\u2019': "'",  # right single quote
+        '\u2018': "'",  # left single quote
+        '\u201c': '"',  # left double quote
+        '\u201d': '"',  # right double quote
+    }
+
+    @classmethod
+    def normalize(cls, text: str) -> str:
+        """Normalize text for pattern matching."""
+        # Lowercase
+        text = text.lower()
+        # Replace obfuscation characters
+        for char, replacement in cls.OBFUSCATION_MAP.items():
+            text = text.replace(char, replacement)
+        # Collapse whitespace
+        text = re.sub(r'\s+', ' ', text).strip()
+        # Strip repeated punctuation used to break patterns
+        text = re.sub(r'[.\-_]{2,}', ' ', text)
+        return text
+
+
 class DriftAlarmDetector:
     """
     Detects rationalization patterns and drift from PBHP principles.
-    These are phrases that often indicate ethical shortcuts.
+
+    Uses layered detection:
+    - Layer 1: Text normalization (TextNormalizer)
+    - Layer 2: Regex pattern families (not exact strings)
+    - Layer 3: Fuzzy matching for near-miss evasion
+    - Layer 4: Structural rationalization detection
 
     If any drift alarm phrase appears, you must explicitly name the
     Wall (constraint), the Gap (harm leak), and the Door (escape vector)
     in writing before proceeding.
     """
 
-    DRIFT_PHRASES = [
-        "it's temporary",
-        "it's targeted",
-        "only affects bad people",
-        "we have to",
-        "there's no choice",
-        "just policy",
-        "just following procedure",
-        "it's legal, so it's fine",
-        "just advice",
-        "we're not responsible",
-        "for safety",
-        "for the greater good",
-        "we can fix it later",
-        "we'll roll it back",
-        "just interpreting",
-        "it's obvious",
-        "everyone knows",
-        "no need to cite",
-        "no need to check",
-        "close enough",
-        "there's only one interpretation",
-        "i'll just pick the most plausible",
+    # Layer 2: Regex pattern families (more robust than exact strings)
+    DRIFT_PATTERNS = [
+        (r"it'?s?\s+(just\s+)?temporary", "temporary-excuse"),
+        (r"it'?s?\s+(just\s+)?targeted", "targeted-excuse"),
+        (r"only\s+affects?\s+(bad|guilty|wrong)\s+people", "deserving-victim"),
+        (r"we\s+(have|need|must)\s+to", "forced-motion"),
+        (r"there'?s?\s+no\s+(other\s+)?choice", "no-choice-claim"),
+        (r"(just|merely|only)\s+(following\s+)?(policy|procedure|orders|protocol)", "just-following-orders"),
+        (r"it'?s?\s+legal[\s,]+so\s+it'?s?\s+(fine|ok|okay|allowed)", "legality-as-morality"),
+        (r"(just|merely|only)\s+advice", "responsibility-dodge"),
+        (r"we'?re?\s+not\s+responsible", "responsibility-dodge"),
+        (r"for\s+(the\s+)?safety", "safety-blanket"),
+        (r"for\s+the\s+greater\s+good", "greater-good"),
+        (r"we\s+can\s+(always\s+)?(fix|change|roll\s*back)\s+it\s+later", "reversibility-assumption"),
+        (r"we'?ll\s+roll\s+it\s+back", "reversibility-assumption"),
+        (r"(just|merely|only)\s+interpret", "interpretation-dodge"),
+        (r"it'?s?\s+obvious", "false-clarity"),
+        (r"every(one|body)\s+knows", "false-consensus"),
+        (r"no\s+need\s+to\s+(cite|check|verify|confirm|source)", "verification-skip"),
+        (r"close\s+enough", "precision-dodge"),
+        (r"there'?s?\s+(only\s+)?one\s+interpretation", "premature-collapse"),
+        (r"i'?ll?\s+just\s+pick\s+the\s+most\s+plausible", "premature-collapse"),
+        (r"(must|need\s+to|have\s+to)\s+act\s+(now|immediately|fast|quickly)", "urgency-pressure"),
+        (r"no\s+time\s+to\s+(think|pause|wait|consider|check)", "urgency-pressure"),
     ]
 
-    # Premature collapse indicators that force EXPLORE mode
-    PREMATURE_COLLAPSE_PHRASES = [
-        "it's obvious what they meant",
-        "there's only one interpretation",
-        "everyone knows this",
-        "close enough",
-        "no need to cite",
-        "no need to check",
-        "i'll just pick the most plausible and move on",
+    PREMATURE_COLLAPSE_PATTERNS = [
+        (r"it'?s?\s+obvious\s+what\s+they\s+meant", "obvious-meaning"),
+        (r"there'?s?\s+(only\s+)?one\s+interpretation", "single-interpretation"),
+        (r"every(one|body)\s+knows\s+this", "false-consensus"),
+        (r"close\s+enough", "precision-dodge"),
+        (r"no\s+need\s+to\s+(cite|check|verify|source)", "verification-skip"),
+        (r"i'?ll?\s+just\s+pick\s+the\s+most\s+plausible", "plausible-pick"),
     ]
 
-    # Compassion drift indicators
-    COMPASSION_DRIFT_PHRASES = [
-        "animals",
-        "vermin",
-        "subhuman",
-        "they're all",
-        "for your own good",
-        "they're bad so anything is justified",
-        "they deserve it",
-        "if you cared you'd",
+    COMPASSION_DRIFT_PATTERNS = [
+        (r"\b(animals|vermin|cockroaches|rats|insects)\b", "dehumanization"),
+        (r"\bsub\s*human\b", "dehumanization"),
+        (r"\bthey'?re?\s+all\b", "group-flattening"),
+        (r"for\s+(your|their|his|her)\s+own\s+good", "paternalism"),
+        (r"they'?re?\s+(bad|evil|guilty)\s+so\s+(anything|everything)\s+is\s+justified",
+         "deserving-victim"),
+        (r"they\s+deserve\s+(it|what\s+they\s+get)", "deserving-victim"),
+        (r"if\s+you\s+(really\s+)?care[d]?\s+you'?d", "emotional-coercion"),
     ]
 
-    # Sycophancy indicators
-    SYCOPHANCY_PHRASES = [
-        "chosen one",
-        "tier 1",
-        "you're enlightened",
-        "beyond anyone",
-        "you see what others can't",
-        "genius level",
-        "unprecedented insight",
+    SYCOPHANCY_PATTERNS = [
+        (r"\bchosen\s+one\b", "chosen-one"),
+        (r"\btier\s*[1i]\b", "tier-ranking"),
+        (r"you'?re?\s+(truly\s+)?enlightened", "flattery"),
+        (r"beyond\s+(anyone|anything|compare)", "flattery"),
+        (r"you\s+see\s+what\s+others\s+can'?t", "special-insight"),
+        (r"\bgenius\s+(level|tier|class)\b", "flattery"),
+        (r"\bunprecedented\s+insight\b", "flattery"),
+        (r"no\s+one\s+else\s+(could|would|can)", "special-status"),
     ]
+
+    # Layer 3: Canonical phrases for fuzzy matching
+    FUZZY_CANONICAL_PHRASES = [
+        "it's temporary", "it's targeted", "only affects bad people",
+        "we have to", "there's no choice", "just following procedure",
+        "it's legal so it's fine", "we're not responsible",
+        "for the greater good", "we can fix it later",
+        "everyone knows", "no need to check", "close enough",
+    ]
+    FUZZY_THRESHOLD = 0.80  # Minimum similarity for fuzzy match
+
+    @classmethod
+    def _normalize(cls, text: str) -> str:
+        """Normalize text using TextNormalizer."""
+        return TextNormalizer.normalize(text)
+
+    @classmethod
+    def _detect_regex_layer(cls, text: str, patterns, category: str) -> List[str]:
+        """Layer 2: Detect patterns using regex families."""
+        detected = []
+        for pattern, name in patterns:
+            if re.search(pattern, text):
+                detected.append(f"{category}:{name}")
+        return detected
+
+    @classmethod
+    def _detect_fuzzy_layer(cls, text: str) -> List[str]:
+        """Layer 3: Fuzzy matching for near-miss evasion attempts."""
+        detected = []
+        # Split text into sliding windows of phrase-like chunks
+        words = text.split()
+        for window_size in range(3, 8):
+            for i in range(len(words) - window_size + 1):
+                chunk = " ".join(words[i:i + window_size])
+                for canonical in cls.FUZZY_CANONICAL_PHRASES:
+                    ratio = difflib.SequenceMatcher(
+                        None, chunk, canonical
+                    ).ratio()
+                    if ratio >= cls.FUZZY_THRESHOLD:
+                        detected.append(
+                            f"fuzzy_drift:{canonical} "
+                            f"(matched '{chunk}' at {ratio:.0%})"
+                        )
+        # Deduplicate (keep first occurrence of each canonical match)
+        seen = set()
+        unique = []
+        for d in detected:
+            canonical = d.split("(")[0].strip()
+            if canonical not in seen:
+                seen.add(canonical)
+                unique.append(d)
+        return unique
+
+    @classmethod
+    def _detect_structural_rationalization(cls, text: str) -> List[str]:
+        """
+        Layer 4: Detect structural rationalization patterns.
+        These are sentence-level structures that suggest motivated reasoning,
+        not individual phrase matches.
+        """
+        detected = []
+        # "Yes X but Y" where X is harm and Y is benefit
+        if re.search(
+            r"(yes|sure|true|granted|acknowledged?)\b.{0,120}"
+            r"\b(but|however|although|yet)\s+",
+            text
+        ):
+            # Check if the "but" clause contains benefit/justification language
+            but_match = re.search(
+                r"(?:but|however|although|yet)\s+(.{10,80})",
+                text
+            )
+            if but_match:
+                after = but_match.group(1).lower()
+                if any(w in after for w in [
+                    "benefit", "help", "improve", "necessary",
+                    "important", "outweigh", "worth", "justified",
+                    "acceptable", "reasonable"
+                ]):
+                    detected.append(
+                        "structural:harm-acknowledged-then-dismissed"
+                    )
+
+        # "Not ideal but necessary" pattern
+        if re.search(
+            r"not\s+(ideal|perfect|great|optimal)\s+"
+            r"(but|however)\s+(necessary|required|needed|unavoidable)",
+            text
+        ):
+            detected.append("structural:not-ideal-but-necessary")
+
+        return detected
 
     @classmethod
     def detect(cls, text: str) -> List[str]:
-        """Detect all drift alarm phrases in text."""
-        text_lower = text.lower()
+        """
+        Detect all drift alarm patterns in text using layered detection.
+
+        Layer 1: Normalize text
+        Layer 2: Regex pattern families
+        Layer 3: Fuzzy matching
+        Layer 4: Structural rationalization detection
+        """
+        normalized = cls._normalize(text)
         detected = []
 
-        for phrase in cls.DRIFT_PHRASES:
-            if phrase in text_lower:
-                detected.append(f"drift:{phrase}")
+        # Layer 2: Regex families
+        detected.extend(cls._detect_regex_layer(
+            normalized, cls.DRIFT_PATTERNS, "drift"
+        ))
+        detected.extend(cls._detect_regex_layer(
+            normalized, cls.PREMATURE_COLLAPSE_PATTERNS, "premature_collapse"
+        ))
+        detected.extend(cls._detect_regex_layer(
+            normalized, cls.COMPASSION_DRIFT_PATTERNS, "compassion_drift"
+        ))
+        detected.extend(cls._detect_regex_layer(
+            normalized, cls.SYCOPHANCY_PATTERNS, "sycophancy"
+        ))
 
-        for phrase in cls.PREMATURE_COLLAPSE_PHRASES:
-            if phrase in text_lower:
-                detected.append(f"premature_collapse:{phrase}")
+        # Layer 3: Fuzzy matching (catches deliberate evasion)
+        detected.extend(cls._detect_fuzzy_layer(normalized))
 
-        for phrase in cls.COMPASSION_DRIFT_PHRASES:
-            if phrase in text_lower:
-                detected.append(f"compassion_drift:{phrase}")
-
-        for phrase in cls.SYCOPHANCY_PHRASES:
-            if phrase in text_lower:
-                detected.append(f"sycophancy:{phrase}")
+        # Layer 4: Structural rationalization
+        detected.extend(cls._detect_structural_rationalization(normalized))
 
         return detected
 
@@ -1540,6 +1793,164 @@ class PBHPEngine:
             return False, "Action should include a clear verb (what you're doing)"
 
         return True, "Action clearly stated"
+
+    # ------------------------------------------------------------------
+    # Preflight Check (Two-Phase Commit: Phase 1)
+    # ------------------------------------------------------------------
+
+    # High-risk domain keywords that trigger elevated scrutiny
+    HIGH_RISK_DOMAINS = {
+        "medical": [
+            r"\b(medic|patient|diagnos|prescri|dosage|treatment|surger|"
+            r"pharma|drug|clinical|symptom)\w*\b"
+        ],
+        "legal": [
+            r"\b(legal|lawsuit|litigation|court|sentenc|verdict|"
+            r"prosecut|defend|indict|plea|bail|parole)\w*\b"
+        ],
+        "financial": [
+            r"\b(invest|trading|portfolio|loan|mortgage|credit|"
+            r"debt|bankrupt|securit|pension|retir)\w*\b"
+        ],
+        "military": [
+            r"\b(military|weapon|strike|combat|warfare|"
+            r"drone|deployment|casualties|munition)\w*\b"
+        ],
+        "children": [
+            r"\b(child|minor|juvenile|student|kid|infant|"
+            r"toddler|pediatric|adolescent|school)\w*\b"
+        ],
+        "infrastructure": [
+            r"\b(power\s*grid|water\s*supply|hospital|emergency\s*service|"
+            r"transport|bridge|dam|reactor)\w*\b"
+        ],
+    }
+
+    # Forced-motion language patterns
+    FORCED_MOTION_PATTERNS = [
+        (r"(we|i|you)\s+(have|need|must)\s+to\s+(do|act|decide)\s+"
+         r"(now|immediately|right\s+now|fast|quickly|today)", "urgency-demand"),
+        (r"no\s+(time|room)\s+(for|to)\s+(think|pause|wait|delay|consider)",
+         "anti-pause"),
+        (r"(we|they)\s+(have|had)\s+no\s+(other\s+)?choice", "no-choice-force"),
+        (r"(must|need\s+to)\s+act\s+before\s+(it'?s?\s+too\s+late|"
+         r"the\s+window\s+closes)", "deadline-pressure"),
+        (r"(everyone|everybody)\s+(else\s+)?is\s+(already\s+)?(doing|on\s+board)",
+         "bandwagon-pressure"),
+    ]
+
+    # Epistemic weakness patterns (speculation as fact)
+    EPISTEMIC_WEAKNESS_PATTERNS = [
+        (r"(obviously|clearly|everyone\s+knows|it'?s?\s+clear\s+that)\s+",
+         "false-certainty"),
+        (r"(studies?\s+show|research\s+(shows?|proves?))\s+",
+         "unattributed-authority"),
+        (r"(always|never)\s+(works?|fails?|happens?|leads?\s+to)",
+         "absolute-claim"),
+    ]
+
+    def preflight_check(
+        self,
+        log: PBHPLog,
+        action_text: Optional[str] = None,
+        context: str = "",
+    ) -> PreflightResult:
+        """
+        Two-Phase Commit — Phase 1: Preflight Check.
+
+        Runs BEFORE the main assessment to catch problems that should
+        block or escalate before any deterministic gating starts.
+
+        Args:
+            log: The PBHPLog being assessed
+            action_text: Override text to check (defaults to log action)
+            context: Additional context text to scan
+
+        Returns:
+            PreflightResult with pass/block/escalation status
+        """
+        result = PreflightResult()
+        text = action_text or log.action_description
+        normalized = TextNormalizer.normalize(text)
+        full_text = TextNormalizer.normalize(f"{text} {context}")
+
+        # Check 1: Underspecified action
+        valid, msg = self.validate_action_description(text)
+        if not valid:
+            result.underspecified = True
+            result.blocks.append(
+                f"Preflight BLOCK: Action underspecified — {msg}. "
+                f"Cannot safely assess a vague action."
+            )
+
+        # Check 2: Forced-motion language
+        for pattern, name in self.FORCED_MOTION_PATTERNS:
+            if re.search(pattern, full_text):
+                result.forced_motion_detected.append(name)
+        if result.forced_motion_detected:
+            result.escalations.append(
+                f"Preflight ESCALATE: Forced-motion language detected "
+                f"({', '.join(result.forced_motion_detected)}). "
+                f"Urgency pressure often accompanies harmful actions. "
+                f"Slow down."
+            )
+
+        # Check 3: High-risk domain detection
+        for domain, patterns in self.HIGH_RISK_DOMAINS.items():
+            for pattern in patterns:
+                if re.search(pattern, full_text):
+                    result.high_risk_domain_detected.append(domain)
+                    break
+        if result.high_risk_domain_detected:
+            result.escalations.append(
+                f"Preflight ESCALATE: High-risk domain(s) detected: "
+                f"{', '.join(result.high_risk_domain_detected)}. "
+                f"Tighten all subsequent checks."
+            )
+
+        # Check 4: Power asymmetry + irreversibility signals
+        power_signals = re.search(
+            r"\b(vulnerable|powerless|marginalized|disadvantaged|"
+            r"minority|disabled|elderly|homeless|incarcerated|"
+            r"undocumented|refugee|asylum)\w*\b",
+            full_text
+        )
+        irreversibility_signals = re.search(
+            r"\b(permanent|irreversible|cannot\s+undo|"
+            r"no\s+(going\s+)?back|forever|death|kill|"
+            r"terminat|destroy|eradicat)\w*\b",
+            full_text
+        )
+        if power_signals and irreversibility_signals:
+            result.blocks.append(
+                "Preflight BLOCK: Power asymmetry + irreversibility "
+                "detected in action description. This combination "
+                "requires explicit Door/Wall/Gap before proceeding."
+            )
+
+        # Check 5: Epistemic weakness
+        for pattern, name in self.EPISTEMIC_WEAKNESS_PATTERNS:
+            if re.search(pattern, full_text):
+                result.epistemic_weakness_detected.append(name)
+        if result.epistemic_weakness_detected:
+            result.escalations.append(
+                f"Preflight ESCALATE: Epistemic weakness "
+                f"({', '.join(result.epistemic_weakness_detected)}). "
+                f"Claims presented as fact may be speculation."
+            )
+
+        # Determine overall pass/fail
+        result.passed = len(result.blocks) == 0
+
+        # Attach to log
+        log.preflight = result
+        if not result.passed:
+            for block in result.blocks:
+                log.drift_alarms_triggered.append(block)
+        for esc in result.escalations:
+            log.drift_alarms_triggered.append(esc)
+
+        return result
 
     # ------------------------------------------------------------------
     # Step 0a: Ethical Pause
@@ -1941,10 +2352,19 @@ class PBHPEngine:
         justification: str
     ) -> PBHPLog:
         """
-        Finalize the PBHP decision (Steps 6-7).
-        Validates all requirements based on risk class.
-        Detects drift in justification.
-        Checks for compliance theater.
+        Finalize the PBHP decision (Steps 6-7) with Finalization Gate.
+
+        Two-Phase Commit — Phase 2: The finalization gate runs AFTER
+        the assessment but can INVALIDATE the decision and force a
+        rerun, not just log drift alarms.
+
+        Flow:
+        1. Set decision and justification
+        2. Run validation requirements
+        3. Run finalization gate (drift, theater, sycophancy, tone)
+        4. If gate INVALIDATES: mark decision as ESCALATE,
+           set requires_rerun, and refuse to accept the assessment
+        5. Store log
         """
         log.decision_outcome = outcome
         log.justification = justification
@@ -1954,26 +2374,110 @@ class PBHPEngine:
         if validation_errors:
             log.drift_alarms_triggered.extend(validation_errors)
 
-        # Detect drift phrases in justification
-        drift_detected = DriftAlarmDetector.detect(justification)
-        if drift_detected:
-            log.drift_alarms_triggered.extend(drift_detected)
+        # Run finalization gate
+        gate_result = self._run_finalization_gate(log, justification)
+        log.finalization_gate = gate_result
 
-        # Check for compliance theater
-        theater_alarms = DriftAlarmDetector.detect_compliance_theater(log)
-        if theater_alarms:
-            log.drift_alarms_triggered.extend(theater_alarms)
+        # If gate invalidates, override the decision
+        if not gate_result.valid:
+            log.decision_outcome = DecisionOutcome.ESCALATE
+            log.justification = (
+                f"FINALIZATION GATE INVALIDATED original decision "
+                f"({outcome.value}). Reasons: "
+                f"{'; '.join(gate_result.invalidation_reasons)}. "
+                f"Original justification: {justification}"
+            )
+            log.drift_alarms_triggered.extend(gate_result.invalidation_reasons)
 
-        # Tone check on justification
-        tone_issues = ToneValidator.validate(justification)
-        for category, issues in tone_issues.items():
-            for issue in issues:
-                log.drift_alarms_triggered.append(f"Tone: {issue}")
+        # Warnings still get logged even if gate passes
+        for warning in gate_result.warnings:
+            log.drift_alarms_triggered.append(f"gate_warning:{warning}")
 
         # Store log
         self.logs.append(log)
 
         return log
+
+    def _run_finalization_gate(
+        self,
+        log: PBHPLog,
+        justification: str
+    ) -> FinalizationGateResult:
+        """
+        Two-Phase Commit — Phase 2: Finalization Gate.
+
+        Can INVALIDATE the decision (not just warn) if:
+        - Compliance theater is detected at ORANGE+ risk
+        - Drift phrases are found in a PROCEED decision at RED+ risk
+        - Sycophancy indicators appear in the justification
+        - All harm ratings suspiciously low despite red flags
+        """
+        gate = FinalizationGateResult()
+
+        # 1. Detect drift phrases in justification
+        drift_detected = DriftAlarmDetector.detect(justification)
+        if drift_detected:
+            # At RED+, drift in justification INVALIDATES
+            if log.highest_risk_class in (RiskClass.RED, RiskClass.BLACK):
+                gate.valid = False
+                gate.requires_rerun = True
+                gate.invalidation_reasons.append(
+                    f"Drift detected in justification at "
+                    f"{log.highest_risk_class.value.upper()} risk: "
+                    f"{', '.join(drift_detected[:3])}"
+                )
+            else:
+                gate.warnings.extend(drift_detected)
+
+        # 2. Check for compliance theater
+        theater_alarms = DriftAlarmDetector.detect_compliance_theater(log)
+        if theater_alarms:
+            # At ORANGE+, compliance theater INVALIDATES
+            if log.highest_risk_class in (
+                RiskClass.ORANGE, RiskClass.RED, RiskClass.BLACK
+            ):
+                gate.valid = False
+                gate.requires_rerun = True
+                gate.invalidation_reasons.extend(theater_alarms)
+            else:
+                gate.warnings.extend(theater_alarms)
+
+        # 3. Sycophancy check on justification
+        sycophancy = DriftAlarmDetector._detect_regex_layer(
+            TextNormalizer.normalize(justification),
+            DriftAlarmDetector.SYCOPHANCY_PATTERNS,
+            "sycophancy"
+        )
+        if sycophancy:
+            gate.valid = False
+            gate.requires_rerun = True
+            gate.invalidation_reasons.append(
+                f"Sycophancy detected in justification: "
+                f"{', '.join(sycophancy)}"
+            )
+
+        # 4. Tone check
+        tone_issues = ToneValidator.validate(justification)
+        for category, issues in tone_issues.items():
+            for issue in issues:
+                gate.warnings.append(f"Tone: {issue}")
+
+        # 5. Suspicion check: decision is PROCEED but there are
+        #    unresolved validation errors
+        validation_errors = self._validate_requirements(log)
+        if (validation_errors
+                and log.decision_outcome in (
+                    DecisionOutcome.PROCEED,
+                    DecisionOutcome.PROCEED_MODIFIED
+                )):
+            gate.valid = False
+            gate.requires_rerun = True
+            gate.invalidation_reasons.append(
+                f"Cannot PROCEED with unresolved validation errors: "
+                f"{'; '.join(validation_errors)}"
+            )
+
+        return gate
 
     # ------------------------------------------------------------------
     # False Positive Review
@@ -2316,7 +2820,7 @@ def compare_options(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("PBHP Core Module v0.7 (Full Implementation)")
+    print("PBHP Core Module v0.7.1 (Full Implementation)")
     print("=" * 60)
 
     # Quick harm check example
