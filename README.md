@@ -20,7 +20,7 @@ Then it gives you a structured way to answer it.
 
 ## Quick Start
 
-**For AI agents:** Read [`protocol/PBHP-CORE_INJECTION_v0.7.1.txt`](protocol/PBHP-CORE_INJECTION_v0.7.1.txt). That's the entire operational protocol in 126 lines of plain text. No dependencies. No API. Ingest it and run it.
+**For AI agents:** Use [`PromptBeforeHarmProtocol v0.1`](protocol/PromptBeforeHarmProtocol_v0.1.md) — the definitive system prompt. Three paste-ready versions available in [`Paste Versions`](protocol/PBHP_Prompt_Paste_Versions.md) (~1250 and ~500 token options). No dependencies. No API. Paste it and run it.
 
 **For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) provides a working implementation across all three tiers.
 
@@ -63,7 +63,9 @@ pbhp/
 ├── ETHICAL_USE.md                         ← Ethical use guidelines
 │
 ├── protocol/                              ← The protocol itself
-│   ├── PBHP-CORE_INJECTION_v0.7.1.txt    ← Agent-loadable plain text (start here)
+│   ├── PromptBeforeHarmProtocol_v0.1.md  ← System prompt (START HERE)
+│   ├── PBHP_Prompt_Paste_Versions.md     ← Paste-ready versions (~1250 / ~500 tokens)
+│   ├── PBHP-CORE_INJECTION_v0.7.1.txt    ← Legacy agent-loadable plain text
 │   ├── PBHP-CORE_v0.7.1.md               ← Full CORE tier specification
 │   ├── PBHP-ULTRA_v0.7.1.md              ← Full ULTRA tier specification
 │   ├── PBHP-MIN_v0.7.1.md                ← Minimum viable (reflex) tier
