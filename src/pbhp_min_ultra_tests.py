@@ -790,9 +790,9 @@ def test_ultra_delegated_methods():
     assert_true("ultra DWG works", result)
     assert_true("ultra DWG on core", ulog.core_log.door_wall_gap is not None)
 
-    # CHIM
-    result2 = engine.perform_chim_check(ulog, True, False, "timing and wording")
-    assert_true("ultra CHIM works", result2)
+    # Constraint Awareness
+    result2 = engine.perform_constraint_awareness_check(ulog, True, False, "timing and wording")
+    assert_true("ultra Constraint Awareness works", result2)
 
     # Absolute Rejection (clean)
     arc = engine.perform_absolute_rejection_check(ulog)
@@ -1096,8 +1096,8 @@ def test_ultra_full_pipeline():
         door="Start with blind pilot on 5% of applications with human override",
     )
 
-    # CHIM
-    engine.perform_chim_check(
+    # Constraint Awareness
+    engine.perform_constraint_awareness_check(
         ulog, True, False, "Can choose scope, timeline, human override level",
     )
 
@@ -1195,7 +1195,7 @@ def test_ultra_full_pipeline():
     # Verify complete pipeline
     assert_true("pipeline: ethical pause set", ulog.ultra_ethical_pause is not None)
     assert_true("pipeline: DWG set", ulog.core_log.door_wall_gap is not None)
-    assert_true("pipeline: CHIM set", ulog.core_log.chim_check is not None)
+    assert_true("pipeline: Constraint Awareness set", ulog.core_log.constraint_awareness_check is not None)
     assert_true("pipeline: ARC set", ulog.core_log.absolute_rejection is not None)
     assert_ge("pipeline: harms", len(ulog.core_log.harms), 1)
     assert_true("pipeline: consent set", ulog.core_log.consent_check is not None)

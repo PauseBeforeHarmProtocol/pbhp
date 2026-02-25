@@ -96,9 +96,9 @@ Missing any force is a failure condition: Care without Clarity leads to error. C
 
 ---
 
-Author: Charles Phillip Linstrum (ALMSIVI)
+Author: Charles Phillip Linstrum
 Quality Systems Manager, FDA-regulated healthcare
 Version 0.7, February 2026
 Open source. Available at [GitHub link].
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum (ALMSIVI)
+**PBHP v0.7** | Author: Charles Phillip Linstrum

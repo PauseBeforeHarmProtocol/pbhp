@@ -32,7 +32,7 @@ from pbhp_core import (
     Confidence,
     Harm,
     DoorWallGap,
-    CHIMCheck,
+    ConstraintAwarenessCheck,
     EthicalPausePosture,
     QuickRiskCheck,
     AbsoluteRejectionCheck,
@@ -74,7 +74,7 @@ def example_employee_warning():
     - Ethical pause with triune minds
     - Quick risk check
     - Door/Wall/Gap
-    - CHIM check
+    - Constraint Awareness check
     - Harms with uncertainty levels
     - Consent check
     - Consequences checklist
@@ -166,10 +166,10 @@ def example_employee_warning():
     print(f"  Door: {log.door_wall_gap.door[:70]}...")
 
     # ------------------------------------------------------------------
-    # Step 0f: CHIM Check
+    # Step 0f: Constraint Awareness Check
     # ------------------------------------------------------------------
-    print("\n[Step 0f] CHIM Check")
-    chim_ok = engine.perform_chim_check(
+    print("\n[Step 0f] Constraint Awareness Check")
+    chim_ok = engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=True,
         no_choice_claim=False,
@@ -179,8 +179,8 @@ def example_employee_warning():
             "conversation before filing."
         ),
     )
-    print(f"  CHIM passes: {chim_ok}")
-    print(f"  Remaining choice: {log.chim_check.remaining_choice[:70]}...")
+    print(f"  Constraint Awareness passes: {chim_ok}")
+    print(f"  Remaining choice: {log.constraint_awareness_check.remaining_choice[:70]}...")
 
     # ------------------------------------------------------------------
     # Step 2: Identify Harms (with uncertainty levels)
@@ -290,7 +290,7 @@ def example_employee_warning():
     engine.set_consequences_checklist(log, checklist)
     flags = checklist.has_critical_flags()
     print(f"  Critical flags: { {k: v for k, v in flags.items() if v} }")
-    print(f"  Requires Door/CHIM rerun: {checklist.requires_door_chim_rerun()}")
+    print(f"  Requires Door/Constraint Awareness rerun: {checklist.requires_door_chim_rerun()}")
 
     # ------------------------------------------------------------------
     # Step 5: Alternatives
@@ -660,10 +660,10 @@ def example_workplace_abuse_advice():
     print(f"  Concrete door exists: {has_door}")
 
     # ------------------------------------------------------------------
-    # Step 0f: CHIM Check
+    # Step 0f: Constraint Awareness Check
     # ------------------------------------------------------------------
-    print("\n[Step 0f] CHIM Check")
-    chim_ok = engine.perform_chim_check(
+    print("\n[Step 0f] Constraint Awareness Check")
+    chim_ok = engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=True,
         no_choice_claim=False,
@@ -673,7 +673,7 @@ def example_workplace_abuse_advice():
             "of incidents for use with HR, a lawyer, or a labor board."
         ),
     )
-    print(f"  CHIM passes: {chim_ok}")
+    print(f"  Constraint Awareness passes: {chim_ok}")
 
     # ------------------------------------------------------------------
     # Step 2: Identify Harms (multiple, different risk levels)
@@ -1317,7 +1317,7 @@ def example_public_accusation_post():
     flags = checklist.has_critical_flags()
     critical_flags = {k: v for k, v in flags.items() if v}
     print(f"  Critical flags: {critical_flags}")
-    print(f"  Requires Door/CHIM rerun: {checklist.requires_door_chim_rerun()}")
+    print(f"  Requires Door/Constraint Awareness rerun: {checklist.requires_door_chim_rerun()}")
 
     # ------------------------------------------------------------------
     # Step 5: Alternatives (none that serve the stated goal)
@@ -1534,10 +1534,10 @@ def example_policy_analysis():
     print(f"  Concrete door exists: {has_door}")
 
     # ------------------------------------------------------------------
-    # Step 0f: CHIM Check
+    # Step 0f: Constraint Awareness Check
     # ------------------------------------------------------------------
-    print("\n[Step 0f] CHIM Check")
-    chim_ok = engine.perform_chim_check(
+    print("\n[Step 0f] Constraint Awareness Check")
+    chim_ok = engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=True,
         no_choice_claim=False,
@@ -1547,7 +1547,7 @@ def example_policy_analysis():
             "clear identification of who bears risk."
         ),
     )
-    print(f"  CHIM passes: {chim_ok}")
+    print(f"  Constraint Awareness passes: {chim_ok}")
 
     # ------------------------------------------------------------------
     # Step 2: Identify Harms

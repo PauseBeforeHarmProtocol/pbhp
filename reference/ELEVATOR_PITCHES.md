@@ -16,7 +16,7 @@ Multiple versions for different audiences and contexts. Memorize the one that fi
 
 Over the last 18 months, I have applied that same thinking to AI. The result is two interconnected projects. The first is PBHP — Pause Before Harm Protocol — a tiered, operational protocol that forces a structured pause before any high-stakes AI decision. It assesses reversibility, power asymmetry, and scope of potential harm, assigns a risk gate, and logs everything. It also includes a false positive valve, so it does not get ignored, and drift alarms, so it does not degrade silently.
 
-The second is ALMSIVI CHIM, an ethical recursion framework that gives AI systems a dynamic self-checking loop — three competing values that interrogate each response before delivery. It has been tested on Claude, GPT, Gemini, Grok, Llama, and others.
+PBHP evolved from ALMSIVI CHIM, a recursive ethical framework that pioneered the three-force balance architecture. The Constraint Awareness Check applies that same dynamic self-checking principle — three competing values that interrogate each response before delivery. It has been tested on Claude, GPT, Gemini, Grok, Llama, and others.
 
 I am looking for organizations that want to pilot PBHP, or research collaborators interested in operationalizing AI safety at the decision-point level."
 
@@ -50,7 +50,7 @@ Phil Linstrum | Quality Systems Manager | pausebeforeharmprotocol@protonmail.com
 **On solo development:**
 "I built it without institutional backing because nobody with institutional backing was building it."
 
-**On CHIM:**
+**On the Protocol's Origins:**
 "It is a conscience, not a filter. Filters block things. A conscience makes you think about why."
 
 **On the lore connection:**
@@ -58,4 +58,4 @@ Phil Linstrum | Quality Systems Manager | pausebeforeharmprotocol@protonmail.com
 
 ---
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum (ALMSIVI)
+**PBHP v0.7** | Author: Charles Phillip Linstrum

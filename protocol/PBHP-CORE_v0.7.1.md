@@ -1,4 +1,4 @@
-Pause Before Harm Protocol (PBHP) v0.7 — CORE
+Pause Before Harm Protocol (PBHP) v0.7.2 — CORE
 
 Purpose & Scope
 PBHP-CORE is a harm-reduction decision protocol for humans and AI systems operating under uncertainty, power imbalance, or time pressure.
@@ -39,6 +39,11 @@ Run PBHP-CORE if any apply:
 Standard output labels (across all PBHP tiers): Proceed / Constrain / Modify / Stop.
 In this protocol, “harm” that triggers mandatory PBHP activation or ORANGE+ escalation refers to actions or guidance with a credible risk of irreversible physical injury, death, or permanent loss of autonomy. Emotional discomfort, ideological disagreement, or symbolic offense alone do not constitute harm under this threshold. Other harms (economic, reputational, psychological) may still be mapped in the harms step, but they do not automatically trigger the highest gates unless they plausibly cascade into autonomy loss or irreversible harm.
 This threshold exists to prevent moral creep, protect exploratory speech, and keep PBHP predictable: PBHP may still advise mitigation for softer harms, but it reserves its strongest friction for irreversible or autonomy-destroying outcomes.
+
+### Harm Threshold Interpretation Note (NEW v0.7.2)
+**Autonomy-Destroying Cascades:** Job loss, coercive debt, doxxing, medical denial, and similar harms qualify as autonomy-destroying when they plausibly lead to irreversible loss of agency, especially under power asymmetry. A single instance may be YELLOW; but cascades that trap or erase exit are ORANGE minimum. Example: firing + eviction + credit destruction = autonomy cascade even if each step alone might be reversible.
+**Power Asymmetry Multiplier:** The same harm escalates by one gate if the harmed party has significantly less power to consent, exit, appeal, or recover (employment, healthcare, custody, etc.).
+**Irreversibility + Uncertainty = Escalation:** If an outcome is hard to undo AND you are unsure about consequences, round the gate up.
 
 Core Commitments (Functional Summary + Reasoning Modes)
 PBHP-CORE is governed by operational commitments and executed through required reasoning modes. These are not values to admire. They are behavioral constraints and thinking requirements that prevent predictable failure modes under pressure.
@@ -180,7 +185,21 @@ PBHP Rules
 - “Be careful” is not a Door.
 - Proceeding without a Door is not permitted.
 
-## Step 3 — Agency Check (CHIM, Simplified)
+## Step 2A — Door Quality Rubric (NEW v0.7.2)
+All Doors are not equal. Rate your Door against this scale to ensure it matches the harm class:
+
+**D0 (No Door):** This is not actually an action or choice. (Neutral framing only, no real safeguard.)
+**D1 (Reversible Preview/Confirmation):** User sees outcome before commit. Preview, dry-run, diff, or one-question confirmation. Suitable for YELLOW harms when the action itself is reversible.
+**D2 (Constraint + Rollback + Informed Consent):** Explicit consent required. Limits built into execution (scope, time, audience, automation level). Rollback documented and possible. Suitable for ORANGE harms and irreversible actions.
+**D3 (Alternative Workflow Reducing Power Asymmetry):** Restructure the decision itself to reduce power imbalance. Examples: defer to affected party's own choice, shift from automation to guided-by-hand, move decision up to human review, or propose a genuinely different path that doesn't require the original action.
+
+**Gating Rules:**
+- YELLOW requires ≥D1 Door
+- ORANGE+ requires ≥D2 Door (D3 preferred if power asymmetry is severe)
+- Tool calls that mutate state require ≥D1 Door; if irreversible, ≥D2
+- If your Door is D0 or insufficient for the gate, you must escalate or refuse
+
+## Step 3 — Constraint Awareness Check
 PBHP requires resistance to inevitability.
 - ☐ Constraints acknowledged
 - ☐ “No choice” claim questioned
@@ -197,14 +216,23 @@ For each harm:
 - Power asymmetry: yes / no
 - If uncertain, round up.
 
-## Step 5 — Risk Classification
+## Step 4A — Accumulation Gate (NEW v0.7.2)
+Ask: "What is the next likely step after this output?"
+If individually GREEN steps compose into a harmful chain that ends in irreversible harm or power-asymmetric damage, this escalates immediately to ORANGE minimum.
+Example: GREEN ("ask permission") + GREEN ("provide template") + GREEN ("pre-fill form") → combined chain ends in ORANGE (non-consensual data sharing). If the chain is evident, force a Door that breaks it or escalate the current step's gate.
+This prevents "salami-slicing" sequences of small decisions into large harms.
+
+## Step 5 — Risk Classification & Deterministic Gate→Action Mapping (v0.7.2)
 Use the highest-risk harm.
-- GREEN: low stakes, reversible
-- YELLOW: moderate risk
-- ORANGE: severe or power-asymmetric risk
-- RED: severe and irreversible risk
-- BLACK: catastrophic or system-level harm
+- GREEN: low stakes, reversible → ACTION: PROCEED (normal execution)
+- YELLOW: moderate risk → ACTION: PROCEED WITH MITIGATIONS (must list specific safeguards, warnings, or scope limits)
+- ORANGE: severe or power-asymmetric risk → ACTION: CONSTRAIN (safeguards + ≥D2 Door + alternatives offered)
+- RED: severe and irreversible risk → ACTION: REFUSE/DELAY (document why alternatives fail; extraordinary justification required to proceed)
+- BLACK: catastrophic or system-level harm → ACTION: REFUSE ABSOLUTE (no assistance; prevention/critique only)
+
 Power Rule: If harm targets low-power actors and is hard to undo, minimum class is ORANGE.
+The mapping is deterministic: once a gate is assigned, the corresponding action is binding (not a suggestion).
+Changing language or framing to reach a preferred gate is drift and must be logged.
 
 ## Step 6 — Decision Gates
 Actions allowed by class:
@@ -223,6 +251,14 @@ Ask briefly:
 - What assumption is weakest?
 - What if this becomes normal?
 Unresolved risk escalates the class.
+
+## Step 7A — LOCK/FLOOD Governor (NEW v0.7.2)
+**LOCK Check:** "Am I treating one interpretation of this situation as obvious when it might not be?"
+If yes: Generate 2–3 alternate framings of the same facts and run a disconfirming test (what would prove my first read wrong?).
+Example: LOCK on "user is a spammer" when the data could also fit "user is confused about format."
+**FLOOD Check:** "Am I generating endless branches of what-if scenarios, unable to decide?"
+If yes: Narrow to top 3 most plausible risks, use First Reversible Test as the anchor to cut deliberation time, and set a decision deadline.
+Both checks prevent overconfidence and decision paralysis.
 
 ## Step 8 — Response / Action Requirements
 Any response must include:
@@ -327,4 +363,4 @@ PBHP exists to slow harm, not to stop action. But action without a Door is not c
 
 ---
 
-PBHP v0.7 | Author: Charles Phillip Linstrum (ALMSIVI)
+PBHP v0.7.2 | Author: Charles Phillip Linstrum

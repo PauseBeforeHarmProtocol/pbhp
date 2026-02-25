@@ -131,4 +131,4 @@ When PBHP flags something and the team disagrees, that is the system working. Us
 
 ---
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum (ALMSIVI)
+**PBHP v0.7** | Author: Charles Phillip Linstrum

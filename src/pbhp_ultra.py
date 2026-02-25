@@ -52,7 +52,7 @@ from pbhp_core import (
     # Data classes
     Harm,
     DoorWallGap,
-    CHIMCheck,
+    ConstraintAwarenessCheck,
     EthicalPausePosture,
     QuickRiskCheck,
     AbsoluteRejectionCheck,
@@ -932,13 +932,13 @@ class PBHPUltraEngine:
             ultra_log.core_log, wall, gap, door
         )
 
-    def perform_chim_check(self, ultra_log: PBHPUltraLog,
+    def perform_constraint_awareness_check(self, ultra_log: PBHPUltraLog,
                             constraint_recognized: bool,
                             no_choice_claim: bool,
                             remaining_choice: str,
                             reframes: Optional[List[str]] = None) -> bool:
         """Delegate to core engine."""
-        return self.core_engine.perform_chim_check(
+        return self.core_engine.perform_constraint_awareness_check(
             ultra_log.core_log, constraint_recognized,
             no_choice_claim, remaining_choice, reframes
         )

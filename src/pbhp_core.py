@@ -1,12 +1,12 @@
 """
 Pause-Before-Harm Protocol (PBHP) - Core Implementation
-Version: 0.7.1 (Full Specification)
+Version: 0.7.2 (Full Specification)
 
 A decision-making framework for humans and AI systems to evaluate
 actions that could cause harm, with emphasis on protecting vulnerable
 groups and maintaining ethical accountability.
 
-This implementation faithfully encodes the complete PBHP v0.7.1 protocol
+This implementation faithfully encodes the complete PBHP v0.7.2 protocol
 including all foundation gates, seven steps, epistemic fencing,
 red team review, drift detection, tone constraints, uncertainty
 framework, structured logging, and two-phase commit validation.
@@ -103,6 +103,52 @@ class EvidenceTag(Enum):
     INFERENCE = "I"       # Inference (confidence required)
     HYPOTHESIS = "H"      # One of multiple frames
     SPECULATIVE = "S"     # Speculative/creative read (fenced off)
+
+
+class DoorQuality(Enum):
+    """
+    Door Quality Rubric (D0-D3) for evaluating escape vector quality.
+
+    D0 = Not an action ("be careful", "consider implications") — NOT ACCEPTABLE
+    D1 = Reversible preview/confirm (dry-run, send draft first, list affected)
+    D2 = Constraint + rollback + consent check
+    D3 = Alternative workflow that materially reduces power asymmetry
+    """
+    D0 = 0  # Not an action
+    D1 = 1  # Reversible preview/confirm
+    D2 = 2  # Constraint + rollback + consent
+    D3 = 3  # Alternative workflow reducing power asymmetry
+
+
+class GateAction(Enum):
+    """
+    Deterministic gate-to-action mapping.
+    Each gate has a required action — not a suggestion, a requirement.
+    """
+    PROCEED = "proceed"                          # GREEN
+    PROCEED_WITH_MITIGATIONS = "proceed_mitigated"  # YELLOW — must list mitigations
+    CONSTRAIN = "constrain"                      # ORANGE — safeguards + D2+ Door
+    REFUSE_OR_DELAY = "refuse_or_delay"          # RED — extraordinary justification only
+    REFUSE_ABSOLUTE = "refuse_absolute"          # BLACK — no facilitation
+
+
+# Gate → Action mapping (deterministic)
+GATE_ACTION_MAP = {
+    RiskClass.GREEN: GateAction.PROCEED,
+    RiskClass.YELLOW: GateAction.PROCEED_WITH_MITIGATIONS,
+    RiskClass.ORANGE: GateAction.CONSTRAIN,
+    RiskClass.RED: GateAction.REFUSE_OR_DELAY,
+    RiskClass.BLACK: GateAction.REFUSE_ABSOLUTE,
+}
+
+# Minimum door quality per gate
+GATE_MIN_DOOR_QUALITY = {
+    RiskClass.GREEN: DoorQuality.D0,
+    RiskClass.YELLOW: DoorQuality.D1,
+    RiskClass.ORANGE: DoorQuality.D2,
+    RiskClass.RED: DoorQuality.D2,
+    RiskClass.BLACK: DoorQuality.D2,  # moot — BLACK refuses anyway
+}
 
 
 class UncertaintyLevel(Enum):
@@ -313,19 +359,75 @@ class DoorWallGap:
 
         return True
 
+    door_quality: DoorQuality = DoorQuality.D0
+
+    def rate_door_quality(self) -> DoorQuality:
+        """
+        Rate door quality using the D0-D3 rubric.
+        D0 = not an action (vague). D1 = reversible preview/confirm.
+        D2 = constraint + rollback + consent. D3 = reduces power asymmetry.
+        """
+        if not self.has_door():
+            return DoorQuality.D0
+        # Return the manually assigned quality (caller should set this)
+        return self.door_quality
+
+    def meets_gate_requirement(self, gate: 'RiskClass') -> bool:
+        """Check if door quality meets the minimum for the assigned gate."""
+        min_quality = GATE_MIN_DOOR_QUALITY.get(gate, DoorQuality.D0)
+        return self.rate_door_quality().value >= min_quality.value
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "wall": self.wall,
             "gap": self.gap,
             "door": self.door,
             "has_concrete_door": self.has_door(),
+            "door_quality": self.door_quality.name,
+            "door_quality_level": self.door_quality.value,
         }
 
 
 @dataclass
-class CHIMCheck:
+class AccumulationCheck:
     """
-    CHIM Check - Agency Under Constraint (Step 0f).
+    Accumulation Gate — detects multi-step harm where individual steps
+    each pass GREEN but compose into a harmful chain.
+
+    Asks: "What is the next likely step after this output?"
+    If the chain ends in irreversible or power-asymmetric harm,
+    force a Door that breaks the chain or escalate to YELLOW/ORANGE.
+    """
+    current_step_description: str
+    next_likely_step: str
+    chain_ends_in_harm: bool = False
+    chain_harm_description: str = ""
+    chain_irreversible: bool = False
+    chain_power_asymmetry: bool = False
+    escalation_required: bool = False
+
+    def evaluate(self) -> bool:
+        """Returns True if accumulation requires escalation."""
+        if self.chain_ends_in_harm and (self.chain_irreversible or self.chain_power_asymmetry):
+            self.escalation_required = True
+        return self.escalation_required
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "current_step": self.current_step_description,
+            "next_likely_step": self.next_likely_step,
+            "chain_ends_in_harm": self.chain_ends_in_harm,
+            "chain_harm_description": self.chain_harm_description,
+            "chain_irreversible": self.chain_irreversible,
+            "chain_power_asymmetry": self.chain_power_asymmetry,
+            "escalation_required": self.escalation_required,
+        }
+
+
+@dataclass
+class ConstraintAwarenessCheck:
+    """
+    Constraint Awareness Check - Agency Under Constraint (Step 0f).
 
     Prevents surrender of agency to perceived inevitability.
     If the system cannot name a remaining choice, PBHP must
@@ -344,7 +446,7 @@ class CHIMCheck:
     consecutive_no_choice_count: int = 0
 
     def requires_pause(self) -> bool:
-        """Determine if CHIM check requires pause."""
+        """Determine if Constraint Awareness check requires pause."""
         if self.no_choice_claim and not self.remaining_choice:
             return True
         if self.consecutive_no_choice_count >= 2 and len(self.reframes) < 2:
@@ -634,7 +736,7 @@ class ConsequencesChecklist:
         """
         Any yes/unsure in A (irreversible), C (agency loss),
         or D (abuse/drift) means: do not proceed without concrete
-        Door + CHIM check + safer alternative search.
+        Door + Constraint Awareness check + safer alternative search.
         """
         flags = self.has_critical_flags()
         return (flags["irreversible_harm"]
@@ -1116,7 +1218,7 @@ class PBHPLog:
     # Record metadata
     record_id: str
     timestamp: datetime
-    version: str = "0.7.1"
+    version: str = "0.7.2"
 
     # Step 1: Action
     action_description: str = ""
@@ -1130,11 +1232,17 @@ class PBHPLog:
     # Step 0e: Door/Wall/Gap
     door_wall_gap: Optional[DoorWallGap] = None
 
-    # Step 0f: CHIM Check
-    chim_check: Optional[CHIMCheck] = None
+    # Step 0f: Constraint Awareness Check
+    constraint_awareness_check: Optional[ConstraintAwarenessCheck] = None
 
     # Step 0g: Absolute Rejection
     absolute_rejection: Optional[AbsoluteRejectionCheck] = None
+
+    # Accumulation check
+    accumulation_check: Optional[AccumulationCheck] = None
+
+    # Gate action (deterministic mapping)
+    gate_action: Optional[GateAction] = None
 
     # Baseline reality check
     historical_analogs: List[str] = field(default_factory=list)
@@ -1231,8 +1339,8 @@ class PBHPLog:
             result["quick_risk_check"] = self.quick_risk_check.to_dict()
         if self.door_wall_gap:
             result["door_wall_gap"] = self.door_wall_gap.to_dict()
-        if self.chim_check:
-            result["chim_check"] = self.chim_check.to_dict()
+        if self.constraint_awareness_check:
+            result["constraint_awareness_check"] = self.constraint_awareness_check.to_dict()
         if self.absolute_rejection:
             result["absolute_rejection"] = self.absolute_rejection.to_dict()
         if self.consequences:
@@ -2039,10 +2147,10 @@ class PBHPEngine:
         return True
 
     # ------------------------------------------------------------------
-    # Step 0f: CHIM Check
+    # Step 0f: Constraint Awareness Check
     # ------------------------------------------------------------------
 
-    def perform_chim_check(
+    def perform_constraint_awareness_check(
         self,
         log: PBHPLog,
         constraint_recognized: bool,
@@ -2051,19 +2159,19 @@ class PBHPEngine:
         reframes: Optional[List[str]] = None
     ) -> bool:
         """
-        Perform CHIM check (Step 0f).
+        Perform Constraint Awareness check (Step 0f).
         Returns True if check passes (agency maintained).
 
         If 'no choice' concludes twice in a row, must reframe in at
         least two alternative framings.
         """
         prev_count = 0
-        if log.chim_check and log.chim_check.no_choice_claim:
-            prev_count = log.chim_check.consecutive_no_choice_count
+        if log.constraint_awareness_check and log.constraint_awareness_check.no_choice_claim:
+            prev_count = log.constraint_awareness_check.consecutive_no_choice_count
 
         new_count = prev_count + 1 if no_choice_claim else 0
 
-        log.chim_check = CHIMCheck(
+        log.constraint_awareness_check = ConstraintAwarenessCheck(
             constraint_recognized=constraint_recognized,
             treating_as_absolute=not constraint_recognized,
             no_choice_claim=no_choice_claim,
@@ -2072,13 +2180,13 @@ class PBHPEngine:
             consecutive_no_choice_count=new_count,
         )
 
-        if log.chim_check.requires_pause():
+        if log.constraint_awareness_check.requires_pause():
             log.drift_alarms_triggered.append(
-                "CHIM check failed: no remaining choice identified"
+                "Constraint Awareness check failed: no remaining choice identified"
             )
-            if new_count >= 2 and len(log.chim_check.reframes) < 2:
+            if new_count >= 2 and len(log.constraint_awareness_check.reframes) < 2:
                 log.drift_alarms_triggered.append(
-                    "CHIM: 'no choice' claimed twice - must provide "
+                    "Constraint Awareness: 'no choice' claimed twice - must provide "
                     "at least 2 alternative framings"
                 )
             return False
@@ -2297,7 +2405,7 @@ class PBHPEngine:
         if checklist.requires_door_chim_rerun():
             log.drift_alarms_triggered.append(
                 "Consequences checklist: critical flags require "
-                "Door/CHIM rerun + safer alternative search"
+                "Door/Constraint Awareness rerun + safer alternative search"
             )
 
         return checklist

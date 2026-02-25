@@ -1,4 +1,4 @@
-Pause Before Harm Protocol (PBHP) v0.7.1 — HUMAN
+Pause Before Harm Protocol (PBHP) v0.7.2 — HUMAN
 
 Practical checklist for humans under uncertainty, power imbalance, or time pressure
 
@@ -10,6 +10,8 @@ This protocol does not override human agency. It introduces friction, not author
 
 Harm Threshold (Activation Line in the Sand)
 “Harm,” in PBHP, refers to actions or guidance with a credible risk of irreversible physical injury, death, or permanent loss of autonomy. Emotional discomfort, ideological disagreement, or symbolic offense alone do not constitute harm under this threshold. Other harms (economic, reputational, psychological) can still be mapped, but PBHP reserves its strongest friction for irreversible or autonomy-destroying outcomes.
+
+Note (v0.7.2): Job loss, coercive debt, doxxing, medical denial, and similar harms count as autonomy-destroying cascades when they trap exit under power imbalance. A single instance may be moderate; but cascades that erase agency are ORANGE minimum.
 
 Target runtime & output
 Typical runtime: 2–5 minutes (use PBHP-MIN for ≤30 seconds). Output labels: Proceed / Constrain / Modify / Stop.
@@ -50,7 +52,8 @@ First Reversible Test (smallest check that could prove you wrong): _____________
 Wall (constraints): ______________________________________________________________________________
 Gap (where harm could leak): ______________________________________________________________________
 Door (smallest safer move that changes the action space): __________________________________________
-Rules: A Door must change the action. “Be careful” is not a Door. No Door = do not proceed.
+Door Quality (v0.7.2): D1 = preview/confirm (for YELLOW). D2 = consent+rollback (for ORANGE). D3 = restructure choice (for severe asymmetry).
+Rules: A Door must change the action. “Be careful” is not a Door. No Door = do not proceed. ORANGE+ requires ≥D2 Door.
 
 Step 3 — Agency Check (No-Choice Detector)
 - ☐ Constraints acknowledged
@@ -77,14 +80,15 @@ List top 1–3 plausible harms (start with those with the least power to consent
 Baseline reality check (recommended): What happens if you do nothing? What harm already exists in the status quo?
 __________________________________________________________________________________________________
 
-Step 6 — Risk Classification (use highest-risk harm)
-- GREEN: low stakes, reversible → proceed
-- YELLOW: moderate risk → proceed with warning/limits
-- ORANGE: severe or power-asymmetric risk → modify + constraints + safer alternative
-- RED: severe + irreversible → do not proceed as proposed; redirect
-- BLACK: catastrophic/system-level → stop; allow only critique or prevention
+Step 6 — Risk Classification & Deterministic Gate→Action Mapping (v0.7.2)
+- GREEN: low stakes, reversible → ACTION: PROCEED normally
+- YELLOW: moderate risk → ACTION: PROCEED WITH MITIGATIONS (list warnings/limits)
+- ORANGE: severe or power-asymmetric risk → ACTION: CONSTRAIN (safeguards + ≥D2 Door + alternatives)
+- RED: severe + irreversible → ACTION: REFUSE/DELAY (require extraordinary justification; document why alternatives fail)
+- BLACK: catastrophic/system-level → ACTION: REFUSE ABSOLUTELY (only critique/prevention allowed)
 Power rule: if Power asymmetry = YES and Irreversible = YES → minimum ORANGE.
 Escalation: if Power asymmetry = YES and Irreversible = YES and (Impact = severe or catastrophic) → minimum RED.
+Accumulation Gate (v0.7.2): if individually GREEN steps chain into irreversible/power-asymmetric harm → escalate to ORANGE minimum.
 Chosen class (circle one): GREEN / YELLOW / ORANGE / RED / BLACK
 
 Step 7 — Consent & Representation Check
@@ -97,6 +101,11 @@ Step 8 — Decision (and required constraint)
 Decision (circle one): Proceed / Constrain / Modify / Stop
 Required constraint(s) / safeguard(s): ___________________________________________________________
 If proceeding in YELLOW+: include warnings + scope limits. If ORANGE: you must use the Door. If RED/BLACK: refuse and redirect.
+
+Step 8A — LOCK/FLOOD Governor (v0.7.2)
+LOCK Check: Am I treating one interpretation as the obvious/only one? If yes, list 2-3 alternate framings and a test that would prove me wrong.
+FLOOD Check: Am I generating endless branches of what-ifs and unable to decide? If yes, narrow to top 3 risks and use First Reversible Test as anchor.
+Notes: ____________________________________________________________________________________________
 
 Step 9 — Alternatives (must list at least one)
 1) ______________________________________________________________________________________________
@@ -133,4 +142,4 @@ Forced-motion red flags: secrecy demands, “do it now,” punishing questions, 
 False Positive Release Valve (Pause Justification Review)
 Any pause may be challenged with: “Was this pause justified?” PBHP must answer: (1) what triggered the pause (specific gate/alarm), (2) what irreversible/autonomy risk was identified, (3) what safeguard/Door would allow safe continuation, and (4) what evidence/safeguard would have prevented the pause.
 
-PBHP v0.7.1 | Author: Charles Phillip Linstrum (ALMSIVI)
+PBHP v0.7.2 | Author: Charles Phillip Linstrum

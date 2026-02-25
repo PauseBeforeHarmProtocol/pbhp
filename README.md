@@ -1,7 +1,7 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.7.1 (Public Release)
-**Author:** Charles Phillip Linstrum (ALMSIVI)
+**Version:** 0.7.2 (Public Release)
+**Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
 ---

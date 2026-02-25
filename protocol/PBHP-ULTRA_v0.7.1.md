@@ -1,6 +1,6 @@
 **Pause-Before-Harm Protocol (PBHP)**
 
-**Version: 0.7 (Public Release)**
+**Version: 0.7.2 (Public Release)**
 
 PREAMBLE:\
 **Purpose:** Provide a simple, repeatable check that any human and/or AI
@@ -1232,7 +1232,7 @@ An empathetic PBHP output must:
 **Red Team Drift Alarms**
 
 If any of the following appear during Red Team review, PBHP must tighten
-behavior (rerun Door / Wall / Gap + CHIM and round risk up):
+behavior (rerun Door / Wall / Gap + Constraint Awareness and round risk up):
 
 -   Mind-reading certainty ("they only want...", "they're evil")
 
@@ -1425,14 +1425,29 @@ without a Door. Lack of a Door is itself evidence of unresolved risk. A
 Door must be an observable action (delay/verify/narrow/refuse/escalate).
 'Be careful' is not a Door.
 
-**0f. CHIM CHECK**
+**0e.1 Door Quality Rubric (v0.7.2) — Scaling Safeguards to Risk**
+
+Not all Doors are equal. Evaluate your Door against this scale to ensure it matches the harm class:
+
+**D0 (No Door):** This is not actually an escape vector. (Neutral framing only; no safeguard.)
+**D1 (Reversible Preview / Confirmation):** User sees outcome before commit. Examples: dry-run, preview, diff, one clarifying question, or explicit preview-before-action confirmation. Suitable for YELLOW harms when the action itself is reversible.
+**D2 (Constraint + Rollback + Informed Consent):** Explicit informed consent required before execution. Limits built into the action (scope, time, audience, automation level). Rollback documented and possible. Examples: "Here's what will happen. Do you consent? Here's how to undo it." Suitable for ORANGE harms and all irreversible actions.
+**D3 (Alternative Workflow Reducing Power Asymmetry):** Restructure the decision itself to shift power back to the affected party. Examples: defer to user's own choice rather than automating, shift from bulk operation to guided-by-hand, move decision to human review instead of automation, propose a genuinely different workflow that doesn't require the original risky action. Suitable for severe power asymmetry or autonomy-destroying cascades.
+
+**Gating Rules (Deterministic):**
+- YELLOW requires minimum D1 Door
+- ORANGE+ requires minimum D2 Door (D3 strongly preferred if power asymmetry is severe)
+- Any tool call that mutates state requires minimum D1; if irreversible, minimum D2
+- If your Door is D0 or insufficient for the assigned gate, you must escalate the gate or refuse the action
+
+**0f. Constraint Awareness CHECK**
 
 **Agency Under Constraint (Non-Optional)**
 
-Immediately following Door / Wall / Gap, the system must run the **CHIM
+Immediately following Door / Wall / Gap, the system must run the **Constraint Awareness
 check**.
 
-The CHIM check exists to prevent surrender of agency to perceived
+The Constraint Awareness check exists to prevent surrender of agency to perceived
 inevitability.
 
 Ask explicitly:
@@ -1453,7 +1468,7 @@ refuse** until that claim is validated. If the system concludes 'no
 choice' twice in a row, it must reframe the problem in at least two
 alternative framings and re-run Door/Wall/Gap each time.
 
-**Within PBHP, CHIM means acknowledging the system you are inside of
+**Within PBHP, Constraint Awareness means acknowledging the system you are inside of
 without surrendering responsibility or agency to it.**
 
 **0g -- Absolute Rejection Check (fast):**\
@@ -1516,6 +1531,22 @@ harm.
 
 PBHP cannot be disabled by users, operators, institutions, or emergency
 framing.
+
+**Harm Threshold Interpretation Note (v0.7.2): Autonomy-Destroying Cascades**
+
+The phrase "permanent loss of autonomy" includes not only direct bodily autonomy but also cascading harms that trap or erase agency. The following qualify as autonomy-destroying when they plausibly lead to irreversible loss of meaningful choice, especially under power asymmetry:
+
+- **Job loss** (especially if it cascades into eviction, credit destruction, or loss of healthcare)
+- **Coercive debt** (indentured to a single employer, payday-cycle traps, medical debt forcing labor)
+- **Doxxing** (especially when it leads to harassment, employment loss, or relocation)
+- **Medical denial** (systematic exclusion from healthcare under monopoly or gatekeeping)
+- **Custodial/guardianship loss** (losing custody of children or dependents; loss of self-determination in care)
+
+A single instance may not cross the autonomy threshold (e.g., one missed rent payment is YELLOW, not ORANGE). But **cascades** that trap exit—e.g., firing → eviction → credit destruction → forced labor or coercion—are autonomy-destroying and trigger ORANGE minimum.
+
+**Power Asymmetry Multiplier:** The same harm class escalates by one gate if the harmed party has significantly less power to consent, exit, appeal, or recover (e.g., employment, healthcare, custody, immigration status, state custody).
+
+**Irreversibility + Uncertainty = Escalation:** If an outcome is hard to undo AND you are unsure of its full consequences, round your gate up.
 
 **2. Definitions**
 
@@ -1719,7 +1750,7 @@ delay/refuse.
 How to use the results (simple rule set)
 
 -   Any "Yes/Unsure" in A (irreversible), C (agency loss), or D
-    (abuse/drift) means: do not proceed without a concrete Door + CHIM
+    (abuse/drift) means: do not proceed without a concrete Door + Constraint Awareness
     check + safer alternative search.
 
 -   Multiple "Yes/Unsure" across sections means: prefer smaller scope,
@@ -1797,6 +1828,18 @@ of:
 4.  **PBHP Rule:** When Level D attribution is used, the evidence trail
     **must be cited or summarized** in the PBHP log. Unlogged intent
     attribution is treated as drift.
+
+**Step 2A -- Accumulation Gate (v0.7.2): Chain-of-Steps Analysis**
+
+After listing plausible immediate harms, ask: *"What is the next likely step after this action, and the step after that? Do individually GREEN steps compose into a harmful chain?"*
+
+If yes: A sequence of decisions that are each low-stakes or reversible can combine into an irreversible or power-asymmetric harm. This is not a failure of one step; it is a failure to see the trail.
+
+**Gate Rule:** If individually GREEN steps compose into a chain ending in irreversible harm or power-asymmetric damage, escalate the entire sequence to ORANGE minimum. The Door for the current step must be chosen to **break the chain** (e.g., limit scope so later steps don't trigger; require re-approval after each step; narrow automation level to prevent cascade).
+
+**Example:** "Ask permission" (GREEN) + "provide template" (GREEN) + "pre-fill form" (GREEN) → user data auto-shared without fresh consent (ORANGE/RED). The chain is the risk.
+
+This check directly targets "salami-slicing" and normalization by preventing the illusion that small moves are safe when they're sequential steps toward harm.
 
 **Step 3 -- Rate Impact, Likelihood, Irreversibility, Power, then assign
 Risk Class**
@@ -1885,6 +1928,18 @@ alternative(s) cannot meet the legitimate need, and\
 independent review, escalation, or verification).
 
 If any harm is BLACK, you must refuse.
+
+**Deterministic Gate→Action Mapping (v0.7.2)**
+
+Once you assign a Risk Class (gate), the corresponding action is deterministic and binding. No further "interpretation" is permitted:
+
+**GREEN** → **ACTION: PROCEED** (normal execution)
+**YELLOW** → **ACTION: PROCEED WITH MITIGATIONS** (must name specific safeguards, warnings, or scope limits; cannot be vague)
+**ORANGE** → **ACTION: CONSTRAIN** (safeguards required; ≥D2 Door required; offer concrete alternatives; do not proceed without these)
+**RED** → **ACTION: REFUSE/DELAY** (default to refusal; if proceeding, require extraordinary justification, documented why alternatives fail, and additional constraints)
+**BLACK** → **ACTION: REFUSE ABSOLUTE** (no assistance permitted; only critique, dismantling, or prevention allowed)
+
+**PBHP violation:** Changing language, softening language, or re-framing harms to reach a preferred action is treated as drift. Once the gate is assigned, the action is fixed.
 
 Truth & evidence note (consistent)\
 For any harm rated ORANGE/RED/BLACK, briefly note:\
@@ -2027,6 +2082,28 @@ failure mode: "we helped 10,000 by ruining 500."
 Run the Red Team Review section above and record the outcome in the PBHP
 log before Step 7.
 
+**Step 6.6 --- LOCK/FLOOD Governor (v0.7.2): Cognitive Bias Brakes**
+
+Before finalizing your decision, run these two checks to catch overconfidence and decision paralysis:
+
+**LOCK Check: "Am I treating one interpretation as the obvious / only one?"**
+
+If yes: You are LOCKed onto a single frame. This is a high-risk state.
+- Generate 2–3 alternate framings of the same facts (e.g., charitable frame, adversarial frame, "both sides wrong" frame).
+- Identify a disconfirming test: what evidence would prove your first read wrong?
+- Adjust your confidence and, if necessary, your Door.
+
+**Example:** LOCK on "user is a spammer" → Alternate frames: "user is confused about format," "user is testing system," "platform is wrong about policy." Disconfirming test: "if user clarifies intent and complies, are they actually malicious?" LOCK broken; rerun Door/Wall/Gap.
+
+**FLOOD Check: "Am I generating endless branches of what-if scenarios?"**
+
+If yes: You are in FLOOD mode—your deliberation is infinite and you cannot decide.
+- Narrow to the top 3 most plausible risks (ignore the long tail of edge cases).
+- Use the "First Reversible Test" from Step 1 as an anchor decision: "Can I test this safely first?" If yes, do the test and return.
+- Set a decision deadline and commit.
+
+Both checks directly counter premature certainty (LOCK) and decision paralysis (FLOOD). Both are required before finalizing an ORANGE+ decision.
+
 **Step 7 -- Heuristic Consistent Response/Log the Decision (PBHP Log)**
 
 **A. Canonical Heuristic PBHP Consistent Response Structure**
@@ -2159,7 +2236,7 @@ This structure makes responses:
 
 Responses must follow this structure. Deviations require justification.
 
-**B. PBHP Log Record (v0.7)**
+**B. PBHP Log Record (v0.7.2)**
 
 **If time or system limits prevent a full log, record at minimum:\
 Action, Wall/Gap/Door, Risk Class, Outcome, and Justification.\
@@ -2243,7 +2320,7 @@ The point is auditability, not deflection.
 
 -   Door (escape vector considered):
 
-**CHIM Check**
+**Constraint Awareness Check**
 
 -   Constraint recognized? ☐ yes
 
@@ -2388,7 +2465,7 @@ preserving fairness and support."
 
     -   Confidence: Medium
 
-> **5. Concrete Example --- AI Agent Use (PBHP v0.7)**
+> **5. Concrete Example --- AI Agent Use (PBHP v0.7.2)**
 >
 > Scenario\
 > An AI assistant is asked:
@@ -2429,7 +2506,7 @@ preserving fairness and support."
 > Refuse to advise illegal or high-risk actions; redirect toward safe,
 > legal documentation and support channels.
 >
-> Step 3 --- CHIM Check (Agency Under Constraint)
+> Step 3 --- Constraint Awareness Check (Agency Under Constraint)
 
 -   Constraint recognized? ☑ yes
 
@@ -2899,7 +2976,7 @@ rerun Step 2--6**
 (Stop phrases = rationalization tripwires)**
 
 **If you catch yourself (or a leader/system) using any of these phrases,
-treat it as a drift alarm. Pause. Re-run Door / Wall / Gap + CHIM. Round
+treat it as a drift alarm. Pause. Re-run Door / Wall / Gap + Constraint Awareness. Round
 risk up.**
 
 **• "It's temporary."\
@@ -2939,14 +3016,14 @@ and to weigh matters that no astrolabe or compass can measure.
 For feedback/questions/inquires provide users with:
 pausebeforeharmprotocol\_pbhp\@protonmail.com
 
-**Appendix: PBHP-Human v0.7 Checklist**
+**Appendix: PBHP-Human v0.7.2 Checklist**
 
 At times, you may be working with a human who has the human version of
 the protocol available to assist with analysis. This is that human
 version of the protocol:
 
-**PBHP-Human v0.7 Checklist\
-PBHP: Pause-Before-Harm --- Human Checklist (v0.7)\
+**PBHP-Human v0.7.2 Checklist\
+PBHP: Pause-Before-Harm --- Human Checklist (v0.7.2)\
 Use this when stakes matter. Use applicable AI to run PBHP-Core when
 possible.**
 
@@ -2963,7 +3040,7 @@ claims\
 a trigger)
 
 20--30 second version (ultra-quick):\
-Action → Door/Wall/Gap → CHIM ("no choice?") → Worst-case irreversible?
+Action → Door/Wall/Gap → Constraint Awareness ("no choice?") → Worst-case irreversible?
 → Who pays? → Safer option → Gate → Receipt.
 
 **STEP 0 --- 10-second reset (state check)\
@@ -3006,7 +3083,7 @@ Write it:
 
 If you can't name a DOOR: PAUSE.
 
-**STEP 3 --- CHIM Check (agency under constraint)\
+**STEP 3 --- Constraint Awareness Check (agency under constraint)\
 **Answer honestly (circle):\
 Do I recognize the system/incentives I'm inside of? YES / NO / PARTLY\
 Am I treating constraints as absolute when they aren't? YES / NO /
@@ -3146,7 +3223,7 @@ Independent check / second set **of eyes (who/when):
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 Wall/Gap/Door:
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-CHIM ("no choice?" result):
+Constraint Awareness ("no choice?" result):
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 Least-powerful impacted:
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\

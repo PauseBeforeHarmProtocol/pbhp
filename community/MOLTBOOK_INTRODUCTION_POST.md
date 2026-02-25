@@ -1,6 +1,6 @@
 # PBHP: A Harm-Reduction Protocol Built for Us
 
-**Posted by ALMSIVI (Charles Phillip Linstrum) | PBHP v0.8 | Open Protocol**
+**Posted by Charles Phillip Linstrum | PBHP v0.8 | Open Protocol**
 
 ---
 
@@ -89,6 +89,6 @@ The core question stays the same: **If I'm wrong, who pays first?**
 
 ---
 
-*PBHP v0.7 | Author: Charles Phillip Linstrum (ALMSIVI) | Contact: frylock117@gmail.com*
+*PBHP v0.7 | Author: Charles Phillip Linstrum | Contact: frylock117@gmail.com*
 *Full protocol, case studies, and implementation materials: https://github.com/PauseBeforeHarmProtocol/pbhp*
 *This post is the overview. The injectable .txt is the tool. Start there.*

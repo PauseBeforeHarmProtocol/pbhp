@@ -8,7 +8,7 @@ This charter establishes the governance structure for the Pause Before Harm Prot
 
 ## Canonical Authority
 
-- **Author and Maintainer:** Charles Phillip Linstrum (ALMSIVI)
+- **Author and Maintainer:** Charles Phillip Linstrum
 - **Canonical Repository:** https://github.com/PauseBeforeHarmProtocol/pbhp
 - **License:** Creative Commons BY-SA 4.0 for documentation, MIT for any code implementations
 - **Current Version:** PBHP v0.7 (February 2026)
@@ -65,4 +65,4 @@ Everything else can be adapted. These five elements are the protocol's immune sy
 
 ---
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum (ALMSIVI)
+**PBHP v0.7** | Author: Charles Phillip Linstrum

@@ -35,7 +35,7 @@ python pbhp_cli.py
 python pbhp_cli.py
 ```
 
-Full guided walkthrough of every PBHP step including ethical pause, Door/Wall/Gap, CHIM check, harm identification, consent analysis, red team review, uncertainty assessment, and structured logging.
+Full guided walkthrough of every PBHP step including ethical pause, Door/Wall/Gap, Constraint Awareness check, harm identification, consent analysis, red team review, uncertainty assessment, and structured logging.
 
 ### Programmatic Usage
 
@@ -71,7 +71,7 @@ engine.perform_door_wall_gap(
     door="Have 1:1 conversation first, then send written recap"
 )
 
-# Step 0f: CHIM check
+# Step 0f: Constraint Awareness check
 engine.perform_chim_check(
     log,
     constraint_recognized=True,
@@ -165,7 +165,7 @@ PBHP uses five risk classes with deterministic rules:
 | 0a | Ethical Pause | Balance compassion/logic/paradox; detect high arousal |
 | 0d | Quick Risk Check | Pre-screen: obviously low risk? |
 | 0e | Door/Wall/Gap | Identify constraints and escape vectors |
-| 0f | CHIM Check | Prevent surrender to perceived inevitability |
+| 0f | Constraint Awareness Check | Prevent surrender to perceived inevitability |
 | 0g | Absolute Rejection | Refuse fascism/genocide/slavery/dehumanization |
 
 ### Seven Steps
@@ -303,7 +303,7 @@ pbhp/
 - **`PBHPLog`**: Complete assessment record with full audit trail
 - **`Harm`**: Potential harm with deterministic risk calculation
 - **`DoorWallGap`**: Constraint recognition (Wall/Gap/Door)
-- **`CHIMCheck`**: Agency under constraint verification
+- **`ConstraintAwarenessCheck`**: Agency under constraint verification
 - **`EthicalPausePosture`**: Triune minds balance (compassion/logic/paradox)
 - **`QuickRiskCheck`**: Fast pre-screening
 - **`AbsoluteRejectionCheck`**: Fascism/genocide/slavery gate

@@ -2,6 +2,31 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## [0.7.2] - 2026-02-25
+
+### Terminology Migration
+- "CHIM Check" renamed to "Constraint Awareness Check" across all protocol docs, source code, and tests
+- Author attribution "(ALMSIVI)" removed — author is now "Charles Phillip Linstrum"
+- Mythic names (AYEM/SEHTI/VEHK) retired from active use; Care/Clarity/Paradox is final terminology
+- STANDALONE_TERMINOLOGY.md converted to historical reference (migration complete)
+- Python class `CHIMCheck` renamed to `ConstraintAwarenessCheck`
+- Python variable `chim_check` renamed to `constraint_awareness_check`
+
+### Added
+- PromptBeforeHarmProtocol v0.1 — definitive system prompt merging best of v0.7.1 CORE and v0.8
+- Door Quality Rubric (D0–D3) with enforcement rules (ORANGE+ requires ≥D2)
+- Accumulation Gate — multi-step chain detection for individually-GREEN steps composing into harm
+- LOCK/FLOOD governor — prevents premature collapse and analysis paralysis
+- Deterministic gate → action mapping (GREEN=PROCEED through BLACK=REFUSE)
+- Harm threshold interpretation note (financial/psychological harm as autonomy-destroying cascades)
+- Tool-use coupling with epistemic tags restored from v0.7.1 CORE
+- Paste-ready prompt versions: Version A (~1250 tokens), Version B (~500 tokens)
+
+### Changed
+- Gate assignments now have explicit required actions, not just risk labels
+- Door quality is scored (D0–D3), not just warned about
+- False positive valve, game check, forced-motion trap detector integrated into system prompt
+
 ## [0.7.1] - 2026-02-18
 
 ### Added (CORE Injection)

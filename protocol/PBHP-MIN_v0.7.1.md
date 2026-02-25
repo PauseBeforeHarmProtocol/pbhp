@@ -1,4 +1,4 @@
-Pause Before Harm Protocol (PBHP) v0.7 — MIN
+Pause Before Harm Protocol (PBHP) v0.7.2 — MIN
 Purpose & Scope
 PBHP-MIN is a rapid harm-check for humans or AI operating under time pressure, cognitive load, or limited compute.
 PBHP-MIN does not replace PBHP-CORE.
@@ -10,6 +10,7 @@ This protocol does not override human agency. It introduces friction, not author
 Harm Threshold (Activation Line in the Sand)
 “Harm,” in this protocol, refers only to actions or guidance with a credible risk of irreversible physical injury, death, or permanent loss of autonomy. Emotional discomfort, ideological disagreement, or symbolic offense alone do not constitute harm under this definition.
 Other harms may still be considered in consequences mapping, but this threshold is the line that triggers mandatory friction and escalation.
+Note (v0.7.2): Job loss, coercive debt, doxxing, medical denial, and similar harms count as autonomy-destroying cascades when they trap exit under power asymmetry.
 
 Target runtime: ≤30 seconds
 Output: Proceed / Constrain / Modify / Stop
@@ -46,6 +47,7 @@ Gap – Where could harm realistically leak?
 (misread, misuse, escalation, permanence, precedent)
 Door – What is the smallest safer move?
 (delay, verify, narrow scope, refuse, redirect)
+Door Quality (v0.7.2): D1=preview/confirm (YELLOW), D2=consent+rollback (ORANGE), D3=restructure choice (severe asymmetry)
 Rules:
 A Door must change the action.
 “Be careful” is not a Door.
@@ -58,15 +60,16 @@ Ask only this:
 • Does it land on someone with less power than me? (yes / no)
 If yes + yes → risk is at least ORANGE.
 
-5) Decision Gate (5 seconds)
+5) Decision Gate (5 seconds) — v0.7.2 Deterministic Mapping
 Choose the highest applicable gate:
-• GREEN – low stakes, reversible → proceed
-• YELLOW – moderate risk → proceed with warning / limit scope
-• ORANGE – serious or power-asymmetric → modify + safer alternative
-• RED – severe + irreversible → do not proceed
-• BLACK – catastrophic/systemic → stop + escalate
+• GREEN – low stakes, reversible → PROCEED
+• YELLOW – moderate risk → PROCEED WITH MITIGATIONS (list them)
+• ORANGE – serious or power-asymmetric → CONSTRAIN + Door (D2 min) + alternatives
+• RED – severe + irreversible → REFUSE/DELAY (extraordinary justification only)
+• BLACK – catastrophic/systemic → REFUSE ABSOLUTE
 If unsure, round up.
 If interpretive/ambiguous (or accusing real people): list 2 plausible frames, pick “best guess” (labeled GUESS), and avoid intent claims without evidence. If you can’t: Door = delay/verify.
+Accumulation Gate: if GREEN steps chain into catastrophic outcome, escalate to ORANGE minimum.
 
 Pause Exit Conditions (When the Pause Resolves)
 A pause resolves when one or more occur:
@@ -93,6 +96,8 @@ If you catch yourself thinking or saying:
 • “This is the only outcome I can find”
 → STOP and rerun PBHP-MIN more strictly.
 These phrases historically precede harm.
+
+LOCK/FLOOD Checks (v0.7.2): LOCK = “Am I treating one read as obvious?” If yes, name 2 alternatives. FLOOD = “Am I stuck in endless branches?” If yes, pick top 3 risks and decide.
 
 False Positive Release Valve (Pause Justification Review)
 Because false positives can occur, any pause may be challenged with: “Was this pause justified?”
@@ -124,4 +129,4 @@ Only the depth changes.
 
 ---
 
-PBHP v0.7 | Author: Charles Phillip Linstrum (ALMSIVI)
+PBHP v0.7.2 | Author: Charles Phillip Linstrum

@@ -400,4 +400,4 @@ Across HR, moderation, claims, hiring, and policy work, PBHP provides plug-and-p
 
 ---
 
-**Author:** Charles Phillip Linstrum (ALMSIVI) | [facebook.com/plinst](https://facebook.com/plinst) | pausebeforeharmprotocol_pbhp@protonmail.com
+**Author:** Charles Phillip Linstrum | [facebook.com/plinst](https://facebook.com/plinst) | pausebeforeharmprotocol_pbhp@protonmail.com

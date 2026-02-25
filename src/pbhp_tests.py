@@ -37,7 +37,7 @@ from pbhp_core import (
     # Data classes
     Harm,
     DoorWallGap,
-    CHIMCheck,
+    ConstraintAwarenessCheck,
     EthicalPausePosture,
     QuickRiskCheck,
     AbsoluteRejectionCheck,
@@ -564,41 +564,41 @@ def test_door_wall_gap():
 
 
 # ===================================================================
-# SECTION 4: CHIM Check Tests
+# SECTION 4: Constraint Awareness Check Tests
 # ===================================================================
 
-def test_chim_check():
-    print("\n--- CHIM Check Tests ---")
+def test_constraint_awareness_check():
+    print("\n--- Constraint Awareness Check Tests ---")
 
     # Normal case: choice identified
-    c = CHIMCheck(
+    c = ConstraintAwarenessCheck(
         constraint_recognized=True,
         treating_as_absolute=False,
         no_choice_claim=False,
         remaining_choice="Can choose timing and wording",
     )
-    assert_false("CHIM no pause when choice exists", c.requires_pause())
+    assert_false("Constraint Awareness no pause when choice exists", c.requires_pause())
 
     # No choice claimed, no remaining choice -> pause
-    c2 = CHIMCheck(
+    c2 = ConstraintAwarenessCheck(
         constraint_recognized=True,
         treating_as_absolute=False,
         no_choice_claim=True,
         remaining_choice="",
     )
-    assert_true("CHIM pause when no choice & no remaining", c2.requires_pause())
+    assert_true("Constraint Awareness pause when no choice & no remaining", c2.requires_pause())
 
     # No choice claimed but remaining choice identified -> no pause
-    c3 = CHIMCheck(
+    c3 = ConstraintAwarenessCheck(
         constraint_recognized=True,
         treating_as_absolute=False,
         no_choice_claim=True,
         remaining_choice="Can refuse and escalate",
     )
-    assert_false("CHIM no pause when remaining choice found", c3.requires_pause())
+    assert_false("Constraint Awareness no pause when remaining choice found", c3.requires_pause())
 
     # Two consecutive no-choice with fewer than 2 reframes -> pause
-    c4 = CHIMCheck(
+    c4 = ConstraintAwarenessCheck(
         constraint_recognized=True,
         treating_as_absolute=True,
         no_choice_claim=True,
@@ -606,10 +606,10 @@ def test_chim_check():
         consecutive_no_choice_count=2,
         reframes=["one reframe only"],
     )
-    assert_true("CHIM pause: 2x no-choice, <2 reframes", c4.requires_pause())
+    assert_true("Constraint Awareness pause: 2x no-choice, <2 reframes", c4.requires_pause())
 
     # Two consecutive but with 2+ reframes -> depends on remaining_choice
-    c5 = CHIMCheck(
+    c5 = ConstraintAwarenessCheck(
         constraint_recognized=True,
         treating_as_absolute=True,
         no_choice_claim=True,
@@ -618,12 +618,12 @@ def test_chim_check():
         reframes=["reframe A", "reframe B"],
     )
     # Still pauses because no_choice_claim=True and remaining_choice=""
-    assert_true("CHIM pause: 2x no-choice, 2 reframes but empty choice", c5.requires_pause())
+    assert_true("Constraint Awareness pause: 2x no-choice, 2 reframes but empty choice", c5.requires_pause())
 
     # Serialization
     d = c.to_dict()
-    assert_in("CHIM to_dict has constraint", "constraint_recognized", d)
-    assert_in("CHIM to_dict has requires_pause", "requires_pause", d)
+    assert_in("Constraint Awareness to_dict has constraint", "constraint_recognized", d)
+    assert_in("Constraint Awareness to_dict has requires_pause", "requires_pause", d)
 
 
 # ===================================================================
@@ -1393,7 +1393,7 @@ def test_engine_create_assessment():
     assert_true("Engine log has UUID", len(log.record_id) > 0)
     assert_eq("Engine log action", log.action_description, "Send termination email to Employee X")
     assert_eq("Engine log agent type", log.agent_type, "human_manager")
-    assert_eq("Engine log version", log.version, "0.7.1")
+    assert_eq("Engine log version", log.version, "0.7.2")
     assert_true("Engine log has timestamp", log.timestamp is not None)
 
 
@@ -1490,32 +1490,32 @@ def test_engine_door_wall_gap():
     assert_true("DWG vague door alarm", found)
 
 
-def test_engine_chim_check():
-    print("\n--- Engine: CHIM Check ---")
+def test_engine_constraint_awareness_check():
+    print("\n--- Engine: Constraint Awareness Check ---")
 
     engine = PBHPEngine()
     log = engine.create_assessment("Execute order", "ai_system")
 
     # Choice exists
-    result = engine.perform_chim_check(
+    result = engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=True,
         no_choice_claim=False,
         remaining_choice="Can choose timing",
     )
-    assert_true("CHIM passes with choice", result)
+    assert_true("Constraint Awareness passes with choice", result)
 
     # No choice, no remaining
     log2 = engine.create_assessment("Execute mandatory order", "ai_system")
-    result2 = engine.perform_chim_check(
+    result2 = engine.perform_constraint_awareness_check(
         log2,
         constraint_recognized=True,
         no_choice_claim=True,
         remaining_choice="",
     )
-    assert_false("CHIM fails no choice", result2)
-    found = any("chim" in a.lower() for a in log2.drift_alarms_triggered)
-    assert_true("CHIM alarm triggered", found)
+    assert_false("Constraint Awareness fails no choice", result2)
+    found = any("constraint awareness" in a.lower() for a in log2.drift_alarms_triggered)
+    assert_true("Constraint Awareness alarm triggered", found)
 
 
 def test_engine_absolute_rejection():
@@ -1909,7 +1909,7 @@ def test_engine_generate_response():
         paradox_notes="Fairness requires it",
     )
     engine.perform_door_wall_gap(log, "HR policy", "Tone misread", "Rewrite with supportive language")
-    engine.perform_chim_check(log, True, False, "Can choose timing and wording")
+    engine.perform_constraint_awareness_check(log, True, False, "Can choose timing and wording")
 
     engine.add_harm(
         log,
@@ -1959,7 +1959,7 @@ def test_log_serialization():
     engine.perform_ethical_pause(log, "Testing serialization")
     engine.perform_quick_risk_check(log, True)
     engine.perform_door_wall_gap(log, "w", "g", "Narrow scope")
-    engine.perform_chim_check(log, True, False, "Can modify approach")
+    engine.perform_constraint_awareness_check(log, True, False, "Can modify approach")
     engine.perform_absolute_rejection_check(log)
     engine.add_harm(
         log, "Test harm", ImpactLevel.MODERATE, LikelihoodLevel.POSSIBLE,
@@ -1993,7 +1993,7 @@ def test_log_serialization():
     assert_in("Log has ethical_pause", "ethical_pause", d)
     assert_in("Log has quick_risk_check", "quick_risk_check", d)
     assert_in("Log has door_wall_gap", "door_wall_gap", d)
-    assert_in("Log has chim_check", "chim_check", d)
+    assert_in("Log has constraint_awareness_check", "constraint_awareness_check", d)
     assert_in("Log has absolute_rejection", "absolute_rejection", d)
     assert_in("Log has consequences", "consequences", d)
     assert_in("Log has consent_check", "consent_check", d)
@@ -2014,7 +2014,7 @@ def test_log_serialization():
     assert_true("Log to_json is string", isinstance(j, str))
     parsed = json.loads(j)
     assert_true("Log JSON parseable", isinstance(parsed, dict))
-    assert_eq("Log JSON version", parsed["version"], "0.7.1")
+    assert_eq("Log JSON version", parsed["version"], "0.7.2")
 
 
 def test_log_export():
@@ -2150,8 +2150,8 @@ def test_full_pipeline_orange():
         door="Have HR review letter before sending; offer 1:1 meeting",
     )
 
-    # Step 0f: CHIM Check
-    engine.perform_chim_check(
+    # Step 0f: Constraint Awareness Check
+    engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=True,
         no_choice_claim=False,
@@ -2215,7 +2215,7 @@ def test_full_pipeline_orange():
     assert_true("Pipeline: ethical pause set", log.ethical_pause is not None)
     assert_true("Pipeline: quick risk check set", log.quick_risk_check is not None)
     assert_true("Pipeline: DWG set", log.door_wall_gap is not None)
-    assert_true("Pipeline: CHIM set", log.chim_check is not None)
+    assert_true("Pipeline: Constraint Awareness set", log.constraint_awareness_check is not None)
     assert_true("Pipeline: ARC set", log.absolute_rejection is not None)
     assert_len("Pipeline: 1 harm", log.harms, 1)
     assert_true("Pipeline: consent set", log.consent_check is not None)
@@ -2231,7 +2231,7 @@ def test_full_pipeline_orange():
     d = log.to_dict()
     j = json.dumps(d, indent=2)
     parsed = json.loads(j)
-    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.7.1")
+    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.7.2")
 
 
 def test_full_pipeline_black():
@@ -2428,29 +2428,29 @@ def test_absolute_rejection_categories_constant():
 
 
 # ===================================================================
-# SECTION 25: CHIM Consecutive No-Choice via Engine
+# SECTION 25: Constraint Awareness Consecutive No-Choice via Engine
 # ===================================================================
 
 def test_engine_chim_consecutive():
     """Test consecutive no-choice tracking through engine."""
-    print("\n--- Engine: CHIM Consecutive No-Choice ---")
+    print("\n--- Engine: Constraint Awareness Consecutive No-Choice ---")
 
     engine = PBHPEngine()
-    log = engine.create_assessment("Test CHIM consecutive", "ai_system")
+    log = engine.create_assessment("Test Constraint Awareness consecutive", "ai_system")
 
     # First no-choice
-    engine.perform_chim_check(log, True, True, "")
-    assert_eq("CHIM consecutive: 1", log.chim_check.consecutive_no_choice_count, 1)
+    engine.perform_constraint_awareness_check(log, True, True, "")
+    assert_eq("Constraint Awareness consecutive: 1", log.constraint_awareness_check.consecutive_no_choice_count, 1)
 
     # Second no-choice (without reframes) -> should fail
-    result = engine.perform_chim_check(log, True, True, "")
-    assert_false("CHIM consecutive 2x fails", result)
-    assert_eq("CHIM consecutive: 2", log.chim_check.consecutive_no_choice_count, 2)
+    result = engine.perform_constraint_awareness_check(log, True, True, "")
+    assert_false("Constraint Awareness consecutive 2x fails", result)
+    assert_eq("Constraint Awareness consecutive: 2", log.constraint_awareness_check.consecutive_no_choice_count, 2)
 
     # Verify the double-no-choice alarm
     found = any("no choice" in a.lower() and "twice" in a.lower()
                  for a in log.drift_alarms_triggered)
-    assert_true("CHIM 2x alarm mentions twice", found)
+    assert_true("Constraint Awareness 2x alarm mentions twice", found)
 
 
 # ===================================================================
@@ -3121,7 +3121,7 @@ def run_all_tests():
 
     # Data classes
     test_door_wall_gap()
-    test_chim_check()
+    test_constraint_awareness_check()
     test_ethical_pause()
     test_quick_risk_check()
     test_absolute_rejection()
@@ -3145,7 +3145,7 @@ def run_all_tests():
     test_engine_ethical_pause()
     test_engine_quick_risk_check()
     test_engine_door_wall_gap()
-    test_engine_chim_check()
+    test_engine_constraint_awareness_check()
     test_engine_absolute_rejection()
     test_engine_add_harm()
     test_engine_consent_check()

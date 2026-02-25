@@ -61,4 +61,4 @@ Multiple drift alarm phrases were almost certainly in play during the decision t
 
 ---
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum (ALMSIVI)
+**PBHP v0.7** | Author: Charles Phillip Linstrum

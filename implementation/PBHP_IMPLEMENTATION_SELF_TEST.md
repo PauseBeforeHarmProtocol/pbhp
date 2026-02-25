@@ -133,5 +133,5 @@ For each scenario, check:
 
 ---
 
-*PBHP v0.7 | Self-Test v1.0 | Author: Charles Phillip Linstrum (ALMSIVI)*
+*PBHP v0.7 | Self-Test v1.0 | Author: Charles Phillip Linstrum*
 *Canonical source: https://github.com/PauseBeforeHarmProtocol/pbhp*

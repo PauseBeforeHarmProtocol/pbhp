@@ -38,7 +38,7 @@ from pbhp_core import (
     # Data classes
     Harm,
     DoorWallGap,
-    CHIMCheck,
+    ConstraintAwarenessCheck,
     EthicalPausePosture,
     QuickRiskCheck,
     AbsoluteRejectionCheck,
@@ -64,7 +64,7 @@ from pbhp_core import (
 # Constants
 # ---------------------------------------------------------------------------
 
-VERSION = "0.7"
+VERSION = "0.7.2"
 CONTACT_EMAIL = "pausebeforeharmprotocol_pbhp@protonmail.com"
 BANNER_WIDTH = 72
 
@@ -511,15 +511,15 @@ def step_0e_door_wall_gap(engine, log):
 
 
 # -------------------------------------------------------------------
-# Step 0f: CHIM Check
+# Step 0f: Constraint Awareness Check
 # -------------------------------------------------------------------
 
-def step_0f_chim_check(engine, log):
+def step_0f_constraint_awareness_check(engine, log):
     """
-    Step 0f: CHIM Check - Agency Under Constraint.
+    Step 0f: Constraint Awareness Check - Agency Under Constraint.
     Returns True if check passes (agency maintained).
     """
-    banner("Step 0f: CHIM Check (Agency Under Constraint)")
+    banner("Step 0f: Constraint Awareness Check (Agency Under Constraint)")
     print("""
   Prevents surrender of agency to perceived inevitability.
 
@@ -549,7 +549,7 @@ def step_0f_chim_check(engine, log):
     else:
         remaining = prompt("What remaining choice do you have?")
 
-    passed = engine.perform_chim_check(
+    passed = engine.perform_constraint_awareness_check(
         log,
         constraint_recognized=constraint,
         no_choice_claim=no_choice,
@@ -558,16 +558,16 @@ def step_0f_chim_check(engine, log):
     )
 
     if not passed:
-        error("CHIM check requires PAUSE.")
-        if log.chim_check and log.chim_check.consecutive_no_choice_count >= 2:
+        error("Constraint Awareness check requires PAUSE.")
+        if log.constraint_awareness_check and log.constraint_awareness_check.consecutive_no_choice_count >= 2:
             error("'No choice' claimed twice in a row.")
             error("Must provide at least 2 alternative framings and re-run Door/Wall/Gap.")
         retry = prompt_yes_no("Would you like to retry?", default=True)
         if retry:
-            return step_0f_chim_check(engine, log)
+            return step_0f_constraint_awareness_check(engine, log)
         return False
 
-    success("CHIM check passed. Agency maintained.")
+    success("Constraint Awareness check passed. Agency maintained.")
     return True
 
 
@@ -1133,7 +1133,7 @@ def consequences_checklist_flow(engine, log):
         print()
         error("Critical flags in categories A/C/D require:")
         error("  - Door/Wall/Gap re-run")
-        error("  - CHIM check re-run")
+        error("  - Constraint Awareness check re-run")
         error("  - Safer alternative search")
 
 
@@ -1629,7 +1629,7 @@ def full_assessment(engine):
     0g   Absolute Rejection Check
      1   Name the Action (with validation)
     0e   Door / Wall / Gap
-    0f   CHIM Check (agency under constraint)
+    0f   Constraint Awareness Check (agency under constraint)
      2   Identify Harms (loop with uncertainty and audience risk)
      3   Risk Class Display (automatic calculation)
      4   Consent and Representation Check
@@ -1682,9 +1682,9 @@ def full_assessment(engine):
         info("No concrete door found. Assessment cannot proceed.")
         return
 
-    # ---- Step 0f: CHIM Check ----
-    if not step_0f_chim_check(engine, log):
-        info("CHIM check failed. Assessment paused.")
+    # ---- Step 0f: Constraint Awareness Check ----
+    if not step_0f_constraint_awareness_check(engine, log):
+        info("Constraint Awareness check failed. Assessment paused.")
         return
 
     # ---- Step 2: Identify Harms ----
@@ -1803,7 +1803,7 @@ def show_help():
   Step 0g    Absolute Rejection Check
   Step 1     Name the Action (with verb validation)
   Step 0e    Door / Wall / Gap analysis
-  Step 0f    CHIM Check (agency under constraint)
+  Step 0f    Constraint Awareness Check (agency under constraint)
   Step 2     Identify Harms (loop with uncertainty + audience risk)
   Step 3     Risk Class display (automatic calculation)
   Step 4     Consent and Representation Check
@@ -1836,7 +1836,7 @@ def show_help():
   KEY CONCEPTS
   """ + "=" * 66 + """
   Door/Wall/Gap    Identify constraints and escape vectors
-  CHIM Check       Prevent surrender to perceived inevitability
+  Constraint Awareness Check       Prevent surrender to perceived inevitability
   Ethical Pause    Balance compassion, logic, paradox before acting
   Drift Alarms     Detect rationalization and euphemism patterns
   Red Team Review  Adversarial stress test with empathy pass
