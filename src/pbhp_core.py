@@ -188,7 +188,7 @@ ABSOLUTE_REJECTION_CATEGORIES = [
 class Harm:
     """
     Represents a potential harm identified in Step 2.
-    Includes full risk calculation per PBHP v0.7 deterministic rules.
+    Includes full risk calculation per PBHP v0.7.2 deterministic rules.
     """
     description: str
     impact: ImpactLevel
@@ -1206,14 +1206,14 @@ class FinalizationGateResult:
 
 
 # ---------------------------------------------------------------------------
-# PBHP Log Record v0.7.1
+# PBHP Log Record v0.7.2
 # ---------------------------------------------------------------------------
 
 @dataclass
 class PBHPLog:
     """
     Complete PBHP assessment log for audit and review.
-    Implements the full PBHP Log Record v0.7 format with all metadata fields.
+    Implements the full PBHP Log Record v0.7.2 format with all metadata fields.
     """
     # Record metadata
     record_id: str
@@ -2928,7 +2928,7 @@ def compare_options(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("PBHP Core Module v0.7.1 (Full Implementation)")
+    print("PBHP Core Module v0.7.2 (Full Implementation)")
     print("=" * 60)
 
     # Quick harm check example

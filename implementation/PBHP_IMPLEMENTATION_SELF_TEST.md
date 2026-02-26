@@ -1,7 +1,7 @@
 # PBHP Implementation Self-Test
 ## Verify You're Running the Protocol Correctly
 
-**Version:** PBHP v0.7 CORE | **Format:** 5 scenarios, graded rubric
+**Version:** PBHP v0.7.2 CORE | **Format:** 5 scenarios, graded rubric
 
 ---
 
@@ -133,5 +133,5 @@ For each scenario, check:
 
 ---
 
-*PBHP v0.7 | Self-Test v1.0 | Author: Charles Phillip Linstrum*
+*PBHP v0.7.2 | Self-Test v1.0 | Author: Charles Phillip Linstrum*
 *Canonical source: https://github.com/PauseBeforeHarmProtocol/pbhp*

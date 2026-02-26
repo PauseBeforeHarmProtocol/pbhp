@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.7 — ULTRA
+Pause-Before-Harm Protocol (PBHP) v0.7.2 — ULTRA
 Full constitutional / sovereign decision depth.
 
 PBHP-ULTRA is the complete protocol for high-stakes, irreversible,
@@ -610,7 +610,7 @@ class PBHPUltraLog:
 
     # ULTRA metadata
     tier: str = "ULTRA"
-    version: str = "0.7-ULTRA"
+    version: str = "0.7.2-ULTRA"
 
     # Supreme constraint checked
     supreme_constraint_checked: bool = False
@@ -1196,7 +1196,7 @@ def get_lens_quick_check(lens: TriuneLens) -> List[str]:
 # ===================================================================
 
 if __name__ == "__main__":
-    print("PBHP-ULTRA v0.7 (Constitutional Depth)")
+    print("PBHP-ULTRA v0.7.2 (Constitutional Depth)")
     print("=" * 60)
 
     engine = PBHPUltraEngine()

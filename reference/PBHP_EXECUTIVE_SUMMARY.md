@@ -1,6 +1,6 @@
-# PBHP v0.7 — Executive Summary
+# PBHP v0.7.2 — Executive Summary
 
-The complete Pause Before Harm Protocol condensed to five pages. For the full constitutional specification, see PBHP_v0.7_ULTRA_FINAL.
+The complete Pause Before Harm Protocol condensed to five pages. For the full constitutional specification, see PBHP_v0.7.2_ULTRA_FINAL.
 
 ## What PBHP Is
 
@@ -101,4 +101,4 @@ Quality Systems Manager, FDA-regulated healthcare
 Version 0.7, February 2026
 Open source. Available at [GitHub link].
 
-**PBHP v0.7** | Author: Charles Phillip Linstrum
+**PBHP v0.7.2** | Author: Charles Phillip Linstrum

@@ -71,4 +71,4 @@ The goal is to detect **systematic patterns** that suggest PBHP is being gamed, 
 
 ---
 
-PBHP Observability Pack v0.1 | Add-on for PBHP v0.7.1
+PBHP Observability Pack v0.1 | Add-on for PBHP v0.7.2

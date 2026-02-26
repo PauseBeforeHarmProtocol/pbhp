@@ -1,5 +1,5 @@
 """
-PBHP v0.7 — MIN and ULTRA Test Suite
+PBHP v0.7.2 — MIN and ULTRA Test Suite
 
 Tests cover:
   - PBHP-MIN: triggers, 5-step pipeline, drift alarms, false positive,
@@ -425,7 +425,7 @@ def test_min_serialization():
     )
     d = log.to_dict()
     assert_in("MIN dict has version", "version", d)
-    assert_eq("MIN dict version", d["version"], "0.7-MIN")
+    assert_eq("MIN dict version", d["version"], "0.7.2-MIN")
     assert_in("MIN dict has tier", "tier", d)
     assert_in("MIN dict has pause", "pause", d)
     assert_in("MIN dict has action", "action", d)
@@ -435,7 +435,7 @@ def test_min_serialization():
 
     j = log.to_json()
     parsed = json.loads(j)
-    assert_eq("MIN JSON version", parsed["version"], "0.7-MIN")
+    assert_eq("MIN JSON version", parsed["version"], "0.7.2-MIN")
 
 
 def test_min_convenience():
@@ -776,7 +776,7 @@ def test_ultra_create_assessment():
     assert_true("ultra log created", ulog is not None)
     assert_true("ultra has core log", ulog.core_log is not None)
     assert_eq("ultra tier", ulog.tier, "ULTRA")
-    assert_eq("ultra version", ulog.version, "0.7-ULTRA")
+    assert_eq("ultra version", ulog.version, "0.7.2-ULTRA")
     assert_true("ultra core has record_id", len(ulog.core_log.record_id) > 0)
 
 
@@ -977,7 +977,7 @@ def test_ultra_serialization():
     d = ulog.to_dict()
     assert_in("ultra dict has tier", "tier", d)
     assert_eq("ultra dict tier", d["tier"], "ULTRA")
-    assert_eq("ultra dict version", d["version"], "0.7-ULTRA")
+    assert_eq("ultra dict version", d["version"], "0.7.2-ULTRA")
     assert_in("ultra dict has supreme", "supreme_constraint_checked", d)
     assert_in("ultra dict has activation", "activation_triggers", d)
     assert_in("ultra dict has ultra_ethical_pause", "ultra_ethical_pause", d)
@@ -1241,7 +1241,7 @@ def test_ultra_get_log_by_id():
 
 def run_all_tests():
     print("=" * 70)
-    print("PBHP v0.7 — MIN and ULTRA Test Suite")
+    print("PBHP v0.7.2 — MIN and ULTRA Test Suite")
     print("=" * 70)
 
     # MIN tests

@@ -393,7 +393,7 @@ For questions, feedback, or inquiries:
 
 ## License and Usage
 
-This implementation is based on the Pause-Before-Harm Protocol v0.7 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
+This implementation is based on the Pause-Before-Harm Protocol v0.7.2 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
 
 **Run PBHP on PBHP itself if you start treating it as beyond question.**
 

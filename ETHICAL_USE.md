@@ -88,7 +88,7 @@ PBHP is designed to be adapted, extended, and modified. We **encourage** you to:
 
 You are free to fork and modify PBHP under the MIT License. If you do, we ask:
 
-1. **Preserve attribution** - Acknowledge PBHP v0.7 as the source
+1. **Preserve attribution** - Acknowledge PBHP v0.7.2 as the source
 2. **Document changes** - Make clear what you modified and why
 3. **Consider impact** - If your changes weaken harm-reduction for vulnerable populations, explain your reasoning
 
@@ -114,4 +114,4 @@ We're happy to discuss edge cases, integration challenges, or governance questio
 
 ---
 
-*PBHP v0.7 | Open Protocol | Ethical Use Guidelines v1.0*
+*PBHP v0.7.2 | Open Protocol | Ethical Use Guidelines v1.0*

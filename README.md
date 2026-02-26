@@ -24,7 +24,7 @@ Then it gives you a structured way to answer it.
 
 **For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) provides a working implementation across all three tiers.
 
-**For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.1.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`. The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
+**For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.2.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`. The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
 **For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Five scenarios, 35-point rubric. Tells you if you're running the protocol correctly.
 
@@ -65,16 +65,16 @@ pbhp/
 ├── protocol/                              ← The protocol itself
 │   ├── PromptBeforeHarmProtocol_v0.1.md  ← System prompt (START HERE)
 │   ├── PBHP_Prompt_Paste_Versions.md     ← Paste-ready versions (~1250 / ~500 tokens)
-│   ├── PBHP-CORE_INJECTION_v0.7.1.txt    ← Legacy agent-loadable plain text
-│   ├── PBHP-CORE_v0.7.1.md               ← Full CORE tier specification
-│   ├── PBHP-ULTRA_v0.7.1.md              ← Full ULTRA tier specification
-│   ├── PBHP-MIN_v0.7.1.md                ← Minimum viable (reflex) tier
-│   ├── PBHP_v0.7.1_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
-│   └── PBHP-v0.7.1-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.1
+│   ├── PBHP-CORE_INJECTION_v0.7.2.txt    ← Legacy agent-loadable plain text
+│   ├── PBHP-CORE_v0.7.2.md               ← Full CORE tier specification
+│   ├── PBHP-ULTRA_v0.7.2.md              ← Full ULTRA tier specification
+│   ├── PBHP-MIN_v0.7.2.md                ← Minimum viable (reflex) tier
+│   ├── PBHP_v0.7.2_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
+│   └── PBHP-v0.7.2-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.2
 │
 ├── src/                                   ← Python implementation
 │   ├── README.md                          ← Setup and usage instructions
-│   ├── pbhp_core.py                       ← CORE tier engine (v0.7.1)
+│   ├── pbhp_core.py                       ← CORE tier engine (v0.7.2)
 │   ├── pbhp_ultra.py                      ← ULTRA tier engine
 │   ├── pbhp_min.py                        ← MIN tier engine
 │   ├── pbhp_cli.py                        ← Command-line interface
