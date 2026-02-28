@@ -4,6 +4,7 @@
 **Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
+**Social Media:** facebook.com/plinst
 ---
 
 ## What Is PBHP?
