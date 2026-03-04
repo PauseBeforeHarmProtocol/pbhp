@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.7.2 — MIN
+Pause-Before-Harm Protocol (PBHP) v0.8.0 — MIN
 Rapid harm-check for humans or AI operating under time pressure,
 cognitive load, or limited compute.
 

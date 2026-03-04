@@ -1,6 +1,6 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.7.2 (Public Release)
+**Version:** 0.8.0 (Public Release)
 **Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
@@ -53,6 +53,22 @@ Built-in safeguards: **drift alarms** catch rationalization in real time, a **fa
 
 ---
 
+## v0.8.0 Modules
+
+PBHP v0.8.0 adds five operational modules that extend the core protocol:
+
+**Triage Classifier** (`pbhp_triage.py`) — Routes incoming decisions to the appropriate tier (HUMAN/MIN/CORE/ULTRA) based on signal analysis. Evaluates irreversibility, vulnerable population impact, power asymmetry, and amplification potential. Prevents unnecessary escalation while ensuring high-risk decisions get appropriate scrutiny.
+
+**Domain Metric Packs** (`pbhp_metrics.py`) — Pre-built severity thresholds for hiring, healthcare, finance, content moderation, and security. Each pack defines concrete harm levels (healthcare CATASTROPHIC = patient death), reversibility timeframes, and stakeholder templates. Eliminates guesswork in domain-specific risk scoring.
+
+**Multi-Agent Coordination** (`pbhp_multiagent.py`) — Rules for when multiple agents running PBHP reach different gate decisions. Implements quorum voting with veto for irreversible actions, weighted expert voting, and mandatory human-in-the-loop for BLACK gates. Ensures multi-agent disagreement never weakens safety.
+
+**Compliance Crosswalks** (`pbhp_compliance.py`) — Maps PBHP steps and artifacts to NIST AI RMF, ISO/IEC 42001, ISO/IEC 23894, and EU AI Act requirements. Shows which PBHP step satisfies which compliance requirement. Generates audit checklists and compliance reports.
+
+**Drift Measurement** (`pbhp_drift.py`) — Upgrades from binary drift flags to quantifiable drift rates. Tracks refuse rate, average gate level, vulnerable population impact, and confidence scores over time. Computes drift velocity, acceleration, and projects threshold breach dates.
+
+---
+
 ## Repository Structure
 
 ```
@@ -75,13 +91,18 @@ pbhp/
 │
 ├── src/                                   ← Python implementation
 │   ├── README.md                          ← Setup and usage instructions
-│   ├── pbhp_core.py                       ← CORE tier engine (v0.7.2)
+│   ├── pbhp_core.py                       ← CORE tier engine (v0.8.0)
 │   ├── pbhp_ultra.py                      ← ULTRA tier engine
 │   ├── pbhp_min.py                        ← MIN tier engine
 │   ├── pbhp_cli.py                        ← Command-line interface
 │   ├── pbhp_examples.py                   ← Usage examples and walkthroughs
 │   ├── pbhp_tests.py                      ← CORE tier test suite
-│   └── pbhp_min_ultra_tests.py            ← MIN + ULTRA tier test suite
+│   ├── pbhp_min_ultra_tests.py            ← MIN + ULTRA tier test suite
+│   ├── pbhp_triage.py                     ← Decision triage classifier (v0.8.0)
+│   ├── pbhp_metrics.py                    ← Domain-specific harm metric packs (v0.8.0)
+│   ├── pbhp_multiagent.py                 ← Multi-agent coordination protocol (v0.8.0)
+│   ├── pbhp_compliance.py                 ← Compliance framework crosswalks (v0.8.0)
+│   └── pbhp_drift.py                      ← Drift rate measurement engine (v0.8.0)
 │
 ├── receipts/                              ← Pause Receipt system
 │   └── PBHP-RECEIPT_SCHEMA_v1.1.md       ← JSON + plain text receipt format

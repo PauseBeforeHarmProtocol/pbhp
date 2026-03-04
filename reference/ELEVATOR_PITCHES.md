@@ -58,4 +58,4 @@ Phil Linstrum | Quality Systems Manager | pausebeforeharmprotocol@protonmail.com
 
 ---
 
-**PBHP v0.7.2** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum

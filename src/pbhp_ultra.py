@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.7.2 — ULTRA
+Pause-Before-Harm Protocol (PBHP) v0.8.0 — ULTRA
 Full constitutional / sovereign decision depth.
 
 PBHP-ULTRA is the complete protocol for high-stakes, irreversible,

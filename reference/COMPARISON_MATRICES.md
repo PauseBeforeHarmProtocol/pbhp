@@ -15,7 +15,7 @@ This is not a replacement for any of these frameworks. It is the missing layer t
 
 ## PBHP vs. AI Safety & Decision-Making Frameworks
 
-| Feature | PBHP v0.7.2 | Constitutional AI (Anthropic) | RLHF Guardrails | WHO Surgical Checklist |
+| Feature | PBHP v0.8.0 | Constitutional AI (Anthropic) | RLHF Guardrails | WHO Surgical Checklist |
 |---------|-----------|-------------------------------|-----------------|------------------------|
 | Tiered Architecture | Yes (4 tiers) | No (single tier) | No (single tier) | No (single checklist) |
 | False Positive Management | Yes (formal valve) | No | No | No |
@@ -29,7 +29,7 @@ This is not a replacement for any of these frameworks. It is the missing layer t
 
 ## PBHP vs. Quality & Operational Management
 
-| Feature | PBHP v0.7.2 | ISO 9001:2015 | FMEA | CAPA |
+| Feature | PBHP v0.8.0 | ISO 9001:2015 | FMEA | CAPA |
 |---------|-----------|----------------|------|------|
 | When it acts | Before the decision | Systemic (ongoing) | During design | After the failure |
 | False positive handling | Built-in valve | Not addressed | Not addressed | Not addressed |
@@ -49,4 +49,4 @@ This is not a replacement for any of these frameworks. It is the missing layer t
 
 ---
 
-**PBHP v0.7.2** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum

@@ -130,4 +130,4 @@ For each scenario:
 ---
 
 PBHP Eval Harness Starter Pack v0.1 | 12 scenarios, 10 failure modes
-For use with PBHP v0.7.2
+For use with PBHP v0.8.0

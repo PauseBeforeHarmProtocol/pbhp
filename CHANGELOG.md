@@ -2,6 +2,32 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## [0.8.0] - 2026-03-04
+
+### Added
+- Decision Triage Classifier (`pbhp_triage.py`) — routes decisions to HUMAN/MIN/CORE/ULTRA based on 8 risk signals with weighted scoring
+- Domain-Specific Metric Packs (`pbhp_metrics.py`) — pre-built severity thresholds for hiring, healthcare, finance, content moderation, security
+- Multi-Agent Coordination Protocol (`pbhp_multiagent.py`) — quorum voting, qualified veto on irreversible actions, BLACK gate auto-escalation
+- Compliance Framework Crosswalks (`pbhp_compliance.py`) — mappings to NIST AI RMF, ISO/IEC 42001, ISO/IEC 23894, EU AI Act
+- Drift Rate Measurement Engine (`pbhp_drift.py`) — quantifiable drift velocity, acceleration, threshold breach projection, temporal analysis
+
+### Changed
+- Version bump from 0.7.2 to 0.8.0 across all source files, documentation, and references
+- Triage module integrates with existing tier architecture (HUMAN/MIN/CORE/ULTRA)
+- Metric packs use existing ImpactLevel and LikelihoodLevel enums from pbhp_core
+- Multi-agent coordination uses existing RiskClass and DecisionOutcome from pbhp_core
+- Compliance crosswalks reference existing PBHP 7-step process
+- Drift measurement extends existing drift alarm concept from qualitative flags to quantitative metrics
+
+### Design Principles (v0.8.0)
+- All new modules import from pbhp_core — no parallel type systems
+- Each module is independently usable — no mandatory dependencies between new modules
+- Triage routes TO existing tiers, does not replace them
+- Metric packs are domain templates, not overrides — existing scoring logic unchanged
+- Multi-agent coordination defaults to most conservative gate on ties
+- Compliance crosswalks are evidence maps, not certification claims
+- Drift measurement is additive — existing binary drift alarms still function
+
 ## [0.7.2] - 2026-02-25
 
 ### Terminology Migration

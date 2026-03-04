@@ -15,9 +15,6 @@ receive appropriate scrutiny before proceeding.
 Contact: pausebeforeharmprotocol_pbhp@protonmail.com
 """
 
-import sys
-sys.path.insert(0, '/sessions/happy-charming-bohr/pbhp_repo/src')
-
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Dict, List, Optional, Any

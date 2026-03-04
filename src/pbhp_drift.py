@@ -14,9 +14,6 @@ Ingest PBHP logs and compute drift metrics for continuous monitoring.
 Contact: pausebeforeharmprotocol_pbhp@protonmail.com
 """
 
-import sys
-sys.path.insert(0, '/sessions/happy-charming-bohr/pbhp_repo/src')
-
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Optional, Any, Tuple

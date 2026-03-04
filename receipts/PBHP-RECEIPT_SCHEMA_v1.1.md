@@ -95,7 +95,7 @@ Even without cryptographic signing, receipts should include enough info to recon
 - `model_config`: model name + version (e.g., "claude-opus-4-6", "gpt-4o-2025-01")
 - `config_fingerprint`: hash of the system prompt or policy bundle version (optional but encouraged)
 
-This allows post-incident analysis: "Was this decision made by an agent running PBHP v0.7.2 with config X, or a different version?"
+This allows post-incident analysis: "Was this decision made by an agent running PBHP v0.8.0 with config X, or a different version?"
 
 ## Adoption Path
 
@@ -106,4 +106,4 @@ This allows post-incident analysis: "Was this decision made by an agent running 
 
 ---
 
-PBHP v0.7.2 | Receipt Schema v1.1
+PBHP v0.8.0 | Receipt Schema v1.1

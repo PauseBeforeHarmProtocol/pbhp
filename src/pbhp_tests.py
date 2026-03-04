@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.7.2 - Comprehensive Test Suite
+Pause-Before-Harm Protocol (PBHP) v0.8.0 - Comprehensive Test Suite
 
 Tests cover all modules, risk calculations, drift detection, tone validation,
 workflow enforcement, serialization, and the full protocol pipeline.
@@ -1393,7 +1393,7 @@ def test_engine_create_assessment():
     assert_true("Engine log has UUID", len(log.record_id) > 0)
     assert_eq("Engine log action", log.action_description, "Send termination email to Employee X")
     assert_eq("Engine log agent type", log.agent_type, "human_manager")
-    assert_eq("Engine log version", log.version, "0.7.2")
+    assert_eq("Engine log version", log.version, "0.8.0")
     assert_true("Engine log has timestamp", log.timestamp is not None)
 
 
@@ -2014,7 +2014,7 @@ def test_log_serialization():
     assert_true("Log to_json is string", isinstance(j, str))
     parsed = json.loads(j)
     assert_true("Log JSON parseable", isinstance(parsed, dict))
-    assert_eq("Log JSON version", parsed["version"], "0.7.2")
+    assert_eq("Log JSON version", parsed["version"], "0.8.0")
 
 
 def test_log_export():
@@ -2231,7 +2231,7 @@ def test_full_pipeline_orange():
     d = log.to_dict()
     j = json.dumps(d, indent=2)
     parsed = json.loads(j)
-    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.7.2")
+    assert_eq("Pipeline: serialization roundtrip version", parsed["version"], "0.8.0")
 
 
 def test_full_pipeline_black():

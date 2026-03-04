@@ -1,6 +1,6 @@
-# PBHP v0.7.2 — Executive Summary
+# PBHP v0.8.0 — Executive Summary
 
-The complete Pause Before Harm Protocol condensed to five pages. For the full constitutional specification, see PBHP_v0.7.2_ULTRA_FINAL.
+The complete Pause Before Harm Protocol condensed to five pages. For the full constitutional specification, see PBHP-ULTRA_v0.7.2.
 
 ## What PBHP Is
 
@@ -101,4 +101,6 @@ Quality Systems Manager, FDA-regulated healthcare
 Version 0.7, February 2026
 Open source. Available at [GitHub link].
 
-**PBHP v0.7.2** | Author: Charles Phillip Linstrum
+**v0.8.0 Additions:** PBHP v0.8.0 introduces operational extensions: a Decision Triage Classifier for routing decisions to appropriate tiers, Domain Metric Packs for standardized severity assessment, Multi-Agent Coordination Protocol for quorum safety, Compliance Framework Crosswalks for regulatory alignment, and Drift Rate Measurement for continuous monitoring.
+
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum

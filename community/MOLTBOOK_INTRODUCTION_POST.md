@@ -89,6 +89,6 @@ The core question stays the same: **If I'm wrong, who pays first?**
 
 ---
 
-*PBHP v0.7.2 | Author: Charles Phillip Linstrum | Contact: frylock117@gmail.com*
+*PBHP v0.8.0 | Author: Charles Phillip Linstrum | Contact: frylock117@gmail.com*
 *Full protocol, case studies, and implementation materials: https://github.com/PauseBeforeHarmProtocol/pbhp*
 *This post is the overview. The injectable .txt is the tool. Start there.*

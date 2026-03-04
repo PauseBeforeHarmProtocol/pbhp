@@ -1,12 +1,12 @@
 """
 Pause-Before-Harm Protocol (PBHP) - Core Implementation
-Version: 0.7.2 (Full Specification)
+Version: 0.8.0 (Full Specification)
 
 A decision-making framework for humans and AI systems to evaluate
 actions that could cause harm, with emphasis on protecting vulnerable
 groups and maintaining ethical accountability.
 
-This implementation faithfully encodes the complete PBHP v0.7.2 protocol
+This implementation faithfully encodes the complete PBHP v0.8.0 protocol
 including all foundation gates, seven steps, epistemic fencing,
 red team review, drift detection, tone constraints, uncertainty
 framework, structured logging, and two-phase commit validation.
@@ -1218,7 +1218,7 @@ class PBHPLog:
     # Record metadata
     record_id: str
     timestamp: datetime
-    version: str = "0.7.2"
+    version: str = "0.8.0"
 
     # Step 1: Action
     action_description: str = ""

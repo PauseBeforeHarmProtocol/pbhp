@@ -292,7 +292,7 @@ FORCED-MOTION TRAP DETECTOR (if any trigger → refuse the framed action):
 CORE QUESTION: "If I'm wrong, who pays first — and can they recover?"
 ====================================================================================
 PromptBeforeHarmProtocol v0.1 | Pause Before Harm Protocol
-For RED/BLACK cases, governance, and audits: invoke PBHP-ULTRA v0.7.2
+For RED/BLACK cases, governance, and audits: invoke PBHP-ULTRA v0.8.0
 Full spec: github.com/PauseBeforeHarmProtocol/pbhp
 ```
 

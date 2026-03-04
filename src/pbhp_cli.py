@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Pause-Before-Harm Protocol (PBHP) - Interactive CLI
-Version: 0.7.2 (Full Specification)
+Version: 0.8.0 (Full Specification)
 
-An interactive command-line interface for conducting PBHP v0.7.2 assessments,
+An interactive command-line interface for conducting PBHP v0.8.0 assessments,
 including all foundation gates, seven protocol steps, epistemic fencing,
 red team review, drift detection, tone validation, and structured logging.
 
@@ -64,7 +64,7 @@ from pbhp_core import (
 # Constants
 # ---------------------------------------------------------------------------
 
-VERSION = "0.7.2"
+VERSION = "0.8.0"
 CONTACT_EMAIL = "pausebeforeharmprotocol_pbhp@protonmail.com"
 BANNER_WIDTH = 72
 
