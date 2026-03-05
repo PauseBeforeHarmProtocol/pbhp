@@ -49,4 +49,4 @@ This is not a replacement for any of these frameworks. It is the missing layer t
 
 ---
 
-**PBHP v0.8.0** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst

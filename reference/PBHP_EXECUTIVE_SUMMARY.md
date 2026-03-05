@@ -98,9 +98,9 @@ Missing any force is a failure condition: Care without Clarity leads to error. C
 
 Author: Charles Phillip Linstrum
 Quality Systems Manager, FDA-regulated healthcare
-Version 0.7, February 2026
+Version 0.8.0, March 2026
 Open source. Available at [GitHub link].
 
 **v0.8.0 Additions:** PBHP v0.8.0 introduces operational extensions: a Decision Triage Classifier for routing decisions to appropriate tiers, Domain Metric Packs for standardized severity assessment, Multi-Agent Coordination Protocol for quorum safety, Compliance Framework Crosswalks for regulatory alignment, and Drift Rate Measurement for continuous monitoring.
 
-**PBHP v0.8.0** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst

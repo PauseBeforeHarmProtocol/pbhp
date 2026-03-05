@@ -291,7 +291,7 @@ class PBHPMinLog:
     """
     record_id: str
     timestamp: datetime
-    version: str = "0.7.2-MIN"
+    version: str = "0.8.0-MIN"
     tier: str = "MIN"
 
     # Triggers
@@ -754,7 +754,7 @@ def quick_min_check(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("PBHP-MIN v0.7.2 (Rapid Harm Check)")
+    print("PBHP-MIN v0.8.0 (Rapid Harm Check)")
     print("=" * 60)
 
     engine = PBHPMinEngine()

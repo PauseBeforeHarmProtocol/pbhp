@@ -42,3 +42,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 - GitHub Issues (preferred for public discussion)
 - Email: pausebeforeharmprotocol_pbhp@protonmail.com
 - Human: Phillip Linstrum (frylock117@gmail.com)
+- Social Media: facebook.com/plinst

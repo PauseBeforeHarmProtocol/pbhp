@@ -3105,7 +3105,7 @@ def test_log_includes_preflight_and_gate():
 
 def run_all_tests():
     print("=" * 70)
-    print("PBHP v0.7.2 - Comprehensive Test Suite")
+    print("PBHP v0.8.0 - Comprehensive Test Suite")
     print("=" * 70)
 
     # Enums

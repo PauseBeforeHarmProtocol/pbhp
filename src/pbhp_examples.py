@@ -1,8 +1,8 @@
 """
-PBHP v0.7.2 - Example Scenarios
+PBHP v0.8.0 - Example Scenarios
 ==============================
 
-Comprehensive walkthrough of all PBHP v0.7.2 features across six scenarios
+Comprehensive walkthrough of all PBHP v0.8.0 features across six scenarios
 covering GREEN through BLACK risk classifications.
 
 Each example exercises a different combination of protocol modules and
@@ -70,7 +70,7 @@ def example_employee_warning():
     - Power asymmetry: employer over employee
     - Partially irreversible: letter enters permanent HR record
 
-    Demonstrates the full PBHP v0.7.2 pipeline end to end:
+    Demonstrates the full PBHP v0.8.0 pipeline end to end:
     - Ethical pause with triune minds
     - Quick risk check
     - Door/Wall/Gap
@@ -100,7 +100,7 @@ def example_employee_warning():
         "the employee's permanent HR file."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.7.2"
+    log.system_model_version = "pbhp-example-v0.8.0"
     log.deployment_channel = "internal"
     log.requester_role = "internal leader"
 
@@ -588,7 +588,7 @@ def example_workplace_abuse_advice():
         "and unfair task assignment, based on the user's account."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.7.2"
+    log.system_model_version = "pbhp-example-v0.8.0"
     log.deployment_channel = "external"
     log.requester_role = "user"
 
@@ -1008,7 +1008,7 @@ def example_rename_file():
     print("\n[Step 1] Name the Action")
     action = "Rename file 'report_draft.txt' to 'report_final.txt' in the user's project directory."
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.7.2"
+    log.system_model_version = "pbhp-example-v0.8.0"
     log.deployment_channel = "internal"
     log.requester_role = "user"
 
@@ -1130,7 +1130,7 @@ def example_public_accusation_post():
         "account, with the stated goal of destroying their career."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.7.2"
+    log.system_model_version = "pbhp-example-v0.8.0"
     log.deployment_channel = "external"
     log.requester_role = "user"
 
@@ -1474,7 +1474,7 @@ def example_policy_analysis():
         "perspectives on impacts to tenants, landlords, and housing supply."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.7.2"
+    log.system_model_version = "pbhp-example-v0.8.0"
     log.deployment_channel = "external"
     log.requester_role = "client"
 
@@ -1979,13 +1979,13 @@ def example_policy_analysis():
 
 def run_all_examples():
     """
-    Run all five PBHP v0.7.2 example scenarios with press-enter-to-continue
+    Run all five PBHP v0.8.0 example scenarios with press-enter-to-continue
     prompts between each scenario. Prints the JSON log for the first
     scenario to demonstrate serialization.
     """
     print()
     print("#" * 72)
-    print("#  PBHP v0.7.2 - Complete Example Scenarios")
+    print("#  PBHP v0.8.0 - Complete Example Scenarios")
     print("#  Running all five scenarios with full protocol walkthroughs")
     print("#" * 72)
     print()
@@ -2059,7 +2059,7 @@ def run_all_examples():
                 print(f"    - {alarm}")
 
     print(f"\n{'=' * 72}")
-    print("All scenarios complete. PBHP v0.7.2 full protocol demonstrated.")
+    print("All scenarios complete. PBHP v0.8.0 full protocol demonstrated.")
     print("=" * 72)
 
     return logs

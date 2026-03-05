@@ -106,4 +106,4 @@ This allows post-incident analysis: "Was this decision made by an agent running 
 
 ---
 
-PBHP v0.8.0 | Receipt Schema v1.1
+PBHP v0.8.0 | Receipt Schema v1.1 | Author: Charles Phillip Linstrum | facebook.com/plinst

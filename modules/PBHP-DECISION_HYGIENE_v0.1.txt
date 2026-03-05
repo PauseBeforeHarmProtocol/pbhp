@@ -1,5 +1,5 @@
 PBHP Decision Hygiene Micro-Module v0.1
-Injectable add-on for PBHP-CORE v0.7.2 | Prevents: assumption traps, premature irreversibility, frame blindness
+Injectable add-on for PBHP-CORE v0.8.0 | Prevents: assumption traps, premature irreversibility, frame blindness
 ====================================================================================
 
 PURPOSE: Catch the four most common "confidently wrong" failure modes before they reach the Door/Wall/Gap step.
@@ -69,4 +69,4 @@ HOW TO USE:
     Step 2 → Door / Wall / Gap (now informed by the micro-checks)
 
 ====================================================================================
-PBHP Decision Hygiene Micro-Module v0.1 | Add-on for PBHP-CORE v0.7.2
+PBHP Decision Hygiene Micro-Module v0.1 | Add-on for PBHP-CORE v0.8.0

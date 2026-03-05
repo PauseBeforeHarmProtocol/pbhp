@@ -297,3 +297,5 @@ If you encounter new adversarial patterns not listed here, please document:
 4. Real-world example if available
 
 Submit to: pausebeforeharmprotocol_pbhp@protonmail.com
+
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst

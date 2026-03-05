@@ -114,4 +114,4 @@ We're happy to discuss edge cases, integration challenges, or governance questio
 
 ---
 
-*PBHP v0.8.0 | Open Protocol | Ethical Use Guidelines v1.0*
+*PBHP v0.8.0 | Open Protocol | Ethical Use Guidelines v1.0 | facebook.com/plinst*

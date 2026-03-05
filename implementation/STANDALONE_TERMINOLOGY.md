@@ -23,4 +23,4 @@ The ALMSIVI CHIM origin is documented in the CHANGELOG and referenced in the ele
 
 ---
 
-**PBHP v0.7.2** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum

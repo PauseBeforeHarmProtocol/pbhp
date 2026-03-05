@@ -1,4 +1,4 @@
-# Pause-Before-Harm Protocol (PBHP) v0.7
+# Pause-Before-Harm Protocol (PBHP) v0.8.0
 
 A comprehensive decision-making framework for humans and AI systems to evaluate actions that could cause harm, with emphasis on protecting vulnerable groups and maintaining ethical accountability.
 
@@ -72,7 +72,7 @@ engine.perform_door_wall_gap(
 )
 
 # Step 0f: Constraint Awareness check
-engine.perform_chim_check(
+engine.perform_constraint_awareness_check(
     log,
     constraint_recognized=True,
     no_choice_claim=False,
@@ -193,6 +193,11 @@ PBHP uses five risk classes with deterministic rules:
 | Tone Validator | Enforce brutal clarity without contempt |
 | Lexicographic Priority | Resolve "small harm to many vs large harm to few" |
 | False Positive Review | Challenge pauses with auditable justification |
+| Decision Triage | Routes decisions to appropriate tier (HUMAN/MIN/CORE/ULTRA) |
+| Domain Metric Packs | Pre-built severity thresholds by domain |
+| Multi-Agent Coordination | Quorum voting + veto for multi-agent scenarios |
+| Compliance Crosswalks | NIST/ISO/EU AI Act requirement mappings |
+| Drift Measurement | Quantitative drift velocity and threshold tracking |
 
 ## Key Modules Detail
 
@@ -291,6 +296,11 @@ pbhp/
 ├── pbhp_cli.py           # Interactive CLI
 ├── pbhp_examples.py      # Example scenarios
 ├── pbhp_tests.py         # Comprehensive test suite
+├── pbhp_triage.py        # Decision triage classifier (v0.8.0)
+├── pbhp_metrics.py       # Domain-specific harm metric packs (v0.8.0)
+├── pbhp_multiagent.py    # Multi-agent coordination protocol (v0.8.0)
+├── pbhp_compliance.py    # Compliance framework crosswalks (v0.8.0)
+├── pbhp_drift.py         # Drift rate measurement engine (v0.8.0)
 ├── requirements.txt      # No external dependencies
 └── README.md             # This file
 ```
@@ -391,9 +401,11 @@ Any pause can be challenged. PBHP must respond with:
 For questions, feedback, or inquiries:
 **pausebeforeharmprotocol_pbhp@protonmail.com**
 
+**Social Media:** facebook.com/plinst
+
 ## License and Usage
 
-This implementation is based on the Pause-Before-Harm Protocol v0.7.2 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
+This implementation is based on the Pause-Before-Harm Protocol v0.8.0 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
 
 **Run PBHP on PBHP itself if you start treating it as beyond question.**
 

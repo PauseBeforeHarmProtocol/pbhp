@@ -4,7 +4,7 @@
 
 Pre-built "Door" (safer alternative) templates for common agent domains. Agents can reference these instead of reasoning from scratch, reducing latency and improving consistency.
 
-**Status:** Reference document, v0.8
+**Status:** Reference document, v0.8.0
 
 ---
 
@@ -147,3 +147,7 @@ Door: [action description]
 ## Update Log
 
 **v0.8 (Feb 2026):** Initial Door Library with 8 common domains.
+
+---
+
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst

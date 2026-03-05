@@ -11,13 +11,13 @@ This charter establishes the governance structure for the Pause Before Harm Prot
 - **Author and Maintainer:** Charles Phillip Linstrum
 - **Canonical Repository:** https://github.com/PauseBeforeHarmProtocol/pbhp
 - **License:** Creative Commons BY-SA 4.0 for documentation, MIT for any code implementations
-- **Current Version:** PBHP v0.7.2 (February 2026)
+- **Current Version:** PBHP v0.8.0 (March 2026)
 
 ## Versioning Convention
 
 **Major versions (v1.0, v2.0):** Structural changes to the protocol architecture (new tiers, new gates, fundamental logic changes). Require community review period of 30 days.
 
-**Minor versions (v0.7.2, v0.8):** Refinements to existing mechanisms, new drift alarms, clarified terminology, added case studies. Reviewed by maintainer + at least one external reviewer.
+**Minor versions (v0.7.2, v0.8.0):** Refinements to existing mechanisms, new drift alarms, clarified terminology, added case studies. Reviewed by maintainer + at least one external reviewer.
 
 **Patches (v0.7.1, v0.7.2):** Typos, formatting, clarifications that do not change protocol behavior. Maintainer discretion.
 
@@ -63,6 +63,18 @@ Any implementation calling itself "PBHP-compliant" must preserve these elements 
 
 Everything else can be adapted. These five elements are the protocol's immune system. Remove any one and it is no longer PBHP.
 
+## v0.8.0 Operational Extensions
+
+PBHP v0.8.0 introduces five modules that extend the core protocol without modifying it:
+
+- **Decision Triage Classifier** — automated tier routing based on risk signals
+- **Domain Metric Packs** — standardized severity thresholds (hiring, healthcare, finance, content moderation, security)
+- **Multi-Agent Coordination** — quorum voting and veto rules for multi-agent deployments
+- **Compliance Crosswalks** — mappings to NIST AI RMF, ISO/IEC 42001, ISO/IEC 23894, EU AI Act
+- **Drift Rate Measurement** — quantitative drift velocity, acceleration, threshold breach projection
+
+These modules are optional add-ons. They do not change the five non-negotiable elements above.
+
 ---
 
-**PBHP v0.7.2** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst

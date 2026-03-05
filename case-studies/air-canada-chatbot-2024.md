@@ -62,4 +62,4 @@ In both cases, the harm was preventable. The Doors were available and low-cost. 
 
 ---
 
-**PBHP v0.8.0** | Author: Charles Phillip Linstrum
+**PBHP v0.8.0** | Author: Charles Phillip Linstrum | facebook.com/plinst
