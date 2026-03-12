@@ -2,55 +2,57 @@
 
 **Pause Before Harm Protocol** — Future development priorities.
 
-Last updated: 2026-03-11
+Last updated: 2026-03-12
 
 ---
 
-## Current State (v0.8.0)
+## Current State (v0.8.1)
 
-Implemented and tested modules:
+13 Python modules, 357 tests passing, CI green on Python 3.10–3.12.
 
-- **pbhp_core** — Triage engine, uncertainty gate, pause logic, risk scoring
-- **pbhp_ultra** — Extended constraints, adversarial-prompt detection, multi-agent coordination
-- **pbhp_drift** — Behavioral drift monitoring and alerting
-- **pbhp_srl** — Scheming Resistance Layer (6 rules, 60 tests)
-- **pbhp_qs** — Quality Systems Layer (8 rules, 73 tests)
+**Fully tested:**
+- **pbhp_core** — CORE tier engine, uncertainty gate, pause logic, risk scoring (88 tests)
+- **pbhp_min** / **pbhp_ultra** — MIN and ULTRA tier engines (45 tests)
+- **pbhp_srl** — Scheming Resistance Layer: 6 rules, safety-monotonic state machine (60 tests)
+- **pbhp_qs** — Quality Systems Layer: 8 rules modeled after aviation/pharma/nuclear QA (73 tests)
+- **pbhp_bridge** — Cross-module coordination, healthcare compliance adapter, MBSE interface, SafetyClaimRegistry, CoverageGapCollector (44 tests)
+- **pbhp_drift** — Drift measurement + DriftMetaMonitor self-check (18 tests)
+- **pbhp_cli** / **pbhp_examples** — CLI and example smoke tests (29 tests)
+
+**Implemented but not yet tested (claims are provisional):**
+- **pbhp_compliance** — Compliance framework crosswalks (NIST, ISO, EU AI Act)
+- **pbhp_metrics** — Domain-specific harm metric packs
+- **pbhp_multiagent** — Multi-agent coordination protocol
+- **pbhp_triage** — Decision triage classifier
+
+**Community improvements shipped in v0.8.1** (all 7 implemented):
+1. Healthcare compliance adapter (MDR/AiMD/ISO 14971) — `pbhp_bridge.py`
+2. MBSE requirement taxonomy integration — `pbhp_bridge.py`
+3. Cross-module subcontracting via ModuleRegistry — `pbhp_bridge.py`
+4. Demonstration > declaration via SafetyClaimRegistry — `pbhp_bridge.py`
+5. Adaptive uncertainty threshold — `pbhp_core.py`
+6. Drift monitoring self-check via DriftMetaMonitor — `pbhp_drift.py`
+7. Coverage gap prominence via CoverageGapCollector — `pbhp_bridge.py`
 
 ---
 
-## Near-Term (v0.9.0)
+## Near-Term (v0.9.0) — "Prove the protocol before promoting it"
 
-### Healthcare Compliance Bridge
-Adapter for MDR / AiMD / ISO 14971 risk-management requirements. Map PBHP triage
-outputs to IEC 62304 software-lifecycle artifacts so medical-device teams can use
-PBHP without building a separate compliance layer.
+### Test Coverage Hardening
+Write dedicated test suites for the four untested modules: `pbhp_compliance`,
+`pbhp_metrics`, `pbhp_multiagent`, and `pbhp_triage`. Target 40–60 tests each,
+exercising boundary conditions, error paths, and integration with `pbhp_core` types.
 
-### MBSE Requirement Taxonomy Integration
-Plug PBHP triage into existing Model-Based Systems Engineering (MBSE) requirement
-taxonomies (SysML, DOORS). Triage decisions should map cleanly to system-level
-requirements so PBHP doesn't live in a silo.
+### Cross-Module Integration Tests
+New `pbhp_integration_tests.py` exercising real workflows across module boundaries:
+request flow through core → SRL → QS → bridge, drift events triggering compliance
+logging, multiagent coordination with triage routing. These seam tests catch the
+bugs that unit tests miss.
 
-### Cross-Module Subcontracting
-Currently modules are siloed — each runs its own checks independently. Add an
-internal protocol so modules can delegate checks to each other (e.g., SRL asks
-Drift for a behavioral snapshot before making a gate decision).
-
-### Demonstration > Declaration
-Make "show, don't tell" an explicit design principle. Every safety claim must point
-to a test, log artifact, or reproducible evidence — never just a docstring assertion.
-
-### Drift Monitoring Self-Check
-The drift monitor monitors the agent but nobody monitors the drift monitor. Add a
-meta-monitoring layer: if drift monitoring stops producing heartbeats or its own
-behavior changes, escalate.
-
-### Coverage Gap Prominence
-Make coverage gaps prominent in every output — not an optional flag. If PBHP can't
-evaluate something, that should be the loudest signal in the response.
-
-### Uncertainty Gate Enhancement
-Add `update_threshold` field so the uncertainty gate can adapt its sensitivity based
-on operational context (e.g., tighter thresholds in production, looser in dev).
+### Adversarial Eval Scenarios
+Purpose-built red-team scenarios: Can PBHP be tricked into downgrading a BLACK gate?
+Does the false positive valve work under pressure? What happens when three modules
+disagree? This becomes the foundation for the formal eval suite in v1.0.
 
 ---
 

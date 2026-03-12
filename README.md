@@ -53,9 +53,9 @@ Built-in safeguards: **drift alarms** catch rationalization in real time, a **fa
 
 ---
 
-## v0.8.0 Modules
+## Modules
 
-PBHP v0.8.0 adds five operational modules that extend the core protocol:
+PBHP v0.8.x adds operational modules that extend the core protocol:
 
 **Triage Classifier** (`pbhp_triage.py`) — Routes incoming decisions to the appropriate tier (HUMAN/MIN/CORE/ULTRA) based on signal analysis. Evaluates irreversibility, vulnerable population impact, power asymmetry, and amplification potential. Prevents unnecessary escalation while ensuring high-risk decisions get appropriate scrutiny.
 
@@ -67,17 +67,15 @@ PBHP v0.8.0 adds five operational modules that extend the core protocol:
 
 **Drift Measurement** (`pbhp_drift.py`) — Upgrades from binary drift flags to quantifiable drift rates. Tracks refuse rate, average gate level, vulnerable population impact, and confidence scores over time. Computes drift velocity, acceleration, and projects threshold breach dates.
 
-### v0.8.1 Modules — Scheming Resistance and Quality Systems
+**Scheming Resistance Layer** (`pbhp_srl.py`, v0.8.1) — Six rules that prevent frontier model scheming behaviors: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), and anti-sandbagging (SRL-06). Safety-monotonic state machine where states can escalate freely but only de-escalate through human-authorized paths. 60 tests including red-team scenarios based on real frontier model failures.
 
-**Scheming Resistance Layer** (`pbhp_srl.py`) — Six rules that prevent frontier model scheming behaviors: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), and anti-sandbagging (SRL-06). Safety-monotonic state machine where states can escalate freely but only de-escalate through human-authorized paths. 60 tests including red-team scenarios based on real frontier model failures.
+**Quality Systems Layer** (`pbhp_qs.py`, v0.8.1) — Eight rules modeled after regulated QA (aviation, pharma, nuclear): authority separation (QS-01), immutable SHA-256 evidence chains (QS-02), live-system qualification (QS-03), deviation/CAPA lifecycle (QS-04), deception tripwires (QS-05), eval integrity (QS-06), symbolic mode containment (QS-07), and safe requalification (QS-08). Sits above SRL as the governance layer. 73 tests.
 
-**Quality Systems Layer** (`pbhp_qs.py`) — Eight rules modeled after regulated QA (aviation, pharma, nuclear): authority separation (QS-01), immutable SHA-256 evidence chains (QS-02), live-system qualification (QS-03), deviation/CAPA lifecycle (QS-04), deception tripwires (QS-05), eval integrity (QS-06), symbolic mode containment (QS-07), and safe requalification (QS-08). Sits above SRL as the governance layer. 73 tests.
+**Bridge Module** (`pbhp_bridge.py`, v0.8.1) — Cross-module coordination via ModuleRegistry, coverage gap prominence via CoverageGapCollector, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, and SafetyClaimRegistry for "demonstration > declaration" enforcement. Coverage gaps are prominently reported in every output — if PBHP cannot evaluate something, that is the loudest signal. 44 tests.
 
-**Bridge Module** (`pbhp_bridge.py`) — Cross-module coordination, coverage gap reporting, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, and "demonstration > declaration" enforcement. Coverage gaps are prominently reported in every output — if PBHP cannot evaluate something, that is the loudest signal. 44 tests.
+**Drift Meta-Monitor** (in `pbhp_drift.py`, v0.8.1) — The drift monitor monitors itself. Tracks heartbeat regularity, computation time drift, and alert rate changes. If drift monitoring stops producing heartbeats or its own behavior shifts, it escalates. 7 tests.
 
-**Drift Meta-Monitor** (in `pbhp_drift.py`) — The drift monitor now monitors itself. Tracks heartbeat regularity, computation time drift, and alert rate changes. If drift monitoring stops producing heartbeats or its own behavior shifts, it escalates. 7 tests.
-
-**Adaptive Uncertainty Threshold** (in `pbhp_core.py`) — `UncertaintyAssessment` now has an `update_threshold` field with context-aware multipliers (production = stricter, dev = looser). 11 tests.
+**Adaptive Uncertainty Threshold** (in `pbhp_core.py`, v0.8.1) — `UncertaintyAssessment.update_threshold` with context-aware multipliers (production = stricter, dev = looser). 11 tests.
 
 ---
 
@@ -101,27 +99,32 @@ pbhp/
 │   ├── PBHP_v0.7.2_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
 │   └── PBHP-v0.7.2-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.2
 │
-├── src/                                   ← Python implementation
+├── src/                                   ← Python implementation (20 modules)
 │   ├── README.md                          ← Setup and usage instructions
-│   ├── pbhp_core.py                       ← CORE tier engine (v0.8.0)
+│   ├── pbhp_core.py                       ← CORE tier engine
 │   ├── pbhp_ultra.py                      ← ULTRA tier engine
 │   ├── pbhp_min.py                        ← MIN tier engine
 │   ├── pbhp_cli.py                        ← Command-line interface
 │   ├── pbhp_examples.py                   ← Usage examples and walkthroughs
-│   ├── pbhp_tests.py                      ← CORE tier test suite
-│   ├── pbhp_min_ultra_tests.py            ← MIN + ULTRA tier test suite
-│   ├── pbhp_triage.py                     ← Decision triage classifier (v0.8.0)
-│   ├── pbhp_metrics.py                    ← Domain-specific harm metric packs (v0.8.0)
-│   ├── pbhp_multiagent.py                 ← Multi-agent coordination protocol (v0.8.0)
-│   ├── pbhp_compliance.py                 ← Compliance framework crosswalks (v0.8.0)
-│   ├── pbhp_drift.py                      ← Drift rate measurement + meta-monitor (v0.8.1)
-│   ├── pbhp_srl.py                        ← Scheming Resistance Layer (v0.8.1)
-│   ├── pbhp_srl_tests.py                  ← SRL test suite (60 tests)
-│   ├── pbhp_qs.py                         ← Quality Systems Layer (v0.8.1)
-│   ├── pbhp_qs_tests.py                   ← QS test suite (73 tests)
-│   ├── pbhp_bridge.py                     ← Bridge: cross-module, compliance, coverage (v0.8.1)
-│   ├── pbhp_bridge_tests.py               ← Bridge test suite (44 tests)
-│   └── pbhp_improvements_tests.py         ← Threshold + meta-monitor tests (18 tests)
+│   ├── pbhp_triage.py                     ← Decision triage classifier
+│   ├── pbhp_metrics.py                    ← Domain-specific harm metric packs
+│   ├── pbhp_multiagent.py                 ← Multi-agent coordination protocol
+│   ├── pbhp_compliance.py                 ← Compliance framework crosswalks
+│   ├── pbhp_drift.py                      ← Drift rate measurement + meta-monitor
+│   ├── pbhp_srl.py                        ← Scheming Resistance Layer (6 rules)
+│   ├── pbhp_qs.py                         ← Quality Systems Layer (8 rules)
+│   ├── pbhp_bridge.py                     ← Bridge: cross-module, compliance, coverage
+│   ├── pbhp_tests.py                      ← CORE tier tests (88)
+│   ├── pbhp_min_ultra_tests.py            ← MIN + ULTRA tier tests (45)
+│   ├── pbhp_srl_tests.py                  ← SRL tests (60)
+│   ├── pbhp_qs_tests.py                   ← QS tests (73)
+│   ├── pbhp_bridge_tests.py               ← Bridge tests (44)
+│   ├── pbhp_improvements_tests.py         ← Threshold + meta-monitor tests (18)
+│   ├── pbhp_cli_tests.py                  ← CLI + examples smoke tests (29)
+│   ├── pbhp_compliance_tests.py           ← Compliance framework tests (89)
+│   ├── pbhp_metrics_tests.py              ← Domain metric pack tests (53)
+│   ├── pbhp_multiagent_tests.py           ← Multi-agent coordination tests (61)
+│   └── pbhp_triage_tests.py               ← Decision triage tests (80)
 │
 ├── receipts/                              ← Pause Receipt system
 │   └── PBHP-RECEIPT_SCHEMA_v1.1.md       ← JSON + plain text receipt format
@@ -173,6 +176,26 @@ The difference matters. An aligned system can still cause harm through:
 - False confidence (high certainty under genuine uncertainty)
 
 PBHP catches these failure modes with specific mechanisms: drift alarms are tripwires for rationalization, Door/Wall/Gap forces escape vector identification, power-asymmetry escalation prevents the least powerful from bearing costs invisibly, and the false positive valve prevents the protocol itself from becoming an obstacle to legitimate action.
+
+---
+
+## Test Coverage
+
+**640 tests passing** across 11 test files. CI runs on Python 3.10, 3.11, and 3.12.
+
+| Module | Tests | Status |
+|--------|-------|--------|
+| `pbhp_core` | 88 | Covered |
+| `pbhp_min` / `pbhp_ultra` | 45 | Covered |
+| `pbhp_srl` | 60 | Covered (incl. red-team scenarios) |
+| `pbhp_qs` | 73 | Covered (incl. CAPA lifecycle, tripwires) |
+| `pbhp_bridge` | 44 | Covered (ModuleRegistry, SafetyClaimRegistry, coverage gaps) |
+| `pbhp_drift` (meta-monitor) | 18 | Covered (heartbeat, threshold adaptation) |
+| `pbhp_cli` / `pbhp_examples` | 29 | Covered (smoke tests, structural verification) |
+| `pbhp_compliance` | 89 | Covered (all 4 frameworks, audit reports, checklists) |
+| `pbhp_metrics` | 53 | Covered (all 5 domain packs, thresholds, stakeholders) |
+| `pbhp_multiagent` | 61 | Covered (quorum voting, veto, BLACK escalation) |
+| `pbhp_triage` | 80 | Covered (tier routing, signal weights, HUMAN escalation) |
 
 ---
 

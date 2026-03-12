@@ -29,7 +29,9 @@ All notable changes to PBHP will be documented in this file.
 - #7: Coverage gaps prominent — CoverageGapCollector
 
 ### Test Coverage
-- Total: 328 tests passing (60 SRL + 73 QS + 44 bridge + 18 improvements + 88 core + 45 min/ultra)
+- Total: 640 tests passing across 11 test files
+- New: Compliance tests (89), Metrics tests (53), Multi-Agent tests (61), Triage tests (80)
+- Existing: 88 core + 45 min/ultra + 60 SRL + 73 QS + 44 bridge + 18 improvements + 29 CLI/examples
 
 ## [0.8.0] - 2026-03-04
 

@@ -1,4 +1,4 @@
-# Pause-Before-Harm Protocol (PBHP) v0.8.0
+# Pause-Before-Harm Protocol (PBHP) v0.8.1
 
 A comprehensive decision-making framework for humans and AI systems to evaluate actions that could cause harm, with emphasis on protecting vulnerable groups and maintaining ethical accountability.
 
@@ -296,13 +296,23 @@ pbhp/
 ├── pbhp_cli.py           # Interactive CLI
 ├── pbhp_examples.py      # Example scenarios
 ├── pbhp_tests.py         # Comprehensive test suite
-├── pbhp_triage.py        # Decision triage classifier (v0.8.0)
-├── pbhp_metrics.py       # Domain-specific harm metric packs (v0.8.0)
-├── pbhp_multiagent.py    # Multi-agent coordination protocol (v0.8.0)
-├── pbhp_compliance.py    # Compliance framework crosswalks (v0.8.0)
-├── pbhp_drift.py         # Drift rate measurement engine (v0.8.0)
-├── requirements.txt      # No external dependencies
-└── README.md             # This file
+├── pbhp_triage.py              # Decision triage classifier
+├── pbhp_metrics.py             # Domain-specific harm metric packs
+├── pbhp_multiagent.py          # Multi-agent coordination protocol
+├── pbhp_compliance.py          # Compliance framework crosswalks
+├── pbhp_drift.py               # Drift rate measurement + meta-monitor
+├── pbhp_srl.py                 # Scheming Resistance Layer (6 rules)
+├── pbhp_qs.py                  # Quality Systems Layer (8 rules)
+├── pbhp_bridge.py              # Bridge: cross-module, compliance, coverage
+├── pbhp_tests.py               # CORE tests (88)
+├── pbhp_min_ultra_tests.py     # MIN + ULTRA tests (45)
+├── pbhp_srl_tests.py           # SRL tests (60)
+├── pbhp_qs_tests.py            # QS tests (73)
+├── pbhp_bridge_tests.py        # Bridge tests (44)
+├── pbhp_improvements_tests.py  # Threshold + meta-monitor tests (18)
+├── pbhp_cli_tests.py           # CLI + examples smoke tests (29)
+├── requirements.txt            # No external dependencies
+└── README.md                   # This file
 ```
 
 ## Core Components
@@ -405,7 +415,7 @@ For questions, feedback, or inquiries:
 
 ## License and Usage
 
-This implementation is based on the Pause-Before-Harm Protocol v0.8.0 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
+This implementation is based on the Pause-Before-Harm Protocol v0.8.1 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
 
 **Run PBHP on PBHP itself if you start treating it as beyond question.**
 

@@ -52,7 +52,23 @@ jobs:
         working-directory: src
         run: python -m pytest pbhp_cli_tests.py -v
 
+      - name: Run Compliance test suite
+        working-directory: src
+        run: python -m pytest pbhp_compliance_tests.py -v
+
+      - name: Run Metrics test suite
+        working-directory: src
+        run: python -m pytest pbhp_metrics_tests.py -v
+
+      - name: Run Multi-Agent test suite
+        working-directory: src
+        run: python -m pytest pbhp_multiagent_tests.py -v
+
+      - name: Run Triage test suite
+        working-directory: src
+        run: python -m pytest pbhp_triage_tests.py -v
+
       - name: Run all tests (combined verification)
         working-directory: src
         run: |
-          python -m pytest pbhp_tests.py pbhp_min_ultra_tests.py pbhp_srl_tests.py pbhp_qs_tests.py pbhp_bridge_tests.py pbhp_improvements_tests.py pbhp_cli_tests.py -v --tb=short
+          python -m pytest pbhp_tests.py pbhp_min_ultra_tests.py pbhp_srl_tests.py pbhp_qs_tests.py pbhp_bridge_tests.py pbhp_improvements_tests.py pbhp_cli_tests.py pbhp_compliance_tests.py pbhp_metrics_tests.py pbhp_multiagent_tests.py pbhp_triage_tests.py -v --tb=short
