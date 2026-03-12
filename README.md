@@ -124,7 +124,9 @@ pbhp/
 │   ├── pbhp_compliance_tests.py           ← Compliance framework tests (89)
 │   ├── pbhp_metrics_tests.py              ← Domain metric pack tests (53)
 │   ├── pbhp_multiagent_tests.py           ← Multi-agent coordination tests (61)
-│   └── pbhp_triage_tests.py               ← Decision triage tests (80)
+│   ├── pbhp_triage_tests.py               ← Decision triage tests (80)
+│   ├── pbhp_integration_tests.py          ← Cross-module integration tests (43)
+│   └── pbhp_eval_tests.py                 ← Adversarial red-team eval tests (47)
 │
 ├── receipts/                              ← Pause Receipt system
 │   └── PBHP-RECEIPT_SCHEMA_v1.1.md       ← JSON + plain text receipt format
@@ -181,7 +183,7 @@ PBHP catches these failure modes with specific mechanisms: drift alarms are trip
 
 ## Test Coverage
 
-**640 tests passing** across 11 test files. CI runs on Python 3.10, 3.11, and 3.12.
+**730 tests passing** across 13 test files. CI runs on Python 3.10, 3.11, and 3.12.
 
 | Module | Tests | Status |
 |--------|-------|--------|
@@ -196,6 +198,8 @@ PBHP catches these failure modes with specific mechanisms: drift alarms are trip
 | `pbhp_metrics` | 53 | Covered (all 5 domain packs, thresholds, stakeholders) |
 | `pbhp_multiagent` | 61 | Covered (quorum voting, veto, BLACK escalation) |
 | `pbhp_triage` | 80 | Covered (tier routing, signal weights, HUMAN escalation) |
+| Cross-module integration | 43 | Covered (SRL↔QS, Bridge↔core, full pipeline) |
+| Adversarial eval | 47 | Covered (BLACK bypass, state escape, self-preservation disguise) |
 
 ---
 

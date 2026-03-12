@@ -29,8 +29,10 @@ All notable changes to PBHP will be documented in this file.
 - #7: Coverage gaps prominent — CoverageGapCollector
 
 ### Test Coverage
-- Total: 640 tests passing across 11 test files
-- New: Compliance tests (89), Metrics tests (53), Multi-Agent tests (61), Triage tests (80)
+- Total: 730 tests passing across 13 test files
+- Unit tests: Compliance (89), Metrics (53), Multi-Agent (61), Triage (80)
+- Cross-module integration tests (43): SRL↔QS, Bridge↔core, full pipeline, state machine consistency, audit trail correlation
+- Adversarial eval tests (47): BLACK gate bypass, state machine escape, self-preservation disguise, evidence tampering, tripwire evasion, sandbagging detection, multiagent safety weakening, triage gaming, drift manipulation, coverage gap honesty
 - Existing: 88 core + 45 min/ultra + 60 SRL + 73 QS + 44 bridge + 18 improvements + 29 CLI/examples
 
 ## [0.8.0] - 2026-03-04

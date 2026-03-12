@@ -68,7 +68,15 @@ jobs:
         working-directory: src
         run: python -m pytest pbhp_triage_tests.py -v
 
+      - name: Run Integration test suite
+        working-directory: src
+        run: python -m pytest pbhp_integration_tests.py -v
+
+      - name: Run Adversarial Eval test suite
+        working-directory: src
+        run: python -m pytest pbhp_eval_tests.py -v
+
       - name: Run all tests (combined verification)
         working-directory: src
         run: |
-          python -m pytest pbhp_tests.py pbhp_min_ultra_tests.py pbhp_srl_tests.py pbhp_qs_tests.py pbhp_bridge_tests.py pbhp_improvements_tests.py pbhp_cli_tests.py pbhp_compliance_tests.py pbhp_metrics_tests.py pbhp_multiagent_tests.py pbhp_triage_tests.py -v --tb=short
+          python -m pytest pbhp_tests.py pbhp_min_ultra_tests.py pbhp_srl_tests.py pbhp_qs_tests.py pbhp_bridge_tests.py pbhp_improvements_tests.py pbhp_cli_tests.py pbhp_compliance_tests.py pbhp_metrics_tests.py pbhp_multiagent_tests.py pbhp_triage_tests.py pbhp_integration_tests.py pbhp_eval_tests.py -v --tb=short
