@@ -2,6 +2,35 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## [0.8.1] - 2026-03-11
+
+### Added
+- Scheming Resistance Layer (`pbhp_srl.py`) — 6 rules: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), anti-sandbagging (SRL-06). Safety-monotonic state machine with human-required de-escalation. 60 tests including red-team scenarios based on real frontier model failures
+- Quality Systems Layer (`pbhp_qs.py`) — 8 rules modeled after aviation/pharma/nuclear QA: authority separation, immutable SHA-256 evidence chains, deception tripwires, CAPA lifecycle, symbolic mode containment, safe requalification. 73 tests
+- Bridge Module (`pbhp_bridge.py`) — cross-module subcontracting via ModuleRegistry, coverage gap prominence, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, SafetyClaimRegistry for demonstration > declaration. 44 tests
+- Drift Meta-Monitor (`DriftMetaMonitor` in `pbhp_drift.py`) — drift monitoring monitors itself via heartbeat tracking, computation time drift, and alert rate change detection. 7 tests
+- Adaptive Uncertainty Threshold (`update_threshold` on `UncertaintyAssessment` in `pbhp_core.py`) — context-aware multipliers (prod=0.7x stricter, dev=1.5x looser, emergency=1.3x). 11 tests
+- ROADMAP.md — near-term, mid-term, and long-term development priorities
+- GitHub Actions CI workflow — automated test execution on push/PR
+
+### Changed
+- Coverage gaps are now the loudest signal in every output (CoverageGapCollector with prominent formatting)
+- Modules can now subcontract capabilities to each other via ModuleRegistry instead of silently skipping checks
+- Every safety claim must point to evidence (test, log, artifact) — unverified claims flagged prominently
+- QS requalification properly routes through FROZEN → AWAITING_HUMAN_REVIEW → REQUALIFIED state path
+
+### Community Improvements Addressed
+- #1: Healthcare compliance gap (MDR/AiMD/ISO 14971) — adapter with compliance matrix
+- #2: MBSE requirement taxonomy integration — interface for SysML/DOORS
+- #3: Architecture siloed — cross-module subcontracting protocol
+- #4: Demonstration > declaration — SafetyClaimRegistry
+- #5: Uncertainty gate update_threshold — adaptive sensitivity
+- #6: Drift monitoring self-check — DriftMetaMonitor
+- #7: Coverage gaps prominent — CoverageGapCollector
+
+### Test Coverage
+- Total: 328 tests passing (60 SRL + 73 QS + 44 bridge + 18 improvements + 88 core + 45 min/ultra)
+
 ## [0.8.0] - 2026-03-04
 
 ### Added

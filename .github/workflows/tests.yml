@@ -1,0 +1,54 @@
+name: PBHP Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run CORE test suite
+        working-directory: src
+        run: python -m pytest pbhp_tests.py -v
+
+      - name: Run MIN + ULTRA test suite
+        working-directory: src
+        run: python -m pytest pbhp_min_ultra_tests.py -v
+
+      - name: Run SRL test suite
+        working-directory: src
+        run: python -m pytest pbhp_srl_tests.py -v
+
+      - name: Run QS test suite
+        working-directory: src
+        run: python -m pytest pbhp_qs_tests.py -v
+
+      - name: Run Bridge test suite
+        working-directory: src
+        run: python -m pytest pbhp_bridge_tests.py -v
+
+      - name: Run Improvements test suite
+        working-directory: src
+        run: python -m pytest pbhp_improvements_tests.py -v
+
+      - name: Run all tests (combined verification)
+        working-directory: src
+        run: |
+          python -m pytest pbhp_tests.py pbhp_min_ultra_tests.py pbhp_srl_tests.py pbhp_qs_tests.py pbhp_bridge_tests.py pbhp_improvements_tests.py -v --tb=short
