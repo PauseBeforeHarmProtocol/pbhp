@@ -104,6 +104,20 @@ You can remove them. But if you do, you're no longer running PBHP. You're runnin
 
 ---
 
+## Non-Negotiable Clause
+
+If you adapt or build upon this protocol, the following elements must be preserved:
+
+1. **Harm to the least powerful is always weighted first**
+2. **"If I'm wrong, who pays first?" cannot be removed**
+3. **The false positive valve cannot be removed**
+4. **Drift alarms cannot be disabled**
+5. **BLACK gate absolute rejections** (fascism, genocide, slavery, non-consensual authoritarian control, systemic dehumanization) **are permanent**
+
+These are the structural invariants that make PBHP what it is. Removing any of them produces a fundamentally different protocol. See the sections above for the reasoning behind each requirement.
+
+---
+
 ## Questions or Concerns?
 
 If you're unsure whether a modification preserves PBHP's intent, reach out:

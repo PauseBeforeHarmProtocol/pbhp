@@ -73,12 +73,5 @@ or legal counsel.
 
 ---
 
-PBHP Non-Negotiable Clause: If you adapt or build upon this protocol, the
-following elements must be preserved:
-
-1. Harm to the least powerful is always weighted first
-2. "If I'm wrong, who pays first?" cannot be removed
-3. The false positive valve cannot be removed
-4. Drift alarms cannot be disabled
-5. BLACK gate absolute rejections (fascism, genocide, slavery,
-   non-consensual authoritarian control, systemic dehumanization) are permanent
+For ethical use guidelines and non-negotiable protocol requirements when
+adapting or building upon PBHP, see ETHICAL_USE.md.
