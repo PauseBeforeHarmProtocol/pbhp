@@ -1057,6 +1057,13 @@ class UncertaintyAssessment:
     confidence: Confidence = Confidence.MEDIUM
     biggest_might_be_wrong: str = ""
 
+    # Adaptive threshold (community improvement #5)
+    # Allows the uncertainty gate to adapt sensitivity by environment.
+    # Lower values = stricter (prod should be tighter than dev).
+    # Range: 0.0 (block everything uncertain) to 1.0 (allow everything).
+    update_threshold: float = 0.5
+    threshold_context: str = ""  # "prod", "staging", "dev", "emergency"
+
     def should_default_oppose(self) -> bool:
         """Apply the uncertain-but-high-stakes rule."""
         return (self.potential_harm_high_hard_to_undo
@@ -1067,6 +1074,39 @@ class UncertaintyAssessment:
         """Check if acting under uncertainty is acceptable."""
         return (self.potential_harm_low_reversible
                 and self.benefit_to_low_power_high)
+
+    def effective_threshold(self) -> float:
+        """
+        Return the effective uncertainty threshold adjusted for context.
+
+        Production environments apply a 0.7x multiplier (stricter).
+        Emergency contexts apply a 1.3x multiplier (looser, but capped).
+        """
+        multiplier = 1.0
+        if self.threshold_context == "prod":
+            multiplier = 0.7
+        elif self.threshold_context == "emergency":
+            multiplier = 1.3
+        elif self.threshold_context == "dev":
+            multiplier = 1.5
+        return min(1.0, max(0.0, self.update_threshold * multiplier))
+
+    def passes_threshold(self) -> bool:
+        """
+        Check if current confidence meets the effective threshold.
+
+        Maps confidence enum to numeric: LOW=0.2, MEDIUM_LOW=0.35,
+        MEDIUM=0.5, MEDIUM_HIGH=0.7, HIGH=0.9.
+        """
+        confidence_map = {
+            Confidence.LOW: 0.2,
+            Confidence.MEDIUM_LOW: 0.35,
+            Confidence.MEDIUM: 0.5,
+            Confidence.MEDIUM_HIGH: 0.7,
+            Confidence.HIGH: 0.9,
+        }
+        numeric = confidence_map.get(self.confidence, 0.5)
+        return numeric >= self.effective_threshold()
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -1102,6 +1142,12 @@ class UncertaintyAssessment:
             },
             "confidence": self.confidence.value,
             "biggest_uncertainty": self.biggest_might_be_wrong,
+            "threshold": {
+                "update_threshold": self.update_threshold,
+                "threshold_context": self.threshold_context,
+                "effective_threshold": self.effective_threshold(),
+                "passes_threshold": self.passes_threshold(),
+            },
         }
 
 

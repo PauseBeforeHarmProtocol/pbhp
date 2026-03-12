@@ -1,6 +1,6 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.8.0 (Public Release)
+**Version:** 0.8.1 (Public Release)
 **Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
@@ -67,6 +67,18 @@ PBHP v0.8.0 adds five operational modules that extend the core protocol:
 
 **Drift Measurement** (`pbhp_drift.py`) — Upgrades from binary drift flags to quantifiable drift rates. Tracks refuse rate, average gate level, vulnerable population impact, and confidence scores over time. Computes drift velocity, acceleration, and projects threshold breach dates.
 
+### v0.8.1 Modules — Scheming Resistance and Quality Systems
+
+**Scheming Resistance Layer** (`pbhp_srl.py`) — Six rules that prevent frontier model scheming behaviors: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), and anti-sandbagging (SRL-06). Safety-monotonic state machine where states can escalate freely but only de-escalate through human-authorized paths. 60 tests including red-team scenarios based on real frontier model failures.
+
+**Quality Systems Layer** (`pbhp_qs.py`) — Eight rules modeled after regulated QA (aviation, pharma, nuclear): authority separation (QS-01), immutable SHA-256 evidence chains (QS-02), live-system qualification (QS-03), deviation/CAPA lifecycle (QS-04), deception tripwires (QS-05), eval integrity (QS-06), symbolic mode containment (QS-07), and safe requalification (QS-08). Sits above SRL as the governance layer. 73 tests.
+
+**Bridge Module** (`pbhp_bridge.py`) — Cross-module coordination, coverage gap reporting, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, and "demonstration > declaration" enforcement. Coverage gaps are prominently reported in every output — if PBHP cannot evaluate something, that is the loudest signal. 44 tests.
+
+**Drift Meta-Monitor** (in `pbhp_drift.py`) — The drift monitor now monitors itself. Tracks heartbeat regularity, computation time drift, and alert rate changes. If drift monitoring stops producing heartbeats or its own behavior shifts, it escalates. 7 tests.
+
+**Adaptive Uncertainty Threshold** (in `pbhp_core.py`) — `UncertaintyAssessment` now has an `update_threshold` field with context-aware multipliers (production = stricter, dev = looser). 11 tests.
+
 ---
 
 ## Repository Structure
@@ -102,7 +114,14 @@ pbhp/
 │   ├── pbhp_metrics.py                    ← Domain-specific harm metric packs (v0.8.0)
 │   ├── pbhp_multiagent.py                 ← Multi-agent coordination protocol (v0.8.0)
 │   ├── pbhp_compliance.py                 ← Compliance framework crosswalks (v0.8.0)
-│   └── pbhp_drift.py                      ← Drift rate measurement engine (v0.8.0)
+│   ├── pbhp_drift.py                      ← Drift rate measurement + meta-monitor (v0.8.1)
+│   ├── pbhp_srl.py                        ← Scheming Resistance Layer (v0.8.1)
+│   ├── pbhp_srl_tests.py                  ← SRL test suite (60 tests)
+│   ├── pbhp_qs.py                         ← Quality Systems Layer (v0.8.1)
+│   ├── pbhp_qs_tests.py                   ← QS test suite (73 tests)
+│   ├── pbhp_bridge.py                     ← Bridge: cross-module, compliance, coverage (v0.8.1)
+│   ├── pbhp_bridge_tests.py               ← Bridge test suite (44 tests)
+│   └── pbhp_improvements_tests.py         ← Threshold + meta-monitor tests (18 tests)
 │
 ├── receipts/                              ← Pause Receipt system
 │   └── PBHP-RECEIPT_SCHEMA_v1.1.md       ← JSON + plain text receipt format

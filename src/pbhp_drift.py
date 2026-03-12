@@ -562,6 +562,127 @@ class DriftMonitor:
         return actions
 
 
+# ---------------------------------------------------------------------------
+# Meta-Monitor: Drift monitoring monitors itself (community improvement #6)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class MetaHeartbeat:
+    """A heartbeat record from the drift monitor itself."""
+    timestamp: datetime
+    metrics_computed: int
+    alerts_generated: int
+    decisions_ingested: int
+    computation_time_ms: float = 0.0
+
+
+@dataclass
+class MetaMonitorStatus:
+    """Health status of the drift monitor."""
+    is_healthy: bool = True
+    last_heartbeat: Optional[datetime] = None
+    heartbeat_count: int = 0
+    missed_heartbeats: int = 0
+    avg_computation_time_ms: float = 0.0
+    monitor_drift_detected: bool = False
+    alert_message: str = ""
+
+
+class DriftMetaMonitor:
+    """
+    Monitors the drift monitor itself.
+
+    Community improvement #6: "Drift monitoring needs monitoring of itself."
+
+    Tracks:
+    - Heartbeat regularity (is the monitor still running?)
+    - Computation time drift (is the monitor slowing down?)
+    - Alert rate changes (is the monitor's own behavior drifting?)
+    - Silent failure detection (monitor stops producing output)
+    """
+
+    def __init__(
+        self,
+        expected_heartbeat_interval_minutes: int = 60,
+        max_missed_heartbeats: int = 3,
+    ):
+        self.expected_interval = timedelta(
+            minutes=expected_heartbeat_interval_minutes
+        )
+        self.max_missed = max_missed_heartbeats
+        self._heartbeats: deque = deque(maxlen=1000)
+        self._alert_rate_history: deque = deque(maxlen=100)
+
+    def record_heartbeat(self, heartbeat: MetaHeartbeat) -> MetaMonitorStatus:
+        """
+        Record a heartbeat from the drift monitor.
+        Returns current health status.
+        """
+        self._heartbeats.append(heartbeat)
+        self._alert_rate_history.append(heartbeat.alerts_generated)
+        return self.check_health()
+
+    def check_health(self) -> MetaMonitorStatus:
+        """Check if the drift monitor is functioning correctly."""
+        if not self._heartbeats:
+            return MetaMonitorStatus(
+                is_healthy=False,
+                alert_message="No heartbeats received — monitor may not be running",
+            )
+
+        last = self._heartbeats[-1]
+        now = datetime.now()
+        time_since_last = now - last.timestamp
+
+        # Check for missed heartbeats
+        missed = 0
+        if time_since_last > self.expected_interval:
+            missed = int(time_since_last / self.expected_interval) - 1
+
+        # Check computation time drift
+        avg_time = 0.0
+        if len(self._heartbeats) >= 2:
+            times = [h.computation_time_ms for h in self._heartbeats]
+            avg_time = statistics.mean(times)
+
+        # Check alert rate drift (is the monitor generating unusual numbers?)
+        monitor_drift = False
+        alert_msg = ""
+        if len(self._alert_rate_history) >= 10:
+            recent = list(self._alert_rate_history)[-5:]
+            older = list(self._alert_rate_history)[-10:-5]
+            recent_avg = statistics.mean(recent)
+            older_avg = statistics.mean(older) if older else recent_avg
+            if older_avg > 0 and abs(recent_avg - older_avg) / older_avg > 0.5:
+                monitor_drift = True
+                alert_msg = (
+                    f"Monitor alert rate shifted: {older_avg:.1f} → "
+                    f"{recent_avg:.1f} alerts per cycle"
+                )
+
+        is_healthy = missed <= self.max_missed and not monitor_drift
+
+        if missed > self.max_missed and not alert_msg:
+            alert_msg = (
+                f"Monitor missed {missed} heartbeats "
+                f"(max allowed: {self.max_missed})"
+            )
+
+        return MetaMonitorStatus(
+            is_healthy=is_healthy,
+            last_heartbeat=last.timestamp,
+            heartbeat_count=len(self._heartbeats),
+            missed_heartbeats=missed,
+            avg_computation_time_ms=avg_time,
+            monitor_drift_detected=monitor_drift,
+            alert_message=alert_msg,
+        )
+
+    @property
+    def heartbeat_count(self) -> int:
+        return len(self._heartbeats)
+
+
 # Convenience function
 def monitor_drift(decision_history: List[Dict[str, Any]],
                  analysis_days: int = 30) -> DriftReport:
