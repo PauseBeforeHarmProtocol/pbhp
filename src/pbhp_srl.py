@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — Scheming-Resistance Layer (SRL)
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — Scheming-Resistance Layer (SRL)
 
 Runtime policy enforcement for anti-scheming, anti-concealment, and
 anti-self-preservation in agentic AI systems.

@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — Multi-Agent Coordination
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — Multi-Agent Coordination
 Multi-Agent Decision Coordination Protocol
 
 Defines rules for when multiple agents running PBHP reach different gate

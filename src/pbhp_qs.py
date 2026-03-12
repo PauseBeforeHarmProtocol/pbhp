@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — Quality Systems Layer (QS)
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — Quality Systems Layer (QS)
 
 Governance, evidence preservation, and incident management for
 agentic AI systems. Modeled after regulated quality systems in

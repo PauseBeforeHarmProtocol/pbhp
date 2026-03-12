@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Pause-Before-Harm Protocol (PBHP) - Interactive CLI
-Version: 0.8.0 (Full Specification)
+Version: 0.8.1 (Full Specification)
 
-An interactive command-line interface for conducting PBHP v0.8.0 assessments,
+An interactive command-line interface for conducting PBHP v0.8.1 assessments,
 including all foundation gates, seven protocol steps, epistemic fencing,
 red team review, drift detection, tone validation, and structured logging.
 
@@ -64,7 +64,7 @@ from pbhp_core import (
 # Constants
 # ---------------------------------------------------------------------------
 
-VERSION = "0.8.0"
+VERSION = "0.8.1"
 CONTACT_EMAIL = "pausebeforeharmprotocol_pbhp@protonmail.com"
 BANNER_WIDTH = 72
 
@@ -243,7 +243,7 @@ def step_00_protocol_understanding():
     if not confirmed:
         print()
         warn("Protocol understanding not confirmed.")
-        print("  Please review the PBHP v0.8.0 specification before proceeding.")
+        print("  Please review the PBHP v0.8.1 specification before proceeding.")
         print("  Contact: " + CONTACT_EMAIL)
         return False
     success("Protocol understanding confirmed. Proceeding.")
@@ -1616,8 +1616,8 @@ def export_logs(engine):
 
 
 def full_assessment(engine):
-    """Run the complete PBHP v0.8.0 assessment walkthrough."""
-    banner("PBHP v0.8.0 Full Assessment Walkthrough", char="=")
+    """Run the complete PBHP v0.8.1 assessment walkthrough."""
+    banner("PBHP v0.8.1 Full Assessment Walkthrough", char="=")
     print("""
   This will guide you through every step of the protocol.
   You can press Ctrl+C at any time to abort.
@@ -1764,7 +1764,7 @@ def show_help():
   MENU OPTIONS
   """ + "=" * 66 + """
   1. Start New Assessment
-     Complete guided walkthrough of all PBHP v0.8.0 protocol steps,
+     Complete guided walkthrough of all PBHP v0.8.1 protocol steps,
      from competence gate through decision and response generation.
 
   2. Quick Risk Check

@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — Compliance Crosswalks
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — Compliance Crosswalks
 Compliance Framework Mappings and Validation
 
 Maps PBHP artifacts and decision steps to compliance requirements in:

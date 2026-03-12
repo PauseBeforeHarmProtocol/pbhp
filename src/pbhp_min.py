@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — MIN
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — MIN
 Rapid harm-check for humans or AI operating under time pressure,
 cognitive load, or limited compute.
 
@@ -291,7 +291,7 @@ class PBHPMinLog:
     """
     record_id: str
     timestamp: datetime
-    version: str = "0.8.0-MIN"
+    version: str = "0.8.1-MIN"
     tier: str = "MIN"
 
     # Triggers
@@ -754,7 +754,7 @@ def quick_min_check(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("PBHP-MIN v0.8.0 (Rapid Harm Check)")
+    print("PBHP-MIN v0.8.1 (Rapid Harm Check)")
     print("=" * 60)
 
     engine = PBHPMinEngine()

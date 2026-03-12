@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 — Drift Rate Measurement
+Pause-Before-Harm Protocol (PBHP) v0.8.1 — Drift Rate Measurement
 Measurable Drift Detection and Velocity Analysis
 
 Upgrades from binary drift flags to quantifiable drift rates. Tracks:
