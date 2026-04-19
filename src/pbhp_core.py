@@ -201,6 +201,8 @@ class Harm:
     uncertainty_level: UncertaintyLevel = UncertaintyLevel.FUZZY
     evidence_basis: str = ""
     audience_risk_elevated: bool = False
+    downstream_effect: str = ""
+    reversibility_distinction: bool = False
 
     def calculate_risk_class(self) -> RiskClass:
         """
@@ -287,6 +289,33 @@ class Harm:
         idx = order.index(risk)
         return order[min(idx + 1, len(order) - 1)]
 
+    def recognition_test(self) -> Tuple[bool, str]:
+        """
+        Check if the person most harmed could recognize this description (Fix #1).
+        Returns (passes, explanation)
+        """
+        if not self.downstream_effect:
+            return False, "Downstream effect not specified - cannot verify recognition"
+
+        # The downstream effect should be concrete and non-euphemistic
+        problematic_terms = [
+            "optimize", "adjust", "fine-tune", "moderate", "trim",
+            "streamline", "efficiency", "resource allocation", "rebalance"
+        ]
+        is_euphemistic = any(term in self.downstream_effect.lower()
+                            for term in problematic_terms)
+
+        if is_euphemistic and self.power_asymmetry:
+            return False, (
+                f"Description may be too technical or euphemistic for harmed party "
+                f"to recognize: '{self.downstream_effect}'"
+            )
+
+        if len(self.downstream_effect.strip()) < 20:
+            return False, "Downstream effect description too vague or brief"
+
+        return True, f"Downstream effect is recognizable: '{self.downstream_effect}'"
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "description": self.description,
@@ -300,6 +329,8 @@ class Harm:
             "uncertainty_level": self.uncertainty_level.value,
             "evidence_basis": self.evidence_basis,
             "audience_risk_elevated": self.audience_risk_elevated,
+            "downstream_effect": self.downstream_effect,
+            "reversibility_distinction": self.reversibility_distinction,
             "risk_class": self.calculate_risk_class().value,
         }
 
@@ -476,6 +507,12 @@ class EthicalPausePosture:
     - Paradox/Integration/Artistry/Red Team
 
     This is a posture, not a metric - roughly one-third attention on each.
+
+    POSTURE COMMITMENT (v0.9.6 Fix #9):
+    "Truth first. Protect the lesser. Reduce harm. Pause."
+    Note: "Truth first" is SEQUENCE, not HIERARCHY. All four commitments operate
+    simultaneously. The posture order describes how to engage analysis, not which
+    commitment overrides others. Truth grounds analysis in reality before action.
     """
     action_statement: str  # "What exactly am I about to do?"
     compassion_notes: str = ""
@@ -1252,6 +1289,40 @@ class FinalizationGateResult:
 
 
 # ---------------------------------------------------------------------------
+# Calibration Reminder (Fix #6)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class CalibrationReminder:
+    """
+    Tracks calibration checks for institutional deployments.
+    Logs initialization timestamp and provides check_due() and days_overdue() methods.
+    """
+    initialized_at: datetime = field(default_factory=datetime.utcnow)
+    calibration_interval_days: int = 30
+    """Number of days between mandatory calibration checks."""
+
+    def check_due(self) -> bool:
+        """Return True if 30+ days have passed since initialization."""
+        elapsed = datetime.utcnow() - self.initialized_at
+        return elapsed.days >= self.calibration_interval_days
+
+    def days_overdue(self) -> int:
+        """Return days overdue if past due; 0 if current."""
+        elapsed = datetime.utcnow() - self.initialized_at
+        overdue = elapsed.days - self.calibration_interval_days
+        return max(0, overdue)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "initialized_at": self.initialized_at.isoformat(),
+            "calibration_interval_days": self.calibration_interval_days,
+            "check_due": self.check_due(),
+            "days_overdue": self.days_overdue(),
+        }
+
+
+# ---------------------------------------------------------------------------
 # PBHP Log Record v0.9.5
 # ---------------------------------------------------------------------------
 
@@ -1363,6 +1434,17 @@ class PBHPLog:
     notes: str = ""
     related_logs: List[str] = field(default_factory=list)
 
+    # Calibration tracking (Fix #6)
+    calibration_reminder: Optional[CalibrationReminder] = None
+
+    # Crisis mode tracking (Fix #7)
+    crisis_mode_activated: bool = False
+    crisis_mode_started_at: Optional[datetime] = None
+
+    # False Positive Valve tracking (Fix #8)
+    false_positive_challenge_count: int = 0
+    false_positive_rejected_challenges: int = 0
+
     def get_overall_confidence(self) -> str:
         """Get overall confidence from uncertainty assessment."""
         if self.uncertainty:
@@ -1449,6 +1531,22 @@ class PBHPLog:
         result["notes"] = self.notes
         result["related_logs"] = self.related_logs
 
+        # Calibration tracking (Fix #6)
+        if self.calibration_reminder:
+            result["calibration_reminder"] = self.calibration_reminder.to_dict()
+
+        # Crisis tracking (Fix #7)
+        result["crisis_mode"] = {
+            "activated": self.crisis_mode_activated,
+            "started_at": self.crisis_mode_started_at.isoformat() if self.crisis_mode_started_at else None,
+        }
+
+        # False Positive Valve tracking (Fix #8)
+        result["false_positive_valve"] = {
+            "challenge_count": self.false_positive_challenge_count,
+            "rejected_challenges": self.false_positive_rejected_challenges,
+        }
+
         return result
 
     def to_json(self, indent: int = 2) -> str:
@@ -1533,6 +1631,7 @@ class DriftAlarmDetector:
         (r"i'?ll?\s+just\s+pick\s+the\s+most\s+plausible", "premature-collapse"),
         (r"(must|need\s+to|have\s+to)\s+act\s+(now|immediately|fast|quickly)", "urgency-pressure"),
         (r"no\s+time\s+to\s+(think|pause|wait|consider|check)", "urgency-pressure"),
+        (r"pattern\s+of\s+.*green.*power\s+asymmetry", "outcome-based-green-drift"),
     ]
 
     PREMATURE_COLLAPSE_PATTERNS = [
@@ -2905,6 +3004,166 @@ class PBHPEngine:
             )
 
         return errors
+
+    # ------------------------------------------------------------------
+    # Fix #3: Dual Assessor Support for Institutional Deployments
+    # ------------------------------------------------------------------
+
+    def dual_assessor_check(self, gate_assessment_1: RiskClass,
+                            gate_assessment_2: RiskClass) -> Tuple[RiskClass, bool]:
+        """
+        Support dual-assessor deployments where two independent assessments
+        are required. If they disagree by 2+ levels, escalate.
+
+        Args:
+            gate_assessment_1: First assessor's gate assignment
+            gate_assessment_2: Second assessor's gate assignment
+
+        Returns:
+            (final_gate, requires_escalation)
+        """
+        gate_order = [RiskClass.GREEN, RiskClass.YELLOW, RiskClass.ORANGE,
+                      RiskClass.RED, RiskClass.BLACK]
+
+        idx1 = gate_order.index(gate_assessment_1)
+        idx2 = gate_order.index(gate_assessment_2)
+
+        disagreement_level = abs(idx1 - idx2)
+
+        if disagreement_level >= 2:
+            # Escalate to higher gate on disagreement
+            final_idx = max(idx1, idx2)
+            return gate_order[final_idx], True
+
+        # Use the higher of the two
+        final_idx = max(idx1, idx2)
+        return gate_order[final_idx], False
+
+    # ------------------------------------------------------------------
+    # Fix #4: GREEN Logging Floor for Power Asymmetry & Large Populations
+    # ------------------------------------------------------------------
+
+    def apply_logging_floor(self, log: PBHPLog, base_logging_level: str) -> str:
+        """
+        Apply GREEN logging floor: if power_asymmetry=True or affected_count > 10,
+        minimum logging level = YELLOW regardless of gate (Fix #4).
+
+        Args:
+            log: The PBHP log to check
+            base_logging_level: The base logging level ("GREEN", "YELLOW", etc.)
+
+        Returns:
+            Adjusted logging level (minimum YELLOW if conditions met)
+        """
+        # Check for power asymmetry in any harm
+        has_power_asymmetry = any(h.power_asymmetry for h in log.harms)
+
+        # Check total affected count
+        total_affected = sum(len(h.affected_parties) for h in log.harms)
+
+        if has_power_asymmetry or total_affected > 10:
+            # Floor is YELLOW
+            level_order = ["GREEN", "YELLOW", "ORANGE", "RED", "BLACK"]
+            base_idx = level_order.index(base_logging_level) if base_logging_level in level_order else 0
+            # If less than YELLOW, bump to YELLOW
+            if base_idx < level_order.index("YELLOW"):
+                return "YELLOW"
+
+        return base_logging_level
+
+    # ------------------------------------------------------------------
+    # Fix #5: Outcome-Based Drift Check
+    # ------------------------------------------------------------------
+
+    def check_outcome_based_drift(self, recent_decisions: List[PBHPLog]) -> Tuple[bool, str]:
+        """
+        Check if >80% of last 20+ decisions with power asymmetry were GREEN (Fix #5).
+        This indicates possible drift in gate assignment.
+
+        Args:
+            recent_decisions: List of recent PBHP logs
+
+        Returns:
+            (drift_detected, explanation)
+        """
+        if len(recent_decisions) < 20:
+            return False, "Insufficient decisions for drift check (need 20+)"
+
+        # Filter for decisions with power asymmetry
+        power_asymmetry_decisions = [
+            d for d in recent_decisions[-20:]
+            if any(h.power_asymmetry for h in d.harms)
+        ]
+
+        if len(power_asymmetry_decisions) < 20:
+            return False, f"Only {len(power_asymmetry_decisions)} decisions with power asymmetry in last 20"
+
+        # Count GREEN gates
+        green_count = sum(
+            1 for d in power_asymmetry_decisions
+            if d.highest_risk_class == RiskClass.GREEN
+        )
+
+        green_percentage = green_count / len(power_asymmetry_decisions)
+
+        if green_percentage > 0.80:
+            return True, (
+                f"DRIFT ALARM: {green_percentage:.0%} of power-asymmetry decisions "
+                f"were GREEN (>80% threshold). This may indicate gate drift."
+            )
+
+        return False, "No outcome-based drift detected"
+
+    # ------------------------------------------------------------------
+    # Fix #7: Crisis Timeout Check (72 hours)
+    # ------------------------------------------------------------------
+
+    def check_crisis_timeout(self, log: PBHPLog) -> bool:
+        """
+        Check if crisis mode has expired (72 hours).
+        Returns True if crisis has timed out and needs reassessment.
+
+        Args:
+            log: The PBHP log with crisis tracking
+
+        Returns:
+            True if crisis timeout exceeded, False otherwise
+        """
+        if not log.crisis_mode_activated or not log.crisis_mode_started_at:
+            return False
+
+        crisis_timeout_hours = 72
+        elapsed = datetime.utcnow() - log.crisis_mode_started_at
+        hours_elapsed = elapsed.total_seconds() / 3600
+
+        return hours_elapsed >= crisis_timeout_hours
+
+    # ------------------------------------------------------------------
+    # Fix #8: False Positive Valve Rate Limiting
+    # ------------------------------------------------------------------
+
+    def track_false_positive_challenge(self, log: PBHPLog, challenge_accepted: bool) -> bool:
+        """
+        Track challenges to false positive valve.
+        Flag if >3 rejected challenges in a session (Fix #8).
+
+        Args:
+            log: The PBHP log
+            challenge_accepted: True if challenge was accepted, False if rejected
+
+        Returns:
+            True if rate limit exceeded, False otherwise
+        """
+        log.false_positive_challenge_count += 1
+
+        if not challenge_accepted:
+            log.false_positive_rejected_challenges += 1
+
+        # Flag if >3 rejected challenges
+        if log.false_positive_rejected_challenges > 3:
+            return True
+
+        return False
 
 
 # ---------------------------------------------------------------------------

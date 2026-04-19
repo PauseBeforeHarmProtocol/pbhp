@@ -17,6 +17,13 @@ Each metric pack defines:
 
 Enables consistent risk scoring across different systems.
 
+HARM THRESHOLD NOTE (v0.9.6 Fix #14 - Interpersonal & Content Moderation):
+In interpersonal and content moderation contexts, sustained patterns of
+psychological harm — harassment, abuse, intimidation — that would cause a
+reasonable person to modify their behavior, withdraw from public space, or
+seek professional help meet the cascade threshold even without a single
+"autonomy-destroying" event. Pattern + impact = cascade.
+
 Contact: pausebeforeharmprotocol_pbhp@protonmail.com
 """
 

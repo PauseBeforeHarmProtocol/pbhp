@@ -17,7 +17,7 @@ Contact: pausebeforeharmprotocol_pbhp@protonmail.com
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import List, Optional, Dict, Any, Set, Callable
+from typing import List, Optional, Dict, Any, Set, Callable, Tuple
 import uuid
 
 
@@ -719,3 +719,68 @@ class MBSEInterface:
             ),
             "mappings": [m.to_dict() for m in self._mappings],
         }
+
+
+# ---------------------------------------------------------------------------
+# Fix #15: Institutional Deployment Checker
+# ---------------------------------------------------------------------------
+
+@dataclass
+class InstitutionalDeploymentChecker:
+    """
+    Verifies that institutional deployments meet dual-assessor, calibration,
+    and cross-functional review requirements (Fix #15).
+    """
+    deployment_name: str = ""
+    organization: str = ""
+
+    # Requirement verification flags
+    dual_assessor_configured: bool = False
+    """Two independent gate assessments required before deployment."""
+
+    calibration_schedule_set: bool = False
+    """Calibration reminders set for 30-day intervals."""
+
+    cross_functional_review_enabled: bool = False
+    """Cross-functional review required for ORANGE+ decisions."""
+
+    def verify_requirements(self) -> Tuple[bool, List[str]]:
+        """
+        Verify all institutional requirements are met.
+
+        Returns:
+            (all_met, list_of_failures)
+        """
+        failures = []
+
+        if not self.dual_assessor_configured:
+            failures.append("Dual-assessor configuration not enabled")
+
+        if not self.calibration_schedule_set:
+            failures.append("Calibration schedule not configured")
+
+        if not self.cross_functional_review_enabled:
+            failures.append("Cross-functional review not enabled")
+
+        all_met = len(failures) == 0
+        return all_met, failures
+
+    def generate_compliance_report(self) -> Dict[str, Any]:
+        """Generate institutional deployment compliance report."""
+        all_met, failures = self.verify_requirements()
+
+        return {
+            "deployment_name": self.deployment_name,
+            "organization": self.organization,
+            "timestamp": datetime.utcnow().isoformat(),
+            "all_requirements_met": all_met,
+            "dual_assessor_configured": self.dual_assessor_configured,
+            "calibration_schedule_set": self.calibration_schedule_set,
+            "cross_functional_review_enabled": self.cross_functional_review_enabled,
+            "failures": failures,
+            "compliance_status": "COMPLIANT" if all_met else "NON-COMPLIANT",
+        }
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary."""
+        return self.generate_compliance_report()

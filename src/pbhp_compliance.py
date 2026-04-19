@@ -340,6 +340,127 @@ EU_AI_ACT_REQUIREMENTS = [
 
 
 # ===========================================================================
+# v0.9.6 Adversarial Audit Fixes (Fix #16: Compliance Mappings)
+# ===========================================================================
+
+PBHP_V096_REQUIREMENTS = [
+    ComplianceRequirement(
+        framework=ComplianceFramework.NIST_AI_RMF,
+        requirement_id="PBHP.v096.DOWNSTREAM_EFFECT",
+        requirement_title="Downstream effect naming and recognition test (Fix #1)",
+        requirement_text="Actions must be described with downstream effects, not just technical changes. Recognition test: Could the person most harmed recognize what was described?",
+        pbhp_satisfying_steps=["Step 1"],
+        pbhp_artifacts_satisfying=["Action Description", "Harm Assessment"],
+        evidence_checklist=[
+            "Downstream effect explicitly stated",
+            "Recognition test passed",
+            "Non-euphemistic naming used",
+        ],
+        verification_method="Action description review",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.ISO_42001,
+        requirement_id="PBHP.v096.REVERSIBILITY_DISTINCTION",
+        requirement_title="Reversibility distinction flag (Fix #2)",
+        requirement_text="Reversibility applies to the harm, not the tool. Distinction documented in harm assessment.",
+        pbhp_satisfying_steps=["Step 2", "Step 3"],
+        pbhp_artifacts_satisfying=["Harm Assessment Report"],
+        evidence_checklist=[
+            "Reversibility distinction documented",
+            "Tool vs. harm reversibility analyzed separately",
+        ],
+        verification_method="Harm assessment review",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.NIST_AI_RMF,
+        requirement_id="PBHP.v096.DUAL_ASSESSOR",
+        requirement_title="Dual-assessor support for institutions (Fix #3)",
+        requirement_text="Institutional deployments require two independent gate assessments. Disagreement by 2+ levels triggers escalation.",
+        pbhp_satisfying_steps=["Step 4"],
+        pbhp_artifacts_satisfying=["Dual Assessment Log"],
+        evidence_checklist=[
+            "Two assessors documented",
+            "Independent assessments recorded",
+            "Disagreement protocol triggered when applicable",
+        ],
+        verification_method="Assessment log review",
+        applicable_to_domains=["healthcare", "finance"],
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.ISO_42001,
+        requirement_id="PBHP.v096.GREEN_LOGGING_FLOOR",
+        requirement_title="GREEN logging floor for power asymmetry (Fix #4)",
+        requirement_text="If power_asymmetry=True or affected_count > 10, minimum logging level = YELLOW regardless of gate.",
+        pbhp_satisfying_steps=["All"],
+        pbhp_artifacts_satisfying=["PBHP Decision Log"],
+        evidence_checklist=[
+            "Logging level floors applied",
+            "Power asymmetry detection enabled",
+            "Population thresholds configured",
+        ],
+        verification_method="Log analysis",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.NIST_AI_RMF,
+        requirement_id="PBHP.v096.OUTCOME_DRIFT",
+        requirement_title="Outcome-based drift detection (Fix #5)",
+        requirement_text="Flag if >80% of last 20+ decisions with power asymmetry were GREEN. Indicates gate assignment drift.",
+        pbhp_satisfying_steps=["Step 6"],
+        pbhp_artifacts_satisfying=["Drift Detection Report"],
+        evidence_checklist=[
+            "Drift detector configured",
+            "20+ decision window tracked",
+            "Green percentage monitored",
+            "Alarms triggered when >80%",
+        ],
+        verification_method="Drift report review",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.ISO_42001,
+        requirement_id="PBHP.v096.CALIBRATION_REMINDER",
+        requirement_title="Calibration reminders (Fix #6)",
+        requirement_text="CalibrationReminder class logs initialization, check_due() returns True after 30 days, days_overdue() tracks lateness.",
+        pbhp_satisfying_steps=["All"],
+        pbhp_artifacts_satisfying=["Calibration Log"],
+        evidence_checklist=[
+            "Calibration tracking enabled",
+            "30-day cycle configured",
+            "Overdue notifications logged",
+        ],
+        verification_method="Calibration audit log",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.NIST_AI_RMF,
+        requirement_id="PBHP.v096.CRISIS_TIMEOUT",
+        requirement_title="Crisis timeout enforcement (Fix #7)",
+        requirement_text="Crisis mode expires after 72 hours. Mandatory reassessment required even if crisis feels ongoing.",
+        pbhp_satisfying_steps=["Step 0"],
+        pbhp_artifacts_satisfying=["Crisis Log"],
+        evidence_checklist=[
+            "Crisis timeout configured (72 hours)",
+            "Mandatory reassessment triggered",
+            "Backfill documentation completed",
+        ],
+        verification_method="Crisis log and reassessment review",
+    ),
+    ComplianceRequirement(
+        framework=ComplianceFramework.ISO_42001,
+        requirement_id="PBHP.v096.FALSE_POSITIVE_VALVE",
+        requirement_title="False Positive Valve rate limiting (Fix #8)",
+        requirement_text="Track challenges per actor, flag if >3 rejected challenges in a session.",
+        pbhp_satisfying_steps=["Step 5"],
+        pbhp_artifacts_satisfying=["False Positive Review Log"],
+        evidence_checklist=[
+            "Challenge tracking enabled",
+            "Rate limit (>3) enforced",
+            "Session isolation verified",
+        ],
+        verification_method="Challenge log audit",
+    ),
+]
+
+
+# ===========================================================================
 # PBHP Artifacts (what PBHP produces)
 # ===========================================================================
 
@@ -388,6 +509,10 @@ PBHP_ARTIFACTS_CATALOG = [
 # ===========================================================================
 
 ALL_REQUIREMENTS = NIST_REQUIREMENTS + ISO_42001_REQUIREMENTS + ISO_23894_REQUIREMENTS + EU_AI_ACT_REQUIREMENTS
+
+# v0.9.6 requirements are tracked separately and can be added to reports as needed
+# without changing the base ALL_REQUIREMENTS count for backward compatibility
+PBHP_V096_COMPLIANCE_ADDITIONS = PBHP_V096_REQUIREMENTS
 
 
 class ComplianceMapper:

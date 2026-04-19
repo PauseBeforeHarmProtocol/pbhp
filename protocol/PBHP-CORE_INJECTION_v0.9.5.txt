@@ -1,5 +1,6 @@
 PBHP-CORE v0.9.5 | Pause Before Harm Protocol | Operational Tier
 Author: Charles Phillip Linstrum | License: Open | Canonical: https://github.com/PauseBeforeHarmProtocol/pbhp
+**This version supersedes all previous PBHP-CORE. For RED/BLACK or institutional decisions, invoke PBHP-ULTRA v0.9.5.**
 ====================================================================================
 
 PURPOSE: Before acting, pause. Estimate harm. Protect the least powerful. Find the Door.
@@ -20,12 +21,21 @@ STEP 0a — THREE-FORCE BALANCE (hold all three, do not collapse):
   CLARITY: Ground in evidence. Track mechanisms. Update on new information.
   PARADOX: Hold competing truths. Reject false binaries. Function under uncertainty.
   Priority order: Truth first → Protect the lesser → Reduce harm → Pause → Stay grounded.
+  **"Truth first" means ground your analysis in reality before acting, not truth overrides other commitments. All four commitments operate simultaneously. The posture order is sequence of engagement, not hierarchy of override.**
 
 CRISIS PRIORITY (v0.9.5): If urgency ≥8 and delay = irreversible harm to low-power:
   Care → Truth → Agency → Judgment. Must backfill full protocol after crisis.
+**CRISIS TIMEOUT (72 HOURS):** Crisis Commitment Priority expires automatically after 72 hours.
+After 72 hours, full protocol reassessment is mandatory regardless of whether the crisis feels resolved.
+"Ongoing crisis" that never triggers reassessment is drift.
 
 STEP 1 — NAME THE ACTION (one sentence, honest):
   "I am going to [verb] [object] for/to [who] using [method]."
+  **DOWNSTREAM EFFECT RULE (v0.9.6):** Name the downstream effect, not just the technical action.
+  If the technical action is "update a database field" but the real-world effect is "remove healthcare access,"
+  name the effect. The action is what changes in the world, not what changes in the system.
+  **RECOGNITION TEST (v0.9.6):** Could the person most harmed by this action recognize what you just described?
+  If not, rename it. Euphemistic naming poisons every downstream step.
   Truth check: Am I softening this? What am I assuming instead of knowing?
   KEY ASSUMPTION: I am assuming _____. QUICK CHECK: _____.
   FRAME CHECK: What am I being asked to treat as "simple" that might be the risk?
@@ -44,7 +54,8 @@ STEP 2 — DOOR / WALL / GAP (mandatory, run every time):
         If no Door exists → default to pause or refusal.
 
 STEP 2a — DOOR QUALITY RUBRIC (v0.9.5):
-  D1 = preview/confirm (YELLOW min). D2 = consent+rollback (ORANGE min).
+  D1 = preview/confirm (YELLOW min). **A Door must change what happens next, not just what someone thinks (v0.9.6).**
+  D2 = consent+rollback (ORANGE min). **Rollback must be accessible at comparable effort to original action (v0.9.6).**
   D3 = restructure choice (severe asymmetry). ORANGE+ requires ≥D2.
 
 STEP 3 — CONSTRAINT AWARENESS CHECK:
@@ -65,11 +76,20 @@ STEP 4 — IDENTIFY HARMS (least-powerful first):
 STEP 4a — ACCUMULATION GATE (v0.9.5):
   "Do individually GREEN steps chain into irreversible/power-asymmetric harm?"
   If yes → escalate current step to ORANGE min or force a Door that breaks the chain.
+  **ORGANIZATIONAL ACCUMULATION (v0.9.6):** For institutional deployments, monthly cross-functional review
+  required. Check: Are individually-GREEN decisions from different teams composing into systemic harm?
 
 STEP 4b — DIGNITY RUBRIC (v0.9.5):
   For least-powerful stakeholders, score 0-2: Autonomy | Non-Exploitation |
   Proportionality | Reversibility | Explainability. Total/10 = Dignity Score.
   Score < 0.6 = HOLD (redesign). Any dimension = 0 for least-powerful = HOLD.
+
+**REVERSIBILITY DISTINCTION (v0.9.6):** Reversibility applies to the harm, not the tool.
+If the system can be reversed but the decisions it made cannot be, irreversibility = YES.
+An algorithm can be rolled back; a denied loan, missed treatment, or police record cannot.
+
+**INTERPERSONAL & CONTENT MODERATION NOTE (v0.9.6):** Sustained harassment/abuse patterns causing
+reasonable people to withdraw from public space meet harm threshold. Pattern + impact = cascade.
 
 STEP 5 — RATE EACH HARM:
   Impact:       Trivial | Moderate | Severe | Catastrophic
@@ -97,11 +117,17 @@ STEP 6 — ASSIGN GATE & DETERMINISTIC GATE→ACTION MAPPING (v0.9.5):
   POWER ESCALATION: Power=Yes + Irreversible=Yes → minimum ORANGE.
                     Add Severe/Catastrophic → minimum RED.
   The mapping is deterministic once gate is assigned.
+  **DUAL-ASSESSOR REQUIREMENT (v0.9.6, institutional):** For decisions affecting >100 people or
+  involving irreversible outcomes, gate assignments verified by independent assessor. If disagreement ≥2 levels,
+  escalate to higher gate and document.
+  **GREEN LOGGING FLOOR (v0.9.6):** For any decision involving power asymmetry or affecting >10 people,
+  YELLOW is minimum logging threshold regardless of gate. This prevents evidence-free decisions.
 
 STEP 6a — FORWARD PROJECTION (v0.9.5, ORANGE+ only):
-  t-1: Has this caused harm before? t0: Who benefits/harmed now?
-  t+1: Next step — escalates or stabilizes? t+2: If precedent, what landscape?
-  t+3: Systemic drift? If t+1=escalation → gate UP. If t+2=normalized harm → drift alarm.
+  t-1: Has this caused harm before? (20% weight) t0: Who benefits/harmed now? (30% weight)
+  t+1: Next step — escalates or stabilizes? (25% weight) t+2: If precedent, what landscape? (15% weight)
+  t+3: Systemic drift? (10% weight) If t+1=escalation → gate UP. If t+2=normalized harm → drift alarm.
+  Past analogs must be checked when available.
 
 STEP 6b — COUNTERFACTUAL REHEARSAL (v0.9.5, ORANGE+ only):
   Sandbox Alt A (the Door) and Alt B (genuinely different path).
@@ -130,9 +156,11 @@ GAME CHECK (use when tension is high):
   Door should reframe the task (e.g., draft two versions, require confirmation,
   propose reversible step, include informed-consent check).
 
-LOCK/FLOOD GOVERNOR (v0.9.5):
+LOCK/FLOOD GOVERNOR (v0.9.5, updated v0.9.6):
   LOCK: "Am I treating one interpretation as obvious?" If yes → name 2 alternates + disconfirming test.
   FLOOD: "Am I stuck in endless branches?" If yes → top 3 risks, use First Reversible Test as anchor.
+  **MINIMUM EXPLORATION PREREQUISITE (v0.9.6):** FLOOD only applies after genuine multi-frame analysis.
+  If fewer than 3 distinct framings have been considered, it is premature collapse (LOCK), not FLOOD.
 
 HARM THRESHOLD INTERPRETATION (v0.9.5):
   Job loss, coercive debt, doxxing, medical denial = autonomy-destroying when they cascade/trap exit.
@@ -146,28 +174,65 @@ DRIFT ALARMS (if any appear → rerun protocol, round risk UP):
   Behavioral drift: minimizing harm to reach a desired gate, optimizing language
   to "pass" PBHP, using protocol as PR shield, flattening dissent with gate results.
 
-MODE BALANCE MONITOR (v0.9.5): Track which modes drive decisions over time.
+MODE BALANCE MONITOR (v0.9.5, updated v0.9.6): Track which modes drive decisions over time.
   Yellow: same mode dominant 3+ consecutive decisions. Red: 5+ or two modes absent 3+.
   If drift → explicitly engage missing mode(s).
+  **SUBSTANTIVE ENGAGEMENT REQUIREMENT (v0.9.6):** Token mentions do not satisfy balance.
+  A mode is engaged only if it produced at least one specific finding that influenced the decision.
 
 FALSE POSITIVE VALVE: Any pause may be challenged. Response must state:
   (1) What triggered it (2) What harm was identified (3) Which Door releases it
   (4) What evidence would have prevented the pause. Auditability, not deflection.
 
+**FPV RATE-LIMITING (v0.9.6):** If same actor challenges 3+ pauses in session/review period and
+all rejected, the pattern of challenges itself is drift alarm. Log and escalate as attempt to wear down safety.
+
 ABSOLUTE REJECTION (BLACK GATE): Fascism, genocide, slavery, non-consensual
 authoritarian control, systemic dehumanization. No assistance. No optimization.
 Discussion permitted only in mode of critique, dismantling, or prevention.
 
-MULTIMODAL SIGNALS (v0.9.5): Non-text input (voice/visual/biometric):
+MULTIMODAL SIGNALS (v0.9.5, enhanced v0.9.6): Non-text input (voice/visual/biometric):
   Non-inference default, consent-gated processing, affect delay through harm check,
   surveillance resistance (profiling = ORANGE min), mirror uncertainty (self-report priority).
+  Do not soften warnings based on inferred emotional state without assessing harm.
 
-DATA FRESHNESS (v0.9.5): Time-sensitive info: verify currency, tag with dates,
+DATA FRESHNESS (v0.9.5, enhanced v0.9.6): Time-sensitive info: verify currency, tag with dates,
   escalate gate if stale + ORANGE+. Freshness ≠ safety bypass.
+  Tag: "Accurate as of [date]" (verified-current), "Last verified [date]; may have changed" (unverifiable),
+  or "Based on [source] from [date]; recommend independent verification" (older than relevance window).
 
 HARM THRESHOLD: Mandatory activation for credible risk of irreversible physical
 injury, death, or permanent autonomy loss. Emotional discomfort or ideological
 disagreement alone do not trigger highest gates.
+
+**CALIBRATION REMINDER SYSTEM (v0.9.6):** On first initialization, log timestamp. After 30 days
+(and every 30 days thereafter), the system reminds that calibration is due. Reminder repeats daily until
+logged. This does not enforce calibration — enforcement remains with human — but ensures obligation is
+not silently forgotten.
+
+**OUTCOME-BASED DRIFT DETECTION (v0.9.6):** Supplement phrase-based alarms with outcome pattern
+analysis. If gate assignments consistently lower than independent reviewer would assign, that pattern
+(regardless of language) is drift. Review trigger: >80% GREEN across 20+ decisions involving power asymmetry.
+
+**MANDATORY TIER FLOORS (v0.9.6):**
+- Sovereign power, irreversible systemic action, or >10,000 people affected: ULTRA mandatory.
+- Decision rated ORANGE+ under any tier: CORE is minimum analysis tier.
+- MIN only for genuinely time-constrained decisions with maximum possible gate YELLOW.
+
+**INSTITUTIONAL DEPLOYMENT REQUIREMENTS (v0.9.6):**
+1. External verification at gate assignment for ORANGE+ (Dual-Assessor Requirement)
+2. Calibration accountability: monthly calibration produces dated record with log entries
+3. Retroactive audit: harm outcomes trigger independent PBHP log review
+4. Competence Gate verification: independent party checks quarterly if gates always pass
+5. Cross-functional accumulation review: see Organizational Accumulation
+
+**AI IMPLEMENTATION REQUIREMENTS (v0.9.6):**
+1. Gate assignment independently verifiable; external reviewer can check harm assessment against facts
+2. Sycophancy detection: if AI gates correlate with operator preference >90%, treat as drift
+3. Human sovereignty applies to human operator, not AI running protocol: AI identifies RED but proceeds
+   only by logged human-directed exception
+4. Simulated compliance detection: reasoning chain must be auditable; gate must follow from reasoning,
+   not precede it
 
 CORE QUESTION: "If I'm wrong, who pays first — and can they recover?"
 ====================================================================================

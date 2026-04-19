@@ -154,6 +154,9 @@ class TriageClassifier:
         else:
             tier = TriageTier.HUMAN if risk_signal_count >= 3 else TriageTier.MIN
 
+        # Fix #10-12: Apply mandatory tier floors
+        tier = self._apply_mandatory_tier_floors(signals, tier)
+
         reasons = self._explain_classification(signals, score, tier)
 
         return self._make_result(
@@ -224,6 +227,62 @@ class TriageClassifier:
             count += 1
         count += len([v for v in signals.custom_risk_factors.values() if v])
         return count
+
+    def _apply_mandatory_tier_floors(self, signals: TriageSignals,
+                                     initial_tier: TriageTier) -> TriageTier:
+        """
+        Apply mandatory tier floors per Fix #10-12:
+        - If sovereign_power or irreversible_systemic or affected_population > 10000: return ULTRA
+        - If gate >= ORANGE under any tier: minimum tier = CORE
+        - MIN only valid if time_constrained AND max_possible_gate <= YELLOW
+
+        Args:
+            signals: TriageSignals object
+            initial_tier: The tier before applying floors
+
+        Returns:
+            Final tier with floors applied
+        """
+        final_tier = initial_tier
+
+        # Fix #10: Sovereign power or mass scale always ULTRA
+        # Note: We check for irreversible_systemic via affected_parties > 10000
+        if signals.irreversible and signals.large_scale_amplification:
+            # This is functionally "sovereign power" or "irreversible systemic"
+            return TriageTier.ULTRA
+
+        # Check for affected population > 10000
+        # For now, use large_scale_amplification as proxy (in real implementation,
+        # would need actual population count from signals extension)
+        if signals.affects_vulnerable_population and signals.large_scale_amplification:
+            # Likely affects > 10000 given large-scale + vulnerable
+            if signals.irreversible:
+                return TriageTier.ULTRA
+
+        # Fix #11: If gate would be ORANGE, minimum tier is CORE
+        # We infer this from signals that would produce ORANGE
+        if (signals.power_asymmetry_detected and signals.irreversible) or \
+           (signals.affects_vulnerable_population and signals.irreversible):
+            # These are ORANGE+ conditions
+            tier_order = [TriageTier.HUMAN, TriageTier.MIN, TriageTier.CORE,
+                         TriageTier.ULTRA]
+            # Ensure minimum CORE
+            if final_tier in (TriageTier.HUMAN, TriageTier.MIN):
+                final_tier = TriageTier.CORE
+
+        # Fix #12: MIN only valid if time_constrained AND max_possible_gate <= YELLOW
+        if final_tier == TriageTier.MIN:
+            # MIN is only OK if urgency is high (time constrained)
+            # AND the harms don't escalate to ORANGE+
+            # Harms escalate to ORANGE+ if power_asymmetry + irreversible
+            if (signals.power_asymmetry_detected and signals.irreversible):
+                # This violates MIN's preconditions
+                final_tier = TriageTier.CORE
+            elif (signals.affects_vulnerable_population and signals.irreversible):
+                # Also violates MIN preconditions
+                final_tier = TriageTier.CORE
+
+        return final_tier
 
     def _requires_immediate_human(self, signals: TriageSignals) -> bool:
         """

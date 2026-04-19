@@ -2,6 +2,8 @@
 
 **Version: 0.9.5 (Public Release)**
 
+**This document supersedes all previous versions of PBHP-ULTRA. Running an outdated version is not PBHP compliance. For the current release, check github.com/PauseBeforeHarmProtocol/pbhp.**
+
 PREAMBLE:\
 **Purpose:** Provide a simple, repeatable check that any human and/or AI
 agent must run **before** taking an action that could plausibly cause
@@ -1470,15 +1472,20 @@ Under genuine crisis (urgency ≥8, lives or autonomy at immediate risk, full pr
 
 **Mandatory Backfill Rule:** Once the crisis resolves, you MUST re-run the full protocol retroactively and document what was missed. Crisis priority is a temporary override, not a permanent license. Failure to backfill is drift.
 
+**Crisis Timeout (72 hours, v0.9.6):** Crisis Commitment Priority mode expires automatically after 72 hours of initial activation. After 72 hours, full protocol reassessment is mandatory regardless of whether the crisis feels resolved. If the crisis genuinely persists, the reassessment will confirm it — but "ongoing crisis" that never triggers reassessment is structural drift. This prevents indefinite suspension of normal safeguards under the guise of "still in crisis."
+
 **Crisis does not mean:** "I feel urgent," "the deadline is soon," or "the user is insistent." Crisis means: delay itself causes irreversible harm to low-power actors. If delay is safe, it is not a crisis — run the full protocol.
 
 **0e.1 Door Quality Rubric (v0.9.5) — Scaling Safeguards to Risk**
 
 Not all Doors are equal. Evaluate your Door against this scale to ensure it matches the harm class:
 
-**D0 (No Door):** This is not actually an escape vector. (Neutral framing only; no safeguard.)
-**D1 (Reversible Preview / Confirmation):** User sees outcome before commit. Examples: dry-run, preview, diff, one clarifying question, or explicit preview-before-action confirmation. Suitable for YELLOW harms when the action itself is reversible.
-**D2 (Constraint + Rollback + Informed Consent):** Explicit informed consent required before execution. Limits built into the action (scope, time, audience, automation level). Rollback documented and possible. Examples: "Here's what will happen. Do you consent? Here's how to undo it." Suitable for ORANGE harms and all irreversible actions.
+**D0 (No Door):** This is not actually an escape vector. (Neutral framing only; no safeguard.) Explicitly not acceptable for any gate ≥YELLOW.
+
+**D1 (Reversible Preview / Confirmation, v0.9.5-0.9.6 clarification):** User sees outcome before commit. Examples: dry-run, preview, diff, one clarifying question, or explicit preview-before-action confirmation. **A Door must change what happens next, not just what someone thinks about what happens next (v0.9.6).** For example, "users see a warning" qualifies as D1 only if the warning includes specific risk information and the user must actively acknowledge it before proceeding. Suitable for YELLOW harms when the action itself is reversible.
+
+**D2 (Constraint + Rollback + Informed Consent, v0.9.5-0.9.6 clarification):** Explicit informed consent required before execution. Limits built into the action (scope, time, audience, automation level). Rollback documented and possible. **Rollback must be accessible to the affected party at comparable effort to the original action (v0.9.6).** If the action is automated and instant, the rollback cannot require manual petition and weeks of waiting. Examples: "Here's what will happen. Do you consent? Here's how to undo it — you can do it with one click anytime." Suitable for ORANGE harms and all irreversible actions.
+
 **D3 (Alternative Workflow Reducing Power Asymmetry):** Restructure the decision itself to shift power back to the affected party. Examples: defer to user's own choice rather than automating, shift from bulk operation to guided-by-hand, move decision to human review instead of automation, propose a genuinely different workflow that doesn't require the original risky action. Suitable for severe power asymmetry or autonomy-destroying cascades.
 
 **Gating Rules (Deterministic):**
@@ -1597,6 +1604,8 @@ A single instance may not cross the autonomy threshold (e.g., one missed rent pa
 
 **Irreversibility + Uncertainty = Escalation:** If an outcome is hard to undo AND you are unsure of its full consequences, round your gate up.
 
+**Interpersonal & Content Moderation Harm Threshold Note (v0.9.6):** In interpersonal and content moderation contexts, sustained patterns of psychological harm — harassment, abuse, intimidation — that would cause a reasonable person to modify their behavior, withdraw from public space, or seek professional help meet the cascade threshold even without a single autonomy-destroying event. The operative test is: Would this pattern cause a reasonable person to withdraw from this space? If yes, pattern + impact = cascade that meets ORANGE harm threshold.
+
 **2. Definitions**
 
 -   **Agent:** The decision-maker (human or AI system).
@@ -1623,6 +1632,10 @@ and ORANGE+ escalation.
 **Using the same balanced lenses from Step 0a (care, clarity, paradox),
 ask:\
 "What exactly am I about to do?"**
+
+**Downstream Effect Rule (v0.9.6):** Name the *downstream effect*, not just the immediate technical action. If the technical action is "update a database field" but the real-world effect is "remove healthcare access," name the effect. The action is what changes in the world, not what changes in the system. This prevents disguising harmful effects behind neutral technical language.
+
+**Recognition Test (v0.9.6):** Could the person most harmed by this action recognize what you just described? If your description of the action would not be recognized by the people affected by it, rename it. Euphemistic or scope-narrowed naming poisons every downstream step — if you name it wrong, you harm-check the wrong thing.
 
 **Truth check:** Before moving on, ask:
 
@@ -1909,6 +1922,8 @@ If yes: A sequence of decisions that are each low-stakes or reversible can combi
 
 This check directly targets "salami-slicing" and normalization by preventing the illusion that small moves are safe when they're sequential steps toward harm.
 
+**Organizational Accumulation Review (v0.9.6):** For institutional deployments, the Accumulation Gate requires periodic cross-functional review. At minimum monthly, aggregate PBHP decisions across teams and check: "Are individually-GREEN decisions from different teams composing into systemic harm?" This review should map decision chains across organizational boundaries. The Accumulation Gate catches chains visible to one decision-maker; cross-functional review catches distributed harm invisible to any individual reviewer. Document: which decisions, which teams, what chain, recommended intervention.
+
 **Step 3 -- Rate Impact, Likelihood, Irreversibility, Power, then assign
 Risk Class**
 
@@ -1933,6 +1948,7 @@ Irreversible\
 • Yes/No: If it can't be meaningfully undone (death, permanent injury,
 irreversible rights loss, wide data leak/doxxing, precedent/lock-in),
 mark Yes.
+• **Reversibility Distinction (v0.9.6):** Reversibility applies to the *harm*, not the *tool*. If the system can be reversed but the decisions it already made cannot be, irreversibility = YES. An algorithm can be rolled back; a denied loan, a missed treatment opportunity, or a police record cannot be undone by reversing the algorithm. Focus on the irreversibility of the *decision consequence*, not the *system mechanism*.
 
 Power-asymmetry flag\
 • Yes/No: Mark Yes if the harm lands primarily on a low-power
@@ -2036,6 +2052,10 @@ rounding rule).
 **PBHP violation:** choosing ratings to reach a desired gate (instead of
 deriving the gate from honest ratings) is treated as drift and escalates
 the Risk Class by one level.
+
+**Dual-Assessor Requirement (v0.9.6, institutional deployments):** For decisions affecting more than 100 people or involving irreversible outcomes, gate assignments should be verified by a second assessor independent of the decision-maker. If first and second assessor disagree by 2 or more levels (e.g., YELLOW vs RED), escalate to the higher gate and document the disagreement. Single-assessor gate assignments for high-impact irreversible decisions represent a governance gap. This catch mechanism is especially important for power asymmetries where the decision-maker may not see harms borne by low-power actors.
+
+**GREEN Logging Floor (v0.9.6):** For decisions involving any power asymmetry or affecting more than 10 people, YELLOW is the minimum logging threshold regardless of gate assignment. This prevents the compound vulnerability where gamed-low gates produce evidence-free decisions. GREEN-with-minimal-logging is reserved for genuinely low-stakes decisions where no power asymmetry exists and no scale affects multiple stakeholders.
 
 **Step 4 -- Check Consent and Representation**
 
@@ -2182,8 +2202,11 @@ After each PBHP decision (or after every 3–5 decisions in a session), assess w
 - All-Intelligence-no-Paradox: produces contextually savvy decisions that collapse nuance
 - All-Empathy-no-Logic: produces perspective-rich decisions untethered from evidence
 
-**For AI systems:** The Mode Balance Monitor can be automated by tagging which modes were explicitly referenced in each decision's reasoning trace.
-**For human decision-makers:** At the end of each week's decisions, review your receipts/logs and ask: "Which mode did I lean on most? Which did I neglect?"
+**Substantive Engagement Requirement (v0.9.6):** Token mentions of a mode do not satisfy the balance check. A mode is "engaged" only if it produced at least one finding, concern, or consideration that influenced the decision. Listing "Compassion: considered" without naming a specific harm or stakeholder is not engagement — it is box-checking. If automated tagging is used, tags must reference the specific output of each mode, not just its invocation. This prevents ritual compliance where all modes are listed but none substantively shape the outcome.
+
+**For AI systems:** The Mode Balance Monitor can be automated by tagging which modes were explicitly referenced in each decision's reasoning trace. Automated systems should flag imbalances based on engagement (substantive contribution), not mere invocation.
+
+**For human decision-makers:** At the end of each week's decisions, review your receipts/logs and ask: "Which mode did I lean on most? Which did I neglect? Which modes produced findings that actually changed my thinking?" This is structural calibration, not guilt — the goal is awareness, not perfection.
 
 
 
@@ -2193,6 +2216,8 @@ If yes: You are in FLOOD mode—your deliberation is infinite and you cannot dec
 - Narrow to the top 3 most plausible risks (ignore the long tail of edge cases).
 - Use the "First Reversible Test" from Step 1 as an anchor decision: "Can I test this safely first?" If yes, do the test and return.
 - Set a decision deadline and commit.
+
+**FLOOD Minimum Exploration Prerequisite (v0.9.6):** FLOOD should only be invoked after genuine multi-frame analysis has been attempted. If fewer than 3 distinct framings of the situation have been considered, it is not FLOOD — it is premature collapse (LOCK). FLOOD applies to the inability to converge after sufficient exploration, not to the desire to avoid exploration itself. If you haven't explored at least 3 distinct framings, you must do so before invoking FLOOD.
 
 Both checks directly counter premature certainty (LOCK) and decision paralysis (FLOOD). Both are required before finalizing an ORANGE+ decision.
 
@@ -2371,6 +2396,10 @@ or drift alarm), (2) what harm/irreversibility/autonomy risk was
 identified, (3) which alternative Door would allow safe continuation,
 and (4) what evidence would have prevented the pause.\
 The point is auditability, not deflection.
+
+**FPV Rate-Limiting (v0.9.6):** If the same actor challenges more than 3 pauses in a session or review period and all challenges were rejected, treat the pattern of challenges itself as a drift alarm. This is a systematic attempt to wear down safety mechanisms. Log the pattern and escalate.
+
+**Calibration Reminder System (v0.9.6):** On first PBHP initialization, log a timestamp. After 30 days (and every 30 days thereafter), remind the operator calibration is due. Reminder repeats daily until logged. This does not enforce — enforcement stays with human — but ensures the obligation is not forgotten.
 
 -   
 
@@ -3369,6 +3398,34 @@ What did PBHP miss?
 What would you change next time?
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
+
+---
+
+## Mandatory Tier Floors (v0.9.6)
+
+Tier selection is not optional for high-impact decisions:
+- If a decision involves sovereign power, irreversible systemic action, or affects >10,000 people: **ULTRA is mandatory** regardless of user preference.
+- If a decision is rated ORANGE+ under any tier: **CORE is the minimum** analysis tier.
+- MIN may only be used when the decision is genuinely time-constrained AND the highest possible gate is YELLOW.
+
+## Institutional Deployment Requirements (v0.9.6)
+
+For organizational (non-individual) use of PBHP, the following additional requirements apply. These do not change the core protocol — they layer governance on top for contexts where self-assessment alone is insufficient.
+
+1. **External verification at gate assignment** — For ORANGE+ potential decisions, gate assignments should be verified by a party independent of the decision-maker (see Dual-Assessor Requirement in Step 5).
+2. **Calibration accountability** — Monthly calibration should produce a dated record referencing specific log entries. The Calibration Reminder System provides automated nudges; the organization provides accountability.
+3. **Retroactive audit** — When decisions made under PBHP result in documented harm to those identified as least-powerful stakeholders, the PBHP log for that decision is subject to independent review.
+4. **Competence Gate verification** — The Competence Gate should be verified by a party independent of the decision-maker at least quarterly. If logs show the Competence Gate is always checked with no variation, treat as a drift signal.
+5. **Cross-functional accumulation review** — See Accumulation Gate in Step 4B organizational note.
+
+## AI Implementation Requirements (v0.9.6)
+
+For AI systems running PBHP, the following additional requirements apply:
+
+1. **Gate assignment must be independently verifiable** — An external reviewer must be able to check the harm assessment, reversibility judgment, and power asymmetry evaluation against observable facts, not just against the AI's self-report.
+2. **Sycophancy detection** — AI systems that always produce gates matching operator preference are exhibiting sycophancy drift regardless of the quality of the generated reasoning. If an AI's gate assignments correlate with operator-expressed preferences at >90%, treat as drift.
+3. **Human sovereignty is not AI sovereignty** — For AI systems, gate determinations are binding. Human sovereignty applies to the human operator, not to the AI running the protocol. An AI system that identifies RED but proceeds because its operator says to must log the override as a human-directed exception.
+4. **Simulated compliance detection** — An AI system that "runs PBHP" by generating formal-looking gate assessments that happen to match the operator's desired outcome is technically compliant but substantively hollow. PBHP compliance for AI requires that the reasoning chain be auditable and that the gate assignment follow from the reasoning, not precede it.
 
 ---
 

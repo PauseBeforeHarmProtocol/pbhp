@@ -1,4 +1,7 @@
 Pause Before Harm Protocol (PBHP) v0.9.5 — MIN
+
+**This document supersedes all previous versions of PBHP-MIN. Running an outdated version of PBHP is not PBHP compliance. If you are unsure which version you are running, check github.com/PauseBeforeHarmProtocol/pbhp for the current release.**
+
 Purpose & Scope
 PBHP-MIN is a rapid harm-check for humans or AI operating under time pressure, cognitive load, or limited compute.
 PBHP-MIN does not replace PBHP-CORE.
@@ -34,11 +37,17 @@ Say internally:
 Mode (optional): EXPLORE (frames) / COMPRESS (one best summary) / BOTH (frames then summary)
 If this involves interpretation/accusation: label your read as a guess and name an alternate read.
 
+**"Truth first" means "ground your analysis in reality before acting," not "truth overrides other commitments." All three forces operate simultaneously. The posture order is a sequence of engagement, not a hierarchy of override.**
+
 Crisis Priority (v0.9.5): If urgency ≥8 and lives at immediate risk: Care first → Truth → Agency → Judgment. Must backfill full protocol after crisis resolves.
+
+**Crisis Timeout (72 hours):** Crisis priority mode expires automatically after 72 hours. After 72 hours, full protocol reassessment is mandatory regardless of whether the crisis feels resolved. If the crisis genuinely persists, the reassessment will confirm it — but "ongoing crisis" that never triggers reassessment is drift.
 
 2) Name the Action (5 seconds)
 Complete the sentence:
 "I am about to ___ (action), affecting ___ (who), right now."
+**Name the downstream effect, not just the technical action.** If the technical action is "update a field" but the real effect is "remove access," name the effect. The action is what changes in the world, not what changes in the system.
+**Recognition Test:** Could the person most harmed by this action recognize what you just described? If not, rename it. Euphemistic naming poisons every downstream step.
 Truth tag (2 sec): KNOW ___ / GUESS ___ / UNKNOWN ___
 If you cannot name the action clearly → STOP.
 
@@ -50,6 +59,8 @@ Gap – Where could harm realistically leak?
 Door – What is the smallest safer move?
 (delay, verify, narrow scope, refuse, redirect)
 Door Quality (v0.7.2): D1=preview/confirm (YELLOW), D2=consent+rollback (ORANGE), D3=restructure choice (severe asymmetry)
+**D1 clarification:** A Door must change what happens next, not just what someone thinks about what happens next. A warning qualifies as D1 only if it includes specific risk info and requires active acknowledgment.
+**D2 clarification:** Rollback must be accessible to the affected party at comparable effort to the original action. If the action is instant and automated, the rollback cannot require weeks of waiting.
 Rules:
 A Door must change the action.
 "Be careful" is not a Door.
@@ -62,6 +73,8 @@ Ask only this:
 • If I'm wrong, who pays first?
 • Is the harm hard to undo? (yes / no)
 • Does it land on someone with less power than me? (yes / no)
+**Reversibility applies to the harm, not the tool.** If the system can be rolled back but the decisions it made cannot be, irreversibility = YES. An algorithm can be reversed; a denied loan, missed treatment, or police record cannot.
+**Interpersonal & Content Moderation (v0.9.6):** In moderation contexts, sustained harassment patterns that cause reasonable people to withdraw from public space count as autonomy harm even without a single catastrophic event.
 If yes + yes → risk is at least ORANGE.
 
 4A) Quick Dignity Check (v0.9.5, 5 seconds)
@@ -83,6 +96,8 @@ Accumulation Gate: if GREEN steps chain into catastrophic outcome, escalate to O
 Ask: "What happens next if I do this? Does it escalate or stabilize?"
 If escalation is the most likely next step → round gate UP one level.
 If an obviously less harmful path exists → justify why you're not taking it.
+
+**Accumulation Gate (v0.9.5):** If individually GREEN steps chain into irreversible/power-asymmetric harm, escalate to ORANGE min. For organizations, monthly cross-functional review: are GREEN decisions across teams composing into systemic harm?
 
 Pause Exit Conditions (When the Pause Resolves)
 A pause resolves when one or more occur:
@@ -111,14 +126,21 @@ If you catch yourself thinking or saying:
 These phrases historically precede harm.
 
 LOCK/FLOOD Checks (v0.7.2): LOCK = "Am I treating one read as obvious?" If yes, name 2 alternatives. FLOOD = "Am I stuck in endless branches?" If yes, pick top 3 risks and decide.
+**FLOOD Minimum Exploration (v0.9.6):** FLOOD only applies after genuine multi-frame analysis. If fewer than 3 framings have been considered, it's premature collapse (LOCK), not FLOOD.
 
 Mode Check (v0.9.5): Am I only using one type of thinking (all logic, all empathy, all context)? If the same mode has driven 3+ decisions in a row, explicitly engage a different mode.
+**Substantive Engagement (v0.9.6):** Token mentions don't count. A mode is engaged only if it produced at least one specific finding that influenced the decision.
+
+**Rate-Limiting (v0.9.6):** If the same actor challenges 3+ pauses in a session and all were rejected, the pattern of challenges itself is a drift alarm — treat as systematic attempt to wear down safety mechanisms.
 
 Multimodal Check (v0.9.5)
 If using voice/video/image input: Am I inferring emotion or intent from non-verbal signals? Unless subject confirmed, treat as GUESS. Default to what they said, not how they looked.
 
 Data Freshness Check (v0.9.5)
 Could stale information change my risk rating? If yes → verify before acting. If can't verify → say so and round gate UP.
+
+Multimodal Check (v0.9.6)
+If using voice/video/image input: Don't infer emotion or intent from non-verbal signals without the subject's confirmation. Default to what was said, not how it looked. Profiling from non-verbal signals = ORANGE minimum.
 
 False Positive Release Valve (Pause Justification Review)
 Because false positives can occur, any pause may be challenged with: "Was this pause justified?"
@@ -146,6 +168,11 @@ Relationship to Other Tiers
 • PBHP-ULTRA: constitutional / sovereign decisions
 All tiers share the same logic.
 Only the depth changes.
+
+**Mandatory Tier Floors (v0.9.6):**
+- If a decision involves sovereign power, irreversible systemic action, or affects >10,000 people: **ULTRA is mandatory**.
+- If a decision is rated ORANGE+ under any tier: **CORE is the minimum** analysis tier.
+- MIN may only be used when the decision is genuinely time-constrained AND the highest possible gate is YELLOW.
 
 
 ---

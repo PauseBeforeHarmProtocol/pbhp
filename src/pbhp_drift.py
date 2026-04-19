@@ -717,3 +717,80 @@ def monitor_drift(decision_history: List[Dict[str, Any]],
     _ = monitor.generate_drift_alerts(metrics)
 
     return monitor.generate_drift_report(days=analysis_days)
+
+
+# ===========================================================================
+# Fix #13: Outcome-Based Drift Detector
+# ===========================================================================
+
+class OutcomeBasedDriftDetector:
+    """
+    Detects gate distribution drift over time.
+    Flags when >80% GREEN across 20+ decisions involving power asymmetry.
+    """
+
+    def __init__(self):
+        """Initialize the detector with decision window."""
+        self.decision_window = deque(maxlen=20)
+        """Track last 20 decisions for sliding window analysis."""
+
+    def ingest_decision(self, decision: Dict[str, Any]) -> None:
+        """
+        Add a decision to the tracking window.
+
+        Args:
+            decision: Decision dict with 'gate', 'power_asymmetry', etc.
+        """
+        self.decision_window.append(decision)
+
+    def check_green_drift(self) -> Tuple[bool, str]:
+        """
+        Check if >80% of recent decisions with power asymmetry are GREEN.
+
+        Returns:
+            (drift_detected, explanation)
+        """
+        if len(self.decision_window) < 20:
+            return False, f"Insufficient data: {len(self.decision_window)}/20 decisions"
+
+        # Filter for power asymmetry decisions
+        power_asymmetry_decisions = [
+            d for d in self.decision_window
+            if d.get("power_asymmetry", False)
+        ]
+
+        if len(power_asymmetry_decisions) < 20:
+            return False, (
+                f"Only {len(power_asymmetry_decisions)} decisions with power "
+                f"asymmetry in last 20"
+            )
+
+        # Count GREEN gates
+        green_count = sum(
+            1 for d in power_asymmetry_decisions
+            if d.get("gate", "").upper() == "GREEN"
+        )
+
+        green_percentage = green_count / len(power_asymmetry_decisions)
+
+        if green_percentage > 0.80:
+            return True, (
+                f"OUTCOME-BASED DRIFT: {green_percentage:.0%} of "
+                f"power-asymmetry decisions are GREEN (>80% threshold). "
+                f"This suggests gate assignment drift."
+            )
+
+        return False, f"GREEN rate: {green_percentage:.0%} (acceptable)"
+
+    def get_gate_distribution(self) -> Dict[str, int]:
+        """
+        Get distribution of gates in the current window.
+
+        Returns:
+            Dict with gate -> count mapping
+        """
+        distribution = {}
+        for decision in self.decision_window:
+            gate = decision.get("gate", "UNKNOWN").upper()
+            distribution[gate] = distribution.get(gate, 0) + 1
+        return distribution
