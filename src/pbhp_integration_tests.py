@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.1 — Cross-Module Integration Tests
+Pause-Before-Harm Protocol (PBHP) v0.9.5 — Cross-Module Integration Tests
 
 Comprehensive tests for real workflows across module boundaries.
 These tests exercise the seams where bugs hide — interactions between:

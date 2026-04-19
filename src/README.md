@@ -1,4 +1,4 @@
-# Pause-Before-Harm Protocol (PBHP) v0.8.1
+# Pause-Before-Harm Protocol (PBHP) v0.9.5
 
 A comprehensive decision-making framework for humans and AI systems to evaluate actions that could cause harm, with emphasis on protecting vulnerable groups and maintaining ethical accountability.
 
@@ -415,7 +415,7 @@ For questions, feedback, or inquiries:
 
 ## License and Usage
 
-This implementation is based on the Pause-Before-Harm Protocol v0.8.1 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
+This implementation is based on the Pause-Before-Harm Protocol v0.9.5 public release. The protocol is experimental and subject to revision in light of evidence, feedback, and failures.
 
 **Run PBHP on PBHP itself if you start treating it as beyond question.**
 

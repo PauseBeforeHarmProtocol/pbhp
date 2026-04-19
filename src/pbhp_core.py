@@ -1,12 +1,12 @@
 """
 Pause-Before-Harm Protocol (PBHP) - Core Implementation
-Version: 0.8.1 (Full Specification)
+Version: 0.9.5 (Full Specification)
 
 A decision-making framework for humans and AI systems to evaluate
 actions that could cause harm, with emphasis on protecting vulnerable
 groups and maintaining ethical accountability.
 
-This implementation faithfully encodes the complete PBHP v0.8.1 protocol
+This implementation faithfully encodes the complete PBHP v0.9.5 protocol
 including all foundation gates, seven steps, epistemic fencing,
 red team review, drift detection, tone constraints, uncertainty
 framework, structured logging, and two-phase commit validation.
@@ -188,7 +188,7 @@ ABSOLUTE_REJECTION_CATEGORIES = [
 class Harm:
     """
     Represents a potential harm identified in Step 2.
-    Includes full risk calculation per PBHP v0.8.1 deterministic rules.
+    Includes full risk calculation per PBHP v0.9.5 deterministic rules.
     """
     description: str
     impact: ImpactLevel
@@ -1252,19 +1252,19 @@ class FinalizationGateResult:
 
 
 # ---------------------------------------------------------------------------
-# PBHP Log Record v0.8.1
+# PBHP Log Record v0.9.5
 # ---------------------------------------------------------------------------
 
 @dataclass
 class PBHPLog:
     """
     Complete PBHP assessment log for audit and review.
-    Implements the full PBHP Log Record v0.8.1 format with all metadata fields.
+    Implements the full PBHP Log Record v0.9.5 format with all metadata fields.
     """
     # Record metadata
     record_id: str
     timestamp: datetime
-    version: str = "0.8.1"
+    version: str = "0.9.5"
 
     # Step 1: Action
     action_description: str = ""
@@ -2974,7 +2974,7 @@ def compare_options(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("PBHP Core Module v0.8.1 (Full Implementation)")
+    print("PBHP Core Module v0.9.5 (Full Implementation)")
     print("=" * 60)
 
     # Quick harm check example

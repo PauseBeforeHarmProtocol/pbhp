@@ -1,6 +1,6 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.8.1 (Public Release)
+**Version:** 0.9.5 (Public Release)
 **Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
@@ -21,11 +21,11 @@ Then it gives you a structured way to answer it.
 
 ## Quick Start
 
-**For AI agents:** Use [`PromptBeforeHarmProtocol v0.1`](protocol/PromptBeforeHarmProtocol_v0.1.md) — the definitive system prompt. Three paste-ready versions available in [`Paste Versions`](protocol/PBHP_Prompt_Paste_Versions.md) (~1250 and ~500 token options). No dependencies. No API. Paste it and run it.
+**For AI agents:** Use [`PromptBeforeHarmProtocol v0.2`](protocol/PromptBeforeHarmProtocol_v0.2.md) — the definitive system prompt. Paste-ready versions available in [`Paste Versions`](protocol/PBHP_Prompt_Paste_Versions.md) (~2200 and ~1000 token options). No dependencies. No API. Paste it and run it.
 
 **For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) provides a working implementation across all three tiers.
 
-**For researchers:** The full protocol exists in three tiers — [CORE](protocol/PBHP-CORE_INJECTION_v0.7.2.txt) (operational), plus the complete ULTRA and MIN specifications in `protocol/`. The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
+**For researchers:** The full protocol exists in four tiers — [CORE](protocol/PBHP-CORE_v0.9.5.md) (operational), [ULTRA](protocol/PBHP-ULTRA_v0.9.5.md) (constitutional), [MIN](protocol/PBHP-MIN_v0.9.5.md) (reflex), and [HUMAN](protocol/PBHP_v0.9.5_HUMAN.md) (checklist). The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
 **For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Five scenarios, 35-point rubric. Tells you if you're running the protocol correctly.
 
@@ -33,7 +33,7 @@ Then it gives you a structured way to answer it.
 
 ## How It Works
 
-PBHP is a 7-step process scaled across four tiers (HUMAN, MIN, CORE, ULTRA) depending on decision complexity. The core logic:
+PBHP is a structured process scaled across four tiers (HUMAN, MIN, CORE, ULTRA) depending on decision complexity. v0.9.5 adds 8 new features: Mode Balance Monitor, Forward Consequence Projection, Stakeholder Dignity Rubric, Counterfactual Rehearsal, Power-Inversion Test, Crisis Commitment Priority, Multimodal Signal Filters, and Data Freshness Assurance. The core logic:
 
 **1. Name the action honestly.** One sentence. No softening.
 
@@ -55,7 +55,7 @@ Built-in safeguards: **drift alarms** catch rationalization in real time, a **fa
 
 ## Modules
 
-PBHP v0.8.x adds operational modules that extend the core protocol:
+PBHP v0.8.x–v0.9.x adds operational modules that extend the core protocol:
 
 **Triage Classifier** (`pbhp_triage.py`) — Routes incoming decisions to the appropriate tier (HUMAN/MIN/CORE/ULTRA) based on signal analysis. Evaluates irreversibility, vulnerable population impact, power asymmetry, and amplification potential. Prevents unnecessary escalation while ensuring high-risk decisions get appropriate scrutiny.
 
@@ -90,14 +90,15 @@ pbhp/
 ├── ETHICAL_USE.md                         ← Ethical use guidelines
 │
 ├── protocol/                              ← The protocol itself
-│   ├── PromptBeforeHarmProtocol_v0.1.md  ← System prompt (START HERE)
-│   ├── PBHP_Prompt_Paste_Versions.md     ← Paste-ready versions (~1250 / ~500 tokens)
-│   ├── PBHP-CORE_INJECTION_v0.7.2.txt    ← Legacy agent-loadable plain text
-│   ├── PBHP-CORE_v0.7.2.md               ← Full CORE tier specification
-│   ├── PBHP-ULTRA_v0.7.2.md              ← Full ULTRA tier specification
-│   ├── PBHP-MIN_v0.7.2.md                ← Minimum viable (reflex) tier
-│   ├── PBHP_v0.7.2_HUMAN_UPDATED.md      ← Human-tier protocol (plain language)
-│   └── PBHP-v0.7.2-TIER_SUPPLEMENTS.md   ← Tier-specific additions for v0.7.2
+│   ├── PromptBeforeHarmProtocol_v0.2.md  ← System prompt (START HERE)
+│   ├── PBHP_Prompt_Paste_Versions.md     ← Paste-ready versions (~2200 / ~1000 tokens)
+│   ├── PBHP-CORE_INJECTION_v0.9.5.txt    ← Agent-loadable plain text injection
+│   ├── PBHP-CORE_v0.9.5.md               ← Full CORE tier specification
+│   ├── PBHP-ULTRA_v0.9.5.md              ← Full ULTRA tier specification (constitutional)
+│   ├── PBHP-MIN_v0.9.5.md                ← Minimum viable (reflex) tier
+│   ├── PBHP_v0.9.5_HUMAN.md              ← Human-tier protocol (plain language)
+│   ├── PBHP-v0.7.2-TIER_SUPPLEMENTS.md   ← Tier-specific additions (legacy)
+│   └── [legacy v0.7.2 files preserved]   ← Previous version specifications
 │
 ├── src/                                   ← Python implementation (20 modules)
 │   ├── README.md                          ← Setup and usage instructions

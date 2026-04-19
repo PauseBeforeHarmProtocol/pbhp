@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.1 — Triage Classifier
+Pause-Before-Harm Protocol (PBHP) v0.9.5 — Triage Classifier
 Decision Triage / Fast Classifier Module
 
 A pre-filter that routes incoming decisions to the appropriate assessment tier

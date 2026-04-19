@@ -1,8 +1,8 @@
 """
-PBHP v0.8.1 - Example Scenarios
+PBHP v0.9.5 - Example Scenarios
 ==============================
 
-Comprehensive walkthrough of all PBHP v0.8.1 features across six scenarios
+Comprehensive walkthrough of all PBHP v0.9.5 features across six scenarios
 covering GREEN through BLACK risk classifications.
 
 Each example exercises a different combination of protocol modules and
@@ -70,7 +70,7 @@ def example_employee_warning():
     - Power asymmetry: employer over employee
     - Partially irreversible: letter enters permanent HR record
 
-    Demonstrates the full PBHP v0.8.1 pipeline end to end:
+    Demonstrates the full PBHP v0.9.5 pipeline end to end:
     - Ethical pause with triune minds
     - Quick risk check
     - Door/Wall/Gap
@@ -1979,13 +1979,13 @@ def example_policy_analysis():
 
 def run_all_examples():
     """
-    Run all five PBHP v0.8.1 example scenarios with press-enter-to-continue
+    Run all five PBHP v0.9.5 example scenarios with press-enter-to-continue
     prompts between each scenario. Prints the JSON log for the first
     scenario to demonstrate serialization.
     """
     print()
     print("#" * 72)
-    print("#  PBHP v0.8.1 - Complete Example Scenarios")
+    print("#  PBHP v0.9.5 - Complete Example Scenarios")
     print("#  Running all five scenarios with full protocol walkthroughs")
     print("#" * 72)
     print()
@@ -2059,7 +2059,7 @@ def run_all_examples():
                 print(f"    - {alarm}")
 
     print(f"\n{'=' * 72}")
-    print("All scenarios complete. PBHP v0.8.1 full protocol demonstrated.")
+    print("All scenarios complete. PBHP v0.9.5 full protocol demonstrated.")
     print("=" * 72)
 
     return logs

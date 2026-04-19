@@ -2,6 +2,37 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## [0.9.5] - 2026-04-19
+
+### Added
+- **Mode Balance Monitor** — structural drift tracking across reasoning modes over multiple decisions. Yellow drift (3+ consecutive imbalance) and Red drift (5+ or two modes absent) thresholds with explicit re-engagement rules. Automated tagging for AI systems, weekly review guidance for human decision-makers.
+- **Forward Consequence Projection** — mandatory t−1/t0/t+1/t+2/t+3 timeline analysis for ORANGE+ decisions with weighted scoring. Deterministic escalation: t+1 escalation → gate UP, t+2 normalization → drift alarm. Extends Red Team Check with structured temporal reasoning.
+- **Stakeholder Dignity Rubric** — scored 0–2 rubric across 5 dimensions (autonomy, non-exploitation, proportionality, reversibility, explainability). Dignity Score < 0.6 = HOLD. Any single 0 for least-powerful stakeholder = HOLD regardless of total. Operationalizes "start with the least powerful" into a computable check.
+- **Counterfactual Rehearsal** — mandatory sandbox of 2 alternative paths for ORANGE+ decisions before committing. Compare on harm, reversibility, objective achievement, and precedent. Burden-shift rule: if alternative achieves goal with less harm, justify the higher-harm path.
+- **Power-Inversion Test** — "If I had no power and was receiving this decision, would I still endorse it?" Added to Constraint Awareness Check across all tiers. Catches decisions that feel correct only from a position of power.
+- **Crisis Commitment Priority** — priority stack (Care → Truth → Agency → Judgment) for genuine crises where full protocol cannot be run. Mandatory backfill rule: must re-run full protocol retroactively once crisis resolves. Strict crisis definition: delay itself must cause irreversible harm to low-power actors.
+- **Multimodal Signal Filters** — 5 rules for non-text input handling: non-inference default, consent-gated processing, affect delay, surveillance resistance (profiling = ORANGE minimum), mirror uncertainty. Addresses voice, visual, video, and biometric inputs.
+- **Data Freshness Assurance** — 5 rules for time-sensitive information: relevance scan, freshness checkpoint with multiple corroborations, temporal context tagging, fallback integrity with gate escalation, safety-first freshness policy.
+
+### Changed
+- All protocol tiers updated from v0.7.2 to v0.9.5: CORE, ULTRA, MIN, HUMAN
+- PromptBeforeHarmProtocol system prompt updated from v0.1 to v0.2 with all 8 new features
+- CORE injection plain text updated to v0.9.5
+- Paste-ready versions updated with v0.9.5 features (Version A ~2200 tokens, Version B ~1000 tokens)
+- MIN tier target runtime adjusted from ≤30 seconds to ≤45 seconds to accommodate new checks
+- ULTRA tier gains full-depth versions of all 8 features integrated with existing constitutional framework
+- HUMAN tier gains plain-language fill-in-the-blank versions of all 8 features
+- Step numbering adjusted in CORE: Stakeholder Dignity Rubric = Step 4A, Accumulation Gate = Step 4B, Forward Consequence Projection = Step 7A, Counterfactual Rehearsal = Step 7B, LOCK/FLOOD Governor = Step 7C, Multimodal Signal Filters = Step 10, Data Freshness Assurance = Step 11
+
+### Design Principles (v0.9.5)
+- All new features are native PBHP concepts derived from operational experience
+- Features are scaled to tier complexity: ULTRA gets full depth, MIN gets compressed reflexes
+- No new external dependencies — all features integrate with existing gate/door/drift architecture
+- Dignity Rubric and Forward Projection produce deterministic escalation triggers, not subjective assessments
+- Crisis Priority is explicitly scoped to prevent misuse as a shortcut
+- Mode Balance Monitor addresses a gap that phrase-based drift alarms cannot catch
+- Multimodal and Freshness features are future-proofing for multimodal AI deployment
+
 ## [0.8.1] - 2026-03-11
 
 ### Added

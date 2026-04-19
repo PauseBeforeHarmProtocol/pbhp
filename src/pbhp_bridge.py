@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.1 — Bridge Module
+Pause-Before-Harm Protocol (PBHP) v0.9.5 — Bridge Module
 
 Cross-module coordination, coverage gap reporting, healthcare compliance
 adapter, and the "demonstration > declaration" principle enforcement.

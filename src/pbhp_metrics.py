@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.1 — Metrics Packs
+Pause-Before-Harm Protocol (PBHP) v0.9.5 — Metrics Packs
 Standardized Harm Metric Packs for Domain-Specific Assessment
 
 Provides pre-built severity metric templates for common application domains:
