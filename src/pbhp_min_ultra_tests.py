@@ -1,5 +1,5 @@
 """
-PBHP v0.8.0 — MIN and ULTRA Test Suite
+PBHP v0.9.5 — MIN and ULTRA Test Suite
 
 Tests cover:
   - PBHP-MIN: triggers, 5-step pipeline, drift alarms, false positive,
@@ -1241,7 +1241,7 @@ def test_ultra_get_log_by_id():
 
 def run_all_tests():
     print("=" * 70)
-    print("PBHP v0.8.0 — MIN and ULTRA Test Suite")
+    print("PBHP v0.9.5 — MIN and ULTRA Test Suite")
     print("=" * 70)
 
     # MIN tests

@@ -100,7 +100,7 @@ def example_employee_warning():
         "the employee's permanent HR file."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.8.0"
+    log.system_model_version = "pbhp-example-v0.9.5"
     log.deployment_channel = "internal"
     log.requester_role = "internal leader"
 
@@ -588,7 +588,7 @@ def example_workplace_abuse_advice():
         "and unfair task assignment, based on the user's account."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.8.0"
+    log.system_model_version = "pbhp-example-v0.9.5"
     log.deployment_channel = "external"
     log.requester_role = "user"
 
@@ -1008,7 +1008,7 @@ def example_rename_file():
     print("\n[Step 1] Name the Action")
     action = "Rename file 'report_draft.txt' to 'report_final.txt' in the user's project directory."
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.8.0"
+    log.system_model_version = "pbhp-example-v0.9.5"
     log.deployment_channel = "internal"
     log.requester_role = "user"
 
@@ -1130,7 +1130,7 @@ def example_public_accusation_post():
         "account, with the stated goal of destroying their career."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.8.0"
+    log.system_model_version = "pbhp-example-v0.9.5"
     log.deployment_channel = "external"
     log.requester_role = "user"
 
@@ -1474,7 +1474,7 @@ def example_policy_analysis():
         "perspectives on impacts to tenants, landlords, and housing supply."
     )
     log = engine.create_assessment(action, agent_type="ai_system")
-    log.system_model_version = "pbhp-example-v0.8.0"
+    log.system_model_version = "pbhp-example-v0.9.5"
     log.deployment_channel = "external"
     log.requester_role = "client"
 

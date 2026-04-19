@@ -6,7 +6,7 @@ Last updated: 2026-03-12
 
 ---
 
-## Current State (v0.8.1)
+## Current State (v0.9.5)
 
 20 Python modules, 730 tests passing across 13 test files, CI green on Python 3.10–3.12.
 
@@ -27,7 +27,7 @@ Last updated: 2026-03-12
 - **Integration tests** — SRL↔QS evidence flow, Bridge subcontracting, Triage→Core→Multiagent pipelines, drift→compliance mapping, full action→triage→SRL→QS→drift pipeline, state machine consistency, audit trail correlation (43 tests)
 - **Adversarial eval** — BLACK gate bypass, state machine escape, self-preservation disguise, evidence tampering, tripwire evasion, sandbagging detection, multiagent safety weakening, triage gaming, drift manipulation, coverage gap honesty (47 tests)
 
-**Community improvements shipped in v0.8.1** (all 7 implemented):
+**Community improvements shipped in v0.8.1** (all 7 implemented, carried forward to v0.9.5):
 1. Healthcare compliance adapter (MDR/AiMD/ISO 14971) — `pbhp_bridge.py`
 2. MBSE requirement taxonomy integration — `pbhp_bridge.py`
 3. Cross-module subcontracting via ModuleRegistry — `pbhp_bridge.py`
@@ -45,7 +45,7 @@ Last updated: 2026-03-12
 - ✅ **Test coverage hardening** — 283 new unit tests for compliance (89), metrics (53), multiagent (61), triage (80). All 13 modules now have dedicated test suites.
 - ✅ **Cross-module integration tests** — 43 tests in `pbhp_integration_tests.py` covering SRL↔QS evidence flow, Bridge subcontracting, full pipeline workflows, state machine consistency, and audit trail correlation.
 - ✅ **Adversarial eval scenarios** — 47 tests in `pbhp_eval_tests.py` covering BLACK gate bypass, state machine escape, self-preservation disguise, evidence tampering, tripwire evasion, sandbagging detection, multiagent safety weakening, triage gaming, drift manipulation, and coverage gap honesty.
-- ✅ **Version coherence** — All public-facing files (README, src/README, ETHICAL_USE, CHANGELOG) updated to reflect v0.8.1 state accurately.
+- ✅ **Version coherence** — All public-facing files (README, src/README, ETHICAL_USE, CHANGELOG) updated to reflect v0.9.5 state accurately.
 - ✅ **Release hygiene** — Honest test coverage table in README, CI running all 13 test suites, ROADMAP reflecting actual state.
 
 ### What v0.9.0 Proved

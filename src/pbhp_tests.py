@@ -1,5 +1,5 @@
 """
-Pause-Before-Harm Protocol (PBHP) v0.8.0 - Comprehensive Test Suite
+Pause-Before-Harm Protocol (PBHP) v0.9.5 - Comprehensive Test Suite
 
 Tests cover all modules, risk calculations, drift detection, tone validation,
 workflow enforcement, serialization, and the full protocol pipeline.
@@ -3105,7 +3105,7 @@ def test_log_includes_preflight_and_gate():
 
 def run_all_tests():
     print("=" * 70)
-    print("PBHP v0.8.0 - Comprehensive Test Suite")
+    print("PBHP v0.9.5 - Comprehensive Test Suite")
     print("=" * 70)
 
     # Enums
