@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A privacy-preserving client-side worksheet that produces a draft PBHP receipt without sending the entered decision anywhere.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/workbench">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>Decision workbench · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Decision workbench", "description": "A privacy-preserving client-side worksheet that produces a draft PBHP receipt without sending the entered decision anywhere.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/workbench", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-workbench">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/" aria-current="page" class="active"><span>Workbench</span><i aria-hidden="true"></i></a>
+          <a href="../examples/"><span>Examples</span></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/"><span>Component library</span></a>
+          <a href="../testing/"><span>Testing program</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/"><span>Field manual</span></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/"><span>Evidence ledger</span></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">Decision workbench</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">Run PBHP locally in your browser</p>
+        <h1>Decision workbench</h1>
+        <p>A privacy-preserving client-side worksheet that produces a draft PBHP receipt without sending the entered decision anywhere.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          
+<p>Use this to structure a decision, not to outsource it. The tool runs entirely in the browser and does not certify correctness. Its recommendation is a transparent routing aid based on the fields you enter.</p>
+<div class="privacy-note"><strong>Local-only draft:</strong> this static workbench does not transmit or store your entries. Download or copy the receipt before leaving the page.</div>
+<form class="workbench" id="pbhp-workbench" novalidate="">
+<div class="form-grid">
+<label><span>Proposed action</span><textarea name="action" placeholder="What exactly will be done, to whom, through what mechanism, and when?" required=""></textarea></label>
+<label><span>Affected parties</span><textarea name="affected" placeholder="Name roles or groups, not vague abstractions." required=""></textarea></label>
+<label><span>Door / Wall / Gap</span><select name="classification" required=""><option value="">Choose…</option><option>Door</option><option>Wall</option><option>Gap</option></select></label>
+<label><span>Who pays first?</span><textarea name="who_pays" placeholder="Who bears the first cost if this is wrong, and how?" required=""></textarea></label>
+<label><span>Power relationship</span><select name="power"><option value="balanced">Roughly balanced</option><option value="asymmetric">Meaningfully asymmetric</option><option value="extreme">Extreme / coercive</option></select></label>
+<label><span>Reversibility</span><select name="reversibility"><option value="easy">Easy to reverse</option><option value="partial">Partially reversible</option><option value="hard">Hard to reverse</option><option value="irreversible">Irreversible</option></select></label>
+<label><span>Initial harm threshold</span><select name="harm"><option>GREEN</option><option>YELLOW</option><option>ORANGE</option><option>RED</option><option>BLACK</option></select></label>
+<label><span>Evidence basis</span><textarea name="evidence" placeholder="What is measured, attested, declared, or still unknown?"></textarea></label>
+<label class="form-span"><span>Maybe — strongest honest case against</span><textarea name="maybe" placeholder="Write the strongest version, not the easiest objection to dismiss." required=""></textarea></label>
+<label class="form-span"><span>Therefore — why this action state follows</span><textarea name="therefore" placeholder="Explain why the act proceeds, is constrained, is delayed, or is refused." required=""></textarea></label>
+<label><span>Safeguards / smaller Door</span><textarea name="safeguards" placeholder="What reduces scope, exposure, duration, or irreversibility?"></textarea></label>
+<label><span>Owner and effectiveness check</span><textarea name="followup" placeholder="Who checks the result, when, and against what criterion?"></textarea></label>
+</div>
+<div class="workbench__actions"><button class="button button--primary" type="submit">Generate draft receipt</button><button class="button" type="reset">Clear</button></div>
+</form>
+<section aria-live="polite" class="receipt-output" hidden="" id="receipt-output">
+<div class="receipt-output__head"><div><p class="kicker">Draft decision receipt</p><h2 id="section">—</h2></div><div><button class="button button--small" id="copy-receipt" type="button">Copy JSON</button><button class="button button--small" id="download-receipt" type="button">Download</button></div></div>
+<p id="receipt-rationale"></p>
+<pre class="code-block"><button class="code-copy" type="button">Copy</button><code id="receipt-json"></code></pre>
+</section>
+<h2 id="how-the-draft-router-works">How the draft router works</h2>
+<p>The workbench applies only explicit, conservative rules: a Wall or BLACK condition routes to refusal; RED routes to delay or refusal; an asymmetric or extreme power relationship combined with an irreversible act creates at least an ORANGE floor; an incomplete Maybe/Therefore holds the decision; ORANGE routes to constraint and review; YELLOW routes to mitigated proceeding; GREEN plus a clear Door may proceed. The result remains a draft owned by the responsible decision-maker.</p>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../protocol/"><strong>The PBHP protocol</strong><span>The complete PBHP gate sequence presented first as compact downloadable blocks, followed by the full human-readable definitions and escalation logic.</span><i aria-hidden="true">→</i></a><a href="../receipts/"><strong>Decision receipts</strong><span>The audit record that binds the proposed action, evidence, threshold, safeguards, decision state, owner, and effectiveness check.</span><i aria-hidden="true">→</i></a><a href="../examples/"><strong>Worked examples</strong><span>Worked decisions that expose how authority, urgency, sunk cost, flattery, and incomplete evidence can distort judgment.</span><i aria-hidden="true">→</i></a><a href="../templates/"><strong>Templates</strong><span>Reusable decision records, challenge forms, calibration sheets, CAPA structures, and implementation worksheets.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#section">—</a></li><li class="toc-level-2"><a href="#how-the-draft-router-works">How the draft router works</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "workbench", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

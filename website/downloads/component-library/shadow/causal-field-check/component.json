@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "causal-field-check",
+  "title": "Causal Field Check",
+  "category": "Primitives",
+  "kind": "Primitive",
+  "summary": "Examines the conditions producing behavior instead of locating the entire cause in the visible actor.",
+  "mechanism": "The primitive broadens causal analysis while preserving action: uncertainty should create humility and investigation, not paralysis.",
+  "inputs": [
+    "Observed behavior",
+    "Environment",
+    "Incentives",
+    "History",
+    "Alternative causes"
+  ],
+  "outputs": [
+    "Causal-field map",
+    "Contributing factors",
+    "Scoped intervention"
+  ],
+  "failure_modes": [
+    "Blame compression",
+    "Single-cause certainty",
+    "Uncertainty paralysis",
+    "Context used to erase responsibility"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Primitive is specified; causal accuracy and intervention value remain open.",
+  "next_tests": [
+    "Counterfactual causal cases",
+    "Expert review",
+    "Compare actor-only and field-aware interventions"
+  ],
+  "route": "primitives",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_causal-field-check_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_causal-field-check_component_pack.zip",
+    "SHADOW_causal-field-check_component_pack.zip.sha256"
+  ]
+}

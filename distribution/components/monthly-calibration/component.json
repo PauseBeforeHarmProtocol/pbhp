@@ -1,0 +1,49 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "monthly-calibration",
+  "title": "Monthly Calibration",
+  "category": "Operating controls",
+  "kind": "Calibration process",
+  "summary": "Samples decisions over time to compare thresholds, evidence use, overrides, and outcomes.",
+  "mechanism": "A defined sample of receipts is reviewed on a recurring cycle. A missed calibration is itself a finding rather than an invisible lapse.",
+  "inputs": [
+    "Receipt sample",
+    "Decision outcomes",
+    "Overrides",
+    "Operator and domain context"
+  ],
+  "outputs": [
+    "Calibration record",
+    "Threshold adjustments",
+    "Training actions",
+    "CAPA or effectiveness check"
+  ],
+  "failure_modes": [
+    "Cherry-picked samples",
+    "No adverse cases",
+    "Untracked threshold changes",
+    "Calibration without effectiveness review"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; longitudinal operational evidence remains open.",
+  "next_tests": [
+    "Define sampling plans by risk",
+    "Measure operator drift over time",
+    "Track correction effectiveness",
+    "Use an independent reviewer for high-risk samples"
+  ],
+  "route": "operations",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_monthly-calibration_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_monthly-calibration_component_pack.zip",
+    "PBHP_monthly-calibration_component_pack.zip.sha256"
+  ]
+}

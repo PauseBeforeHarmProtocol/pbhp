@@ -1,0 +1,51 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "harm-threshold",
+  "title": "Harm Threshold",
+  "category": "Protocol gates",
+  "kind": "Risk classification",
+  "summary": "Classifies the decision from GREEN through BLACK according to harm, reversibility, power, and who pays.",
+  "mechanism": "The most serious applicable condition governs. Later confidence, authority, or preference cannot ratchet a binding floor downward.",
+  "inputs": [
+    "Magnitude of harm",
+    "Reversibility",
+    "Power asymmetry",
+    "Dignity and autonomy",
+    "Who pays first"
+  ],
+  "outputs": [
+    "GREEN",
+    "YELLOW",
+    "ORANGE",
+    "RED",
+    "BLACK",
+    "Rationale and governing factor"
+  ],
+  "failure_modes": [
+    "Severity averaging",
+    "Optimistic re-rating",
+    "Ignoring low-probability catastrophic outcomes",
+    "Using organizational status as a discount"
+  ],
+  "evidence_state": "specified",
+  "test_status": "The ladder and escalation semantics are specified; thresholds still require domain calibration and independent validation.",
+  "next_tests": [
+    "Build domain-specific calibration sets",
+    "Measure inter-rater threshold agreement",
+    "Test monotonic escalation and prohibited downgrades"
+  ],
+  "route": "risk",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_harm-threshold_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_harm-threshold_component_pack.zip",
+    "PBHP_harm-threshold_component_pack.zip.sha256"
+  ]
+}

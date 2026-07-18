@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "proportionate-rigor",
+  "title": "Proportionate Rigor",
+  "category": "Protocol gates",
+  "kind": "Tier routing",
+  "summary": "Selects the lightest PBHP edition adequate to the stakes instead of applying one ritual to every decision.",
+  "mechanism": "HUMAN and MIN support bounded decisions; CORE adds full evidence and receipt discipline; ULTRA adds independent review and reversal authority; ULTIMATE invokes the complete Project Shadow stack.",
+  "inputs": [
+    "Harm threshold",
+    "Reversibility",
+    "Complexity",
+    "Authority and review needs"
+  ],
+  "outputs": [
+    "Selected tier",
+    "Required controls",
+    "Review structure",
+    "Reason the tier is sufficient"
+  ],
+  "failure_modes": [
+    "Under-routing high stakes",
+    "Over-burdening routine work",
+    "Tier selection after the preferred answer",
+    "Treating ULTIMATE as prestige"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Tier definitions are specified; burden, false-positive, and outcome calibration remain open.",
+  "next_tests": [
+    "Measure time and burden by tier",
+    "Test under-routing and over-routing cases",
+    "Define domain-specific tier triggers"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_proportionate-rigor_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_proportionate-rigor_component_pack.zip",
+    "PBHP_proportionate-rigor_component_pack.zip.sha256"
+  ]
+}

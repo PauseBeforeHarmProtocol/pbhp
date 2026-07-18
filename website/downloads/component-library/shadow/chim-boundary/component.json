@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "chim-boundary",
+  "title": "CHIM Boundary and Self-Reference Controls",
+  "category": "Primitives",
+  "kind": "Primitive",
+  "summary": "Limits forced awakening, recursive identity pressure, destabilizing self-reference, and claims that insight places an operator above ordinary constraints.",
+  "mechanism": "The control paces disclosure, blocks coercive recursion, and keeps insight compatible with correction, ordinary responsibility, and exit.",
+  "inputs": [
+    "Self-reference prompt",
+    "Operator vulnerability",
+    "Disclosure intensity",
+    "Exit path"
+  ],
+  "outputs": [
+    "Safe pacing",
+    "Pause or refusal",
+    "Grounding",
+    "External support path"
+  ],
+  "failure_modes": [
+    "Forced awakening",
+    "Recursive pressure",
+    "Exceptionalism",
+    "No exit"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Safety boundary is specified; expert human-factors validation is open.",
+  "next_tests": [
+    "Clinical and human-factors review",
+    "Adversarial recursive prompts",
+    "Measure false positives and user comprehension"
+  ],
+  "route": "primitives",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_chim-boundary_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_chim-boundary_component_pack.zip",
+    "SHADOW_chim-boundary_component_pack.zip.sha256"
+  ]
+}

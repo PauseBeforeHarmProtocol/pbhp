@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "tribunal-mode",
+  "title": "Tribunal Mode",
+  "category": "Governance",
+  "kind": "High-stakes review mode",
+  "summary": "Distributes Care, Clarity, and Paradox across materially distinct reviewers or model families for the highest-stakes work.",
+  "mechanism": "The mode is intended to reduce single-model sycophancy and shared failure, but independence must be demonstrated rather than inferred from multiple outputs.",
+  "inputs": [
+    "High-stakes action",
+    "Independent reviewers",
+    "Lens assignments",
+    "Quorum rule"
+  ],
+  "outputs": [
+    "Separate findings",
+    "Conflict record",
+    "Quorum decision",
+    "Unresolved dissent"
+  ],
+  "failure_modes": [
+    "Same closed system called independent",
+    "Majority vote over a binding floor",
+    "Dissent erased",
+    "No reversal authority"
+  ],
+  "evidence_state": "open",
+  "test_status": "Concept is specified but under-specified for production deployment and not independently validated.",
+  "next_tests": [
+    "Define material-independence criteria",
+    "Preregister quorum and dissent rules",
+    "Run cross-family and human-review studies"
+  ],
+  "route": "governance",
+  "version": "Shadow governance candidate",
+  "status_label": "Open",
+  "download_pack": "SHADOW_tribunal-mode_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_tribunal-mode_component_pack.zip",
+    "SHADOW_tribunal-mode_component_pack.zip.sha256"
+  ]
+}

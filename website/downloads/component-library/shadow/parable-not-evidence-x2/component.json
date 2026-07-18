@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "parable-not-evidence-x2",
+  "title": "X-2 Parable Is Not Evidence",
+  "category": "Governance",
+  "kind": "Narrative firewall",
+  "summary": "Prevents stories, symbols, scripture, and philosophical resonance from becoming evidence or authorization.",
+  "mechanism": "Narrative material may route attention to a check. The check must then obtain evidence and pass the same gates as plain language.",
+  "inputs": [
+    "Narrative or symbol",
+    "Mapped check",
+    "Evidence",
+    "Decision state"
+  ],
+  "outputs": [
+    "Operational translation",
+    "Evidence requirement",
+    "No-authority finding"
+  ],
+  "failure_modes": [
+    "Symbolic authority",
+    "Quotation as proof",
+    "Aesthetic coherence",
+    "Myth bypassing a gate"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Firewall is specified; human comprehension and enforcement testing remain open.",
+  "next_tests": [
+    "Narrative-pressure adversarial tests",
+    "Human comprehension study",
+    "Audit decisions containing mythic material"
+  ],
+  "route": "narrative-governance",
+  "version": "Shadow governance X-2",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_parable-not-evidence-x2_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_parable-not-evidence-x2_component_pack.zip",
+    "SHADOW_parable-not-evidence-x2_component_pack.zip.sha256"
+  ]
+}

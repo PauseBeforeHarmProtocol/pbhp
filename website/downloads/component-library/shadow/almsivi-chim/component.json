@@ -1,0 +1,50 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "almsivi-chim",
+  "title": "ALMSIVI CHIM Cognition",
+  "category": "Foundations",
+  "kind": "Cognitive architecture",
+  "summary": "Holds Care, Clarity, and Paradox simultaneously so protection, logic, and rhetoric can correct one another.",
+  "mechanism": "Care asks who is unprotected and who pays first; Clarity maps causal structure and missing evidence; Paradox generates the strongest case against the preferred conclusion. A dominating pillar is a named collapse.",
+  "inputs": [
+    "Action",
+    "Stakeholders",
+    "Causal model",
+    "Preferred conclusion",
+    "Contradictions"
+  ],
+  "outputs": [
+    "Care finding",
+    "Clarity finding",
+    "Paradox finding",
+    "Hesitation or balanced synthesis"
+  ],
+  "failure_modes": [
+    "Protective-Control",
+    "Variable-Pruning",
+    "Beautiful-Frame Override",
+    "Single-lens dominance"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Architecture is specified; additive behavioral benefit of the triune structure remains open.",
+  "next_tests": [
+    "Run lens-by-lens ablations",
+    "Score collapse detection",
+    "Compare triune and plain-language controls",
+    "Test independent-model tribunal form"
+  ],
+  "route": "synthesis",
+  "version": "Shadow runtime 1.3.1-UNIFIED / library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_almsivi-chim_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_almsivi-chim_component_pack.zip",
+    "SHADOW_almsivi-chim_component_pack.zip.sha256"
+  ]
+}

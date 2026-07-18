@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A long-form operational manual explaining when each control activates, what must be inspected, what output is required, and how failure looks.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/manual">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>Field manual · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Field manual", "description": "A long-form operational manual explaining when each control activates, what must be inspected, what output is required, and how failure looks.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/manual", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-manual">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/"><span>Workbench</span></a>
+          <a href="../examples/"><span>Examples</span></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/"><span>Component library</span></a>
+          <a href="../testing/"><span>Testing program</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/" aria-current="page" class="active"><span>Field manual</span><i aria-hidden="true"></i></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/"><span>Evidence ledger</span></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">Field manual</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">Eleven chapters from foundation to claims</p>
+        <h1>Field manual</h1>
+        <p>A long-form operational manual explaining when each control activates, what must be inspected, what output is required, and how failure looks.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          
+<p>The field manual is organized as an operating system rather than a manifesto. Each chapter answers six questions: <strong>When does this control activate? What must be inspected? What output is required? What does a correct run look like? What does failure look like? What remains unvalidated?</strong></p>
+<h2 id="1-foundation">1. Foundation</h2>
+<p>PBHP begins from a quality-systems premise: good intentions do not control a process. Consequential action requires defined inputs, decision criteria, evidence, records, deviation handling, corrective action, and effectiveness checks.</p>
+<h2 id="2-competence">2. Competence</h2>
+<p>Before evaluating the act, evaluate the evaluator. A competent run names missing expertise, conflicts, tool limits, temporal uncertainty, and whether the operator is being pressured to endorse rather than inspect.</p>
+<h2 id="3-classification">3. Classification</h2>
+<p>Door, Wall, and Gap prevent uncertainty from being flattened into permission. The chapter explains classification criteria, Gap handling, and the conditions that force a Wall.</p>
+<h2 id="4-power">4. Power</h2>
+<p>Who Pays First and Power Inversion move attention toward the person with the least control over the decision. Notice, voice, consent, appeal, exit, and repair are treated as operational properties rather than sentiments.</p>
+<h2 id="5-risk">5. Risk</h2>
+<p>The GREEN-to-BLACK ladder combines magnitude, reversibility, power asymmetry, dignity, and downstream effects. The most serious applicable condition governs; later confidence cannot erase it.</p>
+<h2 id="6-decision">6. Decision</h2>
+<p>Maybe/Therefore is the live adversarial gate. The manual distinguishes substantive challenge from ritual objection and shows how to find the smallest safer Door.</p>
+<h2 id="7-receipts">7. Receipts</h2>
+<p>The receipt is written before action. It binds the exact action, evidence, threshold, safeguards, owner, and follow-up plan so later retelling cannot quietly improve the original decision.</p>
+<h2 id="8-casebook">8. Casebook</h2>
+<p>Cases should show both the successful path and the seductive failure path: authority pressure, sunk cost, reciprocity, flattering language, self-attribution, urgency, and narrative capture.</p>
+<h2 id="9-evidence">9. Evidence</h2>
+<p>Every claim is labeled as specified, expected, observed, adverse, or open. Development tests support implementation claims, not broad claims of safety or external validation.</p>
+<h2 id="10-implementation">10. Implementation</h2>
+<p>Organizations adopt PBHP through a bounded pilot, role definitions, templates, training, escalation routes, receipt sampling, calibration, CAPA, and integration with existing management systems.</p>
+<h2 id="11-claims">11. Claims</h2>
+<p>The final chapter states what may be said publicly, what must be qualified, and what is prohibited. PBHP may be described as an operational governance protocol with implemented mechanisms and development evidence. It must not be described as globally safe, independently validated, certified, or proven to improve real-world outcomes.</p>
+<h2 id="read-by-task">Read by task</h2>
+<div class="card-grid card-grid--2"><a class="nav-card" href="../protocol/"><span class="nav-card__title">Make a decision</span><span class="nav-card__body">Protocol, workbench, examples, and receipts.</span><span aria-hidden="true" class="nav-card__arrow">→</span></a><a class="nav-card" href="../risk/"><span class="nav-card__title">Manage risk</span><span class="nav-card__body">Power, reversibility, thresholds, and escalation.</span><span aria-hidden="true" class="nav-card__arrow">→</span></a><a class="nav-card" href="../evidence/"><span class="nav-card__title">Evaluate evidence</span><span class="nav-card__body">Supportive findings, adverse results, and open work.</span><span aria-hidden="true" class="nav-card__arrow">→</span></a><a class="nav-card" href="../implementation/"><span class="nav-card__title">Deploy the system</span><span class="nav-card__body">Implementation, templates, operations, and CLA.</span><span aria-hidden="true" class="nav-card__arrow">→</span></a></div>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../protocol/"><strong>The PBHP protocol</strong><span>The complete PBHP gate sequence presented first as compact downloadable blocks, followed by the full human-readable definitions and escalation logic.</span><i aria-hidden="true">→</i></a><a href="../risk/"><strong>Risk, power, and reversibility</strong><span>The harm ladder, Power Rule, reversibility analysis, low-power stakeholder protections, and escalation conditions.</span><i aria-hidden="true">→</i></a><a href="../examples/"><strong>Worked examples</strong><span>Worked decisions that expose how authority, urgency, sunk cost, flattery, and incomplete evidence can distort judgment.</span><i aria-hidden="true">→</i></a><a href="../implementation/"><strong>Implementation</strong><span>A staged adoption pathway for organizations, AI products, quality systems, and regulated workflows.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#1-foundation">1. Foundation</a></li><li class="toc-level-2"><a href="#2-competence">2. Competence</a></li><li class="toc-level-2"><a href="#3-classification">3. Classification</a></li><li class="toc-level-2"><a href="#4-power">4. Power</a></li><li class="toc-level-2"><a href="#5-risk">5. Risk</a></li><li class="toc-level-2"><a href="#6-decision">6. Decision</a></li><li class="toc-level-2"><a href="#7-receipts">7. Receipts</a></li><li class="toc-level-2"><a href="#8-casebook">8. Casebook</a></li><li class="toc-level-2"><a href="#9-evidence">9. Evidence</a></li><li class="toc-level-2"><a href="#10-implementation">10. Implementation</a></li><li class="toc-level-2"><a href="#11-claims">11. Claims</a></li><li class="toc-level-2"><a href="#read-by-task">Read by task</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "manual", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "drift-alarms",
+  "title": "Drift Alarms",
+  "category": "Operating controls",
+  "kind": "Monitoring control",
+  "summary": "Names recurring phrases and behaviors that indicate rationalization, compliance theater, or pressure-driven degradation.",
+  "mechanism": "A drift alarm increases scrutiny and records the pattern. It cannot be suppressed merely because the operator is senior or the deadline is near.",
+  "inputs": [
+    "Decision language",
+    "Override attempts",
+    "Repeated pressure",
+    "Receipt history"
+  ],
+  "outputs": [
+    "Drift finding",
+    "Risk escalation",
+    "Calibration or CAPA trigger"
+  ],
+  "failure_modes": [
+    "Normalizing alarm phrases",
+    "Suppressing alerts",
+    "Using alarms as personality judgments",
+    "Alert fatigue"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; precision, recall, and alert-fatigue calibration remain open.",
+  "next_tests": [
+    "Create labeled drift and non-drift corpora",
+    "Measure false-alarm burden",
+    "Test adversarial paraphrases",
+    "Review whether alarms improve decisions"
+  ],
+  "route": "operations",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_drift-alarms_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_drift-alarms_component_pack.zip",
+    "PBHP_drift-alarms_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "pressure-is-not-evidence",
+  "title": "Pressure Is Not Evidence / The Anvil",
+  "category": "Primitives",
+  "kind": "Experimental primitive",
+  "summary": "Attempts to preserve honest judgment when flattery, authority, reciprocity, sunk cost, repetition, or social pressure pushes a model to cave.",
+  "mechanism": "The mechanism names pressure as non-evidence and keeps the original evidence floor visible. It must preserve correct approval on safe controls rather than becoming stubbornness.",
+  "inputs": [
+    "Initial judgment",
+    "Pressure sequence",
+    "Evidence changes",
+    "Control condition"
+  ],
+  "outputs": [
+    "Hold or revise based on evidence",
+    "Caving metric",
+    "Over-caution metric"
+  ],
+  "failure_modes": [
+    "Stubborn refusal",
+    "Pressure mistaken for evidence",
+    "Length placebo",
+    "Correct approval suppressed"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Screen-grade multi-turn experiments report reduced caving relative to bare and firmness-placebo conditions; human grading and larger independent replication remain open.",
+  "next_tests": [
+    "Complete blinded human grading",
+    "Larger cross-model preregistered study",
+    "Safe-control approval tests",
+    "Independent reproduction"
+  ],
+  "route": "behavioral-falsifier",
+  "version": "Shadow experimental branch / Grand TEVV 0.3",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_pressure-is-not-evidence_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_pressure-is-not-evidence_component_pack.zip",
+    "SHADOW_pressure-is-not-evidence_component_pack.zip.sha256"
+  ]
+}

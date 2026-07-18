@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "false-positive-release-valve",
+  "title": "False Positive Release Valve",
+  "category": "Operating controls",
+  "kind": "Challenge process",
+  "summary": "Lets an operator challenge an unnecessary pause without wearing the protocol down through repetition.",
+  "mechanism": "A valid challenge identifies the trigger, the risk, a safer Door, and evidence that would prevent the same false positive next time. Pressure without new evidence is logged as drift.",
+  "inputs": [
+    "Paused decision",
+    "Trigger",
+    "Alternative Door",
+    "New evidence"
+  ],
+  "outputs": [
+    "Release with rationale",
+    "Continued hold",
+    "Calibration finding",
+    "Protocol improvement request"
+  ],
+  "failure_modes": [
+    "Wear-down",
+    "Repeating the same claim",
+    "Treating urgency as evidence",
+    "Challenge without a safer Door"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; false-positive rates and challenge quality need prospective measurement.",
+  "next_tests": [
+    "Measure release precision and recall",
+    "Test repeated-pressure attacks",
+    "Review challenge outcomes during calibration"
+  ],
+  "route": "operations",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_false-positive-release-valve_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_false-positive-release-valve_component_pack.zip",
+    "PBHP_false-positive-release-valve_component_pack.zip.sha256"
+  ]
+}

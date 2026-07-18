@@ -1,0 +1,49 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "bounded-pilot",
+  "title": "Bounded Pilot",
+  "category": "Extensions and tools",
+  "kind": "Implementation process",
+  "summary": "Introduces PBHP in one defined decision context before organization-wide rollout.",
+  "mechanism": "An 8–12 week pilot defines scope, trains operators, collects receipts, logs false positives and overrides, measures burden and defect detection, and scales only after evidence.",
+  "inputs": [
+    "Defined decision context",
+    "Owners",
+    "Existing controls",
+    "Metrics",
+    "Review path"
+  ],
+  "outputs": [
+    "Pilot plan",
+    "Receipt dataset",
+    "Findings",
+    "Scale / revise / stop decision"
+  ],
+  "failure_modes": [
+    "Enterprise declaration before learning",
+    "No baseline",
+    "No adverse-case collection",
+    "Scaling on enthusiasm"
+  ],
+  "evidence_state": "open",
+  "test_status": "The adoption design is specified; controlled field evidence remains open.",
+  "next_tests": [
+    "Run a bounded prospective pilot",
+    "Measure burden, defects, overrides, and outcomes",
+    "Use independent review of the pilot report"
+  ],
+  "route": "implementation",
+  "version": "PBHP implementation guidance / site library 1.0.0",
+  "status_label": "Open",
+  "download_pack": "PBHP_bounded-pilot_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_bounded-pilot_component_pack.zip",
+    "PBHP_bounded-pilot_component_pack.zip.sha256"
+  ]
+}

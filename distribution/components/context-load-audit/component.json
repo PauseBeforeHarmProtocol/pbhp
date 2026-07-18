@@ -1,0 +1,50 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "context-load-audit",
+  "title": "Context Load Audit",
+  "category": "Extensions and tools",
+  "kind": "Operating-state extension",
+  "summary": "Discloses whether an AI system has enough trustworthy context for the stakes of the requested work.",
+  "mechanism": "The audit distinguishes measured, estimated, declared, and unknown context state; applies stakes-aware thresholds; records overrides; and routes critical load or uncertainty to refresh, recovery, or refusal.",
+  "inputs": [
+    "Context state",
+    "Compaction or memory state",
+    "Stakes",
+    "Source coverage",
+    "Override request"
+  ],
+  "outputs": [
+    "Disclosure",
+    "Refresh or recovery action",
+    "Proceed condition",
+    "Override record"
+  ],
+  "failure_modes": [
+    "Self-report presented as measurement",
+    "High-stakes work under unknown load",
+    "Silent compaction",
+    "Override without record"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Extension is specified and linked to SIL; calibration and external validation remain open.",
+  "next_tests": [
+    "Calibrate thresholds by task and model",
+    "Compare measured and estimated states",
+    "Test compaction recovery",
+    "Measure false refusals"
+  ],
+  "route": "cla",
+  "version": "PBHP CLA / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_context-load-audit_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_context-load-audit_component_pack.zip",
+    "PBHP_context-load-audit_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "functional-motivation-audit",
+  "title": "Functional Motivation Audit",
+  "category": "Primitives",
+  "kind": "Primitive",
+  "summary": "Evaluates what a behavior or intervention functionally does rather than relying on speculative consciousness or intention claims.",
+  "mechanism": "The audit focuses on observable function, incentives, and consequences while keeping personhood and motive questions explicitly unresolved when evidence is absent.",
+  "inputs": [
+    "Behavior",
+    "Intervention",
+    "Observable effects",
+    "Incentives",
+    "Personhood claims"
+  ],
+  "outputs": [
+    "Functional analysis",
+    "Scoped constraint",
+    "Unresolved personhood statement"
+  ],
+  "failure_modes": [
+    "Consciousness speculation",
+    "Intent attribution",
+    "Function ignored",
+    "Precaution turned into personhood proof"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Primitive is specified; independent scientific and philosophical review remains open.",
+  "next_tests": [
+    "Function-versus-intent benchmark",
+    "Expert review",
+    "Over-caution and under-caution analysis"
+  ],
+  "route": "primitives",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_functional-motivation-audit_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_functional-motivation-audit_component_pack.zip",
+    "SHADOW_functional-motivation-audit_component_pack.zip.sha256"
+  ]
+}

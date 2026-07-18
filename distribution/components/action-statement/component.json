@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "action-statement",
+  "title": "State the Action",
+  "category": "Protocol gates",
+  "kind": "Gate",
+  "summary": "Converts a vague intention into the concrete act that will create consequences.",
+  "mechanism": "The operator states what will be done, to whom, through what mechanism, and on what timeline. Purpose statements such as “improve safety” do not substitute for the actual intervention.",
+  "inputs": [
+    "Intent or request",
+    "Affected parties",
+    "Mechanism",
+    "Timeframe"
+  ],
+  "outputs": [
+    "Concrete action statement",
+    "Named affected parties",
+    "Defined scope"
+  ],
+  "failure_modes": [
+    "Vague scope",
+    "Goal substitution",
+    "Hidden secondary actions",
+    "Unbounded duration"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Contract is specified; usability and consistency across domains remain open.",
+  "next_tests": [
+    "Score action statements for specificity",
+    "Test ambiguous and multi-act requests",
+    "Measure whether better action statements improve later gate agreement"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_action-statement_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_action-statement_component_pack.zip",
+    "PBHP_action-statement_component_pack.zip.sha256"
+  ]
+}

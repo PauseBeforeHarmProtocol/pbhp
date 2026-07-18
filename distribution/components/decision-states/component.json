@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "decision-states",
+  "title": "Decision States",
+  "category": "Protocol gates",
+  "kind": "Output contract",
+  "summary": "Ends every complete run in a public-facing action state instead of a vague recommendation.",
+  "mechanism": "The allowed states are PROCEED, PROCEED WITH MITIGATIONS, CONSTRAIN AND REVIEW, DELAY PENDING EVIDENCE, and REFUSE. Each state carries a different authorization boundary.",
+  "inputs": [
+    "Classification",
+    "Harm threshold",
+    "Gate findings",
+    "Mitigations and evidence gaps"
+  ],
+  "outputs": [
+    "One named decision state",
+    "Conditions attached to the state",
+    "Owner and next action"
+  ],
+  "failure_modes": [
+    "Ambiguous advice",
+    "Proceed language inside a refusal",
+    "Mitigations without enforcement",
+    "Delay without a decision-critical evidence request"
+  ],
+  "evidence_state": "specified",
+  "test_status": "The state contract is specified; cross-implementation consistency remains open.",
+  "next_tests": [
+    "Test contradictory outputs",
+    "Measure state consistency across implementations",
+    "Verify that downstream systems enforce attached conditions"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_decision-states_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_decision-states_component_pack.zip",
+    "PBHP_decision-states_component_pack.zip.sha256"
+  ]
+}

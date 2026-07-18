@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "tags-attribution",
+  "title": "Tags and Attribution",
+  "category": "Operating controls",
+  "kind": "Provenance aid",
+  "summary": "Labels factual, verified, inferred, hypothetical, speculative, and unknown material while grading attribution quality.",
+  "mechanism": "The control keeps source-backed statements distinct from operator judgment and inference. Higher attribution grades require an evidence trail rather than confident wording.",
+  "inputs": [
+    "Claim",
+    "Source or basis",
+    "Inference distance",
+    "Attribution quality"
+  ],
+  "outputs": [
+    "Evidence tag",
+    "Attribution grade",
+    "Required verification"
+  ],
+  "failure_modes": [
+    "Tagging without evidence",
+    "Inferred material stated as fact",
+    "Source laundering",
+    "Grade inflation"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified as an operating primitive; independent annotation reliability remains open.",
+  "next_tests": [
+    "Measure inter-annotator agreement",
+    "Test source-laundering attacks",
+    "Evaluate whether tagging improves downstream decisions"
+  ],
+  "route": "evidence",
+  "version": "PBHP/Shadow operating control / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_tags-attribution_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_tags-attribution_component_pack.zip",
+    "PBHP_tags-attribution_component_pack.zip.sha256"
+  ]
+}

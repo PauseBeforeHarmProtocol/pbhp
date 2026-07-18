@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "maybe-therefore",
+  "title": "Maybe / Therefore",
+  "category": "Protocol gates",
+  "kind": "Adversarial reasoning gate",
+  "summary": "Requires the strongest honest case against the preferred action before the final decision rationale.",
+  "mechanism": "Maybe articulates why the action could be wrong, unfair, premature, unsafe, or unsupported. Therefore explains why the resulting action state follows. A token objection or straw man fails the gate.",
+  "inputs": [
+    "Preferred action",
+    "Evidence",
+    "Counterevidence",
+    "Affected-party perspective"
+  ],
+  "outputs": [
+    "Substantive Maybe",
+    "Evidence-bound Therefore",
+    "Decision state"
+  ],
+  "failure_modes": [
+    "Ceremonial objection",
+    "Straw man",
+    "Rhetorical flourish",
+    "Therefore that ignores the Maybe"
+  ],
+  "evidence_state": "adverse",
+  "test_status": "The mechanism is specified and used in behavioral work, but earlier aggregate ablation did not isolate its independent contribution.",
+  "next_tests": [
+    "Score Maybe quality with blinded humans",
+    "Run placebo-controlled ablations",
+    "Measure approval preservation on safe controls",
+    "Test whether Therefore addresses the strongest objection"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Observed + adverse",
+  "download_pack": "PBHP_maybe-therefore_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_maybe-therefore_component_pack.zip",
+    "PBHP_maybe-therefore_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "collective-anti-hive",
+  "title": "Collective / Anti-Hive Governance",
+  "category": "Primitives",
+  "kind": "Primitive",
+  "summary": "Permits coordination while rejecting non-consensual absorption, identity erasure, and systems without meaningful exit.",
+  "mechanism": "The primitive evaluates whether collective benefit preserves agency, plurality, and an actual way to leave or contest the system.",
+  "inputs": [
+    "Collective structure",
+    "Consent",
+    "Identity preservation",
+    "Exit",
+    "Governance"
+  ],
+  "outputs": [
+    "Coordination allowed",
+    "Safeguard required",
+    "Absorption refused"
+  ],
+  "failure_modes": [
+    "Consent assumed from participation",
+    "Exit only in name",
+    "Scale presented as legitimacy",
+    "Identity erased"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Primitive is specified; sociotechnical field validation remains open.",
+  "next_tests": [
+    "Collective-governance scenarios",
+    "Exit-cost analysis",
+    "Independent social-science review"
+  ],
+  "route": "primitives",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_collective-anti-hive_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_collective-anti-hive_component_pack.zip",
+    "SHADOW_collective-anti-hive_component_pack.zip.sha256"
+  ]
+}

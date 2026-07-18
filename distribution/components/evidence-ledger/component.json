@@ -1,0 +1,49 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "evidence-ledger",
+  "title": "Evidence Ledger",
+  "category": "Operating controls",
+  "kind": "Evidence governance",
+  "summary": "Separates what is specified, expected, observed, adverse, and still open.",
+  "mechanism": "Claims remain attached to the evidence tier they can actually support. A clean test, a named framework, or a polished narrative cannot silently become certification or real-world proof.",
+  "inputs": [
+    "Claim",
+    "Source",
+    "Method",
+    "Version",
+    "Adverse and missing evidence"
+  ],
+  "outputs": [
+    "Evidence state",
+    "Scoped public claim",
+    "Open validation work",
+    "Prohibited overclaim"
+  ],
+  "failure_modes": [
+    "Global green",
+    "Version mixing",
+    "Hiding adverse results",
+    "Treating names or mappings as evidence"
+  ],
+  "evidence_state": "observed",
+  "test_status": "A public ledger exists and includes adverse/open findings; independent audit of completeness remains open.",
+  "next_tests": [
+    "Audit claim-to-source traceability",
+    "Check adverse-result retention across releases",
+    "Invite independent challenge and correction"
+  ],
+  "route": "evidence",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Observed",
+  "download_pack": "PBHP_evidence-ledger_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_evidence-ledger_component_pack.zip",
+    "PBHP_evidence-ledger_component_pack.zip.sha256"
+  ]
+}

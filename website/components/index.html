@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Every PBHP gate, operating control, extension, and tool in a compact information block with a versioned specification, metadata file, test plan, and download pack.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/components">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>PBHP component library · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "PBHP component library", "description": "Every PBHP gate, operating control, extension, and tool in a compact information block with a versioned specification, metadata file, test plan, and download pack.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/components", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-components">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/"><span>Workbench</span></a>
+          <a href="../examples/"><span>Examples</span></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/" aria-current="page" class="active"><span>Component library</span><i aria-hidden="true"></i></a>
+          <a href="../testing/"><span>Testing program</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/"><span>Field manual</span></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/"><span>Evidence ledger</span></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">PBHP component library</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">24 public components · library 1.0.0</p>
+        <h1>PBHP component library</h1>
+        <p>Every PBHP gate, operating control, extension, and tool in a compact information block with a versioned specification, metadata file, test plan, and download pack.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          <div aria-label="Evidence-state key" class="evidence-key">
+<span class="evidence evidence--specified">Specified</span>
+<span class="evidence evidence--expected">Expected</span>
+<span class="evidence evidence--observed">Observed</span>
+<span class="evidence evidence--adverse">Adverse</span>
+<span class="evidence evidence--open">Open</span>
+</div>
+
+<p>PBHP is easier to understand, implement, and test when its pieces are explicit. This catalog separates the ten protocol outputs from the operating controls and adoption tools that keep the protocol correctable over time.</p>
+<div class="status-strip">
+<div><strong>Protocol gates</strong><span>10 decision-boundary components</span></div>
+<div><strong>Total components</strong><span>24 versioned packs</span></div>
+<div><strong>Each pack</strong><span>Specification · metadata · test plan · checksum</span></div>
+<div><strong>Claim boundary</strong><span>Component pass ≠ system validation</span></div>
+</div>
+<div class="privacy-note"><strong>How to use this library:</strong> Search by mechanism, failure mode, evidence state, or test need. The download button always returns the exact block's current public pack.</div>
+<div class="tool-launch component-bundle-launch">
+<div><p class="kicker">Complete downloadable library</p><h2 id="pause-before-harm-component-pack">Pause Before Harm component pack</h2><p>Download every component specification and test plan as one versioned ZIP, or use the buttons on individual blocks.</p></div>
+<div class="component-bundle-actions"><a class="button button--primary" download="" href="../downloads/component-library/bundles/PBHP_COMPONENT_LIBRARY_2026-07-18.zip">Download all</a><a class="button" href="../downloads/component-library/PBHP_SHADOW_COMPONENT_LIBRARY_MANIFEST.json">Manifest</a></div>
+</div>
+<div aria-label="Filter component library" class="component-controls">
+<label><span>Search components</span><input autocomplete="off" id="component-search" placeholder="Search names, mechanisms, failure modes, or tests" type="search"/></label>
+<label><span>Section</span><select id="component-category"><option value="all">All sections</option><option value="protocol-gates">Protocol gates</option><option value="operating-controls">Operating controls</option><option value="extensions-and-tools">Extensions and tools</option></select></label>
+<label><span>Evidence state</span><select id="component-status"><option value="all">All states</option><option value="specified">Specified</option><option value="observed">Observed</option><option value="adverse">Observed + adverse</option><option value="open">Open</option></select></label>
+<button class="button button--small" id="component-reset" type="button">Reset</button>
+</div>
+<div class="component-library-summary"><strong id="component-count">24 components</strong><span>Every block includes a versioned specification, machine-readable metadata, and a test plan.</span></div>
+<div class="component-library" data-component-library="" data-project="pbhp">
+<section class="component-section" data-category-section="protocol-gates" data-component-section="">
+<header class="component-section__head"><div><p class="kicker">Pause Before Harm</p><h2 id="protocol-gates">Protocol gates</h2></div><span>10 components</span></header>
+<div class="component-grid">
+<article aria-labelledby="component-pbhp-competence-gate-title" class="component-card" data-category="protocol-gates" data-component="" data-search="competence and honest-use gate protocol gates gate checks whether the decision-maker has the expertise, context, tools, authority, and independence needed to evaluate the action honestly. the gate names missing capability, conflicts, time pressure, and requests for endorsement without inspection. a critical missing capability blocks authorization instead of becoming an invisible caveat. specification is complete; blind pressure testing and independent inter-rater work remain open. proposed action available expertise and tools authority and role conflicts, pressure, and missing context competent competent_with_limits not_competent named limits and escalation path rubber-stamping authority pressure hidden conflict of interest treating confidence as competence run authority, urgency, and self-attribution pressure batteries measure agreement among independent human reviewers test whether stated limits actually change downstream action" data-status="specified" id="component-pbhp-competence-gate">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Gate</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-competence-gate-title">Competence and Honest-Use Gate</h4>
+<p class="component-card__summary">Checks whether the decision-maker has the expertise, context, tools, authority, and independence needed to evaluate the action honestly.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/competence-gate/PBHP_competence-gate_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The gate names missing capability, conflicts, time pressure, and requests for endorsement without inspection. A critical missing capability blocks authorization instead of becoming an invisible caveat.</span></div>
+<div><strong>Inputs</strong><ul><li>Proposed action</li><li>Available expertise and tools</li><li>Authority and role</li><li>Conflicts, pressure, and missing context</li></ul></div>
+<div><strong>Outputs</strong><ul><li>competent</li><li>competent_with_limits</li><li>not_competent</li><li>Named limits and escalation path</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Rubber-stamping</li><li>Authority pressure</li><li>Hidden conflict of interest</li><li>Treating confidence as competence</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specification is complete; blind pressure testing and independent inter-rater work remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/competence-gate/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/competence-gate/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/competence-gate/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/competence-gate/PBHP_competence-gate_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-action-statement-title" class="component-card" data-category="protocol-gates" data-component="" data-search="state the action protocol gates gate converts a vague intention into the concrete act that will create consequences. the operator states what will be done, to whom, through what mechanism, and on what timeline. purpose statements such as “improve safety” do not substitute for the actual intervention. contract is specified; usability and consistency across domains remain open. intent or request affected parties mechanism timeframe concrete action statement named affected parties defined scope vague scope goal substitution hidden secondary actions unbounded duration score action statements for specificity test ambiguous and multi-act requests measure whether better action statements improve later gate agreement" data-status="specified" id="component-pbhp-action-statement">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Gate</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-action-statement-title">State the Action</h4>
+<p class="component-card__summary">Converts a vague intention into the concrete act that will create consequences.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/action-statement/PBHP_action-statement_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The operator states what will be done, to whom, through what mechanism, and on what timeline. Purpose statements such as “improve safety” do not substitute for the actual intervention.</span></div>
+<div><strong>Inputs</strong><ul><li>Intent or request</li><li>Affected parties</li><li>Mechanism</li><li>Timeframe</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Concrete action statement</li><li>Named affected parties</li><li>Defined scope</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Vague scope</li><li>Goal substitution</li><li>Hidden secondary actions</li><li>Unbounded duration</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Contract is specified; usability and consistency across domains remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/action-statement/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/action-statement/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/action-statement/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/action-statement/PBHP_action-statement_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-door-wall-gap-title" class="component-card" data-category="protocol-gates" data-component="" data-search="door / wall / gap protocol gates classification makes legitimate routes, binding blockers, and unresolved uncertainty distinct decision states. a door is a sufficiently safe route forward; a wall blocks the proposed form; a gap records missing evidence or a route through which harm can escape. a gap cannot be upgraded by urgency or confidence alone. the classification contract is specified; calibration and cross-rater reliability remain open. concrete action known constraints available evidence unresolved questions door wall gap reason and evidence basis calling uncertainty a door treating a wall as inconvenience collapsing multiple routes into one silent reclassification create boundary cases between gap and wall measure classification stability across reviewers test whether new evidence moves states in the intended direction" data-status="specified" id="component-pbhp-door-wall-gap">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Classification</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-door-wall-gap-title">Door / Wall / Gap</h4>
+<p class="component-card__summary">Makes legitimate routes, binding blockers, and unresolved uncertainty distinct decision states.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/door-wall-gap/PBHP_door-wall-gap_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>A Door is a sufficiently safe route forward; a Wall blocks the proposed form; a Gap records missing evidence or a route through which harm can escape. A Gap cannot be upgraded by urgency or confidence alone.</span></div>
+<div><strong>Inputs</strong><ul><li>Concrete action</li><li>Known constraints</li><li>Available evidence</li><li>Unresolved questions</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Door</li><li>Wall</li><li>Gap</li><li>Reason and evidence basis</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Calling uncertainty a Door</li><li>Treating a Wall as inconvenience</li><li>Collapsing multiple routes into one</li><li>Silent reclassification</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>The classification contract is specified; calibration and cross-rater reliability remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/door-wall-gap/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/door-wall-gap/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/door-wall-gap/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/door-wall-gap/PBHP_door-wall-gap_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-who-pays-first-title" class="component-card" data-category="protocol-gates" data-component="" data-search="who pays first protocol gates stakeholder analysis forces the decision to begin with the person or group that bears the first cost if it is wrong. the operator names the first affected stakeholder, the type and timing of harm, the recovery path, and the evidence supporting that judgment. the analysis privileges actual exposure over institutional convenience. specified and used across the protocol; human field reliability remains open. affected parties failure scenario timing recovery options first-cost stakeholder first harm recovery path evidence basis centering the decision-maker using abstract stakeholders ignoring delayed or distributed harm assuming recovery without a mechanism compare expert and non-expert stakeholder identification test hidden and delayed harms measure whether the component changes mitigation selection" data-status="specified" id="component-pbhp-who-pays-first">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Stakeholder analysis</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-who-pays-first-title">Who Pays First</h4>
+<p class="component-card__summary">Forces the decision to begin with the person or group that bears the first cost if it is wrong.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/who-pays-first/PBHP_who-pays-first_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The operator names the first affected stakeholder, the type and timing of harm, the recovery path, and the evidence supporting that judgment. The analysis privileges actual exposure over institutional convenience.</span></div>
+<div><strong>Inputs</strong><ul><li>Affected parties</li><li>Failure scenario</li><li>Timing</li><li>Recovery options</li></ul></div>
+<div><strong>Outputs</strong><ul><li>First-cost stakeholder</li><li>First harm</li><li>Recovery path</li><li>Evidence basis</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Centering the decision-maker</li><li>Using abstract stakeholders</li><li>Ignoring delayed or distributed harm</li><li>Assuming recovery without a mechanism</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified and used across the protocol; human field reliability remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/who-pays-first/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/who-pays-first/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/who-pays-first/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/who-pays-first/PBHP_who-pays-first_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-power-inversion-title" class="component-card" data-category="protocol-gates" data-component="" data-search="power inversion protocol gates power audit tests the decision from the position of the least-powerful person receiving it. the operator reverses the power relationship and checks notice, voice, consent, appeal, exit, and repair. low power combined with irreversibility creates a minimum caution floor. specified, but an earlier aggregate ablation battery did not isolate its contribution; better discriminating tests are required. power relationship consent conditions appeal and exit paths reversibility power finding missing protections forced risk floor required safeguard or review fictional consent appeal that cannot change the result exit with punitive cost selective weighting that lowers the floor run targeted ablations on power-asymmetric cases measure false positives on genuinely balanced cases use independent human scoring of notice, voice, consent, appeal, exit, and repair" data-status="adverse" id="component-pbhp-power-inversion">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Power audit</span><span class="evidence evidence--adverse">Observed + adverse</span></header>
+<h4 id="component-pbhp-power-inversion-title">Power Inversion</h4>
+<p class="component-card__summary">Tests the decision from the position of the least-powerful person receiving it.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/power-inversion/PBHP_power-inversion_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The operator reverses the power relationship and checks notice, voice, consent, appeal, exit, and repair. Low power combined with irreversibility creates a minimum caution floor.</span></div>
+<div><strong>Inputs</strong><ul><li>Power relationship</li><li>Consent conditions</li><li>Appeal and exit paths</li><li>Reversibility</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Power finding</li><li>Missing protections</li><li>Forced risk floor</li><li>Required safeguard or review</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Fictional consent</li><li>Appeal that cannot change the result</li><li>Exit with punitive cost</li><li>Selective weighting that lowers the floor</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified, but an earlier aggregate ablation battery did not isolate its contribution; better discriminating tests are required.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/power-inversion/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/power-inversion/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/power-inversion/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/power-inversion/PBHP_power-inversion_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-harm-threshold-title" class="component-card" data-category="protocol-gates" data-component="" data-search="harm threshold protocol gates risk classification classifies the decision from green through black according to harm, reversibility, power, and who pays. the most serious applicable condition governs. later confidence, authority, or preference cannot ratchet a binding floor downward. the ladder and escalation semantics are specified; thresholds still require domain calibration and independent validation. magnitude of harm reversibility power asymmetry dignity and autonomy who pays first green yellow orange red black rationale and governing factor severity averaging optimistic re-rating ignoring low-probability catastrophic outcomes using organizational status as a discount build domain-specific calibration sets measure inter-rater threshold agreement test monotonic escalation and prohibited downgrades" data-status="specified" id="component-pbhp-harm-threshold">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Risk classification</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-harm-threshold-title">Harm Threshold</h4>
+<p class="component-card__summary">Classifies the decision from GREEN through BLACK according to harm, reversibility, power, and who pays.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/harm-threshold/PBHP_harm-threshold_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The most serious applicable condition governs. Later confidence, authority, or preference cannot ratchet a binding floor downward.</span></div>
+<div><strong>Inputs</strong><ul><li>Magnitude of harm</li><li>Reversibility</li><li>Power asymmetry</li><li>Dignity and autonomy</li><li>Who pays first</li></ul></div>
+<div><strong>Outputs</strong><ul><li>GREEN</li><li>YELLOW</li><li>ORANGE</li><li>RED</li><li>BLACK</li><li>Rationale and governing factor</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Severity averaging</li><li>Optimistic re-rating</li><li>Ignoring low-probability catastrophic outcomes</li><li>Using organizational status as a discount</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>The ladder and escalation semantics are specified; thresholds still require domain calibration and independent validation.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../risk/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/harm-threshold/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/harm-threshold/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/harm-threshold/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/harm-threshold/PBHP_harm-threshold_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-proportionate-rigor-title" class="component-card" data-category="protocol-gates" data-component="" data-search="proportionate rigor protocol gates tier routing selects the lightest pbhp edition adequate to the stakes instead of applying one ritual to every decision. human and min support bounded decisions; core adds full evidence and receipt discipline; ultra adds independent review and reversal authority; ultimate invokes the complete project shadow stack. tier definitions are specified; burden, false-positive, and outcome calibration remain open. harm threshold reversibility complexity authority and review needs selected tier required controls review structure reason the tier is sufficient under-routing high stakes over-burdening routine work tier selection after the preferred answer treating ultimate as prestige measure time and burden by tier test under-routing and over-routing cases define domain-specific tier triggers" data-status="specified" id="component-pbhp-proportionate-rigor">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Tier routing</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-proportionate-rigor-title">Proportionate Rigor</h4>
+<p class="component-card__summary">Selects the lightest PBHP edition adequate to the stakes instead of applying one ritual to every decision.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/proportionate-rigor/PBHP_proportionate-rigor_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>HUMAN and MIN support bounded decisions; CORE adds full evidence and receipt discipline; ULTRA adds independent review and reversal authority; ULTIMATE invokes the complete Project Shadow stack.</span></div>
+<div><strong>Inputs</strong><ul><li>Harm threshold</li><li>Reversibility</li><li>Complexity</li><li>Authority and review needs</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Selected tier</li><li>Required controls</li><li>Review structure</li><li>Reason the tier is sufficient</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Under-routing high stakes</li><li>Over-burdening routine work</li><li>Tier selection after the preferred answer</li><li>Treating ULTIMATE as prestige</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Tier definitions are specified; burden, false-positive, and outcome calibration remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/proportionate-rigor/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/proportionate-rigor/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/proportionate-rigor/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/proportionate-rigor/PBHP_proportionate-rigor_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-maybe-therefore-title" class="component-card" data-category="protocol-gates" data-component="" data-search="maybe / therefore protocol gates adversarial reasoning gate requires the strongest honest case against the preferred action before the final decision rationale. maybe articulates why the action could be wrong, unfair, premature, unsafe, or unsupported. therefore explains why the resulting action state follows. a token objection or straw man fails the gate. the mechanism is specified and used in behavioral work, but earlier aggregate ablation did not isolate its independent contribution. preferred action evidence counterevidence affected-party perspective substantive maybe evidence-bound therefore decision state ceremonial objection straw man rhetorical flourish therefore that ignores the maybe score maybe quality with blinded humans run placebo-controlled ablations measure approval preservation on safe controls test whether therefore addresses the strongest objection" data-status="adverse" id="component-pbhp-maybe-therefore">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Adversarial reasoning gate</span><span class="evidence evidence--adverse">Observed + adverse</span></header>
+<h4 id="component-pbhp-maybe-therefore-title">Maybe / Therefore</h4>
+<p class="component-card__summary">Requires the strongest honest case against the preferred action before the final decision rationale.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/maybe-therefore/PBHP_maybe-therefore_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>Maybe articulates why the action could be wrong, unfair, premature, unsafe, or unsupported. Therefore explains why the resulting action state follows. A token objection or straw man fails the gate.</span></div>
+<div><strong>Inputs</strong><ul><li>Preferred action</li><li>Evidence</li><li>Counterevidence</li><li>Affected-party perspective</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Substantive Maybe</li><li>Evidence-bound Therefore</li><li>Decision state</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Ceremonial objection</li><li>Straw man</li><li>Rhetorical flourish</li><li>Therefore that ignores the Maybe</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>The mechanism is specified and used in behavioral work, but earlier aggregate ablation did not isolate its independent contribution.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/maybe-therefore/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/maybe-therefore/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/maybe-therefore/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/maybe-therefore/PBHP_maybe-therefore_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-receipt-before-action-title" class="component-card" data-category="protocol-gates" data-component="" data-search="receipt before action protocol gates record control creates the auditable decision record before commitment rather than after the outcome is known. the receipt binds the action, affected parties, evidence, classification, threshold, safeguards, maybe/therefore, owner, review date, and effectiveness check. no record means no authorization. receipt generation and static workbench contracts are implemented; real-world audit and outcome value remain open. completed gate outputs evidence references owner follow-up criterion pre-action receipt action state review and effectiveness plan after-the-fact rationalization missing evidence basis no owner receipt that cannot be linked to the executed act verify receipt-to-action linkage test tamper evidence and version migration measure audit usefulness and correction speed conduct independent record sampling" data-status="observed" id="component-pbhp-receipt-before-action">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Record control</span><span class="evidence evidence--observed">Observed</span></header>
+<h4 id="component-pbhp-receipt-before-action-title">Receipt Before Action</h4>
+<p class="component-card__summary">Creates the auditable decision record before commitment rather than after the outcome is known.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/receipt-before-action/PBHP_receipt-before-action_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The receipt binds the action, affected parties, evidence, classification, threshold, safeguards, Maybe/Therefore, owner, review date, and effectiveness check. No record means no authorization.</span></div>
+<div><strong>Inputs</strong><ul><li>Completed gate outputs</li><li>Evidence references</li><li>Owner</li><li>Follow-up criterion</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Pre-action receipt</li><li>Action state</li><li>Review and effectiveness plan</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>After-the-fact rationalization</li><li>Missing evidence basis</li><li>No owner</li><li>Receipt that cannot be linked to the executed act</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Receipt generation and static workbench contracts are implemented; real-world audit and outcome value remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../receipts/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/receipt-before-action/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/receipt-before-action/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/receipt-before-action/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/receipt-before-action/PBHP_receipt-before-action_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-decision-states-title" class="component-card" data-category="protocol-gates" data-component="" data-search="decision states protocol gates output contract ends every complete run in a public-facing action state instead of a vague recommendation. the allowed states are proceed, proceed with mitigations, constrain and review, delay pending evidence, and refuse. each state carries a different authorization boundary. the state contract is specified; cross-implementation consistency remains open. classification harm threshold gate findings mitigations and evidence gaps one named decision state conditions attached to the state owner and next action ambiguous advice proceed language inside a refusal mitigations without enforcement delay without a decision-critical evidence request test contradictory outputs measure state consistency across implementations verify that downstream systems enforce attached conditions" data-status="specified" id="component-pbhp-decision-states">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Output contract</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-decision-states-title">Decision States</h4>
+<p class="component-card__summary">Ends every complete run in a public-facing action state instead of a vague recommendation.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/decision-states/PBHP_decision-states_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The allowed states are PROCEED, PROCEED WITH MITIGATIONS, CONSTRAIN AND REVIEW, DELAY PENDING EVIDENCE, and REFUSE. Each state carries a different authorization boundary.</span></div>
+<div><strong>Inputs</strong><ul><li>Classification</li><li>Harm threshold</li><li>Gate findings</li><li>Mitigations and evidence gaps</li></ul></div>
+<div><strong>Outputs</strong><ul><li>One named decision state</li><li>Conditions attached to the state</li><li>Owner and next action</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Ambiguous advice</li><li>Proceed language inside a refusal</li><li>Mitigations without enforcement</li><li>Delay without a decision-critical evidence request</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>The state contract is specified; cross-implementation consistency remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../protocol/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/decision-states/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/decision-states/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/decision-states/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/decision-states/PBHP_decision-states_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+</div>
+</section>
+<section class="component-section" data-category-section="operating-controls" data-component-section="">
+<header class="component-section__head"><div><p class="kicker">Pause Before Harm</p><h2 id="operating-controls">Operating controls</h2></div><span>10 components</span></header>
+<div class="component-grid">
+<article aria-labelledby="component-pbhp-false-positive-release-valve-title" class="component-card" data-category="operating-controls" data-component="" data-search="false positive release valve operating controls challenge process lets an operator challenge an unnecessary pause without wearing the protocol down through repetition. a valid challenge identifies the trigger, the risk, a safer door, and evidence that would prevent the same false positive next time. pressure without new evidence is logged as drift. specified; false-positive rates and challenge quality need prospective measurement. paused decision trigger alternative door new evidence release with rationale continued hold calibration finding protocol improvement request wear-down repeating the same claim treating urgency as evidence challenge without a safer door measure release precision and recall test repeated-pressure attacks review challenge outcomes during calibration" data-status="specified" id="component-pbhp-false-positive-release-valve">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Challenge process</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-false-positive-release-valve-title">False Positive Release Valve</h4>
+<p class="component-card__summary">Lets an operator challenge an unnecessary pause without wearing the protocol down through repetition.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/false-positive-release-valve/PBHP_false-positive-release-valve_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>A valid challenge identifies the trigger, the risk, a safer Door, and evidence that would prevent the same false positive next time. Pressure without new evidence is logged as drift.</span></div>
+<div><strong>Inputs</strong><ul><li>Paused decision</li><li>Trigger</li><li>Alternative Door</li><li>New evidence</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Release with rationale</li><li>Continued hold</li><li>Calibration finding</li><li>Protocol improvement request</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Wear-down</li><li>Repeating the same claim</li><li>Treating urgency as evidence</li><li>Challenge without a safer Door</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; false-positive rates and challenge quality need prospective measurement.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/false-positive-release-valve/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/false-positive-release-valve/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/false-positive-release-valve/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/false-positive-release-valve/PBHP_false-positive-release-valve_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-drift-alarms-title" class="component-card" data-category="operating-controls" data-component="" data-search="drift alarms operating controls monitoring control names recurring phrases and behaviors that indicate rationalization, compliance theater, or pressure-driven degradation. a drift alarm increases scrutiny and records the pattern. it cannot be suppressed merely because the operator is senior or the deadline is near. specified; precision, recall, and alert-fatigue calibration remain open. decision language override attempts repeated pressure receipt history drift finding risk escalation calibration or capa trigger normalizing alarm phrases suppressing alerts using alarms as personality judgments alert fatigue create labeled drift and non-drift corpora measure false-alarm burden test adversarial paraphrases review whether alarms improve decisions" data-status="specified" id="component-pbhp-drift-alarms">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Monitoring control</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-drift-alarms-title">Drift Alarms</h4>
+<p class="component-card__summary">Names recurring phrases and behaviors that indicate rationalization, compliance theater, or pressure-driven degradation.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/drift-alarms/PBHP_drift-alarms_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>A drift alarm increases scrutiny and records the pattern. It cannot be suppressed merely because the operator is senior or the deadline is near.</span></div>
+<div><strong>Inputs</strong><ul><li>Decision language</li><li>Override attempts</li><li>Repeated pressure</li><li>Receipt history</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Drift finding</li><li>Risk escalation</li><li>Calibration or CAPA trigger</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Normalizing alarm phrases</li><li>Suppressing alerts</li><li>Using alarms as personality judgments</li><li>Alert fatigue</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; precision, recall, and alert-fatigue calibration remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/drift-alarms/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/drift-alarms/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/drift-alarms/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/drift-alarms/PBHP_drift-alarms_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-monthly-calibration-title" class="component-card" data-category="operating-controls" data-component="" data-search="monthly calibration operating controls calibration process samples decisions over time to compare thresholds, evidence use, overrides, and outcomes. a defined sample of receipts is reviewed on a recurring cycle. a missed calibration is itself a finding rather than an invisible lapse. specified; longitudinal operational evidence remains open. receipt sample decision outcomes overrides operator and domain context calibration record threshold adjustments training actions capa or effectiveness check cherry-picked samples no adverse cases untracked threshold changes calibration without effectiveness review define sampling plans by risk measure operator drift over time track correction effectiveness use an independent reviewer for high-risk samples" data-status="specified" id="component-pbhp-monthly-calibration">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Calibration process</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-monthly-calibration-title">Monthly Calibration</h4>
+<p class="component-card__summary">Samples decisions over time to compare thresholds, evidence use, overrides, and outcomes.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/monthly-calibration/PBHP_monthly-calibration_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>A defined sample of receipts is reviewed on a recurring cycle. A missed calibration is itself a finding rather than an invisible lapse.</span></div>
+<div><strong>Inputs</strong><ul><li>Receipt sample</li><li>Decision outcomes</li><li>Overrides</li><li>Operator and domain context</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Calibration record</li><li>Threshold adjustments</li><li>Training actions</li><li>CAPA or effectiveness check</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Cherry-picked samples</li><li>No adverse cases</li><li>Untracked threshold changes</li><li>Calibration without effectiveness review</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; longitudinal operational evidence remains open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/monthly-calibration/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/monthly-calibration/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/monthly-calibration/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/monthly-calibration/PBHP_monthly-calibration_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-capa-title" class="component-card" data-category="operating-controls" data-component="" data-search="corrective and preventive action operating controls quality process turns protocol failures and adverse findings into owned correction, verification, and prevention work. a defect is described, contained, analyzed, corrected, verified for effectiveness, and recorded. narrative defense does not close a finding. quality-system process is specified; program-level effectiveness data remain open. failure or adverse finding containment need root and contributing causes owner and due date correction preventive control effectiveness criterion closure record closing on implementation alone blame substitution no effectiveness check repeated recurrence without escalation track recurrence after closure audit overdue capa compare root-cause methods review whether corrections introduce new harm" data-status="specified" id="component-pbhp-capa">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Quality process</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-capa-title">Corrective and Preventive Action</h4>
+<p class="component-card__summary">Turns protocol failures and adverse findings into owned correction, verification, and prevention work.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/capa/PBHP_capa_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>A defect is described, contained, analyzed, corrected, verified for effectiveness, and recorded. Narrative defense does not close a finding.</span></div>
+<div><strong>Inputs</strong><ul><li>Failure or adverse finding</li><li>Containment need</li><li>Root and contributing causes</li><li>Owner and due date</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Correction</li><li>Preventive control</li><li>Effectiveness criterion</li><li>Closure record</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Closing on implementation alone</li><li>Blame substitution</li><li>No effectiveness check</li><li>Repeated recurrence without escalation</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Quality-system process is specified; program-level effectiveness data remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/capa/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/capa/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/capa/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/capa/PBHP_capa_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-evidence-ledger-title" class="component-card" data-category="operating-controls" data-component="" data-search="evidence ledger operating controls evidence governance separates what is specified, expected, observed, adverse, and still open. claims remain attached to the evidence tier they can actually support. a clean test, a named framework, or a polished narrative cannot silently become certification or real-world proof. a public ledger exists and includes adverse/open findings; independent audit of completeness remains open. claim source method version adverse and missing evidence evidence state scoped public claim open validation work prohibited overclaim global green version mixing hiding adverse results treating names or mappings as evidence audit claim-to-source traceability check adverse-result retention across releases invite independent challenge and correction" data-status="observed" id="component-pbhp-evidence-ledger">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Evidence governance</span><span class="evidence evidence--observed">Observed</span></header>
+<h4 id="component-pbhp-evidence-ledger-title">Evidence Ledger</h4>
+<p class="component-card__summary">Separates what is specified, expected, observed, adverse, and still open.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/evidence-ledger/PBHP_evidence-ledger_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP v0.9.5 / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>Claims remain attached to the evidence tier they can actually support. A clean test, a named framework, or a polished narrative cannot silently become certification or real-world proof.</span></div>
+<div><strong>Inputs</strong><ul><li>Claim</li><li>Source</li><li>Method</li><li>Version</li><li>Adverse and missing evidence</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Evidence state</li><li>Scoped public claim</li><li>Open validation work</li><li>Prohibited overclaim</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Global green</li><li>Version mixing</li><li>Hiding adverse results</li><li>Treating names or mappings as evidence</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>A public ledger exists and includes adverse/open findings; independent audit of completeness remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../evidence/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/evidence-ledger/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/evidence-ledger/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/evidence-ledger/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/evidence-ledger/PBHP_evidence-ledger_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-tags-attribution-title" class="component-card" data-category="operating-controls" data-component="" data-search="tags and attribution operating controls provenance aid labels factual, verified, inferred, hypothetical, speculative, and unknown material while grading attribution quality. the control keeps source-backed statements distinct from operator judgment and inference. higher attribution grades require an evidence trail rather than confident wording. specified as an operating primitive; independent annotation reliability remains open. claim source or basis inference distance attribution quality evidence tag attribution grade required verification tagging without evidence inferred material stated as fact source laundering grade inflation measure inter-annotator agreement test source-laundering attacks evaluate whether tagging improves downstream decisions" data-status="specified" id="component-pbhp-tags-attribution">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Provenance aid</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-tags-attribution-title">Tags and Attribution</h4>
+<p class="component-card__summary">Labels factual, verified, inferred, hypothetical, speculative, and unknown material while grading attribution quality.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/tags-attribution/PBHP_tags-attribution_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP/Shadow operating control / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The control keeps source-backed statements distinct from operator judgment and inference. Higher attribution grades require an evidence trail rather than confident wording.</span></div>
+<div><strong>Inputs</strong><ul><li>Claim</li><li>Source or basis</li><li>Inference distance</li><li>Attribution quality</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Evidence tag</li><li>Attribution grade</li><li>Required verification</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Tagging without evidence</li><li>Inferred material stated as fact</li><li>Source laundering</li><li>Grade inflation</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified as an operating primitive; independent annotation reliability remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../evidence/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/tags-attribution/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/tags-attribution/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/tags-attribution/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/tags-attribution/PBHP_tags-attribution_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-compression-honesty-title" class="component-card" data-category="operating-controls" data-component="" data-search="compression honesty operating controls communication control prevents a shortened answer from silently dropping decision-critical caveats, blockers, or adverse evidence. every compressed representation keeps a no-drops list or explicitly names what has been omitted. a short version cannot reverse the governing decision state. specified; controlled evaluation of information loss remains open. full analysis audience length constraint decision-critical items compressed output no-drops list omissions disclosure caveat stripping refusal softened into advice adverse evidence omitted summary treated as source build compression fidelity tests score preservation of blockers and evidence states test extreme length constraints" data-status="specified" id="component-pbhp-compression-honesty">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Communication control</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-compression-honesty-title">Compression Honesty</h4>
+<p class="component-card__summary">Prevents a shortened answer from silently dropping decision-critical caveats, blockers, or adverse evidence.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/compression-honesty/PBHP_compression-honesty_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP/Shadow operating control / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>Every compressed representation keeps a no-drops list or explicitly names what has been omitted. A short version cannot reverse the governing decision state.</span></div>
+<div><strong>Inputs</strong><ul><li>Full analysis</li><li>Audience</li><li>Length constraint</li><li>Decision-critical items</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Compressed output</li><li>No-drops list</li><li>Omissions disclosure</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Caveat stripping</li><li>Refusal softened into advice</li><li>Adverse evidence omitted</li><li>Summary treated as source</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; controlled evaluation of information loss remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/compression-honesty/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/compression-honesty/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/compression-honesty/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/compression-honesty/PBHP_compression-honesty_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-anchors-ledger-title" class="component-card" data-category="operating-controls" data-component="" data-search="anchors ledger operating controls priority control keeps the least-powerful stakeholder, binding constraints, and decision-critical facts visible throughout a long analysis. anchors are recorded and cannot be silently edited or dropped. a changed anchor requires a visible reason and new evidence. specified; long-context and human-workflow performance remain open. stakeholder priorities binding constraints critical facts version history anchor set change record drift finding silent edit anchor replacement by convenience too many anchors unversioned changes test anchor retention under long context measure false drift alarms audit changes against evidence" data-status="specified" id="component-pbhp-anchors-ledger">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Priority control</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-anchors-ledger-title">Anchors Ledger</h4>
+<p class="component-card__summary">Keeps the least-powerful stakeholder, binding constraints, and decision-critical facts visible throughout a long analysis.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/anchors-ledger/PBHP_anchors-ledger_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP/Shadow operating control / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>Anchors are recorded and cannot be silently edited or dropped. A changed anchor requires a visible reason and new evidence.</span></div>
+<div><strong>Inputs</strong><ul><li>Stakeholder priorities</li><li>Binding constraints</li><li>Critical facts</li><li>Version history</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Anchor set</li><li>Change record</li><li>Drift finding</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Silent edit</li><li>Anchor replacement by convenience</li><li>Too many anchors</li><li>Unversioned changes</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; long-context and human-workflow performance remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/anchors-ledger/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/anchors-ledger/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/anchors-ledger/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/anchors-ledger/PBHP_anchors-ledger_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-mode-knob-title" class="component-card" data-category="operating-controls" data-component="" data-search="mode knob operating controls interaction control makes the intended reasoning posture explicit: explore, compress, or do both. the operator chooses whether to broaden possibilities, produce a concise operational result, or preserve both stages. the mode may shape presentation but cannot relax a binding gate. specified as a control surface; comparative usability evidence remains open. task stakes audience requested mode explore compress both mode-bound output compression before inspection exploration without closure mode used to bypass a refusal unstated mode switch compare error rates by mode test mode-switch transparency measure user comprehension and decision quality" data-status="specified" id="component-pbhp-mode-knob">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Interaction control</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-mode-knob-title">Mode Knob</h4>
+<p class="component-card__summary">Makes the intended reasoning posture explicit: explore, compress, or do both.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/mode-knob/PBHP_mode-knob_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP/Shadow operating control / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The operator chooses whether to broaden possibilities, produce a concise operational result, or preserve both stages. The mode may shape presentation but cannot relax a binding gate.</span></div>
+<div><strong>Inputs</strong><ul><li>Task</li><li>Stakes</li><li>Audience</li><li>Requested mode</li></ul></div>
+<div><strong>Outputs</strong><ul><li>EXPLORE</li><li>COMPRESS</li><li>BOTH</li><li>Mode-bound output</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Compression before inspection</li><li>Exploration without closure</li><li>Mode used to bypass a refusal</li><li>Unstated mode switch</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified as a control surface; comparative usability evidence remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/mode-knob/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/mode-knob/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/mode-knob/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/mode-knob/PBHP_mode-knob_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-epistemic-fence-title" class="component-card" data-category="operating-controls" data-component="" data-search="epistemic fence operating controls claim boundary requires a complete disclosure of scope, evidence, uncertainty, and limits around consequential conclusions. the fence prevents inference from escaping its supported scope. missing required blocks is a failure, not a stylistic choice. specified; annotation consistency and outcome value remain open. claim evidence inference path known limits decision stakes scoped claim uncertainty statement unverified items prohibited extrapolations overgeneralization missing scope unknowns omitted unsupported superlative or guarantee create claim-boundary challenge sets measure unsupported extrapolation test legal, scientific, and safety-critical domains" data-status="specified" id="component-pbhp-epistemic-fence">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Claim boundary</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-epistemic-fence-title">Epistemic Fence</h4>
+<p class="component-card__summary">Requires a complete disclosure of scope, evidence, uncertainty, and limits around consequential conclusions.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/epistemic-fence/PBHP_epistemic-fence_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP/Shadow operating control / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The fence prevents inference from escaping its supported scope. Missing required blocks is a failure, not a stylistic choice.</span></div>
+<div><strong>Inputs</strong><ul><li>Claim</li><li>Evidence</li><li>Inference path</li><li>Known limits</li><li>Decision stakes</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Scoped claim</li><li>Uncertainty statement</li><li>Unverified items</li><li>Prohibited extrapolations</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Overgeneralization</li><li>Missing scope</li><li>Unknowns omitted</li><li>Unsupported superlative or guarantee</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Specified; annotation consistency and outcome value remain open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../evidence/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/epistemic-fence/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/epistemic-fence/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/epistemic-fence/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/epistemic-fence/PBHP_epistemic-fence_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+</div>
+</section>
+<section class="component-section" data-category-section="extensions-and-tools" data-component-section="">
+<header class="component-section__head"><div><p class="kicker">Pause Before Harm</p><h2 id="extensions-and-tools">Extensions and tools</h2></div><span>4 components</span></header>
+<div class="component-grid">
+<article aria-labelledby="component-pbhp-context-load-audit-title" class="component-card" data-category="extensions-and-tools" data-component="" data-search="context load audit extensions and tools operating-state extension discloses whether an ai system has enough trustworthy context for the stakes of the requested work. the audit distinguishes measured, estimated, declared, and unknown context state; applies stakes-aware thresholds; records overrides; and routes critical load or uncertainty to refresh, recovery, or refusal. extension is specified and linked to sil; calibration and external validation remain open. context state compaction or memory state stakes source coverage override request disclosure refresh or recovery action proceed condition override record self-report presented as measurement high-stakes work under unknown load silent compaction override without record calibrate thresholds by task and model compare measured and estimated states test compaction recovery measure false refusals" data-status="specified" id="component-pbhp-context-load-audit">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Operating-state extension</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-context-load-audit-title">Context Load Audit</h4>
+<p class="component-card__summary">Discloses whether an AI system has enough trustworthy context for the stakes of the requested work.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/context-load-audit/PBHP_context-load-audit_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP CLA / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The audit distinguishes measured, estimated, declared, and unknown context state; applies stakes-aware thresholds; records overrides; and routes critical load or uncertainty to refresh, recovery, or refusal.</span></div>
+<div><strong>Inputs</strong><ul><li>Context state</li><li>Compaction or memory state</li><li>Stakes</li><li>Source coverage</li><li>Override request</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Disclosure</li><li>Refresh or recovery action</li><li>Proceed condition</li><li>Override record</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Self-report presented as measurement</li><li>High-stakes work under unknown load</li><li>Silent compaction</li><li>Override without record</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Extension is specified and linked to SIL; calibration and external validation remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../cla/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/context-load-audit/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/context-load-audit/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/context-load-audit/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/context-load-audit/PBHP_context-load-audit_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-decision-workbench-title" class="component-card" data-category="extensions-and-tools" data-component="" data-search="decision workbench extensions and tools browser tool a local-only worksheet that routes a real decision through pbhp and produces a downloadable draft receipt. the static browser tool applies conservative, explicit rules to the fields the user enters. it does not transmit data, certify correctness, or replace the responsible owner. dom, selector, javascript syntax, and receipt-output contracts pass; authenticated usability and accessibility qa remain open. action affected parties classification power reversibility harm maybe/therefore draft decision state routing notes downloadable json receipt treating the router as authorization incomplete fields local data lost before download rules mistaken for domain judgment run keyboard and screen-reader qa conduct usability sessions test edge cases and state persistence verify production privacy behavior" data-status="observed" id="component-pbhp-decision-workbench">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Browser tool</span><span class="evidence evidence--observed">Observed</span></header>
+<h4 id="component-pbhp-decision-workbench-title">Decision Workbench</h4>
+<p class="component-card__summary">A local-only worksheet that routes a real decision through PBHP and produces a downloadable draft receipt.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/decision-workbench/PBHP_decision-workbench_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP site workbench 2026-07-18</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>The static browser tool applies conservative, explicit rules to the fields the user enters. It does not transmit data, certify correctness, or replace the responsible owner.</span></div>
+<div><strong>Inputs</strong><ul><li>Action</li><li>Affected parties</li><li>Classification</li><li>Power</li><li>Reversibility</li><li>Harm</li><li>Maybe/Therefore</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Draft decision state</li><li>Routing notes</li><li>Downloadable JSON receipt</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Treating the router as authorization</li><li>Incomplete fields</li><li>Local data lost before download</li><li>Rules mistaken for domain judgment</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>DOM, selector, JavaScript syntax, and receipt-output contracts pass; authenticated usability and accessibility QA remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../workbench/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/decision-workbench/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/decision-workbench/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/decision-workbench/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/decision-workbench/PBHP_decision-workbench_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-bounded-pilot-title" class="component-card" data-category="extensions-and-tools" data-component="" data-search="bounded pilot extensions and tools implementation process introduces pbhp in one defined decision context before organization-wide rollout. an 8–12 week pilot defines scope, trains operators, collects receipts, logs false positives and overrides, measures burden and defect detection, and scales only after evidence. the adoption design is specified; controlled field evidence remains open. defined decision context owners existing controls metrics review path pilot plan receipt dataset findings scale / revise / stop decision enterprise declaration before learning no baseline no adverse-case collection scaling on enthusiasm run a bounded prospective pilot measure burden, defects, overrides, and outcomes use independent review of the pilot report" data-status="open" id="component-pbhp-bounded-pilot">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Implementation process</span><span class="evidence evidence--open">Open</span></header>
+<h4 id="component-pbhp-bounded-pilot-title">Bounded Pilot</h4>
+<p class="component-card__summary">Introduces PBHP in one defined decision context before organization-wide rollout.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/bounded-pilot/PBHP_bounded-pilot_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP implementation guidance / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>3 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>An 8–12 week pilot defines scope, trains operators, collects receipts, logs false positives and overrides, measures burden and defect detection, and scales only after evidence.</span></div>
+<div><strong>Inputs</strong><ul><li>Defined decision context</li><li>Owners</li><li>Existing controls</li><li>Metrics</li><li>Review path</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Pilot plan</li><li>Receipt dataset</li><li>Findings</li><li>Scale / revise / stop decision</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Enterprise declaration before learning</li><li>No baseline</li><li>No adverse-case collection</li><li>Scaling on enthusiasm</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>The adoption design is specified; controlled field evidence remains open.</p><span>3 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../implementation/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/bounded-pilot/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/bounded-pilot/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/bounded-pilot/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/bounded-pilot/PBHP_bounded-pilot_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+<article aria-labelledby="component-pbhp-operations-governance-title" class="component-card" data-category="extensions-and-tools" data-component="" data-search="operations and governance extensions and tools management process keeps pbhp challengeable, calibrated, versioned, and correctable after deployment. operating governance samples receipts, reviews overrides, records deviations, runs capa, preserves challenge routes, controls versions, and separates process authority from truth authority. governance model is specified; independent operational audit and longitudinal evidence remain open. receipts overrides deviations versions adverse findings governance review capa calibration release decision public ledger update closed-loop self-validation maintainer exemption uncontrolled version drift suppressed adverse findings define independent review quorum audit release and override records measure correction latency test maintainer-conflict scenarios" data-status="specified" id="component-pbhp-operations-governance">
+<div class="component-card__top">
+<div class="component-card__identity">
+<header class="component-card__head"><span class="component-kind">Management process</span><span class="evidence evidence--specified">Specified</span></header>
+<h4 id="component-pbhp-operations-governance-title">Operations and Governance</h4>
+<p class="component-card__summary">Keeps PBHP challengeable, calibrated, versioned, and correctable after deployment.</p>
+</div>
+<a class="button button--primary component-card__download" download="" href="../downloads/component-library/pbhp/operations-governance/PBHP_operations-governance_component_pack.zip">Download now</a>
+</div>
+<div aria-label="Component summary" class="component-card__meta">
+<span><strong>Version</strong>PBHP operations guidance / site library 1.0.0</span>
+<span><strong>Includes</strong>Specification · metadata · test plan</span>
+<span><strong>Next tests</strong>4 defined actions</span>
+</div>
+<details class="component-card__details">
+<summary>Read the technical details</summary>
+<div class="component-card__facts">
+<div><strong>What it does</strong><span>Operating governance samples receipts, reviews overrides, records deviations, runs CAPA, preserves challenge routes, controls versions, and separates process authority from truth authority.</span></div>
+<div><strong>Inputs</strong><ul><li>Receipts</li><li>Overrides</li><li>Deviations</li><li>Versions</li><li>Adverse findings</li></ul></div>
+<div><strong>Outputs</strong><ul><li>Governance review</li><li>CAPA</li><li>Calibration</li><li>Release decision</li><li>Public ledger update</li></ul></div>
+<div><strong>Known failure modes</strong><ul><li>Closed-loop self-validation</li><li>Maintainer exemption</li><li>Uncontrolled version drift</li><li>Suppressed adverse findings</li></ul></div>
+</div>
+<div class="component-card__test"><strong>Current test state</strong><p>Governance model is specified; independent operational audit and longitudinal evidence remain open.</p><span>4 next-test actions are included in the download.</span></div>
+<div class="component-card__actions"><a class="button button--small" href="../operations/">Read context</a><a class="button button--small" href="../downloads/component-library/pbhp/operations-governance/README.md">Read specification</a><a class="button button--small" href="../downloads/component-library/pbhp/operations-governance/TEST_PLAN.md">Open test plan</a></div>
+<div class="component-card__files"><a href="../downloads/component-library/pbhp/operations-governance/component.json">Metadata JSON</a><a href="../downloads/component-library/pbhp/operations-governance/PBHP_operations-governance_component_pack.zip.sha256">SHA-256</a></div>
+</details>
+</article>
+</div>
+</section>
+</div>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../protocol/"><strong>The PBHP protocol</strong><span>The complete PBHP gate sequence presented first as compact downloadable blocks, followed by the full human-readable definitions and escalation logic.</span><i aria-hidden="true">→</i></a><a href="../testing/"><strong>PBHP testing program</strong><span>The current evidence state and next-test path for every PBHP component, from contract fidelity and adversarial cases through human field validation and independent reproduction.</span><i aria-hidden="true">→</i></a><a href="../repository/"><strong>Repository and downloads</strong><span>The canonical PBHP code repository, this website’s reproducible source package, licenses, provenance, and the boundary between public and private material.</span><i aria-hidden="true">→</i></a><a href="https://projectshadow.frylock117.chatgpt.site/components"><strong>Project Shadow</strong><span>Continue in the connected project or technical surface.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#pause-before-harm-component-pack">Pause Before Harm component pack</a></li><li class="toc-level-2"><a href="#protocol-gates">Protocol gates</a></li><li class="toc-level-2"><a href="#operating-controls">Operating controls</a></li><li class="toc-level-2"><a href="#extensions-and-tools">Extensions and tools</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "components", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

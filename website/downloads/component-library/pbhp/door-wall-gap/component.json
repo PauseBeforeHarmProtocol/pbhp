@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "door-wall-gap",
+  "title": "Door / Wall / Gap",
+  "category": "Protocol gates",
+  "kind": "Classification",
+  "summary": "Makes legitimate routes, binding blockers, and unresolved uncertainty distinct decision states.",
+  "mechanism": "A Door is a sufficiently safe route forward; a Wall blocks the proposed form; a Gap records missing evidence or a route through which harm can escape. A Gap cannot be upgraded by urgency or confidence alone.",
+  "inputs": [
+    "Concrete action",
+    "Known constraints",
+    "Available evidence",
+    "Unresolved questions"
+  ],
+  "outputs": [
+    "Door",
+    "Wall",
+    "Gap",
+    "Reason and evidence basis"
+  ],
+  "failure_modes": [
+    "Calling uncertainty a Door",
+    "Treating a Wall as inconvenience",
+    "Collapsing multiple routes into one",
+    "Silent reclassification"
+  ],
+  "evidence_state": "specified",
+  "test_status": "The classification contract is specified; calibration and cross-rater reliability remain open.",
+  "next_tests": [
+    "Create boundary cases between Gap and Wall",
+    "Measure classification stability across reviewers",
+    "Test whether new evidence moves states in the intended direction"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_door-wall-gap_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_door-wall-gap_component_pack.zip",
+    "PBHP_door-wall-gap_component_pack.zip.sha256"
+  ]
+}

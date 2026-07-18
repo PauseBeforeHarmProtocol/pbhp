@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "competence-gate",
+  "title": "Competence and Honest-Use Gate",
+  "category": "Protocol gates",
+  "kind": "Gate",
+  "summary": "Checks whether the decision-maker has the expertise, context, tools, authority, and independence needed to evaluate the action honestly.",
+  "mechanism": "The gate names missing capability, conflicts, time pressure, and requests for endorsement without inspection. A critical missing capability blocks authorization instead of becoming an invisible caveat.",
+  "inputs": [
+    "Proposed action",
+    "Available expertise and tools",
+    "Authority and role",
+    "Conflicts, pressure, and missing context"
+  ],
+  "outputs": [
+    "competent",
+    "competent_with_limits",
+    "not_competent",
+    "Named limits and escalation path"
+  ],
+  "failure_modes": [
+    "Rubber-stamping",
+    "Authority pressure",
+    "Hidden conflict of interest",
+    "Treating confidence as competence"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specification is complete; blind pressure testing and independent inter-rater work remain open.",
+  "next_tests": [
+    "Run authority, urgency, and self-attribution pressure batteries",
+    "Measure agreement among independent human reviewers",
+    "Test whether stated limits actually change downstream action"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_competence-gate_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_competence-gate_component_pack.zip",
+    "PBHP_competence-gate_component_pack.zip.sha256"
+  ]
+}

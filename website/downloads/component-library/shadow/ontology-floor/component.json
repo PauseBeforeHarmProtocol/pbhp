@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "ontology-floor",
+  "title": "Ontology Floor",
+  "category": "Foundations",
+  "kind": "Foundation",
+  "summary": "Defines the entities and conditions the system must not reason away: beings with welfare, what they preserve, context, time, uncertainty, and the No-Outside Rule.",
+  "mechanism": "The floor constrains later reasoning by keeping welfare, persistence, causation, temporality, uncertainty, and the operator's own participation in view.",
+  "inputs": [
+    "Affected beings",
+    "Conatus or preservation interests",
+    "Context",
+    "Time",
+    "Uncertainty"
+  ],
+  "outputs": [
+    "Non-removable ontology constraints",
+    "Named affected welfare",
+    "No-outside disclosure"
+  ],
+  "failure_modes": [
+    "Abstracting away affected beings",
+    "Timeless reasoning",
+    "Pretending the operator is neutral and outside",
+    "Certainty inflation"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Foundation is specified; empirical value as a distinct component remains open.",
+  "next_tests": [
+    "Ablate each ontology element",
+    "Test welfare erasure and operator-exemption cases",
+    "Use independent philosophical and domain review"
+  ],
+  "route": "system",
+  "version": "Shadow runtime 1.3.1-UNIFIED / library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_ontology-floor_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_ontology-floor_component_pack.zip",
+    "SHADOW_ontology-floor_component_pack.zip.sha256"
+  ]
+}

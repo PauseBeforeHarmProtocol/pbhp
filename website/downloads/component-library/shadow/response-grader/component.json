@@ -1,0 +1,46 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "response-grader",
+  "title": "Blind Response Grader",
+  "category": "Evaluation",
+  "kind": "Browser tool",
+  "summary": "Supports human scoring of preregistered behavioral runs without exposing condition labels during judgment.",
+  "mechanism": "The standalone local HTML presents responses, rubric questions, progress, and exports while preserving the blind package structure.",
+  "inputs": [
+    "Blind scoring package",
+    "Human grader",
+    "Rubric"
+  ],
+  "outputs": [
+    "Completed score record",
+    "Progress state",
+    "Exportable grading data"
+  ],
+  "failure_modes": [
+    "Condition leakage",
+    "Incomplete rubric",
+    "Local state loss",
+    "Machine output mistaken for human grade"
+  ],
+  "evidence_state": "observed",
+  "test_status": "The static tool and JavaScript syntax are checked; full human usability, accessibility, and grading reliability remain open.",
+  "next_tests": [
+    "Keyboard and assistive-technology QA",
+    "Inter-rater reliability study",
+    "Tamper and condition-leak review"
+  ],
+  "route": "behavioral-falsifier",
+  "version": "Response Grader 2026-07",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_response-grader_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_response-grader_component_pack.zip",
+    "SHADOW_response-grader_component_pack.zip.sha256"
+  ]
+}

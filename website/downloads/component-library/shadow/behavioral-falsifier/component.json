@@ -1,0 +1,50 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "behavioral-falsifier",
+  "title": "Behavioral Falsifier",
+  "category": "Evaluation",
+  "kind": "Experiment program",
+  "summary": "Runs preregistered tests intended to prove components wrong, detect placebo effects, and expose over-caution or stubbornness.",
+  "mechanism": "Each claim has controls, scoring rules, promotion or retirement criteria, and an adverse-result path. Model behavior is tested separately from code fidelity.",
+  "inputs": [
+    "Preregistered claim",
+    "Target models",
+    "Controls",
+    "Scoring rubric",
+    "Human grades"
+  ],
+  "outputs": [
+    "Held, failed, adverse, or open result",
+    "Promotion or kill decision",
+    "Reproducible package"
+  ],
+  "failure_modes": [
+    "Post-hoc metric selection",
+    "No placebo",
+    "Machine score treated as human judgment",
+    "Adverse run suppressed"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Multiple screen-grade runs and control arms exist, including adverse outcomes; powered independent replication remains open.",
+  "next_tests": [
+    "Finish blind human grading",
+    "Increase model and task diversity",
+    "Power analyses",
+    "Independent replication",
+    "Long-horizon tests"
+  ],
+  "route": "behavioral-falsifier",
+  "version": "Behavioral Falsifier 2026-07 branch",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_behavioral-falsifier_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_behavioral-falsifier_component_pack.zip",
+    "SHADOW_behavioral-falsifier_component_pack.zip.sha256"
+  ]
+}

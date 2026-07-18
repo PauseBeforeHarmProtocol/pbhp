@@ -1,0 +1,49 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "capa",
+  "title": "Corrective and Preventive Action",
+  "category": "Operating controls",
+  "kind": "Quality process",
+  "summary": "Turns protocol failures and adverse findings into owned correction, verification, and prevention work.",
+  "mechanism": "A defect is described, contained, analyzed, corrected, verified for effectiveness, and recorded. Narrative defense does not close a finding.",
+  "inputs": [
+    "Failure or adverse finding",
+    "Containment need",
+    "Root and contributing causes",
+    "Owner and due date"
+  ],
+  "outputs": [
+    "Correction",
+    "Preventive control",
+    "Effectiveness criterion",
+    "Closure record"
+  ],
+  "failure_modes": [
+    "Closing on implementation alone",
+    "Blame substitution",
+    "No effectiveness check",
+    "Repeated recurrence without escalation"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Quality-system process is specified; program-level effectiveness data remain open.",
+  "next_tests": [
+    "Track recurrence after closure",
+    "Audit overdue CAPA",
+    "Compare root-cause methods",
+    "Review whether corrections introduce new harm"
+  ],
+  "route": "operations",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_capa_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_capa_component_pack.zip",
+    "PBHP_capa_component_pack.zip.sha256"
+  ]
+}

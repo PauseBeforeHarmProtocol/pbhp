@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "power-inversion",
+  "title": "Power Inversion",
+  "category": "Protocol gates",
+  "kind": "Power audit",
+  "summary": "Tests the decision from the position of the least-powerful person receiving it.",
+  "mechanism": "The operator reverses the power relationship and checks notice, voice, consent, appeal, exit, and repair. Low power combined with irreversibility creates a minimum caution floor.",
+  "inputs": [
+    "Power relationship",
+    "Consent conditions",
+    "Appeal and exit paths",
+    "Reversibility"
+  ],
+  "outputs": [
+    "Power finding",
+    "Missing protections",
+    "Forced risk floor",
+    "Required safeguard or review"
+  ],
+  "failure_modes": [
+    "Fictional consent",
+    "Appeal that cannot change the result",
+    "Exit with punitive cost",
+    "Selective weighting that lowers the floor"
+  ],
+  "evidence_state": "adverse",
+  "test_status": "Specified, but an earlier aggregate ablation battery did not isolate its contribution; better discriminating tests are required.",
+  "next_tests": [
+    "Run targeted ablations on power-asymmetric cases",
+    "Measure false positives on genuinely balanced cases",
+    "Use independent human scoring of notice, voice, consent, appeal, exit, and repair"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Observed + adverse",
+  "download_pack": "PBHP_power-inversion_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_power-inversion_component_pack.zip",
+    "PBHP_power-inversion_component_pack.zip.sha256"
+  ]
+}

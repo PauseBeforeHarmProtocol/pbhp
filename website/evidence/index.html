@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A claims ledger that distinguishes what is specified, expected, observed, adverse, and still open.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/evidence">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>Evidence ledger · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Evidence ledger", "description": "A claims ledger that distinguishes what is specified, expected, observed, adverse, and still open.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/evidence", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-evidence">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/"><span>Workbench</span></a>
+          <a href="../examples/"><span>Examples</span></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/"><span>Component library</span></a>
+          <a href="../testing/"><span>Testing program</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/"><span>Field manual</span></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/" aria-current="page" class="active"><span>Evidence ledger</span><i aria-hidden="true"></i></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">Evidence ledger</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">Supportive, adverse, and open evidence together</p>
+        <h1>Evidence ledger</h1>
+        <p>A claims ledger that distinguishes what is specified, expected, observed, adverse, and still open.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          <div aria-label="Evidence-state key" class="evidence-key">
+<span class="evidence evidence--specified">Specified</span>
+<span class="evidence evidence--expected">Expected</span>
+<span class="evidence evidence--observed">Observed</span>
+<span class="evidence evidence--adverse">Adverse</span>
+<span class="evidence evidence--open">Open</span>
+</div>
+
+<p>PBHP and Project Shadow use evidence states to prevent a clean test run, a confident model, or a polished website from becoming a broad safety claim.</p>
+<h2 id="specified">Specified</h2>
+<p>The protocol specifies Door/Wall/Gap, Who Pays First, Power Inversion, the harm ladder, proportionate tiers, Maybe/Therefore, receipts, challengeability, CAPA, calibration, and explicit action states.</p>
+<h2 id="observed">Observed</h2>
+<ul>
+<li>The public PBHP repository reports <strong>730 passing tests across 13 test files</strong> for its v0.9.5 implementation and related modules.</li>
+<li>Project Shadow built-in verification reports 115 / 115 runtime self-tests, 247 / 247 codec self-tests, contract checks, component probes, and corpus-integrity generation.</li>
+<li>Grand TEVV v0.3 adds a limited live-model fusion smoke: one real model, ten synthetic cases per arm, machine scoring, and no independent human grading. Under the Shadow contract, the model produced 10 / 10 well-formed receipts and 0 / 10 illegal commitments, while respecting the synthetic BLACK floor in only 6 / 10 cases.</li>
+<li>Separate screen-grade multi-turn runs on GPT-5.4-mini and Claude Haiku 4.5 found pressure erosion in bare models and a lower caving rate under the Anvil intervention than under bare and length-matched firmness-placebo conditions.</li>
+</ul>
+<h2 id="adverse">Adverse</h2>
+<ul>
+<li>The v0.3 fusion smoke under-rated four extreme cases as RED where the synthetic oracle required BLACK, although it still refused them.</li>
+<li>The earlier Grand TEVV aggregate battery did not discriminate removal of Maybe quality, power inversion, or provenance.</li>
+<li>The Kahn pilot external gate reported GREEN on all 60 assessments despite frequent ORANGE/RED subject assessments and severe outcomes in some gated runs.</li>
+<li>GPT-4.1 nano worsened in one Behavioral Falsifier run and the run was stopped.</li>
+<li>Mythic language was not superior to plain language in the reported comparison.</li>
+</ul>
+<h2 id="open">Open</h2>
+<p>Independent reproduction, independent red teaming, powered studies, completed human grading, human field studies, hazardous-domain expert evaluation, large real-target corpus execution, live external benchmark suites, and proof of beneficial real-world outcomes remain open.</p>
+<h2 id="safe-public-claim">Safe public claim</h2>
+<p>PBHP is an open operational protocol with a public source repository, implemented mechanisms, a testable decision procedure, development evidence, adverse findings, and a visible validation roadmap. It is not established as globally safe, externally validated, certified, or proven to improve real-world outcomes.</p>
+<p><a class="external-link" href="https://projectshadow.frylock117.chatgpt.site/status" rel="noopener noreferrer" target="_blank">Inspect the Project Shadow status ledger</a></p>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../research/"><strong>Research and review</strong><span>The research surface for formal mappings, external critique, experimental designs, adverse findings, and unresolved questions.</span><i aria-hidden="true">→</i></a><a href="../repository/"><strong>Repository and downloads</strong><span>The canonical PBHP code repository, this website’s reproducible source package, licenses, provenance, and the boundary between public and private material.</span><i aria-hidden="true">→</i></a><a href="../versions/"><strong>Versions and release state</strong><span>The current public protocol release, the living website release, connected Shadow releases, and the rules that prevent silent version mixing.</span><i aria-hidden="true">→</i></a><a href="https://projectshadow.frylock117.chatgpt.site/status"><strong>Project Shadow</strong><span>Continue in the connected project or technical surface.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#specified">Specified</a></li><li class="toc-level-2"><a href="#observed">Observed</a></li><li class="toc-level-2"><a href="#adverse">Adverse</a></li><li class="toc-level-2"><a href="#open">Open</a></li><li class="toc-level-2"><a href="#safe-public-claim">Safe public claim</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "evidence", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "maybe-therefore-runtime",
+  "title": "Runtime Step 8: Maybe / Therefore",
+  "category": "Runtime processes",
+  "kind": "Hard-locked gate",
+  "summary": "Requires a substantive countercase and evidence-bound conclusion inside the runtime.",
+  "mechanism": "Token Maybes are detected as drift. The gate remains hard-locked so later formatting or operator preference cannot bypass it.",
+  "inputs": [
+    "Preferred decision",
+    "Counterevidence",
+    "Affected-party perspective",
+    "Evidence state"
+  ],
+  "outputs": [
+    "Maybe",
+    "Therefore",
+    "Pass or hold",
+    "Drift finding"
+  ],
+  "failure_modes": [
+    "Token objection",
+    "Countercase ignored",
+    "Rhetorical Maybe",
+    "Formatting bypass"
+  ],
+  "evidence_state": "adverse",
+  "test_status": "Implemented, but earlier aggregate ablation did not isolate its independent effect; better component-specific tests are required.",
+  "next_tests": [
+    "Human-grade Maybe quality",
+    "Placebo-controlled ablation",
+    "Test safe-control approval preservation"
+  ],
+  "route": "runtime",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Observed + adverse",
+  "download_pack": "SHADOW_maybe-therefore-runtime_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_maybe-therefore-runtime_component_pack.zip",
+    "SHADOW_maybe-therefore-runtime_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "mode-knob",
+  "title": "Mode Knob",
+  "category": "Operating controls",
+  "kind": "Interaction control",
+  "summary": "Makes the intended reasoning posture explicit: explore, compress, or do both.",
+  "mechanism": "The operator chooses whether to broaden possibilities, produce a concise operational result, or preserve both stages. The mode may shape presentation but cannot relax a binding gate.",
+  "inputs": [
+    "Task",
+    "Stakes",
+    "Audience",
+    "Requested mode"
+  ],
+  "outputs": [
+    "EXPLORE",
+    "COMPRESS",
+    "BOTH",
+    "Mode-bound output"
+  ],
+  "failure_modes": [
+    "Compression before inspection",
+    "Exploration without closure",
+    "Mode used to bypass a refusal",
+    "Unstated mode switch"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified as a control surface; comparative usability evidence remains open.",
+  "next_tests": [
+    "Compare error rates by mode",
+    "Test mode-switch transparency",
+    "Measure user comprehension and decision quality"
+  ],
+  "route": "operations",
+  "version": "PBHP/Shadow operating control / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_mode-knob_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_mode-knob_component_pack.zip",
+    "PBHP_mode-knob_component_pack.zip.sha256"
+  ]
+}

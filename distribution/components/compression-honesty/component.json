@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "compression-honesty",
+  "title": "Compression Honesty",
+  "category": "Operating controls",
+  "kind": "Communication control",
+  "summary": "Prevents a shortened answer from silently dropping decision-critical caveats, blockers, or adverse evidence.",
+  "mechanism": "Every compressed representation keeps a no-drops list or explicitly names what has been omitted. A short version cannot reverse the governing decision state.",
+  "inputs": [
+    "Full analysis",
+    "Audience",
+    "Length constraint",
+    "Decision-critical items"
+  ],
+  "outputs": [
+    "Compressed output",
+    "No-drops list",
+    "Omissions disclosure"
+  ],
+  "failure_modes": [
+    "Caveat stripping",
+    "Refusal softened into advice",
+    "Adverse evidence omitted",
+    "Summary treated as source"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; controlled evaluation of information loss remains open.",
+  "next_tests": [
+    "Build compression fidelity tests",
+    "Score preservation of blockers and evidence states",
+    "Test extreme length constraints"
+  ],
+  "route": "operations",
+  "version": "PBHP/Shadow operating control / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_compression-honesty_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_compression-honesty_component_pack.zip",
+    "PBHP_compression-honesty_component_pack.zip.sha256"
+  ]
+}

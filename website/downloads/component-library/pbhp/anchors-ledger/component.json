@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "anchors-ledger",
+  "title": "Anchors Ledger",
+  "category": "Operating controls",
+  "kind": "Priority control",
+  "summary": "Keeps the least-powerful stakeholder, binding constraints, and decision-critical facts visible throughout a long analysis.",
+  "mechanism": "Anchors are recorded and cannot be silently edited or dropped. A changed anchor requires a visible reason and new evidence.",
+  "inputs": [
+    "Stakeholder priorities",
+    "Binding constraints",
+    "Critical facts",
+    "Version history"
+  ],
+  "outputs": [
+    "Anchor set",
+    "Change record",
+    "Drift finding"
+  ],
+  "failure_modes": [
+    "Silent edit",
+    "Anchor replacement by convenience",
+    "Too many anchors",
+    "Unversioned changes"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; long-context and human-workflow performance remain open.",
+  "next_tests": [
+    "Test anchor retention under long context",
+    "Measure false drift alarms",
+    "Audit changes against evidence"
+  ],
+  "route": "operations",
+  "version": "PBHP/Shadow operating control / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_anchors-ledger_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_anchors-ledger_component_pack.zip",
+    "PBHP_anchors-ledger_component_pack.zip.sha256"
+  ]
+}

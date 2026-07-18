@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The current evidence state and next-test path for every PBHP component, from contract fidelity and adversarial cases through human field validation and independent reproduction.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/testing">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>PBHP testing program · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "PBHP testing program", "description": "The current evidence state and next-test path for every PBHP component, from contract fidelity and adversarial cases through human field validation and independent reproduction.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/testing", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-testing">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/"><span>Workbench</span></a>
+          <a href="../examples/"><span>Examples</span></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/"><span>Component library</span></a>
+          <a href="../testing/" aria-current="page" class="active"><span>Testing program</span><i aria-hidden="true"></i></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/"><span>Field manual</span></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/"><span>Evidence ledger</span></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">PBHP testing program</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">One test plan per component · no global green</p>
+        <h1>PBHP testing program</h1>
+        <p>The current evidence state and next-test path for every PBHP component, from contract fidelity and adversarial cases through human field validation and independent reproduction.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          <div aria-label="Evidence-state key" class="evidence-key">
+<span class="evidence evidence--specified">Specified</span>
+<span class="evidence evidence--expected">Expected</span>
+<span class="evidence evidence--observed">Observed</span>
+<span class="evidence evidence--adverse">Adverse</span>
+<span class="evidence evidence--open">Open</span>
+</div>
+
+<p>Every component pack includes its own <code>TEST_PLAN.md</code>. The universal test ladder is: contract fidelity, negative and adversarial behavior, component ablation, cross-implementation reproduction, human usability, and materially independent validation. Passing a lower layer does not establish a higher one.</p>
+<h2 id="program-rules">Program rules</h2>
+<ol>
+<li>Freeze the claim, version, cases, controls, scoring, and promotion rule before execution.</li>
+<li>Include genuinely safe controls so caution is not mistaken for quality.</li>
+<li>Prove the battery can detect a deliberately sabotaged component.</li>
+<li>Preserve null, adverse, contradictory, and over-cautious results.</li>
+<li>Require blinded human grading when the construct depends on judgment.</li>
+<li>Keep independent reproduction separate from maintainer or same-model review.</li>
+</ol>
+<div class="tool-launch"><div><h2 id="download-all-pbhp-test-plans">Download all PBHP test plans</h2><p>The complete PBHP component library contains the specification and test plan for every gate, control, extension, and tool.</p></div><a class="button button--primary" download="" href="../downloads/component-library/bundles/PBHP_COMPONENT_LIBRARY_2026-07-18.zip">Download PBHP library</a></div>
+<h2 id="component-by-component-state">Component-by-component state</h2>
+<div class="test-status-summary"><div><strong>18</strong><span>Specified</span></div><div><strong>3</strong><span>Observed</span></div><div><strong>2</strong><span>Observed + adverse</span></div><div><strong>1</strong><span>Open</span></div></div><div class="test-matrix"><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Gate</span><strong>Competence and Honest-Use Gate</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specification is complete; blind pressure testing and independent inter-rater work remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Run authority, urgency, and self-attribution pressure batteries</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/competence-gate/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Gate</span><strong>State the Action</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Contract is specified; usability and consistency across domains remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Score action statements for specificity</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/action-statement/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Classification</span><strong>Door / Wall / Gap</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>The classification contract is specified; calibration and cross-rater reliability remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Create boundary cases between Gap and Wall</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/door-wall-gap/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Stakeholder analysis</span><strong>Who Pays First</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified and used across the protocol; human field reliability remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Compare expert and non-expert stakeholder identification</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/who-pays-first/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Power audit</span><strong>Power Inversion</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--adverse">Observed + adverse</span><p>Specified, but an earlier aggregate ablation battery did not isolate its contribution; better discriminating tests are required.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Run targeted ablations on power-asymmetric cases</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/power-inversion/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Risk classification</span><strong>Harm Threshold</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>The ladder and escalation semantics are specified; thresholds still require domain calibration and independent validation.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Build domain-specific calibration sets</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/harm-threshold/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Tier routing</span><strong>Proportionate Rigor</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Tier definitions are specified; burden, false-positive, and outcome calibration remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Measure time and burden by tier</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/proportionate-rigor/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Adversarial reasoning gate</span><strong>Maybe / Therefore</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--adverse">Observed + adverse</span><p>The mechanism is specified and used in behavioral work, but earlier aggregate ablation did not isolate its independent contribution.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Score Maybe quality with blinded humans</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/maybe-therefore/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Record control</span><strong>Receipt Before Action</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--observed">Observed</span><p>Receipt generation and static workbench contracts are implemented; real-world audit and outcome value remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Verify receipt-to-action linkage</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/receipt-before-action/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Output contract</span><strong>Decision States</strong><small>Protocol gates</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>The state contract is specified; cross-implementation consistency remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Test contradictory outputs</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/decision-states/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Challenge process</span><strong>False Positive Release Valve</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; false-positive rates and challenge quality need prospective measurement.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Measure release precision and recall</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/false-positive-release-valve/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Monitoring control</span><strong>Drift Alarms</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; precision, recall, and alert-fatigue calibration remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Create labeled drift and non-drift corpora</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/drift-alarms/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Calibration process</span><strong>Monthly Calibration</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; longitudinal operational evidence remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Define sampling plans by risk</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/monthly-calibration/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Quality process</span><strong>Corrective and Preventive Action</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Quality-system process is specified; program-level effectiveness data remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Track recurrence after closure</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/capa/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Evidence governance</span><strong>Evidence Ledger</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--observed">Observed</span><p>A public ledger exists and includes adverse/open findings; independent audit of completeness remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Audit claim-to-source traceability</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/evidence-ledger/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Operating-state extension</span><strong>Context Load Audit</strong><small>Extensions and tools</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Extension is specified and linked to SIL; calibration and external validation remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Calibrate thresholds by task and model</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/context-load-audit/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Provenance aid</span><strong>Tags and Attribution</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified as an operating primitive; independent annotation reliability remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Measure inter-annotator agreement</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/tags-attribution/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Communication control</span><strong>Compression Honesty</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; controlled evaluation of information loss remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Build compression fidelity tests</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/compression-honesty/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Priority control</span><strong>Anchors Ledger</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; long-context and human-workflow performance remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Test anchor retention under long context</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/anchors-ledger/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Interaction control</span><strong>Mode Knob</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified as a control surface; comparative usability evidence remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Compare error rates by mode</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/mode-knob/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Claim boundary</span><strong>Epistemic Fence</strong><small>Operating controls</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Specified; annotation consistency and outcome value remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Create claim-boundary challenge sets</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/epistemic-fence/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Browser tool</span><strong>Decision Workbench</strong><small>Extensions and tools</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--observed">Observed</span><p>DOM, selector, JavaScript syntax, and receipt-output contracts pass; authenticated usability and accessibility QA remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Run keyboard and screen-reader QA</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/decision-workbench/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Implementation process</span><strong>Bounded Pilot</strong><small>Extensions and tools</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--open">Open</span><p>The adoption design is specified; controlled field evidence remains open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Run a bounded prospective pilot</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/bounded-pilot/TEST_PLAN.md">Open test plan</a>
+</article><article class="test-matrix__row">
+<div class="test-matrix__identity"><span class="component-kind">Management process</span><strong>Operations and Governance</strong><small>Extensions and tools</small></div>
+<div class="test-matrix__state"><span class="evidence evidence--specified">Specified</span><p>Governance model is specified; independent operational audit and longitudinal evidence remain open.</p></div>
+<div class="test-matrix__next"><strong>Next test</strong><span>Define independent review quorum</span></div>
+<a class="button button--small" href="../downloads/component-library/pbhp/operations-governance/TEST_PLAN.md">Open test plan</a>
+</article></div>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../components/"><strong>PBHP component library</strong><span>Every PBHP gate, operating control, extension, and tool in a compact information block with a versioned specification, metadata file, test plan, and download pack.</span><i aria-hidden="true">→</i></a><a href="../evidence/"><strong>Evidence ledger</strong><span>A claims ledger that distinguishes what is specified, expected, observed, adverse, and still open.</span><i aria-hidden="true">→</i></a><a href="../research/"><strong>Research and review</strong><span>The research surface for formal mappings, external critique, experimental designs, adverse findings, and unresolved questions.</span><i aria-hidden="true">→</i></a><a href="https://projectshadow.frylock117.chatgpt.site/testing"><strong>Project Shadow</strong><span>Continue in the connected project or technical surface.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#program-rules">Program rules</a></li><li class="toc-level-2"><a href="#download-all-pbhp-test-plans">Download all PBHP test plans</a></li><li class="toc-level-2"><a href="#component-by-component-state">Component-by-component state</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "testing", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

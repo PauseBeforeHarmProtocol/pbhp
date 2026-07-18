@@ -1,0 +1,51 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "decision-workbench",
+  "title": "Decision Workbench",
+  "category": "Extensions and tools",
+  "kind": "Browser tool",
+  "summary": "A local-only worksheet that routes a real decision through PBHP and produces a downloadable draft receipt.",
+  "mechanism": "The static browser tool applies conservative, explicit rules to the fields the user enters. It does not transmit data, certify correctness, or replace the responsible owner.",
+  "inputs": [
+    "Action",
+    "Affected parties",
+    "Classification",
+    "Power",
+    "Reversibility",
+    "Harm",
+    "Maybe/Therefore"
+  ],
+  "outputs": [
+    "Draft decision state",
+    "Routing notes",
+    "Downloadable JSON receipt"
+  ],
+  "failure_modes": [
+    "Treating the router as authorization",
+    "Incomplete fields",
+    "Local data lost before download",
+    "Rules mistaken for domain judgment"
+  ],
+  "evidence_state": "observed",
+  "test_status": "DOM, selector, JavaScript syntax, and receipt-output contracts pass; authenticated usability and accessibility QA remain open.",
+  "next_tests": [
+    "Run keyboard and screen-reader QA",
+    "Conduct usability sessions",
+    "Test edge cases and state persistence",
+    "Verify production privacy behavior"
+  ],
+  "route": "workbench",
+  "version": "PBHP site workbench 2026-07-18",
+  "status_label": "Observed",
+  "download_pack": "PBHP_decision-workbench_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_decision-workbench_component_pack.zip",
+    "PBHP_decision-workbench_component_pack.zip.sha256"
+  ]
+}

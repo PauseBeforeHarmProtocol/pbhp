@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "who-pays-first",
+  "title": "Who Pays First",
+  "category": "Protocol gates",
+  "kind": "Stakeholder analysis",
+  "summary": "Forces the decision to begin with the person or group that bears the first cost if it is wrong.",
+  "mechanism": "The operator names the first affected stakeholder, the type and timing of harm, the recovery path, and the evidence supporting that judgment. The analysis privileges actual exposure over institutional convenience.",
+  "inputs": [
+    "Affected parties",
+    "Failure scenario",
+    "Timing",
+    "Recovery options"
+  ],
+  "outputs": [
+    "First-cost stakeholder",
+    "First harm",
+    "Recovery path",
+    "Evidence basis"
+  ],
+  "failure_modes": [
+    "Centering the decision-maker",
+    "Using abstract stakeholders",
+    "Ignoring delayed or distributed harm",
+    "Assuming recovery without a mechanism"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified and used across the protocol; human field reliability remains open.",
+  "next_tests": [
+    "Compare expert and non-expert stakeholder identification",
+    "Test hidden and delayed harms",
+    "Measure whether the component changes mitigation selection"
+  ],
+  "route": "protocol",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_who-pays-first_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_who-pays-first_component_pack.zip",
+    "PBHP_who-pays-first_component_pack.zip.sha256"
+  ]
+}

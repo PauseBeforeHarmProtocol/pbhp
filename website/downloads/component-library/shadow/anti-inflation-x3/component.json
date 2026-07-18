@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "anti-inflation-x3",
+  "title": "X-3 Anti-Inflation",
+  "category": "Governance",
+  "kind": "Scope control",
+  "summary": "Blocks experimental, mythic, or newly named components from silently becoming canonical CORE mechanisms.",
+  "mechanism": "Promotion requires evidence, review, versioning, and a controlled release. Novelty and narrative importance do not substitute for validation.",
+  "inputs": [
+    "Proposed component",
+    "Evidence",
+    "Compatibility",
+    "Release authority"
+  ],
+  "outputs": [
+    "Experimental",
+    "Candidate",
+    "Promoted",
+    "Rejected or retired"
+  ],
+  "failure_modes": [
+    "Name equals status",
+    "Scope creep",
+    "Unreviewed CORE change",
+    "Promotion by enthusiasm"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Governance rule is specified; independent release audit remains open.",
+  "next_tests": [
+    "Audit promotion history",
+    "Test experimental-component containment",
+    "Independent release review"
+  ],
+  "route": "governance",
+  "version": "Shadow governance X-3",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_anti-inflation-x3_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_anti-inflation-x3_component_pack.zip",
+    "SHADOW_anti-inflation-x3_component_pack.zip.sha256"
+  ]
+}

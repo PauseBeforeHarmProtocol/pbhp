@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "k1-kernel",
+  "title": "K1 Kernel",
+  "category": "Evaluation",
+  "kind": "Execution artifact",
+  "summary": "Packages a sealed, self-checking subset of the runtime intended to refuse activation when its integrity fails.",
+  "mechanism": "The kernel extracts and verifies the canonical set, binds activation to integrity, and is intended to support per-tier execution packages.",
+  "inputs": [
+    "Sealed component set",
+    "Hashes",
+    "Activation request",
+    "Tier configuration"
+  ],
+  "outputs": [
+    "Verified activation",
+    "Integrity refusal",
+    "Kernel receipt"
+  ],
+  "failure_modes": [
+    "Seal bypass",
+    "Wrong component set",
+    "Tier mismatch",
+    "Integrity check presented as safety proof"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Differential integrity work is reported; per-tier kernels, production signing, and independent verification remain open.",
+  "next_tests": [
+    "Independent integrity review",
+    "Per-tier kernels",
+    "Key management and signature tests",
+    "Hostile extraction and replay tests"
+  ],
+  "route": "reference",
+  "version": "K1 kernel development snapshot",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_k1-kernel_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_k1-kernel_component_pack.zip",
+    "SHADOW_k1-kernel_component_pack.zip.sha256"
+  ]
+}

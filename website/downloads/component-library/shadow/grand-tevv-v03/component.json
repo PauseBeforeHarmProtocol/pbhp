@@ -1,0 +1,51 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "grand-tevv-v03",
+  "title": "Grand TEVV v0.3",
+  "category": "Evaluation",
+  "kind": "Evaluation package",
+  "summary": "The current reconciled test, evaluation, verification, and validation package for the Shadow runtime and behavioral branches.",
+  "mechanism": "It combines contract tests, component probes, synthetic corpus and metamorphic relations, limited real-target fusion smoke, multi-turn pressure work, and explicit adverse/open findings.",
+  "inputs": [
+    "Frozen runtime and codec",
+    "Synthetic cases",
+    "Target model responses",
+    "Scorers",
+    "Human review status"
+  ],
+  "outputs": [
+    "Test reports",
+    "Observed and adverse findings",
+    "Validation status",
+    "Release blockers"
+  ],
+  "failure_modes": [
+    "Calling built-in checks independent validation",
+    "Mixing version counts",
+    "Hiding adverse results",
+    "Synthetic evidence treated as field outcome"
+  ],
+  "evidence_state": "adverse",
+  "test_status": "Built-in checks passed and limited real-target evidence exists, but the 10-case fusion smoke respected the synthetic BLACK floor in only 6/10 cases; independent validation is open.",
+  "next_tests": [
+    "Independent reproduction",
+    "Complete human grading",
+    "Large real-target corpus",
+    "External benchmark suites",
+    "Domain-expert evaluation"
+  ],
+  "route": "tevv",
+  "version": "Grand TEVV v0.3",
+  "status_label": "Observed + adverse",
+  "download_pack": "SHADOW_grand-tevv-v03_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_grand-tevv-v03_component_pack.zip",
+    "SHADOW_grand-tevv-v03_component_pack.zip.sha256"
+  ]
+}

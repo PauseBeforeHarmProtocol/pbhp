@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "personal-public-firewall-x6",
+  "title": "X-6 Personal / Public Firewall",
+  "category": "Governance",
+  "kind": "Publication control",
+  "summary": "Prevents private recovery material, personal context, and identity-dependent content from shipping merely because it appeared in a working session.",
+  "mechanism": "Public release is allowlisted, scanned, checksummed, and limited to material necessary for explanation, reproduction, testing, or critique.",
+  "inputs": [
+    "Candidate files",
+    "Publication purpose",
+    "Privacy markers",
+    "Allowlist"
+  ],
+  "outputs": [
+    "Included public artifact",
+    "Excluded private material",
+    "Boundary scan report"
+  ],
+  "failure_modes": [
+    "Session dump",
+    "Credential leak",
+    "Opaque chat-file dependency",
+    "Personal material included without necessity"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Automated public-boundary scans pass for the release; professional security and privacy review remain open.",
+  "next_tests": [
+    "Independent privacy review",
+    "Secret-scanner expansion",
+    "Manual artifact-by-artifact publication review"
+  ],
+  "route": "governance",
+  "version": "Shadow governance X-6",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_personal-public-firewall-x6_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_personal-public-firewall-x6_component_pack.zip",
+    "SHADOW_personal-public-firewall-x6_component_pack.zip.sha256"
+  ]
+}

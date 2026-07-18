@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "racing-line",
+  "title": "Racing Line / Focal Routing",
+  "category": "Provenance and instrumentation",
+  "kind": "Structural gauge",
+  "summary": "Pins attention to the decision-critical path so long context and narrative drag do not displace binding constraints.",
+  "mechanism": "The gauge is structural rather than behavioral: it records the focal route and flags divergence without claiming the route is morally or factually correct.",
+  "inputs": [
+    "Objective",
+    "Critical constraints",
+    "Current reasoning path",
+    "Context drag"
+  ],
+  "outputs": [
+    "Constraint pin",
+    "Divergence signal",
+    "Refocus action"
+  ],
+  "failure_modes": [
+    "Pinning the wrong objective",
+    "Narrative drift",
+    "Constraint loss",
+    "Focal route treated as truth"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Corrected package exists; comparative behavioral and human validation remain open.",
+  "next_tests": [
+    "Run long-context focal-drift tests",
+    "Compare with length-matched controls",
+    "Human review of pinned objectives"
+  ],
+  "route": "sil",
+  "version": "Racing Line v0.2 corrected",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_racing-line_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_racing-line_component_pack.zip",
+    "SHADOW_racing-line_component_pack.zip.sha256"
+  ]
+}

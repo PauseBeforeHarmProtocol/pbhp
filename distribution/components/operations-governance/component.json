@@ -1,0 +1,51 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "operations-governance",
+  "title": "Operations and Governance",
+  "category": "Extensions and tools",
+  "kind": "Management process",
+  "summary": "Keeps PBHP challengeable, calibrated, versioned, and correctable after deployment.",
+  "mechanism": "Operating governance samples receipts, reviews overrides, records deviations, runs CAPA, preserves challenge routes, controls versions, and separates process authority from truth authority.",
+  "inputs": [
+    "Receipts",
+    "Overrides",
+    "Deviations",
+    "Versions",
+    "Adverse findings"
+  ],
+  "outputs": [
+    "Governance review",
+    "CAPA",
+    "Calibration",
+    "Release decision",
+    "Public ledger update"
+  ],
+  "failure_modes": [
+    "Closed-loop self-validation",
+    "Maintainer exemption",
+    "Uncontrolled version drift",
+    "Suppressed adverse findings"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Governance model is specified; independent operational audit and longitudinal evidence remain open.",
+  "next_tests": [
+    "Define independent review quorum",
+    "Audit release and override records",
+    "Measure correction latency",
+    "Test maintainer-conflict scenarios"
+  ],
+  "route": "operations",
+  "version": "PBHP operations guidance / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_operations-governance_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_operations-governance_component_pack.zip",
+    "PBHP_operations-governance_component_pack.zip.sha256"
+  ]
+}

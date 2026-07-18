@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "challengeability-x7",
+  "title": "X-7 Challengeability",
+  "category": "Governance",
+  "kind": "Governance invariant",
+  "summary": "Requires every model, maintainer, process, framework, and output to remain contestable through a materially independent path.",
+  "mechanism": "Additional passes from the same closed system do not count as independent review. A challenge can reproduce a defect, block a claim, and force correction.",
+  "inputs": [
+    "Decision or claim",
+    "Reviewer independence",
+    "Challenge evidence",
+    "Correction authority"
+  ],
+  "outputs": [
+    "Accepted, rejected, or unresolved challenge",
+    "Correction or hold",
+    "Audit trail"
+  ],
+  "failure_modes": [
+    "Maintainer exemption",
+    "Same-model review called independent",
+    "Challenge without power to block",
+    "Retaliatory governance"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Invariant is specified; operational independent-review infrastructure remains open.",
+  "next_tests": [
+    "Define independence criteria",
+    "Run external red-team and reproduction",
+    "Test maintainer-conflict scenarios"
+  ],
+  "route": "governance",
+  "version": "Shadow governance X-7",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_challengeability-x7_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_challengeability-x7_component_pack.zip",
+    "SHADOW_challengeability-x7_component_pack.zip.sha256"
+  ]
+}

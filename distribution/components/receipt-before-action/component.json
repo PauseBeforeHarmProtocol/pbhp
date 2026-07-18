@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "receipt-before-action",
+  "title": "Receipt Before Action",
+  "category": "Protocol gates",
+  "kind": "Record control",
+  "summary": "Creates the auditable decision record before commitment rather than after the outcome is known.",
+  "mechanism": "The receipt binds the action, affected parties, evidence, classification, threshold, safeguards, Maybe/Therefore, owner, review date, and effectiveness check. No record means no authorization.",
+  "inputs": [
+    "Completed gate outputs",
+    "Evidence references",
+    "Owner",
+    "Follow-up criterion"
+  ],
+  "outputs": [
+    "Pre-action receipt",
+    "Action state",
+    "Review and effectiveness plan"
+  ],
+  "failure_modes": [
+    "After-the-fact rationalization",
+    "Missing evidence basis",
+    "No owner",
+    "Receipt that cannot be linked to the executed act"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Receipt generation and static workbench contracts are implemented; real-world audit and outcome value remain open.",
+  "next_tests": [
+    "Verify receipt-to-action linkage",
+    "Test tamper evidence and version migration",
+    "Measure audit usefulness and correction speed",
+    "Conduct independent record sampling"
+  ],
+  "route": "receipts",
+  "version": "PBHP v0.9.5 / site library 1.0.0",
+  "status_label": "Observed",
+  "download_pack": "PBHP_receipt-before-action_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_receipt-before-action_component_pack.zip",
+    "PBHP_receipt-before-action_component_pack.zip.sha256"
+  ]
+}

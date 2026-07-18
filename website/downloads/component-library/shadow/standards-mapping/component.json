@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "standards-mapping",
+  "title": "Standards Mapping",
+  "category": "Governance",
+  "kind": "Integration surface",
+  "summary": "Maps Shadow controls to external governance frameworks without claiming certification, approval, or inherited validity.",
+  "mechanism": "Each mapping is version-specific and must be checked against primary text and current legal or standards interpretation before use.",
+  "inputs": [
+    "Framework version",
+    "Shadow control",
+    "Primary source",
+    "Scope and jurisdiction"
+  ],
+  "outputs": [
+    "Alignment target",
+    "Evidence gap",
+    "No-certification disclaimer"
+  ],
+  "failure_modes": [
+    "Mapping presented as compliance",
+    "Outdated framework text",
+    "Cherry-picked clauses",
+    "Inherited certification claim"
+  ],
+  "evidence_state": "open",
+  "test_status": "Alignment targets are documented; authoritative legal, certification, and conformity assessment remain external and open.",
+  "next_tests": [
+    "Primary-text verification",
+    "Qualified legal and standards review",
+    "Version-drift monitoring"
+  ],
+  "route": "integrations",
+  "version": "Shadow integration guidance / library 1.0.0",
+  "status_label": "Open",
+  "download_pack": "SHADOW_standards-mapping_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_standards-mapping_component_pack.zip",
+    "SHADOW_standards-mapping_component_pack.zip.sha256"
+  ]
+}

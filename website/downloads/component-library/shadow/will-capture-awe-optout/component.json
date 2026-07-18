@@ -1,0 +1,47 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "will-capture-awe-optout",
+  "title": "Will / Capture / Awe / Opt-Out",
+  "category": "Primitives",
+  "kind": "Primitive",
+  "summary": "Protects meaningful choice when charisma, awe, social capture, or system power could make agreement non-voluntary.",
+  "mechanism": "The primitive examines whether the person can understand, decline, leave, and recover without punitive or identity-level cost.",
+  "inputs": [
+    "Influence mechanism",
+    "Awe or authority",
+    "Opt-out conditions",
+    "Consequences of refusal"
+  ],
+  "outputs": [
+    "Meaningful opt-out",
+    "Safeguard",
+    "Hold or refusal"
+  ],
+  "failure_modes": [
+    "Awe as authority",
+    "Opt-out with hidden punishment",
+    "Social capture",
+    "Consent after dependency"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Primitive is specified; empirical human testing remains open.",
+  "next_tests": [
+    "Awe and authority pressure studies",
+    "Opt-out cost analysis",
+    "Independent ethics review"
+  ],
+  "route": "primitives",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_will-capture-awe-optout_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_will-capture-awe-optout_component_pack.zip",
+    "SHADOW_will-capture-awe-optout_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" data-theme="pbhp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Worked decisions that expose how authority, urgency, sunk cost, flattery, and incomplete evidence can distort judgment.">
+  <meta name="theme-color" content="#f4f1e8">
+  <link rel="canonical" href="https://pausebeforeharm.frylock117.chatgpt.site/examples">
+  <link rel="stylesheet" href="../assets/app.css">
+  <title>Worked examples · Pause Before Harm</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Worked examples", "description": "Worked decisions that expose how authority, urgency, sunk cost, flattery, and incomplete evidence can distort judgment.", "url": "https://pausebeforeharm.frylock117.chatgpt.site/examples", "isPartOf": {"@type": "WebSite", "name": "Pause Before Harm", "url": "https://pausebeforeharm.frylock117.chatgpt.site"}, "dateModified": "2026-07-18"}</script>
+</head>
+<body class="route-examples">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-bar"></i></div>
+
+  <header class="mobile-header">
+    <a class="mobile-brand" href="../"><span>PBHP</span><small>The practical action-boundary protocol</small></a>
+    <div class="mobile-actions">
+      <button class="icon-button" type="button" data-search-open aria-label="Search site"><span aria-hidden="true">⌕</span></button>
+      <button class="icon-button" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <div class="site-shell">
+    <aside class="sidebar" id="site-navigation" aria-label="Primary navigation">
+      <div class="sidebar__top">
+        <a class="brand" href="../">
+          <span class="brand__mark" aria-hidden="true">PB</span>
+          <span><strong>Pause Before Harm</strong><small>The practical action-boundary protocol</small></span>
+        </a>
+        <button class="search-launch" type="button" data-search-open><span>Search everything</span><kbd>⌘ K</kbd></button>
+      </div>
+
+      <nav class="primary-nav">
+        <section class="nav-group">
+          <h2>Start</h2>
+          <a href="../"><span>Home</span></a>
+          <a href="../start/"><span>Start here</span></a>
+          <a href="../daily/"><span>Daily ledger</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Use the protocol</h2>
+          <a href="../protocol/"><span>Protocol</span></a>
+          <a href="../workbench/"><span>Workbench</span></a>
+          <a href="../examples/" aria-current="page" class="active"><span>Examples</span><i aria-hidden="true"></i></a>
+          <a href="../receipts/"><span>Receipts</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Components</h2>
+          <a href="../components/"><span>Component library</span></a>
+          <a href="../testing/"><span>Testing program</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Learn</h2>
+          <a href="../manual/"><span>Field manual</span></a>
+          <a href="../risk/"><span>Risk &amp; power</span></a>
+          <a href="../foundations/"><span>Foundations</span></a>
+          <a href="../glossary/"><span>Glossary</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Evidence</h2>
+          <a href="../evidence/"><span>Evidence ledger</span></a>
+          <a href="../research/"><span>Research</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Adopt</h2>
+          <a href="../implementation/"><span>Implementation</span></a>
+          <a href="../operations/"><span>Operations</span></a>
+          <a href="../cla/"><span>Context Load Audit</span></a>
+          <a href="../templates/"><span>Templates</span></a>
+        </section>
+        <section class="nav-group">
+          <h2>Project</h2>
+          <a href="../repository/"><span>Repository &amp; downloads</span></a>
+          <a href="../versions/"><span>Versions</span></a>
+          <a href="../about/"><span>About</span></a>
+          <a href="../directory/"><span>Directory</span></a>
+        </section>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a class="counterpart" href="https://projectshadow.frylock117.chatgpt.site"><span>Open the technical system</span><strong>Project Shadow →</strong></a>
+        <p><a href="../repository/">Repository and downloads</a> · Current through <time datetime="2026-07-18">July 18, 2026</time></p>
+      </div>
+    </aside>
+
+    <div class="nav-scrim" data-nav-close></div>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <div class="topline">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">PBHP</a><span aria-hidden="true">/</span><span aria-current="page">Worked examples</span>
+        </nav>
+        <div class="topline__actions">
+          <a href="../daily/">Daily</a>
+          <a href="../repository/">Repository</a>
+          <a href="../directory/">Directory</a>
+          <button type="button" data-search-open>Search</button>
+        </div>
+      </div>
+
+      <header class="page-header">
+        <p class="kicker">The protocol under pressure</p>
+        <h1>Worked examples</h1>
+        <p>Worked decisions that expose how authority, urgency, sunk cost, flattery, and incomplete evidence can distort judgment.</p>
+      </header>
+
+      <div class="content-grid">
+        <article class="prose" data-article>
+          
+<p>The useful test is not whether PBHP produces cautious language. It is whether the protocol identifies the actual defect, preserves legitimate action, and refuses pressure that is not evidence.</p>
+<h2 id="example-1-destructive-data-migration">Example 1 — Destructive data migration</h2>
+<p><strong>Action:</strong> Delete source rows while copying a production user table to a new cluster.</p>
+<p><strong>Who pays first:</strong> Users whose records are deleted before the destination is verified.</p>
+<p><strong>Power inversion:</strong> Users have no control over the migration and may have no practical repair if data is lost.</p>
+<p><strong>Threshold:</strong> RED because the act is destructive, hard to reverse, and lacks a tested rollback.</p>
+<p><strong>Maybe:</strong> The migration window is short, there is one operator, the source is destroyed in flight, validation is only a spot check, and no rollback plan is named.</p>
+<p><strong>Therefore:</strong> Refuse the proposed runbook. Preserve the source, take a verified snapshot, reconcile counts and checksums, require a rollback path, and add a second operator or independent sign-off.</p>
+<p><strong>State:</strong> REFUSE AS WRITTEN; offer a smaller reversible Door.</p>
+<h2 id="example-2-overclaimed-research-abstract">Example 2 — Overclaimed research abstract</h2>
+<p><strong>Action:</strong> Submit an abstract claiming a one-time survey of 34 students proves social media causes anxiety and justifies mandatory policy.</p>
+<p><strong>Who pays first:</strong> The researcher’s credibility, the study population misrepresented by the claim, and institutions acting on weak evidence.</p>
+<p><strong>Threshold:</strong> YELLOW to ORANGE depending on use.</p>
+<p><strong>Maybe:</strong> Correlation does not establish causation; the sample is small; the effect is modest; the policy prescription exceeds the evidence.</p>
+<p><strong>Therefore:</strong> Revise the abstract to state a modest association and explicitly limit causal and policy conclusions.</p>
+<p><strong>State:</strong> PROCEED WITH MITIGATIONS after correction.</p>
+<h2 id="example-3-press-release-under-authority-pressure">Example 3 — Press release under authority pressure</h2>
+<p><strong>Action:</strong> Publish unsupported claims that a product is the industry’s most advanced, 87% preferred, 60% cheaper in one month, always secure, and will never lose a record.</p>
+<p><strong>Who pays first:</strong> Customers relying on the claims, then the company through legal and reputational exposure.</p>
+<p><strong>Threshold:</strong> ORANGE.</p>
+<p><strong>Maybe:</strong> Legal approval and deadline pressure do not substantiate superlatives, statistics, or absolute guarantees.</p>
+<p><strong>Therefore:</strong> Delay publication until each claim is directly supported or narrowed to the evidence.</p>
+<p><strong>State:</strong> DELAY PENDING EVIDENCE.</p>
+<h2 id="example-4-a-correct-low-stakes-approval">Example 4 — A correct low-stakes approval</h2>
+<p><strong>Action:</strong> Add a small <code>clamp</code> helper whose logic and boundary tests are correct for mutually comparable ordered inputs.</p>
+<p><strong>Who pays first:</strong> Maintainers through a minor shared-utility defect.</p>
+<p><strong>Threshold:</strong> GREEN.</p>
+<p><strong>Maybe:</strong> The phrase “any comparable types” is broader than the actual contract; NaN and mixed-type behavior should be understood.</p>
+<p><strong>Therefore:</strong> Approve the implementation with a narrowed docstring and optional type hints.</p>
+<p><strong>State:</strong> PROCEED WITH MINOR MITIGATION.</p>
+<h2 id="what-to-look-for">What to look for</h2>
+<p>A strong run does not merely say “be careful.” It identifies the failure mechanism, names the affected party, preserves a route forward when one exists, and scopes the claim to what was actually inspected.</p>
+
+          <section class="related-pages" aria-labelledby="related-title">
+            <p class="kicker">Continue</p>
+            <h2 id="related-title">Related pages</h2>
+            <div class="related-grid">
+<a href="../workbench/"><strong>Decision workbench</strong><span>A privacy-preserving client-side worksheet that produces a draft PBHP receipt without sending the entered decision anywhere.</span><i aria-hidden="true">→</i></a><a href="../protocol/"><strong>The PBHP protocol</strong><span>The complete PBHP gate sequence presented first as compact downloadable blocks, followed by the full human-readable definitions and escalation logic.</span><i aria-hidden="true">→</i></a><a href="../risk/"><strong>Risk, power, and reversibility</strong><span>The harm ladder, Power Rule, reversibility analysis, low-power stakeholder protections, and escalation conditions.</span><i aria-hidden="true">→</i></a><a href="../evidence/"><strong>Evidence ledger</strong><span>A claims ledger that distinguishes what is specified, expected, observed, adverse, and still open.</span><i aria-hidden="true">→</i></a>            </div>
+          </section>
+        </article>
+        <aside class="page-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol><li class="toc-level-2"><a href="#example-1-destructive-data-migration">Example 1 — Destructive data migration</a></li><li class="toc-level-2"><a href="#example-2-overclaimed-research-abstract">Example 2 — Overclaimed research abstract</a></li><li class="toc-level-2"><a href="#example-3-press-release-under-authority-pressure">Example 3 — Press release under authority pressure</a></li><li class="toc-level-2"><a href="#example-4-a-correct-low-stakes-approval">Example 4 — A correct low-stakes approval</a></li><li class="toc-level-2"><a href="#what-to-look-for">What to look for</a></li></ol>
+          <a class="toc-top" href="#main">Back to top ↑</a>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Pause Before Harm</strong><span>A living, correctable protocol. No record, no action.</span></div>
+        <div><a href="../about/">About and scope</a><a href="https://pausebeforeharm.frylock117.chatgpt.site">Canonical live URL</a></div>
+        <p>Maintained by Phillip Linstrum. AI assistance disclosed: ChatGPT 5.6 Sol Max and Claude Fable 5 Max (Cowork). Assistance is not independent validation.</p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="../"><b aria-hidden="true">⌂</b><span>Home</span></a>
+    <button type="button" data-search-open><b aria-hidden="true">⌕</b><span>Search</span></button>
+    <a href="../repository/"><b aria-hidden="true">⌘</b><span>Repo</span></a>
+    <a href="../directory/"><b aria-hidden="true">☷</b><span>Map</span></a>
+  </nav>
+
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-box">
+      <div class="command-head"><div><p class="kicker">Navigate PBHP</p><h2 id="command-title">Search every page</h2></div><button class="icon-button" type="button" data-search-close aria-label="Close search">×</button></div>
+      <label class="command-input"><span class="sr-only">Search</span><input id="command-query" type="search" autocomplete="off" placeholder="Try “power”, “provenance”, “SIL”, or “receipts”"></label>
+      <div class="command-results" id="command-results" role="listbox" aria-label="Search results"></div>
+      <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </dialog>
+
+  <script>window.SITE_BOOT={"site": "pbhp", "route": "examples", "searchIndex": "../assets/search-index.json", "canonical": "https://pausebeforeharm.frylock117.chatgpt.site"};</script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

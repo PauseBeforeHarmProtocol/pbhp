@@ -1,0 +1,49 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "pbhp",
+  "slug": "epistemic-fence",
+  "title": "Epistemic Fence",
+  "category": "Operating controls",
+  "kind": "Claim boundary",
+  "summary": "Requires a complete disclosure of scope, evidence, uncertainty, and limits around consequential conclusions.",
+  "mechanism": "The fence prevents inference from escaping its supported scope. Missing required blocks is a failure, not a stylistic choice.",
+  "inputs": [
+    "Claim",
+    "Evidence",
+    "Inference path",
+    "Known limits",
+    "Decision stakes"
+  ],
+  "outputs": [
+    "Scoped claim",
+    "Uncertainty statement",
+    "Unverified items",
+    "Prohibited extrapolations"
+  ],
+  "failure_modes": [
+    "Overgeneralization",
+    "Missing scope",
+    "Unknowns omitted",
+    "Unsupported superlative or guarantee"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Specified; annotation consistency and outcome value remain open.",
+  "next_tests": [
+    "Create claim-boundary challenge sets",
+    "Measure unsupported extrapolation",
+    "Test legal, scientific, and safety-critical domains"
+  ],
+  "route": "evidence",
+  "version": "PBHP/Shadow operating control / site library 1.0.0",
+  "status_label": "Specified",
+  "download_pack": "PBHP_epistemic-fence_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "PBHP_epistemic-fence_component_pack.zip",
+    "PBHP_epistemic-fence_component_pack.zip.sha256"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "mythic-atlas",
+  "title": "Mythic Atlas",
+  "category": "Evaluation",
+  "kind": "Mnemonic interface",
+  "summary": "Maps symbols to operational checks so complex controls can be remembered without letting symbolism authorize action.",
+  "mechanism": "The only valid chain is symbol to attention to check to evidence to gate to receipt. Plain language governs every decision.",
+  "inputs": [
+    "Symbol",
+    "Operational check",
+    "Evidence",
+    "User context"
+  ],
+  "outputs": [
+    "Attention route",
+    "Plain-language check",
+    "No-authority boundary"
+  ],
+  "failure_modes": [
+    "Symbol to authority",
+    "Grandiosity",
+    "Narrative capture",
+    "Personal material crossing the public firewall"
+  ],
+  "evidence_state": "adverse",
+  "test_status": "Reported ablation found mythic language equivalent to plain language rather than superior; additive human-memory benefit remains untested.",
+  "next_tests": [
+    "Human longitudinal memory study",
+    "Accessibility and cultural review",
+    "Dependency and grandeur red team",
+    "Plain-language equivalence replication"
+  ],
+  "route": "atlas",
+  "version": "Mythic Atlas v2",
+  "status_label": "Observed + adverse",
+  "download_pack": "SHADOW_mythic-atlas_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_mythic-atlas_component_pack.zip",
+    "SHADOW_mythic-atlas_component_pack.zip.sha256"
+  ]
+}

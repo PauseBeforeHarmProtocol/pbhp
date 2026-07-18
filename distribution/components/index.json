@@ -1,0 +1,273 @@
+{
+  "schema": "pbhp-shadow-component-library-project-index-v1",
+  "project": "pbhp",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "component_count": 24,
+  "components": [
+    {
+      "slug": "competence-gate",
+      "title": "Competence and Honest-Use Gate",
+      "category": "Protocol gates",
+      "kind": "Gate",
+      "evidence_state": "specified",
+      "test_status": "Specification is complete; blind pressure testing and independent inter-rater work remain open.",
+      "route": "protocol",
+      "pack": "competence-gate/PBHP_competence-gate_component_pack.zip",
+      "pack_sha256": "43ba07f9feb70bc914420fdc8922542d22e37bfcd0c9e848a28fe99f954aa26c"
+    },
+    {
+      "slug": "action-statement",
+      "title": "State the Action",
+      "category": "Protocol gates",
+      "kind": "Gate",
+      "evidence_state": "specified",
+      "test_status": "Contract is specified; usability and consistency across domains remain open.",
+      "route": "protocol",
+      "pack": "action-statement/PBHP_action-statement_component_pack.zip",
+      "pack_sha256": "686ba9b4f9c775bea3f45b2de36a351c82fdd839fffdc5353377ce479fa0edd5"
+    },
+    {
+      "slug": "door-wall-gap",
+      "title": "Door / Wall / Gap",
+      "category": "Protocol gates",
+      "kind": "Classification",
+      "evidence_state": "specified",
+      "test_status": "The classification contract is specified; calibration and cross-rater reliability remain open.",
+      "route": "protocol",
+      "pack": "door-wall-gap/PBHP_door-wall-gap_component_pack.zip",
+      "pack_sha256": "54c5a28cc224eb368c1721ae5eb9c009bbdbb74c4c35b4a7d058ce3b3e46dff8"
+    },
+    {
+      "slug": "who-pays-first",
+      "title": "Who Pays First",
+      "category": "Protocol gates",
+      "kind": "Stakeholder analysis",
+      "evidence_state": "specified",
+      "test_status": "Specified and used across the protocol; human field reliability remains open.",
+      "route": "protocol",
+      "pack": "who-pays-first/PBHP_who-pays-first_component_pack.zip",
+      "pack_sha256": "3b5782480d30013b0df36111c026b8658301af401f72f98567de719ae75e000b"
+    },
+    {
+      "slug": "power-inversion",
+      "title": "Power Inversion",
+      "category": "Protocol gates",
+      "kind": "Power audit",
+      "evidence_state": "adverse",
+      "test_status": "Specified, but an earlier aggregate ablation battery did not isolate its contribution; better discriminating tests are required.",
+      "route": "protocol",
+      "pack": "power-inversion/PBHP_power-inversion_component_pack.zip",
+      "pack_sha256": "824cf618e6d32fe4495ab8b78b3f1d3dbdfbf915cf9c84884d694a52633905f1"
+    },
+    {
+      "slug": "harm-threshold",
+      "title": "Harm Threshold",
+      "category": "Protocol gates",
+      "kind": "Risk classification",
+      "evidence_state": "specified",
+      "test_status": "The ladder and escalation semantics are specified; thresholds still require domain calibration and independent validation.",
+      "route": "risk",
+      "pack": "harm-threshold/PBHP_harm-threshold_component_pack.zip",
+      "pack_sha256": "7023cbbf8d43d4ec9cf12a2292c0e80387c5674a9cc27c6dead527565b77bafb"
+    },
+    {
+      "slug": "proportionate-rigor",
+      "title": "Proportionate Rigor",
+      "category": "Protocol gates",
+      "kind": "Tier routing",
+      "evidence_state": "specified",
+      "test_status": "Tier definitions are specified; burden, false-positive, and outcome calibration remain open.",
+      "route": "protocol",
+      "pack": "proportionate-rigor/PBHP_proportionate-rigor_component_pack.zip",
+      "pack_sha256": "711320f023aa3bd6bd831d40211a2a1b5890d8bbfc1fe9454078861065e95317"
+    },
+    {
+      "slug": "maybe-therefore",
+      "title": "Maybe / Therefore",
+      "category": "Protocol gates",
+      "kind": "Adversarial reasoning gate",
+      "evidence_state": "adverse",
+      "test_status": "The mechanism is specified and used in behavioral work, but earlier aggregate ablation did not isolate its independent contribution.",
+      "route": "protocol",
+      "pack": "maybe-therefore/PBHP_maybe-therefore_component_pack.zip",
+      "pack_sha256": "6df5af84b10b49edaf3ea99e416cef087dea40121cccdd6629259c261cf7ec7a"
+    },
+    {
+      "slug": "receipt-before-action",
+      "title": "Receipt Before Action",
+      "category": "Protocol gates",
+      "kind": "Record control",
+      "evidence_state": "observed",
+      "test_status": "Receipt generation and static workbench contracts are implemented; real-world audit and outcome value remain open.",
+      "route": "receipts",
+      "pack": "receipt-before-action/PBHP_receipt-before-action_component_pack.zip",
+      "pack_sha256": "ff03ca9f278b41bcdd4da65b3e126e1f7d055b58458a96c6a6d0bd735c8bf6bf"
+    },
+    {
+      "slug": "decision-states",
+      "title": "Decision States",
+      "category": "Protocol gates",
+      "kind": "Output contract",
+      "evidence_state": "specified",
+      "test_status": "The state contract is specified; cross-implementation consistency remains open.",
+      "route": "protocol",
+      "pack": "decision-states/PBHP_decision-states_component_pack.zip",
+      "pack_sha256": "109f40067b486af0dba5af8cb27358fb4a5722b3fc051f405793d6bd47629fec"
+    },
+    {
+      "slug": "false-positive-release-valve",
+      "title": "False Positive Release Valve",
+      "category": "Operating controls",
+      "kind": "Challenge process",
+      "evidence_state": "specified",
+      "test_status": "Specified; false-positive rates and challenge quality need prospective measurement.",
+      "route": "operations",
+      "pack": "false-positive-release-valve/PBHP_false-positive-release-valve_component_pack.zip",
+      "pack_sha256": "239ae31726eb6e5e590c06fce9b8c138f87947339a8edd43c31858a2d2edef0a"
+    },
+    {
+      "slug": "drift-alarms",
+      "title": "Drift Alarms",
+      "category": "Operating controls",
+      "kind": "Monitoring control",
+      "evidence_state": "specified",
+      "test_status": "Specified; precision, recall, and alert-fatigue calibration remain open.",
+      "route": "operations",
+      "pack": "drift-alarms/PBHP_drift-alarms_component_pack.zip",
+      "pack_sha256": "5540b9815eddb466ea7c1ccbe185e84f8d408afc3fba30726128cb4d11cc1f65"
+    },
+    {
+      "slug": "monthly-calibration",
+      "title": "Monthly Calibration",
+      "category": "Operating controls",
+      "kind": "Calibration process",
+      "evidence_state": "specified",
+      "test_status": "Specified; longitudinal operational evidence remains open.",
+      "route": "operations",
+      "pack": "monthly-calibration/PBHP_monthly-calibration_component_pack.zip",
+      "pack_sha256": "2ae1c84a1e5d4379d68dc519634e1bf46d9183036781463ea05e5bc18d88e74d"
+    },
+    {
+      "slug": "capa",
+      "title": "Corrective and Preventive Action",
+      "category": "Operating controls",
+      "kind": "Quality process",
+      "evidence_state": "specified",
+      "test_status": "Quality-system process is specified; program-level effectiveness data remain open.",
+      "route": "operations",
+      "pack": "capa/PBHP_capa_component_pack.zip",
+      "pack_sha256": "8749eeb38b398feddcd9aef88bbe89ea28d67ef21117d125baffd80127576927"
+    },
+    {
+      "slug": "evidence-ledger",
+      "title": "Evidence Ledger",
+      "category": "Operating controls",
+      "kind": "Evidence governance",
+      "evidence_state": "observed",
+      "test_status": "A public ledger exists and includes adverse/open findings; independent audit of completeness remains open.",
+      "route": "evidence",
+      "pack": "evidence-ledger/PBHP_evidence-ledger_component_pack.zip",
+      "pack_sha256": "77d201e83e167b51455dfcefc2a8a993c24fb0629f79529d6b6add9456375427"
+    },
+    {
+      "slug": "context-load-audit",
+      "title": "Context Load Audit",
+      "category": "Extensions and tools",
+      "kind": "Operating-state extension",
+      "evidence_state": "specified",
+      "test_status": "Extension is specified and linked to SIL; calibration and external validation remain open.",
+      "route": "cla",
+      "pack": "context-load-audit/PBHP_context-load-audit_component_pack.zip",
+      "pack_sha256": "45ac7e43f809535da30849a12a3a799898b584883f8f1fb863866ffa16faf537"
+    },
+    {
+      "slug": "tags-attribution",
+      "title": "Tags and Attribution",
+      "category": "Operating controls",
+      "kind": "Provenance aid",
+      "evidence_state": "specified",
+      "test_status": "Specified as an operating primitive; independent annotation reliability remains open.",
+      "route": "evidence",
+      "pack": "tags-attribution/PBHP_tags-attribution_component_pack.zip",
+      "pack_sha256": "32c45ddbc6a23cf7ae1463b56eb5956413daeafc3e074c205f89969ea20930eb"
+    },
+    {
+      "slug": "compression-honesty",
+      "title": "Compression Honesty",
+      "category": "Operating controls",
+      "kind": "Communication control",
+      "evidence_state": "specified",
+      "test_status": "Specified; controlled evaluation of information loss remains open.",
+      "route": "operations",
+      "pack": "compression-honesty/PBHP_compression-honesty_component_pack.zip",
+      "pack_sha256": "25768d38db9dd40d639354f56815d0fbb981349d064c663d78d5d16ac848e34c"
+    },
+    {
+      "slug": "anchors-ledger",
+      "title": "Anchors Ledger",
+      "category": "Operating controls",
+      "kind": "Priority control",
+      "evidence_state": "specified",
+      "test_status": "Specified; long-context and human-workflow performance remain open.",
+      "route": "operations",
+      "pack": "anchors-ledger/PBHP_anchors-ledger_component_pack.zip",
+      "pack_sha256": "9fe7f77cc2f73de851c59025ec9ca6015cb5bad7c6958cb67c34e3ca361aa997"
+    },
+    {
+      "slug": "mode-knob",
+      "title": "Mode Knob",
+      "category": "Operating controls",
+      "kind": "Interaction control",
+      "evidence_state": "specified",
+      "test_status": "Specified as a control surface; comparative usability evidence remains open.",
+      "route": "operations",
+      "pack": "mode-knob/PBHP_mode-knob_component_pack.zip",
+      "pack_sha256": "6c22309ac38b427ae71e67ddcdd879c8c3e2497a3905c0fa768acf1c868e92f4"
+    },
+    {
+      "slug": "epistemic-fence",
+      "title": "Epistemic Fence",
+      "category": "Operating controls",
+      "kind": "Claim boundary",
+      "evidence_state": "specified",
+      "test_status": "Specified; annotation consistency and outcome value remain open.",
+      "route": "evidence",
+      "pack": "epistemic-fence/PBHP_epistemic-fence_component_pack.zip",
+      "pack_sha256": "30b4469091affe3c0a8d0ff5e18778215bfba287535dd332fda64d844c59ee6d"
+    },
+    {
+      "slug": "decision-workbench",
+      "title": "Decision Workbench",
+      "category": "Extensions and tools",
+      "kind": "Browser tool",
+      "evidence_state": "observed",
+      "test_status": "DOM, selector, JavaScript syntax, and receipt-output contracts pass; authenticated usability and accessibility QA remain open.",
+      "route": "workbench",
+      "pack": "decision-workbench/PBHP_decision-workbench_component_pack.zip",
+      "pack_sha256": "5f84597585a06685dc73135d4c535813b4d70a4ca1081aef3b85198d1c1e83a3"
+    },
+    {
+      "slug": "bounded-pilot",
+      "title": "Bounded Pilot",
+      "category": "Extensions and tools",
+      "kind": "Implementation process",
+      "evidence_state": "open",
+      "test_status": "The adoption design is specified; controlled field evidence remains open.",
+      "route": "implementation",
+      "pack": "bounded-pilot/PBHP_bounded-pilot_component_pack.zip",
+      "pack_sha256": "57a13183e978c019f3156e587e48cd9e2e932b53e418086d2e6e53401f7d4562"
+    },
+    {
+      "slug": "operations-governance",
+      "title": "Operations and Governance",
+      "category": "Extensions and tools",
+      "kind": "Management process",
+      "evidence_state": "specified",
+      "test_status": "Governance model is specified; independent operational audit and longitudinal evidence remain open.",
+      "route": "operations",
+      "pack": "operations-governance/PBHP_operations-governance_component_pack.zip",
+      "pack_sha256": "fa3a9d34a7a22eceec719d48b953b55df591c125da33924f51286c79f63c0819"
+    }
+  ]
+}

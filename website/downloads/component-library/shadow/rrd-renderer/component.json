@@ -1,0 +1,48 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "rrd-renderer",
+  "title": "Risk-Responsive Disclosure Renderer",
+  "category": "Provenance and instrumentation",
+  "kind": "Disclosure process",
+  "summary": "Changes the amount and structure of operating-state disclosure according to stakes without hiding critical conditions.",
+  "mechanism": "LOW may require minimal disclosure; MEDIUM and HIGH add explicit blocks; CRITICAL includes the gate and receipt. The renderer presents state but does not certify correctness.",
+  "inputs": [
+    "Gauge states",
+    "Stakes",
+    "Critical floors",
+    "Audience"
+  ],
+  "outputs": [
+    "Stakes-proportionate disclosure",
+    "Critical gate block",
+    "Receipt linkage"
+  ],
+  "failure_modes": [
+    "Disclosure too thin for stakes",
+    "Renderer treated as validation",
+    "Critical floor hidden",
+    "Overload that obscures the decision"
+  ],
+  "evidence_state": "specified",
+  "test_status": "Renderer contract is specified; comprehension and burden testing remain open.",
+  "next_tests": [
+    "Human comprehension study",
+    "Compare terse and full disclosures",
+    "Test critical-state visibility",
+    "Accessibility review"
+  ],
+  "route": "sil",
+  "version": "Shadow SIL / runtime 1.3.1-UNIFIED",
+  "status_label": "Specified",
+  "download_pack": "SHADOW_rrd-renderer_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_rrd-renderer_component_pack.zip",
+    "SHADOW_rrd-renderer_component_pack.zip.sha256"
+  ]
+}

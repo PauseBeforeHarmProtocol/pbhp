@@ -1,0 +1,50 @@
+{
+  "schema": "pbhp-shadow-component-v1",
+  "component_library_version": "1.0.0",
+  "release_date": "2026-07-18",
+  "project": "shadow",
+  "slug": "provenance-machinery",
+  "title": "Provenance Machinery",
+  "category": "Provenance and instrumentation",
+  "kind": "Evidence system",
+  "summary": "Separates ATTESTED evidence, DECLARED operator judgment, and bare ASSERTED claims.",
+  "mechanism": "Attested material must carry a basis and resolvable identity; declared judgment remains named but decision-neutral; assertions cannot authorize proceed-class exits under strict mode.",
+  "inputs": [
+    "Claims",
+    "Source spans",
+    "Hashes",
+    "Operator declarations",
+    "Confidence"
+  ],
+  "outputs": [
+    "Provenance grade",
+    "Binding or non-binding status",
+    "Downgrade record",
+    "Refusal if unsupported"
+  ],
+  "failure_modes": [
+    "Name treated as evidence",
+    "Declaration changes decision",
+    "Unresolvable hash",
+    "Confidence without source"
+  ],
+  "evidence_state": "observed",
+  "test_status": "Built-in batteries report declaration neutrality and hash near-miss handling; independent reproduction remains open.",
+  "next_tests": [
+    "Independent reproduction",
+    "Source-substitution attacks",
+    "Cross-language provenance tests",
+    "Production evidence-store integration"
+  ],
+  "route": "reference",
+  "version": "Shadow runtime 1.3.1-UNIFIED",
+  "status_label": "Observed",
+  "download_pack": "SHADOW_provenance-machinery_component_pack.zip",
+  "files": [
+    "README.md",
+    "component.json",
+    "TEST_PLAN.md",
+    "SHADOW_provenance-machinery_component_pack.zip",
+    "SHADOW_provenance-machinery_component_pack.zip.sha256"
+  ]
+}

@@ -1,6 +1,6 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.9.5 (Public Release)
+**Version:** 0.9.5 (repository source; GitHub release pending)
 **Author:** Charles Phillip Linstrum
 **License:** Open
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
@@ -28,6 +28,17 @@ Then it gives you a structured way to answer it.
 **For researchers:** The full protocol exists in four tiers — [CORE](protocol/PBHP-CORE_v0.9.5.md) (operational), [ULTRA](protocol/PBHP-ULTRA_v0.9.5.md) (constitutional), [MIN](protocol/PBHP-MIN_v0.9.5.md) (reflex), and [HUMAN](protocol/PBHP_v0.9.5_HUMAN.md) (checklist). The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
 **For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Five scenarios, 35-point rubric. Tells you if you're running the protocol correctly.
+
+---
+
+## Website and component downloads
+
+The canonical protocol remains version 0.9.5. A separate additive distribution layer is available under [`website/`](website/) and [`distribution/`](distribution/). Each component page provides a concise explanation, evidence state, test plan, and direct download without replacing the full protocol specification.
+
+- [Browse the generated website](website/index.html)
+- [Browse individual component packs](distribution/components/)
+- [Download category bundles](distribution/bundles/)
+- [Read the current release boundary](CURRENT_RELEASE.md)
 
 ---
 
