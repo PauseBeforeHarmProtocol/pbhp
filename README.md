@@ -1,4 +1,18 @@
-# PBHP — Pause Before Harm Protocol
+<p align="center">
+  <img src="website/assets/brand/pbhp-hero.png" alt="A calm PBHP decision instrument opening onto a safeguarded, reversible path" width="100%">
+</p>
+
+<h1 align="center">PBHP — Pause Before Harm Protocol</h1>
+
+<p align="center"><strong>An auditable pause between a consequential decision and the act that makes it real.</strong></p>
+
+<p align="center">
+  <a href="website/index.html">Explore the website</a> ·
+  <a href="protocol/PBHP-CORE_v0.9.5.md">Read the protocol</a> ·
+  <a href="website/workbench/index.html">Run the workbench</a> ·
+  <a href="website/components/index.html">Browse components</a> ·
+  <a href="CURRENT_RELEASE.md">Check release state</a>
+</p>
 
 **Version:** 0.9.5 (repository source; GitHub release pending)
 **Author:** Charles Phillip Linstrum

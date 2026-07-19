@@ -2,7 +2,7 @@
   "schema": "pbhp-distribution-overlay-v1",
   "generated": "2026-07-18",
   "canonical_version": "0.9.5",
-  "file_count": 537,
+  "file_count": 539,
   "files": [
     {
       "path": ".github/workflows/validate-distribution.yml",
@@ -681,13 +681,23 @@
     },
     {
       "path": "website/assets/app.css",
-      "bytes": 43557,
-      "sha256": "0233a1be46e10c6a766c081decde4b260112fdc0c6ac6a856be67c2d00f78994"
+      "bytes": 43973,
+      "sha256": "0547b1475d0f586ed6afff707fe3277e086d4452466b6429e409abbd7659612c"
     },
     {
       "path": "website/assets/app.js",
       "bytes": 17544,
       "sha256": "60693c41308bbf013ea73a302e4b4a55e8d3af9fa748178a71dd74aedb6e061b"
+    },
+    {
+      "path": "website/assets/brand/README.md",
+      "bytes": 469,
+      "sha256": "1ef9f4c627a6773af932eaad55a165d717d857a1bc255786a795e92340688a6b"
+    },
+    {
+      "path": "website/assets/brand/pbhp-hero.png",
+      "bytes": 2696631,
+      "sha256": "de69ba6034a6f69b5345bc7e3f6024aab48f9d62bbf574bec027f19c0d878a77"
     },
     {
       "path": "website/assets/search-index.json",
@@ -2621,8 +2631,8 @@
     },
     {
       "path": "website/index.html",
-      "bytes": 14251,
-      "sha256": "3d9a29267f81d839f9853fdb8221f36ac72639efaf3ae4ee169948d8061f675d"
+      "bytes": 15115,
+      "sha256": "75aeb2d45c2e22a75abd94bbb67b68afc73b54070bebf7f70b3d241bd15e3cfe"
     },
     {
       "path": "website/manual/index.html",

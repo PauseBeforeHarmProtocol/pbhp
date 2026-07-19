@@ -472,6 +472,17 @@ html[data-theme="pbhp"] .code-block { background: #14231e; }
   pointer-events: none;
 }
 .hero__copy { position: relative; z-index: 1; max-width: 980px; }
+.hero__art {
+  position: relative;
+  z-index: 1;
+  margin: 34px 0 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  border-radius: 18px;
+  background: var(--surface-strong);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--accent) 13%, transparent);
+}
+.hero__art img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .hero h1 {
   display: block;
   max-width: 960px;
@@ -1309,7 +1320,7 @@ select:focus { border-color: var(--accent); background: var(--surface); outline:
 @media print {
   :root { color-scheme: light; --bg: #fff; --surface: #fff; --surface-2: #fff; --ink: #111; --muted: #333; --line: #bbb; }
   body { background: #fff; font-size: 11pt; }
-  .sidebar, .mobile-header, .mobile-dock, .topline, .page-toc, .reading-progress, .command-dialog, .code-copy, .hero__actions, .site-footer { display: none !important; }
+  .sidebar, .mobile-header, .mobile-dock, .topline, .page-toc, .reading-progress, .command-dialog, .code-copy, .hero__actions, .hero__art, .site-footer { display: none !important; }
   .main-content { margin: 0; padding: 0; }
   .page-header, .content-grid { max-width: none; }
   .content-grid { display: block; }
