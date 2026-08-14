@@ -24,11 +24,11 @@ The current governed scope is:
 - R1 Beta2 family: `075b41ea4186b2d2edb0ed246ab7662cf8bbdf3160294e3eca176b9d0857b108`, including its 10 corrected descendants.
 - Primitive Commons beta.5: `1ffdba41025c0b81da92d0bbb22d0eaa69488cffbc80936365034669110448d7`, containing 42 primitives and 10 compositions.
 - Exact audited outer custody container: `827c13e80f09e3e3065cee4aa0bcc6afbc3e27061b83b7597754b7ea167f68a2`. It is recognized as custody only and is **not admitted**.
-- Myth v0.3.4 removal-only successor: `3c8c8c0d3d9582c76b685c1b685260cc8179478ab310037c858b46257aa314c7`. It is prepared as a separate, default-off, mixed-rights, nonauthorizing external-research sidecar outside canonical R1. It is not part of an R1 package, and this repository does not publish its bytes.
+- Myth v0.3.4 removal-only successor: `3c8c8c0d3d9582c76b685c1b685260cc8179478ab310037c858b46257aa314c7`. It is [published separately](https://github.com/PauseBeforeHarmProtocol/Project-Shadow/releases/tag/myth-v0.3.4) as a default-off, mixed-rights, nonauthorizing external-research sidecar outside canonical R1. It is not part of an R1 package, and this repository does not contain or publish its bytes.
 
 The exact admission record has a verified detached Sigstore signature, Rekor inclusion evidence, and RFC 3161 external timestamp. That closes the signature and time-anchor gates for the admission record only.
 
-The deterministic public-release candidate has passed final fail-closed verification and is fixed at SHA-256 `2f8fe1530b6a83294d15011df95853aaecf08fa4dba756f0c2e91dd089e1b1ec` (7,679,812 bytes). Its status is `PENDING_EXACT_CANDIDATE_HASH_AUTHORIZATION`. Nothing has been published, and this PBHP repository does not contain or authorize a Project Shadow download.
+The exact deterministic candidate was separately authorized and [published as Project Shadow 1.0 / R1](https://github.com/PauseBeforeHarmProtocol/Project-Shadow/releases/tag/r1-2026-08-14) after final fail-closed verification. The public R1 asset is fixed at SHA-256 `2f8fe1530b6a83294d15011df95853aaecf08fa4dba756f0c2e91dd089e1b1ec` (7,679,812 bytes). That publication does not change this repository's PBHP version identity, import Project Shadow bytes here, or authorize production or operational deployment, efficacy or safety claims, certification, or legal-compliance claims.
 
 ## Authority boundary
 

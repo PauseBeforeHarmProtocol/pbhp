@@ -7,6 +7,7 @@ All notable changes to PBHP will be documented in this file.
 ### Documentation only
 - Documented the April 19, 2026 repository's existing version skew: v0.9.5 filenames/top-level version with 17 post-audit fix categories implemented across 103 source/protocol lines explicitly labeled v0.9.6. No new protocol version or GitHub release is declared.
 - Added a current exact-hash Project Shadow boundary and clarified that PBHP is preserved research ancestry, not canonical R1.
+- Updated that boundary after the exact candidate was published separately as Project Shadow 1.0 / R1; no Project Shadow or Myth binary, PBHP tag, or PBHP release was added here.
 - Corrected license descriptions across contribution and ethical-use guidance.
 - Reframed the roadmap and governance charter for locked, evidence-preserving maintenance.
 - Bounded test, safety, efficacy, certification, and compliance claims. No protocol logic or preserved protocol file was changed by this documentation repair.

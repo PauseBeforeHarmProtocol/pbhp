@@ -13,7 +13,7 @@
 ---
 
 > [!IMPORTANT]
-> This repository preserves the April 19, 2026 PBHP research snapshot. Its files and top-level `VERSION` retain the v0.9.5 name, while the final audit-fix commit implemented 17 fix categories across 103 source/protocol lines explicitly labeled v0.9.6. No matching v0.9.5 or v0.9.6 GitHub release/tag exists; the latest formal GitHub release remains v0.9.0. Do not represent this branch as a cleanly versioned release. It is not the canonical Project Shadow R1 package, a production system, a certification, or evidence of legal or regulatory compliance. Project Shadow is locked at `PROJECT SHADOW 1.0 / R1 REFERENCE / BETA-ACTIVE-TESTING / PRELIVE`; see [CURRENT_STATUS.md](CURRENT_STATUS.md) for exact identities and the current publication boundary.
+> This repository preserves the April 19, 2026 PBHP research snapshot. Its files and top-level `VERSION` retain the v0.9.5 name, while the final audit-fix commit implemented 17 fix categories across 103 source/protocol lines explicitly labeled v0.9.6. No matching v0.9.5 or v0.9.6 GitHub release/tag exists; the latest formal PBHP GitHub release remains v0.9.0. Do not represent this branch as a cleanly versioned release. It is not the canonical Project Shadow R1 package, a production system, a certification, or evidence of legal or regulatory compliance. The exact Project Shadow R1 candidate is now [published separately](https://github.com/PauseBeforeHarmProtocol/Project-Shadow/releases/tag/r1-2026-08-14) under its own hash and remains `PROJECT SHADOW 1.0 / R1 REFERENCE / BETA-ACTIVE-TESTING / PRELIVE`; see [CURRENT_STATUS.md](CURRENT_STATUS.md) for the exact identity and authority boundary.
 
 ## What Is PBHP?
 
