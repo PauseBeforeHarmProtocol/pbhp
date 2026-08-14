@@ -2,6 +2,15 @@
 
 All notable changes to PBHP will be documented in this file.
 
+## Repository status correction - 2026-08-14
+
+### Documentation only
+- Documented the April 19, 2026 repository's existing version skew: v0.9.5 filenames/top-level version with 17 post-audit fix categories implemented across 103 source/protocol lines explicitly labeled v0.9.6. No new protocol version or GitHub release is declared.
+- Added a current exact-hash Project Shadow boundary and clarified that PBHP is preserved research ancestry, not canonical R1.
+- Corrected license descriptions across contribution and ethical-use guidance.
+- Reframed the roadmap and governance charter for locked, evidence-preserving maintenance.
+- Bounded test, safety, efficacy, certification, and compliance claims. No protocol logic or preserved protocol file was changed by this documentation repair.
+
 ## [0.9.5] - 2026-04-19
 
 ### Added
@@ -37,7 +46,7 @@ All notable changes to PBHP will be documented in this file.
 
 ### Added
 - Scheming Resistance Layer (`pbhp_srl.py`) — 6 rules: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), anti-sandbagging (SRL-06). Safety-monotonic state machine with human-required de-escalation. 60 tests including red-team scenarios based on real frontier model failures
-- Quality Systems Layer (`pbhp_qs.py`) — 8 rules modeled after aviation/pharma/nuclear QA: authority separation, immutable SHA-256 evidence chains, deception tripwires, CAPA lifecycle, symbolic mode containment, safe requalification. 73 tests
+- Quality Systems Layer (`pbhp_qs.py`) — 8 rules modeled after aviation/pharma/nuclear QA: authority separation, tamper-evident SHA-256 evidence chains, deception tripwires, CAPA lifecycle, symbolic mode containment, safe requalification. 73 tests
 - Bridge Module (`pbhp_bridge.py`) — cross-module subcontracting via ModuleRegistry, coverage gap prominence, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, SafetyClaimRegistry for demonstration > declaration. 44 tests
 - Drift Meta-Monitor (`DriftMetaMonitor` in `pbhp_drift.py`) — drift monitoring monitors itself via heartbeat tracking, computation time drift, and alert rate change detection. 7 tests
 - Adaptive Uncertainty Threshold (`update_threshold` on `UncertaintyAssessment` in `pbhp_core.py`) — context-aware multipliers (prod=0.7x stricter, dev=1.5x looser, emergency=1.3x). 11 tests

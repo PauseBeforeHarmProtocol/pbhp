@@ -1,8 +1,12 @@
 # PBHP Roadmap
 
-**Pause Before Harm Protocol** — Future development priorities.
+**Pause Before Harm Protocol** — Preserved historical development plan.
 
-Last updated: 2026-03-12
+Originally updated: 2026-03-12
+
+Status reviewed: 2026-08-14
+
+> PBHP v0.9.5 is preserved here as pre-R1 research ancestry. The Project Shadow 1.0 / R1 project is locked; this file does not authorize new features, active development, production deployment, or additions to canonical R1. The sections below record earlier proposals rather than current commitments. Corrections, security fixes, and evidence-preserving maintenance remain appropriate.
 
 ---
 
@@ -49,11 +53,11 @@ Last updated: 2026-03-12
 - ✅ **Release hygiene** — Honest test coverage table in README, CI running all 13 test suites, ROADMAP reflecting actual state.
 
 ### What v0.9.0 Proved
-730 tests across 13 files. Every module boundary is exercised. 47 adversarial scenarios confirm that the safety-monotonic state machine, evidence chains, and cross-module coordination hold under attack. No test gaps remain at the unit or integration level.
+730 tests across 13 files exercise the documented module boundaries, including 47 adversarial scenarios. Those results support only the checked cases and implementation behavior; they do not confirm real-world safety, exhaustive coverage, or absence of unit, integration, operational, or adversarial gaps.
 
 ---
 
-## Mid-Term (v1.0.0)
+## Historical Mid-Term Proposal (v1.0.0)
 
 ### Eval Suite
 Purpose-built evaluation suite for PBHP modules:
@@ -83,7 +87,7 @@ an action, one function call to log evidence.
 
 ---
 
-## Long-Term (v2.0.0+)
+## Historical Long-Term Proposal (v2.0.0+)
 
 ### Coworker Model Research
 Investigate whether a fundamentally different training objective can produce an AI
@@ -117,13 +121,9 @@ state machine including cross-module interactions.
 
 ---
 
-## Contributing
+## Maintenance and corrections
 
-PBHP is open source and welcomes contributors. Priority areas:
-1. Healthcare/regulatory compliance adapters
-2. Red-team test scenarios
-3. Framework integration adapters
-4. Formal verification of safety properties
+The locked project is not accepting feature expansion through this roadmap. Issues that identify a reproducible defect, security concern, rights problem, documentation error, or evidence gap are welcome. A proposed change must be explicitly scoped and may require a new exact-hash successor; it cannot silently alter admitted or preserved bytes.
 
 Contact: pausebeforeharmprotocol_pbhp@protonmail.com
-GitHub: https://github.com/PauseBeforeHarmProtocol/pbhp
+GitHub: https://github.com/PauseBeforeHarmProtocol/PauseBeforeHarmProtocolMain
