@@ -1,15 +1,23 @@
 # PBHP — Pause Before Harm Protocol
 
-**Version:** 0.9.5 (Public Release)
+**Repository snapshot:** v0.9.5-named research source with 17 post-audit fix categories implemented across 103 source/protocol lines explicitly labeled v0.9.6 (unreleased)
+
 **Author:** Charles Phillip Linstrum
-**License:** Open
+
+**License:** MIT for code; CC BY-SA 4.0 for protocol and documentation
+
 **Email/Contact:** pausebeforeharmprotocol_pbhp@protonmail.com
+
 **Social Media:** facebook.com/plinst
+
 ---
+
+> [!IMPORTANT]
+> This repository preserves the April 19, 2026 PBHP research snapshot. Its files and top-level `VERSION` retain the v0.9.5 name, while the final audit-fix commit implemented 17 fix categories across 103 source/protocol lines explicitly labeled v0.9.6. No matching v0.9.5 or v0.9.6 GitHub release/tag exists; the latest formal GitHub release remains v0.9.0. Do not represent this branch as a cleanly versioned release. It is not the canonical Project Shadow R1 package, a production system, a certification, or evidence of legal or regulatory compliance. Project Shadow is locked at `PROJECT SHADOW 1.0 / R1 REFERENCE / BETA-ACTIVE-TESTING / PRELIVE`; see [CURRENT_STATUS.md](CURRENT_STATUS.md) for exact identities and the current publication boundary.
 
 ## What Is PBHP?
 
-PBHP is an operational harm-reduction protocol for AI systems and human decision-makers. It is not alignment theory. It is not a research paper. It is a decision procedure you can run.
+PBHP is an experimental harm-reduction decision procedure for AI systems and human decision-makers. It is not alignment theory, professional advice, or a substitute for qualified human judgment.
 
 Before acting on anything with stakes, PBHP asks one question:
 
@@ -21,19 +29,19 @@ Then it gives you a structured way to answer it.
 
 ## Quick Start
 
-**For AI agents:** Use [`PromptBeforeHarmProtocol v0.2`](protocol/PromptBeforeHarmProtocol_v0.2.md) — the definitive system prompt. Paste-ready versions available in [`Paste Versions`](protocol/PBHP_Prompt_Paste_Versions.md) (~2200 and ~1000 token options). No dependencies. No API. Paste it and run it.
+**For AI research:** Review [`PromptBeforeHarmProtocol v0.2`](protocol/PromptBeforeHarmProtocol_v0.2.md) and the [`Paste Versions`](protocol/PBHP_Prompt_Paste_Versions.md) (~2200 and ~1000 token options) as preserved research prompts. Evaluate them in a controlled setting before any use; they do not grant action authority or qualify a live system.
 
-**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) provides a working implementation across all three tiers.
+**For developers:** Start with the [Executive Summary](reference/PBHP_EXECUTIVE_SUMMARY.md), then read the [Quick Reference Card](reference/PBHP_QUICK_REFERENCE_CARD.html) for a printable one-page overview. The [Python implementation](src/) is a tested research reference across the three software tiers; it is not qualified for production use.
 
 **For researchers:** The full protocol exists in four tiers — [CORE](protocol/PBHP-CORE_v0.9.5.md) (operational), [ULTRA](protocol/PBHP-ULTRA_v0.9.5.md) (constitutional), [MIN](protocol/PBHP-MIN_v0.9.5.md) (reflex), and [HUMAN](protocol/PBHP_v0.9.5_HUMAN.md) (checklist). The [Eval Harness](eval/PBHP-EVAL_SET_v0.1.md) provides 12 adversarial scenarios for testing.
 
-**For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Five scenarios, 35-point rubric. Tells you if you're running the protocol correctly.
+**For everyone:** Run the [Implementation Self-Test](implementation/PBHP_IMPLEMENTATION_SELF_TEST.md) after reading. Its five scenarios and 35-point rubric check the documented cases only; a passing score is not certification or evidence of real-world safety.
 
 ---
 
 ## How It Works
 
-PBHP is a structured process scaled across four tiers (HUMAN, MIN, CORE, ULTRA) depending on decision complexity. v0.9.5 adds 8 new features: Mode Balance Monitor, Forward Consequence Projection, Stakeholder Dignity Rubric, Counterfactual Rehearsal, Power-Inversion Test, Crisis Commitment Priority, Multimodal Signal Filters, and Data Freshness Assurance. The core logic:
+PBHP is a structured process scaled across four tiers (HUMAN, MIN, CORE, ULTRA) depending on decision complexity. The v0.9.5-named snapshot includes eight features: Mode Balance Monitor, Forward Consequence Projection, Stakeholder Dignity Rubric, Counterfactual Rehearsal, Power-Inversion Test, Crisis Commitment Priority, Multimodal Signal Filters, and Data Freshness Assurance. The core logic:
 
 **1. Name the action honestly.** One sentence. No softening.
 
@@ -49,7 +57,7 @@ PBHP is a structured process scaled across four tiers (HUMAN, MIN, CORE, ULTRA) 
 
 **7. Act on the gate.** Log everything.
 
-Built-in safeguards: **drift alarms** catch rationalization in real time, a **false positive valve** prevents overcaution, and **power-asymmetry escalation** automatically raises the gate when harm lands on people who can't fight back.
+Built-in controls are designed to flag rationalization through **drift alarms**, provide a challenge path through a **false positive valve**, and route identified power asymmetry to a higher gate under the documented rules.
 
 ---
 
@@ -61,15 +69,15 @@ PBHP v0.8.x–v0.9.x adds operational modules that extend the core protocol:
 
 **Domain Metric Packs** (`pbhp_metrics.py`) — Pre-built severity thresholds for hiring, healthcare, finance, content moderation, and security. Each pack defines concrete harm levels (healthcare CATASTROPHIC = patient death), reversibility timeframes, and stakeholder templates. Eliminates guesswork in domain-specific risk scoring.
 
-**Multi-Agent Coordination** (`pbhp_multiagent.py`) — Rules for when multiple agents running PBHP reach different gate decisions. Implements quorum voting with veto for irreversible actions, weighted expert voting, and mandatory human-in-the-loop for BLACK gates. Ensures multi-agent disagreement never weakens safety.
+**Multi-Agent Coordination** (`pbhp_multiagent.py`) — Rules for modeled cases where multiple agents running PBHP reach different gate decisions. Implements quorum voting with veto for irreversible actions, weighted expert voting, and mandatory human review for BLACK gates. Tests exercise the intended fail-closed behavior; they do not establish real-world safety.
 
-**Compliance Crosswalks** (`pbhp_compliance.py`) — Maps PBHP steps and artifacts to NIST AI RMF, ISO/IEC 42001, ISO/IEC 23894, and EU AI Act requirements. Shows which PBHP step satisfies which compliance requirement. Generates audit checklists and compliance reports.
+**Compliance Crosswalks** (`pbhp_compliance.py`) — Maps PBHP steps and artifacts to selected concepts in NIST AI RMF, ISO/IEC 42001, ISO/IEC 23894, and the EU AI Act for review. These are research crosswalks, not a determination that any requirement is satisfied and not certification or legal advice.
 
 **Drift Measurement** (`pbhp_drift.py`) — Upgrades from binary drift flags to quantifiable drift rates. Tracks refuse rate, average gate level, vulnerable population impact, and confidence scores over time. Computes drift velocity, acceleration, and projects threshold breach dates.
 
-**Scheming Resistance Layer** (`pbhp_srl.py`, v0.8.1) — Six rules that prevent frontier model scheming behaviors: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), and anti-sandbagging (SRL-06). Safety-monotonic state machine where states can escalate freely but only de-escalate through human-authorized paths. 60 tests including red-team scenarios based on real frontier model failures.
+**Scheming Resistance Layer** (`pbhp_srl.py`, v0.8.1) — Six experimental controls aimed at modeled scheming-related behaviors: anti-self-preservation (SRL-01), mandatory confession (SRL-02), live-systems gating (SRL-03), eval-awareness skepticism (SRL-04), self-report distrust (SRL-05), and anti-sandbagging (SRL-06). The state machine permits escalation while restricting de-escalation to human-authorized paths. Sixty tests exercise these rules; they do not prove prevention in frontier models.
 
-**Quality Systems Layer** (`pbhp_qs.py`, v0.8.1) — Eight rules modeled after regulated QA (aviation, pharma, nuclear): authority separation (QS-01), immutable SHA-256 evidence chains (QS-02), live-system qualification (QS-03), deviation/CAPA lifecycle (QS-04), deception tripwires (QS-05), eval integrity (QS-06), symbolic mode containment (QS-07), and safe requalification (QS-08). Sits above SRL as the governance layer. 73 tests.
+**Quality Systems Layer** (`pbhp_qs.py`, v0.8.1) — Eight rules modeled after regulated QA (aviation, pharma, nuclear): authority separation (QS-01), tamper-evident SHA-256 evidence chains (QS-02), live-system qualification (QS-03), deviation/CAPA lifecycle (QS-04), deception tripwires (QS-05), eval integrity (QS-06), symbolic mode containment (QS-07), and safe requalification (QS-08). Sits above SRL as the governance layer. 73 tests.
 
 **Bridge Module** (`pbhp_bridge.py`, v0.8.1) — Cross-module coordination via ModuleRegistry, coverage gap prominence via CoverageGapCollector, healthcare compliance adapter (ISO 14971 / MDR / IEC 62304), MBSE requirement taxonomy interface, and SafetyClaimRegistry for "demonstration > declaration" enforcement. Coverage gaps are prominently reported in every output — if PBHP cannot evaluate something, that is the loudest signal. 44 tests.
 
@@ -169,7 +177,7 @@ pbhp/
 
 ## Why PBHP Exists
 
-Most AI safety work focuses on alignment — making AI systems want the right things. PBHP focuses on **process** — giving AI systems (and humans) a structured way to catch harm before it happens, regardless of what they want.
+Most AI safety work focuses on alignment — making AI systems want the right things. PBHP focuses on **process** by offering AI systems and humans a structured way to look for potential harm before acting.
 
 The difference matters. An aligned system can still cause harm through:
 
@@ -178,35 +186,35 @@ The difference matters. An aligned system can still cause harm through:
 - Power blindness (not noticing who absorbs the cost of being wrong)
 - False confidence (high certainty under genuine uncertainty)
 
-PBHP catches these failure modes with specific mechanisms: drift alarms are tripwires for rationalization, Door/Wall/Gap forces escape vector identification, power-asymmetry escalation prevents the least powerful from bearing costs invisibly, and the false positive valve prevents the protocol itself from becoming an obstacle to legitimate action.
+PBHP addresses these failure modes with specific mechanisms: drift alarms act as tripwires for rationalization, Door/Wall/Gap prompts escape-vector identification, power-asymmetry rules raise the documented gate floor, and the false-positive valve provides a structured challenge path.
 
 ---
 
 ## Test Coverage
 
-**730 tests passing** across 13 test files. CI runs on Python 3.10, 3.11, and 3.12.
+**730 tests passing** across 13 test files in a fresh local run on August 14, 2026; CI is configured for Python 3.10, 3.11, and 3.12. Test passage demonstrates the checked software behavior only. It does not establish efficacy, safety, production readiness, compliance, certification, complete coverage, or absence of defects.
 
-| Module | Tests | Status |
+| Module | Tests | Recorded test focus |
 |--------|-------|--------|
-| `pbhp_core` | 88 | Covered |
-| `pbhp_min` / `pbhp_ultra` | 45 | Covered |
-| `pbhp_srl` | 60 | Covered (incl. red-team scenarios) |
-| `pbhp_qs` | 73 | Covered (incl. CAPA lifecycle, tripwires) |
-| `pbhp_bridge` | 44 | Covered (ModuleRegistry, SafetyClaimRegistry, coverage gaps) |
-| `pbhp_drift` (meta-monitor) | 18 | Covered (heartbeat, threshold adaptation) |
-| `pbhp_cli` / `pbhp_examples` | 29 | Covered (smoke tests, structural verification) |
-| `pbhp_compliance` | 89 | Covered (all 4 frameworks, audit reports, checklists) |
-| `pbhp_metrics` | 53 | Covered (all 5 domain packs, thresholds, stakeholders) |
-| `pbhp_multiagent` | 61 | Covered (quorum voting, veto, BLACK escalation) |
-| `pbhp_triage` | 80 | Covered (tier routing, signal weights, HUMAN escalation) |
-| Cross-module integration | 43 | Covered (SRL↔QS, Bridge↔core, full pipeline) |
-| Adversarial eval | 47 | Covered (BLACK bypass, state escape, self-preservation disguise) |
+| `pbhp_core` | 88 | Checked cases |
+| `pbhp_min` / `pbhp_ultra` | 45 | Checked cases |
+| `pbhp_srl` | 60 | Red-team-style scenarios included |
+| `pbhp_qs` | 73 | CAPA lifecycle and tripwire cases |
+| `pbhp_bridge` | 44 | ModuleRegistry, SafetyClaimRegistry, and gap-reporting cases |
+| `pbhp_drift` (meta-monitor) | 18 | Heartbeat and threshold-adaptation cases |
+| `pbhp_cli` / `pbhp_examples` | 29 | Smoke and structural checks |
+| `pbhp_compliance` | 89 | Four research crosswalks, report, and checklist cases |
+| `pbhp_metrics` | 53 | Five domain-pack, threshold, and stakeholder cases |
+| `pbhp_multiagent` | 61 | Quorum, veto, and BLACK-escalation cases |
+| `pbhp_triage` | 80 | Tier-routing, signal-weight, and HUMAN-escalation cases |
+| Cross-module integration | 43 | SRL↔QS, Bridge↔core, and pipeline cases |
+| Adversarial eval | 47 | BLACK-bypass, state-escape, and disguise cases |
 
 ---
 
 ## License
 
-Dual licensed: **MIT** for code (`src/`), **CC BY-SA 4.0** for protocol and documentation. Use it, adapt it, implement it. Attribution appreciated. If you build on PBHP, keep the core question intact. See [LICENSE](LICENSE) for details and non-negotiable clauses.
+Dual licensed: **MIT** for code (`src/`, `eval/`) and **CC BY-SA 4.0** for the protocol and documentation paths listed in [LICENSE](LICENSE). The ethical invariants in [ETHICAL_USE.md](ETHICAL_USE.md) are non-legally-binding guidance, not additional license restrictions. Permission to reuse does not imply validation, endorsement, suitability, safety, or compliance.
 
 ---
 

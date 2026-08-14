@@ -2,15 +2,15 @@
 
 ## Purpose
 
-PBHP (Pause Before Harm Protocol) is released under the MIT License to maximize adoption and minimize barriers. However, the protocol embeds values that should be preserved when deployed or modified.
+PBHP (Pause Before Harm Protocol) code is released under the MIT License, while the protocol and documentation are released under CC BY-SA 4.0, as specified in [LICENSE](LICENSE). The protocol also embeds values that should be preserved when deployed or modified.
 
-This document describes **non-legally-binding ethical guidelines** for using PBHP in a way that honors its intent. These are not license restrictions—you are free to fork, modify, and use PBHP however you choose under the MIT License. But we ask that you consider these principles.
+This document describes **non-legally-binding ethical guidelines** for using PBHP in a way that honors its intent. These are not additional license restrictions; the MIT and CC BY-SA 4.0 grants in [LICENSE](LICENSE) govern reuse. We ask that you consider these principles.
 
 ---
 
 ## Core Ethical Commitments
 
-If you deploy or modify PBHP, please preserve these non-negotiable elements:
+If you deploy or modify PBHP and describe the derivative as PBHP, we ask you to preserve these identity-defining elements:
 
 ### 1. **Protect the Least-Powerful First**
 
@@ -18,7 +18,7 @@ PBHP prioritizes harm prevention for those with the least power to consent, exit
 
 **What this means:**
 - The Power Rule (harm to low-power actors tightens gates) should not be weakened or removed
-- "Who pays first if I'm wrong?" must remain centered on the vulnerable, not the powerful
+- Keep "Who pays first if I'm wrong?" centered on the vulnerable, not the powerful
 - Modifications that shift harm downward to protect authority upward violate the protocol's intent
 
 **Why this matters:**
@@ -30,7 +30,7 @@ PBHP is not a refusal protocol. It is an alternatives-finding protocol. The Door
 
 **What this means:**
 - Removing the Door requirement turns PBHP into binary allow/refuse
-- "Proceed with constraints" gates (ORANGE) must remain functional
+- Keep "Proceed with constraints" gates (ORANGE) functional
 - False Positive Valve (ability to challenge the protocol) should not be stripped
 
 **Why this matters:**
@@ -38,7 +38,7 @@ Refusal without alternatives is how most safety frameworks fail. PBHP's value is
 
 ### 3. **Truth First (Reality Grounding)**
 
-PBHP requires honest engagement with uncertainty. Confidence claims must be grounded in evidence, and unknowns must be named explicitly.
+PBHP's intended identity includes honest engagement with uncertainty: ground confidence claims in evidence and name unknowns explicitly.
 
 **What this means:**
 - The Epistemic Contract (FACT/INFERENCE/SPECULATION/INTENT) should not be removed
@@ -54,8 +54,8 @@ PBHP requires logging, auditability, and the ability to explain decisions to tho
 
 **What this means:**
 - Logging requirements (Wall/Gap/Door/Gate documentation) should not be stripped
-- "I ran PBHP, so I'm covered" is explicitly a protocol violation—this must remain
-- The protocol must remain auditable, not just internally comforting
+- Preserve the rule that "I ran PBHP, so I'm covered" is not an acceptable conclusion
+- Keep the protocol auditable, not just internally comforting
 
 **Why this matters:**
 PBHP is designed to withstand external review, not produce internal comfort. Decisions made under PBHP should be defensible to those affected.
@@ -77,16 +77,16 @@ PBHP is designed to be adapted, extended, and modified. We **encourage** you to:
 
 ## What We Ask You Not To Do
 
-❌ **Don't strip the Power Rule** - Harm to low-power actors must tighten gates
+❌ **Don't strip the Power Rule** - The intended PBHP identity tightens gates for harm to low-power actors
 ❌ **Don't remove the Door requirement** - Alternatives-finding is core functionality
-❌ **Don't eliminate logging/accountability** - PBHP must remain auditable
+❌ **Don't eliminate logging/accountability** - Auditability is part of the intended PBHP identity
 ❌ **Don't use PBHP as a justification shield** - "I ran PBHP" doesn't absolve responsibility
 
 ---
 
 ## If You Fork or Modify PBHP
 
-You are free to fork and modify PBHP under the MIT License. If you do, we ask:
+You are free to fork and modify PBHP under the applicable license stated in [LICENSE](LICENSE). If you do, we ask:
 
 1. **Preserve attribution** - Acknowledge PBHP v0.9.5 as the source
 2. **Document changes** - Make clear what you modified and why
@@ -96,7 +96,7 @@ You are free to fork and modify PBHP under the MIT License. If you do, we ask:
 
 ## Why This Document Exists
 
-The MIT License gives you legal freedom. This document explains ethical responsibility.
+The repository licenses give you legal permissions subject to their terms. This document explains ethical responsibility.
 
 PBHP was built by practitioners, refined over 18 months, and released openly because harm-reduction should not be proprietary. But the protocol has values embedded in its structure. Those values—protecting the least-powerful, finding alternatives, grounding in truth, maintaining accountability—are not decorative. They are functional.
 
@@ -104,9 +104,11 @@ You can remove them. But if you do, you're no longer running PBHP. You're runnin
 
 ---
 
-## Non-Negotiable Clause
+## Identity-Defining Invariants
 
-If you adapt or build upon this protocol, the following elements must be preserved:
+The following are non-legally-binding ethical and identity guidance, not additional license conditions.
+
+If you adapt or build upon this protocol and describe the result as PBHP, we ask you to preserve the following elements:
 
 1. **Harm to the least powerful is always weighted first**
 2. **"If I'm wrong, who pays first?" cannot be removed**
@@ -122,10 +124,10 @@ These are the structural invariants that make PBHP what it is. Removing any of t
 
 If you're unsure whether a modification preserves PBHP's intent, reach out:
 - Email: pausebeforeharmprotocol_pbhp@protonmail.com
-- GitHub: https://github.com/PauseBeforeHarmProtocol/pbhp/issues
+- GitHub: https://github.com/PauseBeforeHarmProtocol/PauseBeforeHarmProtocolMain/issues
 
 We're happy to discuss edge cases, integration challenges, or governance questions.
 
 ---
 
-*PBHP v0.9.5 | Open Protocol | Ethical Use Guidelines v1.0 | facebook.com/plinst*
+*PBHP v0.9.5 | MIT code / CC BY-SA 4.0 protocol and documentation | Ethical Use Guidelines v1.0 | facebook.com/plinst*
