@@ -28,7 +28,7 @@ The current governed scope is:
 
 The exact admission record has a verified detached Sigstore signature, Rekor inclusion evidence, and RFC 3161 external timestamp. That closes the signature and time-anchor gates for the admission record only.
 
-The deterministic public-release candidate is undergoing final fail-closed verification. No final public-container hash is fixed or authorized at this review point. Nothing has been published, and this PBHP repository does not contain or authorize a Project Shadow download.
+The deterministic public-release candidate has passed final fail-closed verification and is fixed at SHA-256 `2f8fe1530b6a83294d15011df95853aaecf08fa4dba756f0c2e91dd089e1b1ec` (7,679,812 bytes). Its status is `PENDING_EXACT_CANDIDATE_HASH_AUTHORIZATION`. Nothing has been published, and this PBHP repository does not contain or authorize a Project Shadow download.
 
 ## Authority boundary
 
